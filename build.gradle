@@ -11,7 +11,8 @@ buildscript {
         supportVersion = "26.0.0"
 
         dependencies = [
-                "support-v4": "com.android.support:support-v4:${ext.supportVersion}"
+                "support-v4": "com.android.support:support-v4:${ext.supportVersion}",
+                "support-v7": "com.android.support:appcompat-v7:${ext.supportVersion}"
         ]
     }
     repositories {

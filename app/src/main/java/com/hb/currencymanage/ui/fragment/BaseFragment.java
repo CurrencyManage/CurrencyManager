@@ -1,0 +1,12 @@
+package com.hb.currencymanage.ui.fragment;
+
+import android.support.v4.app.Fragment;
+
+/**
+ * Created by 汪彬 on 2018/4/16.
+ */
+
+public class BaseFragment extends Fragment
+{
+
+}
