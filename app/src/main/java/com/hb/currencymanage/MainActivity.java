@@ -12,6 +12,7 @@ import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.hb.currencymanage.bean.TabEntity;
 import com.hb.currencymanage.ui.activity.BaseActivity;
+import com.hb.currencymanage.ui.fragment.MainFragment;
 import com.hb.currencymanage.ui.fragment.SimpleCardFragment;
 
 import java.util.ArrayList;
@@ -54,10 +55,16 @@ public class MainActivity extends BaseActivity
     
     private void initViewPager()
     {
+        int index = 0;
         for (String title : mTitles)
         {
+            if (index == 0)
+            {
+                mFragments.add(MainFragment.getInstance());
+            }
             mFragments.add(SimpleCardFragment
                     .getInstance("Switch ViewPager " + title));
+            index++;
         }
         for (int i = 0; i < mTitles.length; i++)
         {
