@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+
+
+
+
+    <LinearLayout
+        android:background="@color/tv_white"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_40">
+
+            <TextView
+                android:paddingLeft="@dimen/margin_normal"
+                android:text="账户：**********8872"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/margin_normal"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_marginLeft="@dimen/margin_normal"
+                android:background="@drawable/tv_border_radius"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimen_40"
+                android:layout_weight="7">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="买入价格" />
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="3"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimen_40">
+
+                <TextView
+                    android:gravity="center"
+                    android:text="涨停：1111"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:gravity="center"
+                    android:text="跌停：1111"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/margin_normal"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_marginLeft="@dimen/margin_normal"
+                android:background="@drawable/tv_border_radius"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimen_40"
+                android:layout_weight="7">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="买入价格" />
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="3"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimen_40">
+
+                <TextView
+                    android:gravity="center"
+                    android:text="涨停：1111"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:gravity="center"
+                    android:text="跌停：1111"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_50">
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:text="全仓"
+                    android:gravity="center"
+                    android:background="@drawable/dark_border_radius"
+                    android:layout_width="100dp"
+                    android:layout_height="@dimen/dimen_40" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:text="全仓"
+                    android:gravity="center"
+                    android:background="@drawable/dark_border_radius"
+                    android:layout_width="100dp"
+                    android:layout_height="@dimen/dimen_40" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:text="全仓"
+                    android:gravity="center"
+                    android:background="@drawable/dark_border_radius"
+                    android:layout_width="100dp"
+                    android:layout_height="@dimen/dimen_40" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="@dimen/margin_normal"
+            android:text="买入"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_18"
+            android:background="@color/tv_bg_red"
+            android:textColor="@color/tv_white"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_50" />
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</RelativeLayout>

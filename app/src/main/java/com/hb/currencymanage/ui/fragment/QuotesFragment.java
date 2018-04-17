@@ -2,6 +2,7 @@ package com.hb.currencymanage.ui.fragment;
 
 import com.hb.currencymanage.R;
 import com.hb.currencymanage.bean.QuotesEntity;
+import com.hb.currencymanage.dialog.QutoesDialogFragment;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
@@ -67,6 +68,10 @@ public class QuotesFragment extends BaseFragment
 
             }
         });
+
+
+        QutoesDialogFragment qutoesDialogFragment=new QutoesDialogFragment();
+        qutoesDialogFragment.show(getFragmentManager(),"qutoesDialogFragment");
 
         return v;
     }
