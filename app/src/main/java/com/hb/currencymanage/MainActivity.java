@@ -61,7 +61,7 @@ public class MainActivity extends BaseActivity
             if (index == 0)
             {
                 mFragments.add(MainFragment.getInstance());
-                return;
+                continue;
             }
             mFragments.add(SimpleCardFragment
                     .getInstance("Switch ViewPager " + title));
