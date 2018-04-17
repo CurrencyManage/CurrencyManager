@@ -1,16 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
 
+      <ScrollView
+          android:background="@color/tv_white"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
 
-      <include
-          layout="@layout/quotes_head"
-          >
+            <LinearLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                  <include
+                      layout="@layout/quotes_head"
+                      >
+                  </include>
+                  <android.support.v7.widget.RecyclerView
+                      android:id="@+id/recycleView"
+                      android:layout_width="match_parent"
+                      android:layout_height="400dp">
+                  </android.support.v7.widget.RecyclerView>
 
-      </include>
+                  <LinearLayout
+                      android:gravity="center_vertical"
+                      android:layout_width="match_parent"
+                      android:layout_height="50dp">
+                        <TextView
+                            android:text="买入"
+                            android:gravity="center"
+                            android:background="@drawable/tv_border_right"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp" />
+                        <TextView
+                            android:text="卖入"
+                            android:gravity="center"
+                            android:background="@drawable/tv_border_right"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp" />
+                        <TextView
+                            android:text="撤单"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp" />
+
+
+                  </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+      </ScrollView>
+
+
 
 
 
