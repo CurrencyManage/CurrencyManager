@@ -11,6 +11,8 @@
     <dimen name="margin_tiny">6dp</dimen>
     <dimen name="margin_very_tiny">4dp</dimen>
 
+    <dimen name="dimen_50">50dp</dimen>
+
     <!-- 字体大小 -->
     <dimen name="text_size_22">22sp</dimen>
     <dimen name="text_size_20">20sp</dimen>
