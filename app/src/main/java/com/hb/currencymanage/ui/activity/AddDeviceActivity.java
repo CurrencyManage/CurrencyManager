@@ -5,11 +5,27 @@ import android.os.Bundle;
 
 import com.hb.currencymanage.R;
 
-public class AddDeviceActivity extends AppCompatActivity {
+import butterknife.OnClick;
+
+public class AddDeviceActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_device);
     }
+
+
+
+
+
+
+    @OnClick(R.id.back)
+    void back()
+    {
+        finish();
+    }
+
+
+
 }

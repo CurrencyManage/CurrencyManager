@@ -8,7 +8,7 @@ import com.hb.currencymanage.R;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class DeviceDetailActivity extends AppCompatActivity
+public class DeviceDetailActivity extends BaseActivity
 {
     
     @Override

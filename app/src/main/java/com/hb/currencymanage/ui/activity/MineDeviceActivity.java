@@ -14,6 +14,7 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.hb.currencymanage.MainActivity;
 import com.hb.currencymanage.R;
 import com.hb.currencymanage.bean.TabEntity;
+import com.hb.currencymanage.ui.fragment.DeviceListFragment;
 import com.hb.currencymanage.ui.fragment.SimpleCardFragment;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MineDeviceActivity extends BaseActivity
 {
@@ -42,6 +44,8 @@ public class MineDeviceActivity extends BaseActivity
     
     private int[] mIconSelectIds = { R.mipmap.icon_sy_selected,
             R.mipmap.icon_hq_selected };
+
+    private DeviceListFragment deviceListFragment1,deviceListFragment2;
     
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -51,6 +55,15 @@ public class MineDeviceActivity extends BaseActivity
         ButterKnife.bind(this);
         initTabLayout();
     }
+
+
+    @OnClick(R.id.add)
+    void add()
+    {
+
+        changeActivity(AddDeviceActivity.class);
+
+    }
     
     private void initTabLayout()
     {
@@ -58,7 +71,21 @@ public class MineDeviceActivity extends BaseActivity
         {
             mTabEntities.add(new TabEntity(titles[i], mIconSelectIds[i],
                     mIconUnSelectIds[i]));
-            mFragments.add(SimpleCardFragment.getInstance(titles[i]));
+           // mFragments.add(SimpleCardFragment.getInstance(titles[i]));
+            if(i==0){
+                if(deviceListFragment1==null){
+                    deviceListFragment1=new DeviceListFragment();
+                }
+                mFragments.add(deviceListFragment1);
+            }
+
+
+            if(i==1){
+                if(deviceListFragment2==null){
+                    deviceListFragment2=new DeviceListFragment();
+                }
+                mFragments.add(deviceListFragment2);
+            }
         }
         mTabLayout.setTabData(mTabEntities);
         mTabLayout.setOnTabSelectListener(new OnTabSelectListener()
@@ -98,6 +125,7 @@ public class MineDeviceActivity extends BaseActivity
         });
         mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
         mViewPager.setCurrentItem(0);
+        mViewPager.setOffscreenPageLimit(1);
     }
     
     private class MyPagerAdapter extends FragmentPagerAdapter
@@ -124,5 +152,12 @@ public class MineDeviceActivity extends BaseActivity
         {
             return mFragments.get(position);
         }
+    }
+
+
+    @OnClick(R.id.back)
+    void back()
+    {
+        finish();
     }
 }

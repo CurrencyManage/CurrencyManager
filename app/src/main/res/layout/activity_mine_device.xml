@@ -11,6 +11,7 @@
         android:background="@color/device_bar_color">
 
         <ImageView
+            android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -28,6 +29,7 @@
 
 
         <TextView
+            android:id="@+id/add"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
