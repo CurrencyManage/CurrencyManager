@@ -1,79 +1,77 @@
-package com.hb.currencymanage;
+package com.hb.currencymanage.ui.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.hb.currencymanage.R;
 import com.hb.currencymanage.bean.TabEntity;
-import com.hb.currencymanage.ui.activity.BaseActivity;
-import com.hb.currencymanage.ui.fragment.DealFragment;
-import com.hb.currencymanage.ui.fragment.MainFragment;
-import com.hb.currencymanage.ui.fragment.PersonFragment;
-import com.hb.currencymanage.ui.fragment.QuotesFragment;
-import com.hb.currencymanage.ui.fragment.SimpleCardFragment;
+import com.hb.currencymanage.ui.activity.MineDeviceActivity;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity
+/**
+ * Created by 汪彬 on 2018/4/18.
+ */
+
+public class DealFragment extends BaseFragment
 {
+    @BindView(R.id.tab_layout)
+    CommonTabLayout mTabLayout;
     
     @BindView(R.id.vp)
     ViewPager mViewPager;
     
-    @BindView(R.id.tab_layout)
-    CommonTabLayout mTabLayout;
+    public static DealFragment getInstance()
+    {
+        DealFragment sf = new DealFragment();
+        return sf;
+    }
     
-    private String[] mTitles = { "首页", "行情", "交易", "个人" };
+    private String[] mTitles = { "买入", "卖出", "撤单", "委托", "持仓" };
     
-    private ArrayList<Fragment> mFragments = new ArrayList<>();
+    private int[] mIconUnSelectIds = { R.mipmap.icon_sy,
+            R.mipmap.icon_hq_default, R.mipmap.icon_sy, R.mipmap.icon_sy,
+            R.mipmap.icon_sy };
+    
+    private int[] mIconSelectIds = { R.mipmap.icon_sy_selected,
+            R.mipmap.icon_hq_selected, R.mipmap.icon_sy, R.mipmap.icon_sy,
+            R.mipmap.icon_sy };
     
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
     
-    private int[] mIconUnSelectIds = { R.mipmap.icon_sy,
-            R.mipmap.icon_hq_default, R.mipmap.icon_jy_default,
-            R.mipmap.icon_gr_default };
+    private ArrayList<Fragment> mFragments = new ArrayList<>();
     
-    private int[] mIconSelectIds = { R.mipmap.icon_sy_selected,
-            R.mipmap.icon_hq_selected, R.mipmap.icon_jy_selected,
-            R.mipmap.icon_gr_selected };
-    
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState)
+    public View onCreateView(LayoutInflater inflater,
+            @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
-        initViewPager();
+        View v = inflater.inflate(R.layout.fragment_deal, null);
+        ButterKnife.bind(this, v);
+        initTabLayout();
+        return v;
     }
     
-    private void initViewPager()
+    private void initTabLayout()
     {
-        
-        /*
-         * int index = 0; for (String title : mTitles) { if (index == 0) {
-         * mFragments.add(MainFragment.getInstance()); index++; continue; }
-         * mFragments.add(SimpleCardFragment .getInstance("Switch ViewPager " +
-         * title)); }
-         */
-        
-        mFragments.add(MainFragment.getInstance());
-        mFragments.add(QuotesFragment.getInstance());
-        mFragments.add(DealFragment.getInstance());
-        mFragments.add(PersonFragment.getInstance());
-        
         for (int i = 0; i < mTitles.length; i++)
         {
             mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i],
                     mIconUnSelectIds[i]));
+            mFragments.add(SimpleCardFragment.getInstance(mTitles[i]));
         }
         mTabLayout.setTabData(mTabEntities);
         mTabLayout.setOnTabSelectListener(new OnTabSelectListener()
@@ -87,10 +85,6 @@ public class MainActivity extends BaseActivity
             @Override
             public void onTabReselect(int position)
             {
-                if (position == 0)
-                {
-                    // mTabLayout.showMsg(0, new Random().nextInt(100) + 1);
-                }
             }
         });
         
@@ -115,8 +109,7 @@ public class MainActivity extends BaseActivity
                 
             }
         });
-        mViewPager.setOffscreenPageLimit(3);
-        mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
+        mViewPager.setAdapter(new MyPagerAdapter(getFragmentManager()));
         mViewPager.setCurrentItem(0);
     }
     
@@ -145,4 +138,5 @@ public class MainActivity extends BaseActivity
             return mFragments.get(position);
         }
     }
+    
 }

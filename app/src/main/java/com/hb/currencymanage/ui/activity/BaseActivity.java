@@ -12,24 +12,31 @@ import android.support.v7.app.AppCompatActivity;
 
 public class BaseActivity extends AppCompatActivity
 {
-
+    
     public Context context;
-
+    
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-        context=this;
+        context = this;
     }
-
-
+    
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        finish();
+    }
+    
     /**
      * 跳转界面
      */
-    public void changeActivity(Class<?> clz) {
+    public void changeActivity(Class<?> clz)
+    {
         Intent intent = new Intent(context, clz);
         startActivity(intent);
-
+        
     }
-
-
+    
 }
