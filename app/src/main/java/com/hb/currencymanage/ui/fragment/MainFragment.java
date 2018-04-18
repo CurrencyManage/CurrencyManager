@@ -8,14 +8,13 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.hb.currencymanage.R;
-import com.hb.currencymanage.util.GlideImageLoader;
+import com.hb.currencymanage.imgloader.GlideImageLoader;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
