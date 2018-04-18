@@ -1,45 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <RelativeLayout
-        android:background="@color/device_bar_color"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_50">
+        android:layout_height="@dimen/dimen_50"
+        android:background="@color/device_bar_color">
 
         <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/margin_normal"
-            android:src="@mipmap/icon_fh"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:src="@mipmap/icon_fh" />
 
         <TextView
-            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:textColor="@color/tv_white"
+            android:gravity="center_vertical"
             android:text="我的设备 "
-            android:textSize="@dimen/text_size_16"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:textColor="@color/tv_white"
+            android:textSize="@dimen/text_size_18" />
 
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/margin_normal"
             android:gravity="center_vertical"
-            android:layout_alignParentRight="true"
-            android:textColor="@color/tv_white"
             android:text="添加 "
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:textColor="@color/tv_white" />
 
     </RelativeLayout>
 
+    <com.flyco.tablayout.CommonTabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@android:color/white"
+        tl:tl_iconVisible="false"
+        tl:tl_indicator_color="@color/device_bar_color"
+        tl:tl_indicator_corner_radius="1.5dp"
+        tl:tl_indicator_height="3dp"
+        tl:tl_indicator_width="80dp"
+        tl:tl_textSelectColor="@color/device_bar_color"
+        tl:tl_textUnselectColor="@color/device_bar_color_50_alpha"
+        tl:tl_textsize="@dimen/text_size_16" />
 
-
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

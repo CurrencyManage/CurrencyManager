@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
@@ -31,7 +30,7 @@ public class MainActivity extends BaseActivity
     
     @BindView(R.id.tab_layout)
     CommonTabLayout mTabLayout;
-    
+
     private String[] mTitles = { "首页", "行情", "交易", "个人" };
     
     private ArrayList<Fragment> mFragments = new ArrayList<>();
@@ -65,11 +64,11 @@ public class MainActivity extends BaseActivity
             if (index == 0)
             {
                 mFragments.add(MainFragment.getInstance());
+                index++;
                 continue;
             }
             mFragments.add(SimpleCardFragment
                     .getInstance("Switch ViewPager " + title));
-            index++;
         }
         */
 
@@ -98,7 +97,7 @@ public class MainActivity extends BaseActivity
             {
                 if (position == 0)
                 {
-                    mTabLayout.showMsg(0, new Random().nextInt(100) + 1);
+//                    mTabLayout.showMsg(0, new Random().nextInt(100) + 1);
                 }
             }
         });
@@ -125,7 +124,7 @@ public class MainActivity extends BaseActivity
             }
         });
         mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
-        mViewPager.setCurrentItem(1);
+        mViewPager.setCurrentItem(0);
     }
     
     private class MyPagerAdapter extends FragmentPagerAdapter

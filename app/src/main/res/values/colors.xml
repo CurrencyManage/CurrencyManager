@@ -11,10 +11,9 @@
     <color name="tv_bg_red">#FB3E44</color>
 
     <color name="device_bar_color">#161D51</color>
+    <color name="device_bar_color_50_alpha">#88161D51</color>
 
     <color name="tab_unselect_color">#7C94B6</color>
-
-
 
 
 </resources>
