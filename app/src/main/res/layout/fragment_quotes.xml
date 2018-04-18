@@ -20,11 +20,16 @@
                       layout="@layout/quotes_head"
                       >
                   </include>
-                  <android.support.v7.widget.RecyclerView
-                      android:id="@+id/recycleView"
+                  <RelativeLayout
                       android:layout_width="match_parent"
-                      android:layout_height="400dp">
-                  </android.support.v7.widget.RecyclerView>
+                      android:layout_height="wrap_content">
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recycleView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        </android.support.v7.widget.RecyclerView>
+                  </RelativeLayout>
+
 
                   <LinearLayout
                       android:gravity="center_vertical"

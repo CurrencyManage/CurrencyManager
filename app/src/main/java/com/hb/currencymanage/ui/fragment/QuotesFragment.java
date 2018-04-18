@@ -56,7 +56,12 @@ public class QuotesFragment extends BaseFragment
         View v = inflater.inflate(R.layout.fragment_quotes, null);
         ButterKnife.bind(this, v);
         initData();
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()){
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        });
         recyclerView.setAdapter(new CommonAdapter(getActivity(),R.layout.quotes_item,quotesEntityList) {
             @Override
             protected void convert(ViewHolder holder, Object o, int position) {

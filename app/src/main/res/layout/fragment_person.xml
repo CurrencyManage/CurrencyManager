@@ -244,6 +244,7 @@
                             android:layout_height="10dp"></View>
 
                         <LinearLayout
+                            android:id="@+id/device_layoout"
                             android:gravity="center_vertical"
                             android:orientation="horizontal"
                             android:layout_width="match_parent"

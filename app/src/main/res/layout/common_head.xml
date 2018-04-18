@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+      <RelativeLayout
+          android:background="@color/device_bar_color"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/dimen_50">
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_normal"
+                android:src="@mipmap/icon_fh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+          <TextView
+              android:gravity="center_vertical"
+              android:layout_centerInParent="true"
+              android:textColor="@color/tv_white"
+              android:text="我的设备 "
+              android:textSize="@dimen/text_size_16"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent" />
+
+
+          <TextView
+              android:layout_marginRight="@dimen/margin_normal"
+              android:gravity="center_vertical"
+              android:layout_alignParentRight="true"
+              android:textColor="@color/tv_white"
+              android:text="添加 "
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent" />
+
+      </RelativeLayout>
+
+
+
+
+
+
+</LinearLayout>

@@ -1,6 +1,7 @@
 package com.hb.currencymanage.ui.fragment;
 
 import com.hb.currencymanage.R;
+import com.hb.currencymanage.ui.activity.MineDeviceActivity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by 汪彬 on 2018/4/16.
@@ -37,4 +39,12 @@ public class PersonFragment extends BaseFragment
         ButterKnife.bind(this, v);
         return v;
     }
+
+
+    @OnClick(R.id.device_layoout)
+    void device_layoout(){
+
+        changeActivity(MineDeviceActivity.class);
+    }
+
 }
