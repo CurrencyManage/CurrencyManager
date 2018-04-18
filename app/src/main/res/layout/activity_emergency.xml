@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_50"
+        android:background="@color/device_bar_color">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:src="@mipmap/icon_fh" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center_vertical"
+            android:text="紧急提现"
+            android:textColor="@color/tv_white"
+            android:textSize="@dimen/text_size_18" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="122dp"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/margin_larger"
+            android:text="体现金额"
+            android:textSize="@dimen/text_size_16" />
+
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:text="我的账户:"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/margin_normal"
+        android:textColor="@color/device_bar_color"
+        android:background="@color/tv_dark"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_30" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:background="@drawable/tv_border_bottom"
+        android:layout_height="@dimen/dimen_40">
+
+        <TextView
+            android:text="开户行"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/margin_larger"
+            android:textSize="@dimen/text_size_16"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:layout_marginRight="60dp"
+            android:text="黑龙江sssssss"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/margin_larger"
+            android:textSize="@dimen/text_size_12"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:background="@drawable/tv_border_bottom"
+        android:layout_height="@dimen/dimen_40">
+
+        <TextView
+            android:text="卡号"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/margin_larger"
+            android:textSize="@dimen/text_size_16"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:layout_marginRight="60dp"
+            android:text="1112134324324234"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/margin_larger"
+            android:textSize="@dimen/text_size_12"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:background="@drawable/tv_border_bottom"
+        android:layout_height="@dimen/dimen_40">
+
+        <TextView
+            android:layout_marginRight="60dp"
+            android:text="紧急提现金额"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/margin_larger"
+            android:textSize="@dimen/text_size_12"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/dimen_40"
+        android:text="提现"
+        android:background="@color/device_bar_color"
+        android:layout_width="200dp"
+        android:textColor="@color/tv_white"
+        android:layout_height="@dimen/dimen_40" />
+
+
+</LinearLayout>

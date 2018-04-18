@@ -22,7 +22,11 @@
         </activity>
         <activity android:name=".ui.activity.MineDeviceActivity" />
         <activity android:name=".ui.activity.DeviceDetailActivity" />
-        <activity android:name=".ui.activity.AddDeviceActivity"></activity>
+        <activity android:name=".ui.activity.AddDeviceActivity" />
+        <activity android:name=".ui.activity.MoneyManagementActivity" />
+        <activity android:name=".ui.activity.MoneyRechargeActivity" />
+        <activity android:name=".ui.activity.WithDrawActivity" />
+        <activity android:name=".ui.activity.EmergencyActivity"></activity>
     </application>
 
 </manifest>
