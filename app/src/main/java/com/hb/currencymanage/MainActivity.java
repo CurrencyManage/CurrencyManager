@@ -30,7 +30,7 @@ public class MainActivity extends BaseActivity
     
     @BindView(R.id.tab_layout)
     CommonTabLayout mTabLayout;
-
+    
     private String[] mTitles = { "首页", "行情", "交易", "个人" };
     
     private ArrayList<Fragment> mFragments = new ArrayList<>();
@@ -56,7 +56,7 @@ public class MainActivity extends BaseActivity
     
     private void initViewPager()
     {
-
+        
         /*
         int index = 0;
         for (String title : mTitles)
@@ -97,7 +97,7 @@ public class MainActivity extends BaseActivity
             {
                 if (position == 0)
                 {
-//                    mTabLayout.showMsg(0, new Random().nextInt(100) + 1);
+                    // mTabLayout.showMsg(0, new Random().nextInt(100) + 1);
                 }
             }
         });
@@ -123,6 +123,7 @@ public class MainActivity extends BaseActivity
                 
             }
         });
+        mViewPager.setOffscreenPageLimit(3);
         mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
         mViewPager.setCurrentItem(0);
     }

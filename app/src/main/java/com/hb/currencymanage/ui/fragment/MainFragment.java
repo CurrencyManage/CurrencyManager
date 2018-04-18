@@ -107,7 +107,6 @@ public class MainFragment extends BaseFragment implements OnBannerListener
                 Toast.makeText(getContext(),
                         "pos = " + position,
                         Toast.LENGTH_SHORT).show();
-                mAdapter.notifyItemRemoved(position);
             }
             
             @Override
