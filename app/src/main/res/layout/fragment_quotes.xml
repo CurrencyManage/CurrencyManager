@@ -31,6 +31,7 @@
                       android:layout_width="match_parent"
                       android:layout_height="50dp">
                         <TextView
+                            android:id="@+id/tv_buy"
                             android:text="买入"
                             android:gravity="center"
                             android:background="@drawable/tv_border_right"

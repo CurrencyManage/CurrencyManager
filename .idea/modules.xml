@@ -5,7 +5,6 @@
       <module fileurl="file://D:\code\android_studio\CurrencyManager\CurrencyManage.iml" filepath="D:\code\android_studio\CurrencyManager\CurrencyManage.iml" />
       <module fileurl="file://$PROJECT_DIR$/CurrencyManager.iml" filepath="$PROJECT_DIR$/CurrencyManager.iml" />
       <module fileurl="file://$PROJECT_DIR$/FlycoTabLayout_Lib/FlycoTabLayout_Lib.iml" filepath="$PROJECT_DIR$/FlycoTabLayout_Lib/FlycoTabLayout_Lib.iml" />
-      <module fileurl="file://D:\code\android_studio\CurrencyManager\FlycoTabLayout_Lib\FlycoTabLayout_Lib.iml" filepath="D:\code\android_studio\CurrencyManager\FlycoTabLayout_Lib\FlycoTabLayout_Lib.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

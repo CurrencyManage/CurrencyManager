@@ -19,6 +19,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by 汪彬 on 2018/4/16.
@@ -70,11 +71,18 @@ public class QuotesFragment extends BaseFragment
         });
 
 
-        QutoesDialogFragment qutoesDialogFragment=new QutoesDialogFragment();
-        qutoesDialogFragment.show(getFragmentManager(),"qutoesDialogFragment");
 
         return v;
     }
+
+
+    @OnClick(R.id.tv_buy)
+    public void tvbuy(){
+        QutoesDialogFragment qutoesDialogFragment=new QutoesDialogFragment();
+        qutoesDialogFragment.show(getFragmentManager(),"qutoesDialogFragment");
+
+    }
+
 
     private void initData() {
         if(quotesEntityList == null){
