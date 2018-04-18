@@ -23,6 +23,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_40"
+        android:background="#585f95"
         android:orientation="horizontal">
 
         <TextView
@@ -31,6 +32,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="买入"
+            android:background="@drawable/bg_deal_tab_selector"
             android:textSize="@dimen/text_size_16" />
 
         <TextView
@@ -38,6 +40,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
+            android:background="@drawable/bg_deal_tab_selector"
             android:text="卖出"
             android:textSize="@dimen/text_size_16" />
 
@@ -45,6 +48,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/bg_deal_tab_selector"
             android:gravity="center"
             android:text="撤单"
             android:textSize="@dimen/text_size_16" />
@@ -53,6 +57,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/bg_deal_tab_selector"
             android:gravity="center"
             android:text="委托"
             android:textSize="@dimen/text_size_16" />
@@ -61,6 +66,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/bg_deal_tab_selector"
             android:gravity="center"
             android:text="持仓"
             android:textSize="@dimen/text_size_16" />

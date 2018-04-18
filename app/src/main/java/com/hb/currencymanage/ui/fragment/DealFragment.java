@@ -28,9 +28,6 @@ import butterknife.ButterKnife;
 
 public class DealFragment extends BaseFragment
 {
-    @BindView(R.id.tab_layout)
-    CommonTabLayout mTabLayout;
-    
     @BindView(R.id.vp)
     ViewPager mViewPager;
     
@@ -39,18 +36,6 @@ public class DealFragment extends BaseFragment
         DealFragment sf = new DealFragment();
         return sf;
     }
-    
-    private String[] mTitles = { "买入", "卖出", "撤单", "委托", "持仓" };
-    
-    private int[] mIconUnSelectIds = { R.mipmap.icon_sy,
-            R.mipmap.icon_hq_default, R.mipmap.icon_sy, R.mipmap.icon_sy,
-            R.mipmap.icon_sy };
-    
-    private int[] mIconSelectIds = { R.mipmap.icon_sy_selected,
-            R.mipmap.icon_hq_selected, R.mipmap.icon_sy, R.mipmap.icon_sy,
-            R.mipmap.icon_sy };
-    
-    private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
     
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     
@@ -67,27 +52,6 @@ public class DealFragment extends BaseFragment
     
     private void initTabLayout()
     {
-        for (int i = 0; i < mTitles.length; i++)
-        {
-            mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i],
-                    mIconUnSelectIds[i]));
-            mFragments.add(SimpleCardFragment.getInstance(mTitles[i]));
-        }
-        mTabLayout.setTabData(mTabEntities);
-        mTabLayout.setOnTabSelectListener(new OnTabSelectListener()
-        {
-            @Override
-            public void onTabSelect(int position)
-            {
-                mViewPager.setCurrentItem(position);
-            }
-            
-            @Override
-            public void onTabReselect(int position)
-            {
-            }
-        });
-        
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
         {
             @Override
@@ -100,7 +64,6 @@ public class DealFragment extends BaseFragment
             @Override
             public void onPageSelected(int position)
             {
-                mTabLayout.setCurrentTab(position);
             }
             
             @Override
@@ -124,12 +87,6 @@ public class DealFragment extends BaseFragment
         public int getCount()
         {
             return mFragments.size();
-        }
-        
-        @Override
-        public CharSequence getPageTitle(int position)
-        {
-            return mTitles[position];
         }
         
         @Override
