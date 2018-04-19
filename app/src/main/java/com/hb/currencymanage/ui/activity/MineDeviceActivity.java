@@ -79,7 +79,6 @@ public class MineDeviceActivity extends BaseActivity
                 mFragments.add(deviceListFragment1);
             }
 
-
             if(i==1){
                 if(deviceListFragment2==null){
                     deviceListFragment2=new DeviceListFragment();

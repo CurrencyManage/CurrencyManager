@@ -121,7 +121,8 @@
         android:background="@drawable/tv_border_bottom"
         android:layout_height="@dimen/dimen_40">
 
-        <TextView
+        <EditText
+            android:background="@null"
             android:layout_marginRight="60dp"
             android:text="紧急提现金额"
             android:gravity="center_vertical"

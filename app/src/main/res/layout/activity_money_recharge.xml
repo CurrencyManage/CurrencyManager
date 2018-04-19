@@ -118,7 +118,8 @@
             android:layout_weight="2"
             android:layout_height="match_parent" />
 
-        <TextView
+        <EditText
+            android:background="@null"
             android:layout_marginRight="60dp"
             android:text="输入充值金额"
             android:gravity="center_vertical"
