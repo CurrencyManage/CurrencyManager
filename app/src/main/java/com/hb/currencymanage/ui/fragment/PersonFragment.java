@@ -1,6 +1,8 @@
 package com.hb.currencymanage.ui.fragment;
 
 import com.hb.currencymanage.R;
+import com.hb.currencymanage.ui.activity.CapacityActivity;
+import com.hb.currencymanage.ui.activity.MineCurrencyActivity;
 import com.hb.currencymanage.ui.activity.MineDeviceActivity;
 import com.hb.currencymanage.ui.activity.MoneyManagementActivity;
 
@@ -48,12 +50,27 @@ public class PersonFragment extends BaseFragment
         changeActivity(MineDeviceActivity.class);
     }
 
-
     @OnClick(R.id.moneymanagement_layout)
     void moneymanagement_layout(){
 
         changeActivity(MoneyManagementActivity.class);
     }
+
+
+    @OnClick(R.id.capacity_layout)
+    void capacity_layout(){
+
+        changeActivity(CapacityActivity.class);
+    }
+
+    @OnClick(R.id.mineCurrency_layout)
+    void mineCurrency_layout(){
+
+        changeActivity(MineCurrencyActivity.class);
+    }
+
+
+
 
 
 

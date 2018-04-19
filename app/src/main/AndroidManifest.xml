@@ -26,7 +26,9 @@
         <activity android:name=".ui.activity.MoneyManagementActivity" />
         <activity android:name=".ui.activity.MoneyRechargeActivity" />
         <activity android:name=".ui.activity.WithDrawActivity" />
-        <activity android:name=".ui.activity.EmergencyActivity"></activity>
+        <activity android:name=".ui.activity.EmergencyActivity" />
+        <activity android:name=".ui.activity.MineCurrencyActivity" />
+        <activity android:name=".ui.activity.CapacityActivity"></activity>
     </application>
 
 </manifest>

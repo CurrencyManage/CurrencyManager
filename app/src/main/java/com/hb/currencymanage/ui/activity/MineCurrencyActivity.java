@@ -8,19 +8,13 @@ import com.hb.currencymanage.R;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class EmergencyActivity extends BaseActivity {
-
-
-
-
+public class MineCurrencyActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_emergency);
-
+        setContentView(R.layout.activity_mine_currency);
         ButterKnife.bind(this);
-
     }
 
     @OnClick(R.id.back)
@@ -30,9 +24,4 @@ public class EmergencyActivity extends BaseActivity {
     }
 
 
-
-
 }
-
-
-

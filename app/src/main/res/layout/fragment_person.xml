@@ -169,6 +169,7 @@
                             android:layout_height="1dp"></View>
 
                         <LinearLayout
+                            android:id="@+id/mineCurrency_layout"
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/dimen_50">
@@ -195,6 +196,7 @@
 
 
                         <LinearLayout
+                            android:id="@+id/capacity_layout"
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/dimen_50">

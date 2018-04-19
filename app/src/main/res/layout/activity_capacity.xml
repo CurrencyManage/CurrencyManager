@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/img_background">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_50">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_normal"
+                android:src="@mipmap/icon_fh" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center_vertical"
+                android:text="我的货币 "
+                android:textColor="@color/tv_white"
+                android:textSize="@dimen/text_size_18" />
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tt"
+                android:layout_marginTop="@dimen/margin_larger"
+                android:textColor="@color/tv_white"
+                android:text="累计产出"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_below="@+id/tt"
+                android:layout_marginTop="@dimen/margin_little"
+                android:textColor="@color/tv_white"
+                android:textSize="@dimen/text_size_20"
+                android:text="235676"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:background="@drawable/tv_border_bottom"
+        android:gravity="center"
+        android:text="今日产能总揽"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_30" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>
