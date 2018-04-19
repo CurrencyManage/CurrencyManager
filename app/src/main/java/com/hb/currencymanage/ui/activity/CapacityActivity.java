@@ -1,6 +1,5 @@
 package com.hb.currencymanage.ui.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -31,7 +30,6 @@ public class CapacityActivity extends BaseActivity {
         setContentView(R.layout.activity_capacity);
 
         ButterKnife.bind(this);
-
         initData();
         recycleView.setLayoutManager(new LinearLayoutManager(context));
         recycleView.setAdapter(new CommonAdapter(context,R.layout.capacity_item,capacityEntityList) {

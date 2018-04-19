@@ -28,7 +28,10 @@
         <activity android:name=".ui.activity.WithDrawActivity" />
         <activity android:name=".ui.activity.EmergencyActivity" />
         <activity android:name=".ui.activity.MineCurrencyActivity" />
-        <activity android:name=".ui.activity.CapacityActivity"></activity>
+        <activity android:name=".ui.activity.CapacityActivity" />
+        <activity android:name=".ui.activity.PersonalActivity" />
+        <activity android:name=".ui.activity.BankInformationActivity" />
+        <activity android:name=".ui.activity.RecommendActivity"></activity>
     </application>
 
 </manifest>

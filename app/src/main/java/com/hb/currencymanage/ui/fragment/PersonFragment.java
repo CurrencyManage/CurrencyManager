@@ -5,6 +5,7 @@ import com.hb.currencymanage.ui.activity.CapacityActivity;
 import com.hb.currencymanage.ui.activity.MineCurrencyActivity;
 import com.hb.currencymanage.ui.activity.MineDeviceActivity;
 import com.hb.currencymanage.ui.activity.MoneyManagementActivity;
+import com.hb.currencymanage.ui.activity.PersonalActivity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -67,6 +68,12 @@ public class PersonFragment extends BaseFragment
     void mineCurrency_layout(){
 
         changeActivity(MineCurrencyActivity.class);
+    }
+
+    @OnClick(R.id.person_layout)
+    void person_layout(){
+
+        changeActivity(PersonalActivity.class);
     }
 
 
