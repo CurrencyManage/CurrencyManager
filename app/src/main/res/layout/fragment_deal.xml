@@ -21,59 +21,50 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/layout_tab"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_40"
         android:background="#585f95"
         android:orientation="horizontal">
 
         <TextView
+            style="@style/style_text_blue_bg"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="买入"
-            android:background="@drawable/bg_deal_tab_selector"
-            android:textSize="@dimen/text_size_16" />
+            android:text="买入" />
 
         <TextView
+            style="@style/style_text_blue_bg"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:background="@drawable/bg_deal_tab_selector"
-            android:text="卖出"
-            android:textSize="@dimen/text_size_16" />
+            android:text="卖出" />
 
         <TextView
+            style="@style/style_text_blue_bg"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/bg_deal_tab_selector"
-            android:gravity="center"
-            android:text="撤单"
-            android:textSize="@dimen/text_size_16" />
+            android:text="撤单" />
 
         <TextView
+            style="@style/style_text_blue_bg"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/bg_deal_tab_selector"
-            android:gravity="center"
-            android:text="委托"
-            android:textSize="@dimen/text_size_16" />
+            android:text="委托" />
 
         <TextView
+            style="@style/style_text_blue_bg"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/bg_deal_tab_selector"
-            android:gravity="center"
-            android:text="持仓"
-            android:textSize="@dimen/text_size_16" />
+            android:text="持仓" />
     </LinearLayout>
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/vp"
+        android:id="@+id/vpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

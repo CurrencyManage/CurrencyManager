@@ -16,5 +16,12 @@
     <color name="tab_unselect_color">#7C94B6</color>
     <color name="tv_bg_yellow">#FEA700</color>
 
-
+    <color name="tab_blue_bg_color">#585f95</color>
+    <color name="white">#ffffffff</color>
+    <color name="bg_gray">#eeeeee</color>
+    <color name="text_color_light_black">#494949</color>
+    <color name="text_color_hint">#aaaaaa</color>
+    <color name="divider_color">#efefef</color>
+    <color name="red_orange_color">#ff5755</color>
+    <color name="bg_color_gray">#dcdcdc</color>
 </resources>

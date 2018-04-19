@@ -25,7 +25,6 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity
 {
-    
     @BindView(R.id.vp)
     ViewPager mViewPager;
     
