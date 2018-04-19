@@ -118,7 +118,7 @@ public class QuotesFragment extends BaseFragment
     private void initChart() {
         //描述信息
         Description description = new Description();
-        description.setText("我是描述信息");
+        description.setText("");
         //设置描述信息
         mLineChart.setDescription(description);
         //设置没有数据时显示的文本
@@ -175,6 +175,7 @@ public class QuotesFragment extends BaseFragment
         //图表第一个和最后一个label数据不超出左边和右边的Y轴
         // xAxis.setAvoidFirstLastClipping(true);
 
+        /*
         //设置限制线 12代表某个该轴某个值，也就是要画到该轴某个值上
         LimitLine limitLine = new LimitLine(12);
         //设置限制线的宽
@@ -188,6 +189,7 @@ public class QuotesFragment extends BaseFragment
         limitLine.enableDashedLine(10f, 10f, 0f);
         //左边Y轴添加限制线
         xAxis.addLimitLine(limitLine);
+        */
 
         //=================设置左边Y轴===============
         YAxis axisLeft = mLineChart.getAxisLeft();
@@ -230,12 +232,14 @@ public class QuotesFragment extends BaseFragment
 
         }
 
+
         //点构成的某条线
-        LineDataSet lineDataSet = new LineDataSet(pointValues, "该线标签1");
+        LineDataSet lineDataSet = new LineDataSet(pointValues, "走势");
+
         //设置该线的颜色
-        lineDataSet.setColor(Color.RED);
+        lineDataSet.setColor(getResources().getColor(R.color.tab_unselect_color));
         //设置每个点的颜色
-        lineDataSet.setCircleColor(Color.YELLOW);
+        //lineDataSet.setCircleColor(Color.YELLOW);
         //设置该线的宽度
         lineDataSet.setLineWidth(1f);
         //设置每个坐标点的圆大小
@@ -251,6 +255,7 @@ public class QuotesFragment extends BaseFragment
         //设置是否显示点的坐标值
         lineDataSet.setDrawValues(false);
 
+
         //线的集合（可单条或多条线）
         List<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(lineDataSet);
@@ -258,6 +263,12 @@ public class QuotesFragment extends BaseFragment
         LineData lineData = new LineData(dataSets);
         //把最终的数据setData
         mLineChart.setData(lineData);
+
+        if(mLineChart.getData() != null) {
+            mLineChart.getData().setHighlightEnabled(!mLineChart.getData().isHighlightEnabled());
+            mLineChart.invalidate();
+        }
+
 
     }
 
