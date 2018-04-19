@@ -31,7 +31,10 @@
         <activity android:name=".ui.activity.CapacityActivity" />
         <activity android:name=".ui.activity.PersonalActivity" />
         <activity android:name=".ui.activity.BankInformationActivity" />
-        <activity android:name=".ui.activity.RecommendActivity"></activity>
+        <activity android:name=".ui.activity.RecommendActivity" />
+        <activity android:name=".ui.activity.SettingActivity" />
+        <activity android:name=".ui.activity.AboutActivity" />
+        <activity android:name=".ui.activity.TellUsActivity"></activity>
     </application>
 
 </manifest>

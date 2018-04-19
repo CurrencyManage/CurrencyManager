@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_50"
+        android:background="@color/device_bar_color">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:src="@mipmap/icon_fh" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center_vertical"
+            android:text="常见问题"
+            android:textColor="@color/tv_white"
+            android:textSize="@dimen/text_size_18" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_marginLeft="@dimen/dimen_30"
+        android:layout_marginRight="@dimen/dimen_30"
+        android:layout_marginTop="@dimen/dimen_50"
+        android:text="请选择问题类型"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Spinner
+        android:background="@drawable/tv_borde"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_marginLeft="@dimen/dimen_30"
+        android:layout_marginRight="@dimen/dimen_30"
+        android:id="@+id/spDwon"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_40"
+         />
+
+    <TextView
+        android:layout_marginLeft="@dimen/dimen_30"
+        android:layout_marginRight="@dimen/dimen_30"
+        android:layout_marginTop="@dimen/dimen_30"
+        android:text="问题描述"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:gravity="start|top"
+        android:layout_marginTop="@dimen/margin_little"
+        android:layout_marginLeft="@dimen/dimen_30"
+        android:layout_marginRight="@dimen/dimen_30"
+        android:background="@drawable/tv_borde"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+
+    <TextView
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/dimen_40"
+        android:text="提交"
+        android:background="@color/device_bar_color"
+        android:layout_width="200dp"
+        android:textColor="@color/tv_white"
+        android:layout_height="@dimen/dimen_40" />
+
+
+</LinearLayout>
