@@ -24,7 +24,7 @@
         android:id="@+id/layout_tab"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_40"
-        android:background="#585f95"
+        android:background="@color/tab_blue_bg_color"
         android:orientation="horizontal">
 
         <TextView

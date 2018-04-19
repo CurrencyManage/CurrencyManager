@@ -40,7 +40,7 @@ public class DealFragment extends BaseFragment
     private int mTabSize;
     
     private ArrayList<Fragment> mFragments = new ArrayList<>();
-
+    
     public static DealFragment getInstance()
     {
         DealFragment df = new DealFragment();
@@ -61,11 +61,11 @@ public class DealFragment extends BaseFragment
     private void initTabLayout()
     {
         mTabSize = mLayoutTab.getChildCount();
-        mFragments.add(SimpleCardFragment.getInstance("第一页"));
-        mFragments.add(SimpleCardFragment.getInstance("第二页"));
+        mFragments.add(DealBusinessFragment.getInstance());
+        mFragments.add(DealBusinessFragment.getInstance());
         mFragments.add(SimpleCardFragment.getInstance("第三页"));
         mFragments.add(SimpleCardFragment.getInstance("第四页"));
-        mFragments.add(SimpleCardFragment.getInstance("第五页"));
+        mFragments.add(DealBusinessFragment.getInstance());
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
         {
             @Override
