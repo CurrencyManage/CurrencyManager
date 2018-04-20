@@ -17,12 +17,16 @@ public class MyXAxisRenderer extends XAxisRenderer {
 
 
     //这里为了方便把X轴标签放到这里了，其实可以通过其他方式能拿到要设置的X轴标签就可以
-    private String[] xLable = {"1", "2", "3", "4", "5"};
+    public static String[] xLable = {"1", "2", "3", "4", "5"};
+
+
+    public static void setData(String[] x){
+        xLable=x;
+    }
 
     public MyXAxisRenderer(ViewPortHandler viewPortHandler, XAxis xAxis, Transformer trans) {
         super(viewPortHandler, xAxis, trans);
     }
-
 
     //重写drawLabels
     @Override

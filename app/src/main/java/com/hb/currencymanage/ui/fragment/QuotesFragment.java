@@ -13,6 +13,7 @@ import com.hb.currencymanage.R;
 import com.hb.currencymanage.bean.QuotesEntity;
 import com.hb.currencymanage.dialog.QutoesDialogFragment;
 import com.hb.currencymanage.mpchart.MyLineChart;
+import com.hb.currencymanage.mpchart.MyXAxisRenderer;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
@@ -97,6 +98,7 @@ public class QuotesFragment extends BaseFragment
             @Override
             protected void convert(ViewHolder holder, Object o, int position)
             {
+                
                 holder.setText(R.id.sale_num, "12");
             }
             
@@ -114,6 +116,16 @@ public class QuotesFragment extends BaseFragment
     {
         QutoesDialogFragment qutoesDialogFragment = new QutoesDialogFragment();
         qutoesDialogFragment.show(getFragmentManager(), "qutoesDialogFragment");
+        
+    }
+    
+    @OnClick(R.id.one)
+    public void one()
+    {
+        
+        String[] x = { "11", "22", "33", "44", "55" };
+        MyXAxisRenderer.setData(x);
+        mLineChart.invalidate();
         
     }
     
@@ -264,5 +276,7 @@ public class QuotesFragment extends BaseFragment
                     !mLineChart.getData().isHighlightEnabled());
             mLineChart.invalidate();
         }
+        
     }
+    
 }
