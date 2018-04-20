@@ -35,59 +35,57 @@ public class PersonFragment extends BaseFragment
         super.onCreate(savedInstanceState);
     }
     
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater,
-            @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
-    {
-        View v = inflater.inflate(R.layout.fragment_person, null);
-        ButterKnife.bind(this, v);
-        return v;
-    }
-
-
     @OnClick(R.id.device_layoout)
-    void device_layoout(){
-
+    void device_layoout()
+    {
+        
         changeActivity(MineDeviceActivity.class);
     }
-
+    
     @OnClick(R.id.moneymanagement_layout)
-    void moneymanagement_layout(){
-
+    void moneymanagement_layout()
+    {
+        
         changeActivity(MoneyManagementActivity.class);
     }
-
-
+    
     @OnClick(R.id.capacity_layout)
-    void capacity_layout(){
-
+    void capacity_layout()
+    {
+        
         changeActivity(CapacityActivity.class);
     }
-
+    
     @OnClick(R.id.mineCurrency_layout)
-    void mineCurrency_layout(){
-
+    void mineCurrency_layout()
+    {
+        
         changeActivity(MineCurrencyActivity.class);
     }
-
+    
     @OnClick(R.id.person_layout)
-    void person_layout(){
-
+    void person_layout()
+    {
         changeActivity(PersonalActivity.class);
     }
-
+    
     @OnClick(R.id.setting)
-    void setting(){
-
+    void setting()
+    {
+        
         changeActivity(SettingActivity.class);
-
+        
     }
-
-
-
-
-
-
-
+    
+    @Override
+    public int getLayoutResId()
+    {
+        return R.layout.fragment_person;
+    }
+    
+    @Override
+    protected void init()
+    {
+        
+    }
 }

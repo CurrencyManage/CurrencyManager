@@ -100,15 +100,16 @@ public class DealBusinessFragment extends BaseFragment
         return f;
     }
     
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater,
-            @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
+    public int getLayoutResId()
     {
-        View v = inflater.inflate(R.layout.fragment_deal_item_business, null);
-        ButterKnife.bind(this, v);
+        return R.layout.fragment_deal_item_business;
+    }
+    
+    @Override
+    protected void init()
+    {
         initRV();
-        return v;
     }
     
     private void addFootView()

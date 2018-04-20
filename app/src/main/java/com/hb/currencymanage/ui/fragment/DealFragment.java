@@ -47,15 +47,16 @@ public class DealFragment extends BaseFragment
         return df;
     }
     
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater,
-            @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
+    public int getLayoutResId()
     {
-        View v = inflater.inflate(R.layout.fragment_deal, null);
-        ButterKnife.bind(this, v);
+        return R.layout.fragment_deal;
+    }
+    
+    @Override
+    protected void init()
+    {
         initTabLayout();
-        return v;
     }
     
     private void initTabLayout()
@@ -63,8 +64,8 @@ public class DealFragment extends BaseFragment
         mTabSize = mLayoutTab.getChildCount();
         mFragments.add(DealBusinessFragment.getInstance());
         mFragments.add(DealBusinessFragment.getInstance());
-        mFragments.add(SimpleCardFragment.getInstance("第三页"));
-        mFragments.add(SimpleCardFragment.getInstance("第四页"));
+        mFragments.add(OperationFragment.getInstance());
+        mFragments.add(OperationFragment.getInstance());
         mFragments.add(DealBusinessFragment.getInstance());
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
         {
@@ -142,5 +143,4 @@ public class DealFragment extends BaseFragment
             return mFragments.get(position);
         }
     }
-    
 }

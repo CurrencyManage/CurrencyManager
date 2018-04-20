@@ -54,16 +54,17 @@ public class MainFragment extends BaseFragment implements OnBannerListener
         super.onCreate(savedInstanceState);
     }
     
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater,
-            @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
+    public int getLayoutResId()
     {
-        View v = inflater.inflate(R.layout.fragment_main, null);
-        ButterKnife.bind(this, v);
+        return R.layout.fragment_main;
+    }
+    
+    @Override
+    protected void init()
+    {
         initBanner();
         initRv();
-        return v;
     }
     
     private void initRv()
@@ -93,8 +94,7 @@ public class MainFragment extends BaseFragment implements OnBannerListener
                 // + holder.getLayoutPosition());
                 holder.setText(R.id.tv_title, news.getTitle());
                 holder.setText(R.id.tv_publisher,
-                        news.getPublisher() + "    "
-                                + news.getPublishTime());
+                        news.getPublisher() + "    " + news.getPublishTime());
             }
         };
         mRvContent.setAdapter(mAdapter);
