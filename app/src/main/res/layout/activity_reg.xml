@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/bg_login" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin">
+
+        <ImageView
+            android:layout_width="@dimen/dimen_50"
+            android:layout_height="@dimen/dimen_50"
+            android:layout_alignParentLeft="true"
+            android:scaleType="center"
+            android:src="@mipmap/arrow_left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/dimen_30"
+            android:text="@string/reg"
+            android:textColor="@color/device_bar_color"
+            android:textSize="@dimen/text_size_18" />
+    </RelativeLayout>
+
+    <com.hb.currencymanage.customview.AutoHeightViewPager
+        android:id="@+id/vp_reg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_reg_step"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_30"
+        android:background="@drawable/tv_border_radius_black"
+        android:gravity="center"
+        android:minHeight="@dimen/dimen_40"
+        android:text="@string/next"
+        android:textColor="@color/device_bar_color"
+        android:textSize="@dimen/text_size_18" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:gravity="center_horizontal"
+        android:text="@string/reg_tip"
+        android:textColor="@color/device_bar_color"
+        android:textSize="@dimen/text_size_14" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_larger"
+        android:visibility="gone">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/cb_selector" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_little"
+            android:text="@string/reg_tip_policy"
+            android:textColor="@color/device_bar_color"
+            android:textSize="@dimen/text_size_14" />
+    </LinearLayout>
+</LinearLayout>

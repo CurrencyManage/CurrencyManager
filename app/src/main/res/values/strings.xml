@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">货币</string>
+    <string name="login">登陆</string>
+    <string name="enter_phone">请输入手机号码</string>
+    <string name="enter_verify_code">请输入验证码</string>
+    <string name="enter_get_verify_code">请输入获取的验证码</string>
+    <string name="enter_new_pwd">请输入新密码</string>
+    <string name="enter_new_pwd_again">请再次输入新密码</string>
+    <string name="enter_pwd_again">请再次输入密码</string>
+    <string name="enter_pwd">请输入密码</string>
+    <string name="forget_pwd">忘记密码？</string>
+    <string name="forget_pwd_no_question">忘记密码</string>
+    <string name="reg">注册</string>
+    <string name="get_verify_code">获取验证码</string>
+    <string name="reg_tip">注册信息一旦确认，无法更改，请谨慎填写</string>
+    <string name="next">下一步</string>
+    <string name="reg_tip_policy">我已阅读并同意《货币政策》</string>
+    <string name="enter_name">请输入您的真实姓名</string>
+    <string name="enter_card">请输入您的身份证号码</string>
+    <string name="enter_rec_id">请输入您的推荐人ID</string>
+    <string name="enter_bank_address">请输入银行卡(储蓄卡)开户行</string>
+    <string name="enter_bank_code">请输入您的银行卡号码</string>
 </resources>

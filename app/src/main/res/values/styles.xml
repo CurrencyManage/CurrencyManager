@@ -16,4 +16,38 @@
         <item name="android:textSize">@dimen/text_size_16</item>
     </style>
 
+    <style name="style_et_login_reg" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/bg_color_gray</item>
+        <item name="colorControlActivated">@color/bg_color_gray</item>
+        <item name="android:layout_marginLeft">@dimen/dimen_30</item>
+        <item name="android:layout_marginRight">@dimen/dimen_30</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:minHeight">@dimen/dimen_50</item>
+        <item name="android:paddingLeft">@dimen/fab_margin</item>
+        <item name="android:textColor">@color/device_bar_color</item>
+        <item name="android:textColorHint">@color/text_color_hint</item>
+        <item name="android:textSize">@dimen/text_size_18</item>
+    </style>
+
+    <style name="style_et_login_reg_no_margin_no_bg" parent="Theme.AppCompat.Light">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:minHeight">@dimen/dimen_50</item>
+        <item name="android:background">@null</item>
+        <item name="android:paddingLeft">@dimen/fab_margin</item>
+        <item name="android:textColor">@color/device_bar_color</item>
+        <item name="android:textColorHint">@color/text_color_hint</item>
+        <item name="android:textSize">@dimen/text_size_18</item>
+    </style>
+
+    <style name="style_et_login_reg_no_bg" parent="Theme.AppCompat.Light">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:minHeight">@dimen/dimen_50</item>
+        <item name="android:background">@null</item>
+        <item name="android:paddingLeft">@dimen/fab_margin</item>
+        <item name="android:layout_marginLeft">@dimen/dimen_30</item>
+        <item name="android:layout_marginRight">@dimen/dimen_30</item>
+        <item name="android:textColor">@color/device_bar_color</item>
+        <item name="android:textColorHint">@color/text_color_hint</item>
+        <item name="android:textSize">@dimen/text_size_18</item>
+    </style>
 </resources>
