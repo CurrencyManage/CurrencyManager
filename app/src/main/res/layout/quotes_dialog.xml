@@ -26,12 +26,23 @@
             <TextView
                 android:paddingLeft="@dimen/margin_normal"
                 android:text="账户：**********8872"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:paddingLeft="@dimen/margin_normal"
+                android:text="x"
                 android:layout_width="wrap_content"
+                android:gravity="right"
+                android:textSize="@dimen/text_size_18"
+                android:paddingRight="@dimen/margin_larger"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:gravity="center_vertical"
             android:layout_marginTop="@dimen/margin_normal"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -45,10 +56,29 @@
                 android:layout_weight="7">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/margin_larger"
+                    android:text="－" />
+
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    android:layout_height="match_parent"
                     android:text="买入价格" />
+
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:paddingRight="@dimen/margin_larger"
+                    android:gravity="right|center_vertical"
+                    android:text="＋" />
 
 
 
@@ -93,10 +123,29 @@
                 android:layout_weight="7">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/margin_larger"
+                    android:text="－" />
+
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    android:layout_height="match_parent"
                     android:text="买入价格" />
+
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:paddingRight="@dimen/margin_larger"
+                    android:gravity="right|center_vertical"
+                    android:text="＋" />
 
 
 

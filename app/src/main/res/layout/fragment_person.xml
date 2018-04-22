@@ -152,6 +152,7 @@
                               <TextView
                                   android:text="现金"
                                   android:gravity="center"
+                                  style="@style/myPersonalText"
                                   android:layout_marginLeft="40dp"
                                   android:layout_width="wrap_content"
                                   android:layout_height="match_parent" />
@@ -159,6 +160,7 @@
                               <TextView
                                   android:text="4352000"
                                   android:gravity="center"
+                                  style="@style/myPersonalText"
                                   android:layout_marginLeft="60dp"
                                   android:layout_width="wrap_content"
                                   android:layout_height="match_parent" />
@@ -180,12 +182,14 @@
                                   android:layout_height="match_parent"
                                   android:layout_marginLeft="40dp"
                                   android:gravity="center"
+                                  style="@style/myPersonalText"
                                   android:text="持仓" />
 
                               <TextView
                                   android:text="4352000"
                                   android:gravity="center"
                                   android:layout_marginLeft="60dp"
+                                  style="@style/myPersonalText"
                                   android:layout_width="wrap_content"
                                   android:layout_height="match_parent" />
 
@@ -205,12 +209,14 @@
                               <TextView
                                   android:text="产能"
                                   android:gravity="center"
+                                  style="@style/myPersonalText"
                                   android:layout_marginLeft="40dp"
                                   android:layout_width="wrap_content"
                                   android:layout_height="match_parent" />
 
                               <TextView
                                   android:text="4352000"
+                                  style="@style/myPersonalText"
                                   android:gravity="center"
                                   android:layout_marginLeft="60dp"
                                   android:layout_width="wrap_content"
@@ -231,10 +237,12 @@
                                   android:text="杠杆"
                                   android:gravity="center"
                                   android:layout_marginLeft="40dp"
+                                  style="@style/myPersonalText"
                                   android:layout_width="wrap_content"
                                   android:layout_height="match_parent" />
 
                               <TextView
+                                  android:visibility="gone"
                                   android:text="4352000"
                                   android:gravity="center"
                                   android:layout_marginLeft="60dp"
@@ -263,6 +271,7 @@
                               <TextView
                                   android:text="我的设备"
                                   android:gravity="center"
+                                  style="@style/myPersonalText"
                                   android:layout_marginLeft="60dp"
                                   android:layout_width="wrap_content"
                                   android:layout_height="match_parent" />

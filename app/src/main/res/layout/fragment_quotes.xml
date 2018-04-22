@@ -6,6 +6,40 @@
     android:orientation="vertical">
 
 
+      <RelativeLayout
+          android:background="@color/head_red"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/dimen_50">
+
+            <LinearLayout
+                android:layout_centerInParent="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                  <ImageView
+                      android:focusable="true"
+                      android:focusableInTouchMode="true"
+                      android:src="@mipmap/icon_hb"
+                      android:layout_width="@dimen/margin_larger"
+                      android:layout_height="@dimen/margin_larger" />
+                  <TextView
+                      android:layout_marginLeft="@dimen/margin_little"
+                      android:text="货币1"
+                      android:textColor="@color/tv_white"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+      </RelativeLayout>
+
+      <View
+          android:background="@color/tv_white"
+          android:layout_width="match_parent"
+          android:layout_height="1dp"></View>
+
+
       <ScrollView
           android:background="@color/tv_white"
           android:layout_width="match_parent"
