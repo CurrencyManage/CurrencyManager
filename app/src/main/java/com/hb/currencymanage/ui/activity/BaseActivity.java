@@ -22,13 +22,6 @@ public class BaseActivity extends AppCompatActivity
         context = this;
     }
     
-    @Override
-    public void onBackPressed()
-    {
-        super.onBackPressed();
-        finish();
-    }
-    
     /**
      * 跳转界面
      */
@@ -38,5 +31,4 @@ public class BaseActivity extends AppCompatActivity
         startActivity(intent);
         
     }
-    
 }
