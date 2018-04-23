@@ -8,18 +8,15 @@ import com.hb.currencymanage.R;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class AddDeviceActivity extends BaseActivity {
+public class DeviceDetailLeaseActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_device);
+        setContentView(R.layout.activity_device_detail_lease);
         ButterKnife.bind(this);
+
     }
-
-
-
-
 
 
     @OnClick(R.id.back)
@@ -27,7 +24,6 @@ public class AddDeviceActivity extends BaseActivity {
     {
         finish();
     }
-
 
 
 }

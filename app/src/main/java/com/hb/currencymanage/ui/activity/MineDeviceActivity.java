@@ -74,14 +74,14 @@ public class MineDeviceActivity extends BaseActivity
            // mFragments.add(SimpleCardFragment.getInstance(titles[i]));
             if(i==0){
                 if(deviceListFragment1==null){
-                    deviceListFragment1=new DeviceListFragment();
+                    deviceListFragment1=DeviceListFragment.getInstance("我的");
                 }
                 mFragments.add(deviceListFragment1);
             }
 
             if(i==1){
                 if(deviceListFragment2==null){
-                    deviceListFragment2=new DeviceListFragment();
+                    deviceListFragment2=DeviceListFragment.getInstance("租赁");
                 }
                 mFragments.add(deviceListFragment2);
             }
@@ -159,4 +159,7 @@ public class MineDeviceActivity extends BaseActivity
     {
         finish();
     }
+
+
+
 }

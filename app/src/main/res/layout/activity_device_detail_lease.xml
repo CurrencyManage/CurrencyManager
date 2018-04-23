@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context="com.hb.currencymanage.ui.activity.DeviceDetailActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@mipmap/img_background_cz">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_50">
+
+            <RelativeLayout
+                android:id="@+id/back"
+                android:layout_width="@dimen/dimen_back"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/margin_normal"
+                    android:src="@mipmap/icon_fh" />
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center_vertical"
+                android:text="编号:12w132132 "
+                android:textColor="@color/tv_white"
+                android:textSize="@dimen/text_size_16" />
+
+
+        </RelativeLayout>
+
+
+        <ImageView
+            android:layout_centerInParent="true"
+            android:src="@mipmap/img_wdsb"
+            android:scaleType="fitXY"
+            android:layout_width="200dp"
+            android:layout_height="180dp" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/dimen_40"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/tv_border_radius"
+        android:layout_width="200dp"
+        android:layout_height="@dimen/dimen_40"
+        >
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/margin_larger"
+            android:text="－" />
+
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:text="买入价格" />
+
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:paddingRight="@dimen/margin_larger"
+            android:gravity="right|center_vertical"
+            android:text="＋" />
+
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/dimen_40"
+        android:text="租赁"
+        android:background="@color/device_bar_color"
+        android:layout_width="180dp"
+        android:textColor="@color/tv_white"
+        android:layout_height="@dimen/dimen_40" />
+
+
+
+
+
+
+
+</LinearLayout>

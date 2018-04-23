@@ -191,6 +191,7 @@
                 android:layout_height="match_parent" />
 
             <TextView
+                android:visibility="invisible"
                 android:gravity="center"
                 android:text="五日"
                 android:layout_weight="1"
@@ -198,6 +199,7 @@
                 android:layout_height="match_parent" />
 
             <TextView
+                android:visibility="invisible"
                 android:gravity="center"
                 android:text="日K"
                 android:layout_weight="1"
@@ -205,6 +207,7 @@
                 android:layout_height="match_parent" />
 
             <TextView
+                android:visibility="invisible"
                 android:gravity="center"
                 android:text="周K"
                 android:layout_weight="1"
@@ -212,6 +215,7 @@
                 android:layout_height="match_parent" />
 
             <TextView
+                android:visibility="invisible"
                 android:gravity="center"
                 android:text="月K"
                 android:layout_weight="1"

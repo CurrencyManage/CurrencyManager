@@ -118,7 +118,9 @@ public class QuotesFragment extends BaseFragment
         qutoesDialogFragment.show(getFragmentManager(), "qutoesDialogFragment");
         
     }
-    
+
+
+    /*
     @OnClick(R.id.one)
     public void one()
     {
@@ -128,6 +130,7 @@ public class QuotesFragment extends BaseFragment
         mLineChart.invalidate();
         
     }
+    */
     
     // 设置chart基本属性
     private void initChart()

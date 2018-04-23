@@ -2,6 +2,8 @@ package com.hb.currencymanage.ui.fragment;
 
 import com.hb.currencymanage.R;
 import com.hb.currencymanage.bean.DeviceEntity;
+import com.hb.currencymanage.ui.activity.DeviceDetailActivity;
+import com.hb.currencymanage.ui.activity.DeviceDetailLeaseActivity;
 import com.hb.currencymanage.ui.activity.MineDeviceActivity;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
@@ -35,10 +37,14 @@ public class DeviceListFragment extends BaseFragment
     private List<DeviceEntity> deviceEntityList;
     
     private CommonAdapter adapter = null;
+
+    private String title;
     
-    public static DeviceListFragment getInstance()
+    public static DeviceListFragment getInstance(String title)
     {
+
         DeviceListFragment sf = new DeviceListFragment();
+        sf.title=title;
         return sf;
     }
     
@@ -65,7 +71,11 @@ public class DeviceListFragment extends BaseFragment
             @Override
             protected void convert(ViewHolder holder, Object o, int position)
             {
-                
+                 if(title.equals("我的")){
+
+                 }else {
+
+                 }
             }
             
             @Override
@@ -84,7 +94,12 @@ public class DeviceListFragment extends BaseFragment
                     public void onItemClick(View view,
                             RecyclerView.ViewHolder holder, int position)
                     {
-                        
+                        if(title.equals("我的")){
+                            changeActivity( DeviceDetailActivity.class);
+                        }else {
+                            changeActivity( DeviceDetailLeaseActivity.class);
+                        }
+
                     }
                     
                     @Override

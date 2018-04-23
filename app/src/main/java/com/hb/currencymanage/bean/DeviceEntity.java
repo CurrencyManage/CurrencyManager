@@ -7,5 +7,8 @@ package com.hb.currencymanage.bean;
 public class DeviceEntity {
 
 
+    public String code;
+
+
 
 }

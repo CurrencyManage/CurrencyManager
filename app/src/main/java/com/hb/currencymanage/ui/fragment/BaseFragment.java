@@ -50,6 +50,14 @@ public abstract class BaseFragment extends Fragment
         Intent intent = new Intent(context, clz);
         startActivity(intent);
     }
+
+
+    public void changeActivity(Class<?> clz,Bundle bundle)
+    {
+        Intent intent = new Intent(context, clz);
+        intent.putExtra("bundle",bundle);
+        startActivity(intent);
+    }
     
     @Override
     public void onDestroyView()

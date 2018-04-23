@@ -34,7 +34,8 @@
         <activity android:name=".ui.activity.RecommendActivity" />
         <activity android:name=".ui.activity.SettingActivity" />
         <activity android:name=".ui.activity.AboutActivity" />
-        <activity android:name=".ui.activity.TellUsActivity"></activity>
+        <activity android:name=".ui.activity.TellUsActivity" />
+        <activity android:name=".ui.activity.DeviceDetailLeaseActivity"></activity>
     </application>
 
 </manifest>
