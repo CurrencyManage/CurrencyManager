@@ -79,6 +79,14 @@ public class MainFragment extends BaseFragment implements OnBannerListener
                 "15:39", ""));
         mDatas.add(new NewsBean("四个点十个人凡人歌个人而无法各位哥哥服务二哥哥如果个反而更反而更而广泛而个股", "彬三分",
                 "15:39", ""));
+        mDatas.add(new NewsBean("四个点十个人凡人歌个人而无法各位哥哥服务二哥哥如果个反而更反而更而广泛而个股", "彬三分",
+                "15:39", ""));
+        mDatas.add(new NewsBean("四个点十个人凡人歌个人而无法各位哥哥服务二哥哥如果个反而更反而更而广泛而个股", "彬三分",
+                "15:39", ""));
+        mDatas.add(new NewsBean("四个点十个人凡人歌个人而无法各位哥哥服务二哥哥如果个反而更反而更而广泛而个股", "彬三分",
+                "15:39", ""));
+        mDatas.add(new NewsBean("四个点十个人凡人歌个人而无法各位哥哥服务二哥哥如果个反而更反而更而广泛而个股", "彬三分",
+                "15:39", ""));
         mRvContent.setLayoutManager(new LinearLayoutManager(getContext()));
         mRvContent.addItemDecoration(new DividerItemDecoration(getContext(),
                 DividerItemDecoration.VERTICAL_LIST));
