@@ -2,19 +2,24 @@ package com.hb.currencymanage.ui.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hb.currencymanage.MainActivity;
 import com.hb.currencymanage.R;
+import com.hb.currencymanage.bean.QuotesEntity;
+import com.hb.currencymanage.bean.ResultData;
 import com.hb.currencymanage.customview.AutoHeightViewPager;
+import com.hb.currencymanage.net.BaseObserver;
+import com.hb.currencymanage.net.RetrofitUtils;
+import com.hb.currencymanage.net.RxSchedulers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +39,24 @@ public class RegActivity extends BaseActivity
     
     @BindView(R.id.tv_reg_step)
     TextView mTvRegStep;
+    
+    private EditText mEtName;
+    
+    private EditText mEtCard;
+    
+    private EditText mEtRecId;
+    
+    private EditText mEtBankAddress;
+    
+    private EditText mEtBank;
+    
+    private EditText mEtPwd;
+    
+    private EditText mEtPwdAgain;
+    
+    private EditText mEtPhone;
+    
+    private EditText mEtVerifyCode;
     
     private List<View> mViews = new ArrayList<>();
     
@@ -56,6 +79,15 @@ public class RegActivity extends BaseActivity
         View stepThree = inflater.inflate(R.layout.activity_reg_step_three,
                 null);
         View stepFour = inflater.inflate(R.layout.activity_reg_step_four, null);
+        mEtPhone = stepOne.findViewById(R.id.et_phone);
+        mEtVerifyCode = stepOne.findViewById(R.id.et_verify_code);
+        mEtPwd = stepOne.findViewById(R.id.et_pwd);
+        mEtPwdAgain = stepOne.findViewById(R.id.et_pwd_again);
+        mEtName = stepOne.findViewById(R.id.et_name);
+        mEtCard = stepOne.findViewById(R.id.et_card);
+        mEtRecId = stepOne.findViewById(R.id.et_rec_id);
+        mEtBankAddress = stepOne.findViewById(R.id.et_bank_address);
+        mEtBank = stepOne.findViewById(R.id.et_bank);
         mViews.add(stepOne);
         mViews.add(stepTwo);
         mViews.add(stepThree);
@@ -90,6 +122,19 @@ public class RegActivity extends BaseActivity
         mVpReg.setCurrentItem(0);
     }
     
+    @OnClick(R.id.iv_left)
+    public void back()
+    {
+        if (mCurPos > 0 && mCurPos <= mViews.size() - 1)
+        {
+            mVpReg.setCurrentItem(--mCurPos);
+        }
+        else if (mCurPos == 0)
+        {
+            finish();
+        }
+    }
+    
     @OnClick(R.id.tv_reg_step)
     public void reg()
     {
@@ -99,7 +144,37 @@ public class RegActivity extends BaseActivity
         }
         else
         {
-            changeActivity(MainActivity.class);
+            try
+            {
+                RetrofitUtils.getInstance(this).api.reg("18705157954",
+                        "112",
+                        "1sda",
+                        "2332231",
+                        "2324",
+                        "efwef",
+                        "234342",
+                        "231423442")
+                        .compose(RxSchedulers.<ResultData<String>> compose())
+                        .subscribe(new BaseObserver<String>(this, true)
+                        {
+                            @Override
+                            public void onHandlerSuccess(
+                                    ResultData<String> resultData)
+                            {
+                                
+                                if (resultData.code == 200)
+                                {
+                                    Log.d("wangbin", "result = " + resultData);
+                                    changeActivity(MainActivity.class);
+                                    finish();
+                                }
+                            }
+                        });
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
         }
     }
     

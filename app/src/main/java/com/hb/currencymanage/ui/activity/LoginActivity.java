@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.hb.currencymanage.MainActivity;
 import com.hb.currencymanage.R;
 
 import butterknife.BindView;
@@ -35,7 +36,8 @@ public class LoginActivity extends BaseActivity
     @OnClick(R.id.tv_login)
     public void login()
     {
-        changeActivity(LoginActivity.class);
+        changeActivity(MainActivity.class);
+        finish();
     }
     
     @OnClick(R.id.tv_reg)
