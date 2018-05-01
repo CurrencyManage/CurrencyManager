@@ -19,19 +19,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitUtils {
 
 
-    public static final String BASE="http://sleepeq.lineshen.com/";
+    public static final String BASE="http://39.104.50.236/currency/";
 
-    public static final String BASE_URL = BASE+"sys/";
-
-    public static String STATISTICS="http://sm-demo.oss-cn-hangzhou.aliyuncs.com/index.html#/count";
-
-    public static String FIND="http://sm-demo.oss-cn-hangzhou.aliyuncs.com/index.html#/find";
-
-    public static String NOTIFI_DETAIL="http://sm-demo.oss-cn-hangzhou.aliyuncs.com/index.html#/noty";
-
-    public static String LOG_DETAIL="http://sm-demo.oss-cn-hangzhou.aliyuncs.com/index.html#/detail";
-
-    public static String HEAD=BASE+"pub/public/downloadimage?sessiontoken=";
+    //public static final String BASE_URL = BASE+"sys/";
 
     public static Retrofit retrofit;
 

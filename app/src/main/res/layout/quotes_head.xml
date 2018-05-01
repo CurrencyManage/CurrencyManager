@@ -19,6 +19,7 @@
                 android:layout_height="match_parent">
 
                   <TextView
+                      android:id="@+id/tv_currentPrice"
                       android:gravity="center"
                       android:text="47.99"
                       android:textColor="@color/tv_white"
@@ -33,17 +34,19 @@
                       android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/tv_Disparity"
                             android:text="－0.61"
                             android:textColor="@color/tv_white"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
 
-                        <TextView
-                            android:layout_marginLeft="20dp"
-                            android:text="－1.26%"
-                            android:textColor="@color/tv_white"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                      <TextView
+                          android:id="@+id/tv_disparityB"
+                          android:layout_width="wrap_content"
+                          android:layout_height="match_parent"
+                          android:layout_marginLeft="20dp"
+                          android:text="－1.26%"
+                          android:textColor="@color/tv_white" />
 
                   </LinearLayout>
 
@@ -77,6 +80,7 @@
                                   android:layout_height="wrap_content" />
 
                               <TextView
+                                  android:id="@+id/tv_currentMix"
                                   android:gravity="center"
                                   android:text="28.00"
                                   android:textSize="@dimen/text_size_18"
@@ -101,6 +105,7 @@
                                   android:layout_height="wrap_content" />
 
                               <TextView
+                                  android:id="@+id/tv_currentMin"
                                   android:gravity="center"
                                   android:text="46.16"
                                   android:textSize="@dimen/text_size_18"
@@ -128,13 +133,14 @@
                             android:layout_height="match_parent">
 
                               <TextView
-                                  android:text="最高"
+                                  android:text="成交量"
                                   android:gravity="center"
                                   android:textColor="@color/tv_white"
                                   android:layout_width="match_parent"
                                   android:layout_height="wrap_content" />
 
                               <TextView
+                                  android:id="@+id/tv_count"
                                   android:gravity="center"
                                   android:text="12.02万"
                                   android:textSize="@dimen/text_size_18"
@@ -152,13 +158,14 @@
                             android:layout_height="match_parent">
 
                               <TextView
-                                  android:text="最低"
+                                  android:text="成交额"
                                   android:gravity="center"
                                   android:textColor="@color/tv_white"
                                   android:layout_width="match_parent"
                                   android:layout_height="wrap_content" />
 
                               <TextView
+                                  android:id="@+id/tv_countPrice"
                                   android:textSize="@dimen/text_size_18"
                                   android:gravity="center"
                                   android:text="5.67亿"

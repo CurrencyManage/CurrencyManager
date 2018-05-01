@@ -17,6 +17,7 @@ public class ResultData<T> implements Serializable {
 
     public String result;
 
+    public int code;
 
 
 }

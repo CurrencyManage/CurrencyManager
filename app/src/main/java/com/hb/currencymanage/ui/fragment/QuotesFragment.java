@@ -11,9 +11,13 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.hb.currencymanage.R;
 import com.hb.currencymanage.bean.QuotesEntity;
+import com.hb.currencymanage.bean.ResultData;
 import com.hb.currencymanage.dialog.QutoesDialogFragment;
 import com.hb.currencymanage.mpchart.MyLineChart;
 import com.hb.currencymanage.mpchart.MyXAxisRenderer;
+import com.hb.currencymanage.net.BaseObserver;
+import com.hb.currencymanage.net.RetrofitUtils;
+import com.hb.currencymanage.net.RxSchedulers;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
@@ -25,6 +29,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +50,27 @@ public class QuotesFragment extends BaseFragment
     
     @BindView(R.id.lineChart)
     MyLineChart mLineChart;
+
+    @BindView(R.id.tv_currentPrice)
+    TextView tv_currentPrice;
+
+    @BindView(R.id.tv_Disparity)
+    TextView tv_Disparity;
+
+    @BindView(R.id.tv_disparityB)
+    TextView tv_disparityB;
+
+    @BindView(R.id.tv_currentMix)
+    TextView tv_currentMix;
+
+    @BindView(R.id.tv_currentMin)
+    TextView tv_currentMin;
+
+    @BindView(R.id.tv_count)
+    TextView tv_count;
+
+    @BindView(R.id.tv_countPrice)
+    TextView tv_countPrice;
     
     private ArrayList<Entry> pointValues;
     
@@ -109,8 +135,38 @@ public class QuotesFragment extends BaseFragment
                 
             }
         });
+
+
+        initNetWork();
     }
-    
+
+    private void initNetWork() {
+
+        RetrofitUtils
+                .getInstance(getActivity())
+                .api
+                .getDisparity()
+                .compose(RxSchedulers.<ResultData<QuotesEntity>>compose())
+                .subscribe(new BaseObserver<QuotesEntity>(getActivity(),true) {
+                    @Override
+                    public void onHandlerSuccess(ResultData<QuotesEntity> resultData) {
+
+                        if(resultData.code==200){
+                            tv_count.setText(resultData.data.count);
+                            tv_countPrice.setText(resultData.data.countPrice);
+                            tv_currentMin.setText(resultData.data.currentMin);
+                            tv_currentMix.setText(resultData.data.currentMix);
+                            tv_currentPrice.setText(resultData.data.currentPrice);
+                            tv_Disparity.setText(resultData.data.Disparity);
+                            tv_disparityB.setText(resultData.data.disparityB);
+
+
+                        }
+                    }
+                });
+
+    }
+
     @OnClick(R.id.tv_buy)
     public void tvbuy()
     {

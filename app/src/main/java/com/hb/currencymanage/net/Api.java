@@ -1,10 +1,16 @@
 package com.hb.currencymanage.net;
 
+import com.hb.currencymanage.bean.QuotesEntity;
+import com.hb.currencymanage.bean.ResultData;
+
+import io.reactivex.Observable;
+import retrofit2.http.GET;
+
 /**
  * Created by Administrator on 2018/4/21.
  */
 
-public class Api {
+public interface Api {
 
 
     /*
@@ -14,6 +20,16 @@ public class Api {
     Observable<ResultData<MemberBean>> updateUserInfo(@Query("sessiontoken") String sessiontoken,
                                                       @Body MemberBean memberBean);
      */
+
+
+    @GET("index/getDisparity")
+    Observable<ResultData<QuotesEntity>> getDisparity();
+
+
+
+
+
+
 
 
 }

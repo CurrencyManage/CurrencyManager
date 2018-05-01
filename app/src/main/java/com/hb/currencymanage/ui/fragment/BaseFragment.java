@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hb.currencymanage.R;
+import com.hb.currencymanage.net.RxSchedulers;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -58,10 +59,17 @@ public abstract class BaseFragment extends Fragment
         intent.putExtra("bundle",bundle);
         startActivity(intent);
     }
-    
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        RxSchedulers.clear();
+    }
+
     @Override
     public void onDestroyView()
     {
+        RxSchedulers.clear();
         super.onDestroyView();
         mBinder.unbind();
     }
