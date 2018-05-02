@@ -15,6 +15,7 @@
         android:layout_weight="1"
         android:layout_height="match_parent">
         <TextView
+            android:id="@+id/tv_No"
             android:text="卖1"
             android:layout_marginLeft="@dimen/margin_little"
             android:layout_width="0dp"
@@ -22,6 +23,7 @@
             android:layout_height="wrap_content" />
 
         <TextView
+            android:id="@+id/tv_Price"
             android:text="45.22"
             android:layout_marginLeft="@dimen/margin_normal"
              android:layout_width="0dp"
@@ -58,51 +60,54 @@
     </LinearLayout>
 
 
-    <LinearLayout
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="match_parent">
+    <!--<LinearLayout-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:layout_height="match_parent">-->
 
-        <TextView
-            android:text="买1"
-            android:layout_marginLeft="@dimen/margin_little"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
+        <!--<TextView-->
+            <!--android:id="@+id/tv_buyNo"-->
+            <!--android:text="买1"-->
+            <!--android:layout_marginLeft="@dimen/margin_little"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content" />-->
 
-        <TextView
-            android:text="45.22"
-            android:layout_marginLeft="@dimen/margin_normal"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
+        <!--<TextView-->
+            <!--android:id="@+id/tv_buyPrice"-->
+            <!--android:text="45.22"-->
+            <!--android:layout_marginLeft="@dimen/margin_normal"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content" />-->
 
-        <RelativeLayout
-            android:gravity="center_vertical"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent">
+        <!--<RelativeLayout-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="match_parent">-->
 
-            <ProgressBar
-                android:background="@color/colorAccent"
-                android:id="@+id/progress_buy"
-                android:layout_width="match_parent"
-                android:layout_height="6dp"
-                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                />
+            <!--<ProgressBar-->
+                <!--android:background="@color/colorAccent"-->
+                <!--android:id="@+id/progress_buy"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="6dp"-->
+                <!--style="@style/Widget.AppCompat.ProgressBar.Horizontal"-->
+                <!--/>-->
 
-        </RelativeLayout>
+        <!--</RelativeLayout>-->
 
-        <TextView
-            android:text="14"
-            android:layout_marginLeft="@dimen/margin_little"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
+        <!--<TextView-->
+            <!--android:id="@+id/tv_buyNum"-->
+            <!--android:text="14"-->
+            <!--android:layout_marginLeft="@dimen/margin_little"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content" />-->
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
 
 

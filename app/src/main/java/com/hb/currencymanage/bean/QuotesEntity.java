@@ -26,6 +26,29 @@ public class QuotesEntity {
 
     public String countPrice;
 
+    public String buyPrice;
+
+    public String buyUserId;
+
+    public int buyNum;
+
+    public String id;
+
+    public String sellUserId;
+
+    public String sellPrice;
+
+    public int sellNum;
+
+
+
+    /*
+    "sellUserId": 1,
+            "sellPrice": 55,
+            "id": 14,
+            "sellNum": 11
+            */
+
 
 
 

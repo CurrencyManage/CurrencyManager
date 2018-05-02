@@ -26,7 +26,7 @@ public abstract class BaseObserver<T> implements Observer<ResultData<T>> {
         this.mContext=context.getApplicationContext();
         if(flag){
             //进度框
-           // pd=ProgressDialog.show(context,"","正在加载");
+            pd=ProgressDialog.show(context,"","正在加载");
 
         }
 
@@ -43,10 +43,8 @@ public abstract class BaseObserver<T> implements Observer<ResultData<T>> {
     @Override
     public void onNext(ResultData<T> resultData) {
 
-
-
+        pd.dismiss();
         onHandlerSuccess(resultData);
-
 
 
     }
@@ -56,7 +54,7 @@ public abstract class BaseObserver<T> implements Observer<ResultData<T>> {
         //Log.e("BaseObserver", "error:" + e.toString());
 
         try {
-
+            pd.dismiss();
             if (e instanceof SocketTimeoutException) {
 
                 Toast.makeText(mContext, "连接超时", Toast.LENGTH_SHORT).show();

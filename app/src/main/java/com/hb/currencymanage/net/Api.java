@@ -1,7 +1,10 @@
 package com.hb.currencymanage.net;
 
+import com.hb.currencymanage.bean.QuotesData;
 import com.hb.currencymanage.bean.QuotesEntity;
 import com.hb.currencymanage.bean.ResultData;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.http.Field;
@@ -37,5 +40,8 @@ public interface Api
             @Field("recommendedcode") String recommendedcode,
             @Field("whereitis") String whereitis,
             @Field("bankcard") String bankcard, @Field("bank") String bank);
+
+    @GET("index/transaction")
+    Observable<ResultData<QuotesData>> transaction();
     
 }

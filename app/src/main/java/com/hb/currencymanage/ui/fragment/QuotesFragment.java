@@ -10,6 +10,7 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.hb.currencymanage.R;
+import com.hb.currencymanage.bean.QuotesData;
 import com.hb.currencymanage.bean.QuotesEntity;
 import com.hb.currencymanage.bean.ResultData;
 import com.hb.currencymanage.dialog.QutoesDialogFragment;
@@ -18,6 +19,7 @@ import com.hb.currencymanage.mpchart.MyXAxisRenderer;
 import com.hb.currencymanage.net.BaseObserver;
 import com.hb.currencymanage.net.RetrofitUtils;
 import com.hb.currencymanage.net.RxSchedulers;
+import com.orhanobut.logger.Logger;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
@@ -26,6 +28,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,8 +48,8 @@ import butterknife.OnClick;
 public class QuotesFragment extends BaseFragment
 {
     
-    @BindView(R.id.recycleView)
-    RecyclerView recyclerView;
+    @BindView(R.id.saleRecycleView)
+    RecyclerView saleRecycleView;
     
     @BindView(R.id.lineChart)
     MyLineChart mLineChart;
@@ -74,7 +77,9 @@ public class QuotesFragment extends BaseFragment
     
     private ArrayList<Entry> pointValues;
     
-    private List<QuotesEntity> quotesEntityList;
+    private List<QuotesEntity> saleQuotesEntityList;
+
+    private CommonAdapter saleAdapter;
     
     public static QuotesFragment getInstance()
     {
@@ -99,18 +104,33 @@ public class QuotesFragment extends BaseFragment
     {
         initChart();
         initData();
-        
-        if (quotesEntityList == null)
-        {
-            quotesEntityList = new ArrayList<>();
+
+
+        if(saleQuotesEntityList==null){
+            saleQuotesEntityList=new ArrayList<>();
         }
-        
-        for (int i = 0; i < 10; i++)
+
+        saleAdapter=new CommonAdapter(getActivity(),
+                R.layout.quotes_item, saleQuotesEntityList)
         {
-            
-            quotesEntityList.add(new QuotesEntity());
-        }
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity())
+            @Override
+            protected void convert(ViewHolder holder, Object o, int position)
+            {
+
+                holder.setText(R.id.sale_num, saleQuotesEntityList.get(position).sellNum+"");
+                holder.setText(R.id.tv_No, "卖"+(position+1));
+                holder.setText(R.id.tv_Price, saleQuotesEntityList.get(position).sellPrice);
+            }
+
+            @Override
+            public void onBindViewHolder(RecyclerView.ViewHolder holder,
+                                         int position)
+            {
+
+            }
+        };
+
+        saleRecycleView.setLayoutManager(new LinearLayoutManager(getActivity())
         {
             @Override
             public boolean canScrollVertically()
@@ -118,23 +138,7 @@ public class QuotesFragment extends BaseFragment
                 return false;
             }
         });
-        recyclerView.setAdapter(new CommonAdapter(getActivity(),
-                R.layout.quotes_item, quotesEntityList)
-        {
-            @Override
-            protected void convert(ViewHolder holder, Object o, int position)
-            {
-                
-                holder.setText(R.id.sale_num, "12");
-            }
-            
-            @Override
-            public void onBindViewHolder(RecyclerView.ViewHolder holder,
-                    int position)
-            {
-                
-            }
-        });
+        saleRecycleView.setAdapter(saleAdapter);
 
 
         initNetWork();
@@ -160,6 +164,23 @@ public class QuotesFragment extends BaseFragment
                             tv_Disparity.setText(resultData.data.Disparity);
                             tv_disparityB.setText(resultData.data.disparityB);
 
+
+                        }
+                    }
+                });
+
+
+        RetrofitUtils
+                .getInstance(getActivity())
+                .api
+                .transaction()
+                .compose(RxSchedulers.<ResultData<QuotesData>>compose())
+                .subscribe(new BaseObserver<QuotesData>(getActivity(),false) {
+                    @Override
+                    public void onHandlerSuccess(ResultData<QuotesData> resultData) {
+                        if(resultData.code==200){
+                            saleQuotesEntityList.addAll(resultData.data.sell);
+                            saleAdapter.notifyDataSetChanged();
 
                         }
                     }
