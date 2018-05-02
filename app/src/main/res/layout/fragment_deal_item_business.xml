@@ -212,6 +212,44 @@
             android:textColor="@color/text_color_hint"
             android:textColorHint="@color/text_color_hint"
             android:textSize="@dimen/text_size_16" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/divider_color" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_verify_code"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_65"
+                android:layout_alignEnd="@+id/textView"
+                android:layout_alignParentTop="true"
+                android:layout_alignRight="@+id/textView"
+                android:background="@null"
+                android:gravity="center"
+                android:hint="请输入验证码"
+                android:textColor="@color/text_color_hint"
+                android:textColorHint="@color/text_color_hint"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_40"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:layout_marginRight="@dimen/margin_little"
+                android:text="@string/get_verify_code"
+                android:background="@drawable/tv_border_radius_blue"
+                android:layout_alignParentRight="true"
+                android:textSize="@dimen/text_size_16"
+                android:textColor="@color/tab_blue_bg_color"
+                android:id="@+id/textView" />
+        </RelativeLayout>
     </LinearLayout>
 
     <View

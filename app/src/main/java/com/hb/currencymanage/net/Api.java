@@ -40,8 +40,13 @@ public interface Api
             @Field("recommendedcode") String recommendedcode,
             @Field("whereitis") String whereitis,
             @Field("bankcard") String bankcard, @Field("bank") String bank);
-
+    
     @GET("index/transaction")
     Observable<ResultData<QuotesData>> transaction();
+    
+    @FormUrlEncoded
+    @POST("clientMain/login")
+    Observable<ResultData<String>> login(@Field("phone") String phone,
+            @Field("pass") String pass);
     
 }

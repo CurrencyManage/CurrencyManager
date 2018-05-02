@@ -8,6 +8,10 @@ import android.widget.TextView;
 
 import com.hb.currencymanage.MainActivity;
 import com.hb.currencymanage.R;
+import com.hb.currencymanage.bean.ResultData;
+import com.hb.currencymanage.net.BaseObserver;
+import com.hb.currencymanage.net.RetrofitUtils;
+import com.hb.currencymanage.net.RxSchedulers;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,8 +40,21 @@ public class LoginActivity extends BaseActivity
     @OnClick(R.id.tv_login)
     public void login()
     {
-        changeActivity(MainActivity.class);
-        finish();
+        RetrofitUtils.getInstance(this).api.login("18705157954", "112")
+                .compose(RxSchedulers.<ResultData<String>> compose())
+                .subscribe(new BaseObserver<String>(this, true)
+                {
+                    @Override
+                    public void onHandlerSuccess(ResultData<String> resultData)
+                    {
+                        
+                        if (resultData.code == 200)
+                        {
+                            changeActivity(MainActivity.class);
+                            finish();
+                        }
+                    }
+                });
     }
     
     @OnClick(R.id.tv_reg)

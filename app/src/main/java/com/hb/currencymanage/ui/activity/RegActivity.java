@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -138,13 +139,13 @@ public class RegActivity extends BaseActivity
     @OnClick(R.id.tv_reg_step)
     public void reg()
     {
-        if (mCurPos < mViews.size() - 1)
+        if (check())
         {
-            mVpReg.setCurrentItem(mCurPos + 1);
-        }
-        else
-        {
-            try
+            if (mCurPos < mViews.size() - 1)
+            {
+                mVpReg.setCurrentItem(++mCurPos);
+            }
+            else
             {
                 RetrofitUtils.getInstance(this).api.reg("18705157954",
                         "112",
@@ -164,18 +165,83 @@ public class RegActivity extends BaseActivity
                                 
                                 if (resultData.code == 200)
                                 {
-                                    Log.d("wangbin", "result = " + resultData);
                                     changeActivity(MainActivity.class);
                                     finish();
                                 }
                             }
                         });
             }
-            catch (Exception e)
+        }
+    }
+    
+    private boolean check()
+    {
+        if (mCurPos == 0)
+        {
+            if (TextUtils.isEmpty(mEtPhone.getText().toString()))
             {
-                e.printStackTrace();
+                Toast.makeText(this, "手机号不能为空", Toast.LENGTH_LONG).show();
+                return false;
+            }
+            if (TextUtils.isEmpty(mEtVerifyCode.getText().toString()))
+            {
+                Toast.makeText(this, "验证码不能为空", Toast.LENGTH_LONG).show();
+                return false;
             }
         }
+        else if (mCurPos == 1)
+        {
+            
+            if (TextUtils.isEmpty(mEtPwd.getText().toString()))
+            {
+                Toast.makeText(this, "密码不能为空", Toast.LENGTH_LONG).show();
+                return false;
+            }
+            else if (TextUtils.isEmpty(mEtPwdAgain.getText().toString()))
+            {
+                Toast.makeText(this, "请输入确认密码", Toast.LENGTH_LONG).show();
+                return false;
+            }
+            else if (!mEtPwd.getText()
+                    .toString()
+                    .equals(mEtPwdAgain.getText().toString()))
+            {
+                Toast.makeText(this, "前后密码不一致,请重新输入", Toast.LENGTH_LONG).show();
+                return false;
+            }
+        }
+        else if (mCurPos == 2)
+        {
+            if (TextUtils.isEmpty(mEtName.getText().toString()))
+            {
+                Toast.makeText(this, "请输入姓名", Toast.LENGTH_LONG).show();
+                return false;
+            }
+            else if (TextUtils.isEmpty(mEtCard.getText().toString()))
+            {
+                Toast.makeText(this, "请输入您的身份证号码", Toast.LENGTH_LONG).show();
+                return false;
+            }
+            else if (TextUtils.isEmpty(mEtRecId.getText().toString()))
+            {
+                Toast.makeText(this, "请输入推荐人ID", Toast.LENGTH_LONG).show();
+                return false;
+            }
+        }
+        else if (mCurPos == 3)
+        {
+            if (TextUtils.isEmpty(mEtBankAddress.getText().toString()))
+            {
+                Toast.makeText(this, "请输入银行卡开户行", Toast.LENGTH_LONG).show();
+                return false;
+            }
+            else if (TextUtils.isEmpty(mEtBank.getText().toString()))
+            {
+                Toast.makeText(this, "请输入您的银行卡号", Toast.LENGTH_LONG).show();
+                return false;
+            }
+        }
+        return true;
     }
     
     private class MyPagerAdapter extends PagerAdapter
