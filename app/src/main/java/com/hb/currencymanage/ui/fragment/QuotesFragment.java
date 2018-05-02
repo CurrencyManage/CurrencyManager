@@ -47,38 +47,37 @@ import butterknife.OnClick;
 
 public class QuotesFragment extends BaseFragment
 {
-    
     @BindView(R.id.saleRecycleView)
     RecyclerView saleRecycleView;
     
     @BindView(R.id.lineChart)
     MyLineChart mLineChart;
-
+    
     @BindView(R.id.tv_currentPrice)
     TextView tv_currentPrice;
-
+    
     @BindView(R.id.tv_Disparity)
     TextView tv_Disparity;
-
+    
     @BindView(R.id.tv_disparityB)
     TextView tv_disparityB;
-
+    
     @BindView(R.id.tv_currentMix)
     TextView tv_currentMix;
-
+    
     @BindView(R.id.tv_currentMin)
     TextView tv_currentMin;
-
+    
     @BindView(R.id.tv_count)
     TextView tv_count;
-
+    
     @BindView(R.id.tv_countPrice)
     TextView tv_countPrice;
     
     private ArrayList<Entry> pointValues;
     
     private List<QuotesEntity> saleQuotesEntityList;
-
+    
     private CommonAdapter saleAdapter;
     
     public static QuotesFragment getInstance()
@@ -104,32 +103,27 @@ public class QuotesFragment extends BaseFragment
     {
         initChart();
         initData();
-
-
-        if(saleQuotesEntityList==null){
-            saleQuotesEntityList=new ArrayList<>();
+        
+        if (saleQuotesEntityList == null)
+        {
+            saleQuotesEntityList = new ArrayList<>();
         }
-
-        saleAdapter=new CommonAdapter(getActivity(),
+        
+        saleAdapter = new CommonAdapter<QuotesEntity>(getActivity(),
                 R.layout.quotes_item, saleQuotesEntityList)
         {
             @Override
-            protected void convert(ViewHolder holder, Object o, int position)
+            protected void convert(ViewHolder holder, QuotesEntity entity,
+                    int position)
             {
-
-                holder.setText(R.id.sale_num, saleQuotesEntityList.get(position).sellNum+"");
-                holder.setText(R.id.tv_No, "卖"+(position+1));
-                holder.setText(R.id.tv_Price, saleQuotesEntityList.get(position).sellPrice);
-            }
-
-            @Override
-            public void onBindViewHolder(RecyclerView.ViewHolder holder,
-                                         int position)
-            {
-
+                holder.setText(R.id.sale_num,
+                        saleQuotesEntityList.get(position).sellNum + "");
+                holder.setText(R.id.tv_No, "卖" + (position + 1));
+                holder.setText(R.id.tv_Price,
+                        saleQuotesEntityList.get(position).sellPrice);
             }
         };
-
+        
         saleRecycleView.setLayoutManager(new LinearLayoutManager(getActivity())
         {
             @Override
@@ -139,55 +133,63 @@ public class QuotesFragment extends BaseFragment
             }
         });
         saleRecycleView.setAdapter(saleAdapter);
-
-
+        
         initNetWork();
     }
-
-    private void initNetWork() {
-
-        RetrofitUtils
-                .getInstance(getActivity())
-                .api
-                .getDisparity()
-                .compose(RxSchedulers.<ResultData<QuotesEntity>>compose())
-                .subscribe(new BaseObserver<QuotesEntity>(getActivity(),true) {
+    
+    private void initNetWork()
+    {
+        
+        RetrofitUtils.getInstance(getActivity()).api.getDisparity()
+                .compose(RxSchedulers.<ResultData<QuotesEntity>> compose())
+                .subscribe(new BaseObserver<QuotesEntity>(getActivity(), true)
+                {
                     @Override
-                    public void onHandlerSuccess(ResultData<QuotesEntity> resultData) {
-
-                        if(resultData.code==200){
+                    public void onHandlerSuccess(
+                            ResultData<QuotesEntity> resultData)
+                    {
+                        
+                        if (resultData.code == 200)
+                        {
                             tv_count.setText(resultData.data.count);
                             tv_countPrice.setText(resultData.data.countPrice);
                             tv_currentMin.setText(resultData.data.currentMin);
                             tv_currentMix.setText(resultData.data.currentMix);
-                            tv_currentPrice.setText(resultData.data.currentPrice);
+                            tv_currentPrice
+                                    .setText(resultData.data.currentPrice);
                             tv_Disparity.setText(resultData.data.Disparity);
                             tv_disparityB.setText(resultData.data.disparityB);
-
-
+                            
                         }
                     }
                 });
-
-
-        RetrofitUtils
-                .getInstance(getActivity())
-                .api
-                .transaction()
-                .compose(RxSchedulers.<ResultData<QuotesData>>compose())
-                .subscribe(new BaseObserver<QuotesData>(getActivity(),false) {
+        
+        RetrofitUtils.getInstance(getActivity()).api.transaction()
+                .compose(RxSchedulers.<ResultData<QuotesData>> compose())
+                .subscribe(new BaseObserver<QuotesData>(getActivity(), false)
+                {
                     @Override
-                    public void onHandlerSuccess(ResultData<QuotesData> resultData) {
-                        if(resultData.code==200){
+                    public void onHandlerSuccess(
+                            ResultData<QuotesData> resultData)
+                    {
+                        if (resultData.code == 200)
+                        {
                             saleQuotesEntityList.addAll(resultData.data.sell);
-                            saleAdapter.notifyDataSetChanged();
-
+                            getActivity().runOnUiThread(new Runnable()
+                            {
+                                @Override
+                                public void run()
+                                {
+                                    saleAdapter.notifyDataSetChanged();
+                                }
+                            });
+                            
                         }
                     }
                 });
-
+        
     }
-
+    
     @OnClick(R.id.tv_buy)
     public void tvbuy()
     {
@@ -195,19 +197,15 @@ public class QuotesFragment extends BaseFragment
         qutoesDialogFragment.show(getFragmentManager(), "qutoesDialogFragment");
         
     }
-
-
+    
     /*
-    @OnClick(R.id.one)
-    public void one()
-    {
-        
-        String[] x = { "11", "22", "33", "44", "55" };
-        MyXAxisRenderer.setData(x);
-        mLineChart.invalidate();
-        
-    }
-    */
+     * @OnClick(R.id.one) public void one() {
+     * 
+     * String[] x = { "11", "22", "33", "44", "55" };
+     * MyXAxisRenderer.setData(x); mLineChart.invalidate();
+     * 
+     * }
+     */
     
     // 设置chart基本属性
     private void initChart()
