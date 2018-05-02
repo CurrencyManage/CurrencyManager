@@ -49,6 +49,9 @@ public class QuotesFragment extends BaseFragment
 {
     @BindView(R.id.saleRecycleView)
     RecyclerView saleRecycleView;
+
+    @BindView(R.id.buyRecycleView)
+    RecyclerView buyRecycleView;
     
     @BindView(R.id.lineChart)
     MyLineChart mLineChart;
@@ -79,6 +82,10 @@ public class QuotesFragment extends BaseFragment
     private List<QuotesEntity> saleQuotesEntityList;
     
     private CommonAdapter saleAdapter;
+
+    private List<QuotesEntity> buyQuotesEntityList;
+
+    private CommonAdapter buyAdapter;
     
     public static QuotesFragment getInstance()
     {
@@ -133,6 +140,37 @@ public class QuotesFragment extends BaseFragment
             }
         });
         saleRecycleView.setAdapter(saleAdapter);
+
+
+        if (buyQuotesEntityList == null)
+        {
+            buyQuotesEntityList = new ArrayList<>();
+        }
+
+        buyAdapter = new CommonAdapter<QuotesEntity>(getActivity(),
+                R.layout.quotes_item, buyQuotesEntityList)
+        {
+            @Override
+            protected void convert(ViewHolder holder, QuotesEntity entity,
+                                   int position)
+            {
+                holder.setText(R.id.sale_num,
+                        buyQuotesEntityList.get(position).buyNum + "");
+                holder.setText(R.id.tv_No, "买" + (position + 1));
+                holder.setText(R.id.tv_Price,
+                        buyQuotesEntityList.get(position).buyPrice);
+            }
+        };
+
+        buyRecycleView.setLayoutManager(new LinearLayoutManager(getActivity())
+        {
+            @Override
+            public boolean canScrollVertically()
+            {
+                return false;
+            }
+        });
+        buyRecycleView.setAdapter(buyAdapter);
         
         initNetWork();
     }
@@ -175,12 +213,14 @@ public class QuotesFragment extends BaseFragment
                         if (resultData.code == 200)
                         {
                             saleQuotesEntityList.addAll(resultData.data.sell);
+                            buyQuotesEntityList.addAll(resultData.data.buy);
                             getActivity().runOnUiThread(new Runnable()
                             {
                                 @Override
                                 public void run()
                                 {
                                     saleAdapter.notifyDataSetChanged();
+                                    buyAdapter.notifyDataSetChanged();
                                 }
                             });
                             

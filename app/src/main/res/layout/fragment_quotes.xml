@@ -54,16 +54,37 @@
                       layout="@layout/quotes_head"
                       >
                   </include>
-                  <RelativeLayout
+
+                  <LinearLayout
+                      android:orientation="horizontal"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content">
-                        <android.support.v7.widget.RecyclerView
-                            android:id="@+id/saleRecycleView"
-                            android:layout_width="match_parent"
+                        <RelativeLayout
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content">
-                        </android.support.v7.widget.RecyclerView>
+                              <android.support.v7.widget.RecyclerView
+                                  android:id="@+id/saleRecycleView"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content">
+                              </android.support.v7.widget.RecyclerView>
 
-                  </RelativeLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content">
+                              <android.support.v7.widget.RecyclerView
+                                  android:id="@+id/buyRecycleView"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content">
+                              </android.support.v7.widget.RecyclerView>
+
+                        </RelativeLayout>
+
+                  </LinearLayout>
+
 
 
                   <LinearLayout
