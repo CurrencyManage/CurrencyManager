@@ -3,6 +3,7 @@ package com.hb.currencymanage.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -47,7 +48,10 @@ public class LoginActivity extends BaseActivity
                     @Override
                     public void onHandlerSuccess(ResultData<String> resultData)
                     {
-                        
+                        Log.d("----",
+                                "res = " + resultData.data + " , "
+                                        + resultData.msg + " , "
+                                        + resultData.result);
                         if (resultData.code == 200)
                         {
                             changeActivity(MainActivity.class);
