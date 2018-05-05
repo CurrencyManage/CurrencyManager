@@ -18,8 +18,7 @@ import retrofit2.http.Query;
  * Created by Administrator on 2018/4/21.
  */
 
-public interface Api
-{
+public interface Api {
     
     /*
      * @GET("sys/lg/sendlogincode") Observable<ResultData<MemberBean>>
@@ -30,37 +29,43 @@ public interface Api
      * 
      * @Body MemberBean memberBean);
      */
-    
+
     @GET("index/getDisparity")
     Observable<ResultData<QuotesEntity>> getDisparity();
-    
+
     @FormUrlEncoded
     @POST("clientMain/register")
     Observable<ResultData<String>> reg(@Field("phone") String phone,
-            @Field("pass") String pass, @Field("name") String name,
-            @Field("idcode") String idcode,
-            @Field("recommendedcode") String recommendedcode,
-            @Field("whereitis") String whereitis,
-            @Field("bankcard") String bankcard, @Field("bank") String bank);
-    
+                                       @Field("pass") String pass, @Field("name") String name,
+                                       @Field("idcode") String idcode,
+                                       @Field("recommendedcode") String recommendedcode,
+                                       @Field("whereitis") String whereitis,
+                                       @Field("bankcard") String bankcard, @Field("bank") String bank);
+
     @GET("index/transaction")
     Observable<ResultData<QuotesData>> transaction();
-    
+
     @POST("clientMain/login")
     Observable<ResultData<String>> login(@Query("phone") String phone,
-            @Query("pass") String pass);
-    
+                                         @Query("pass") String pass);
+
     @POST("clientMain/getAssets")
     Observable<ResultData<AccountBean>> getAccountInfo(@Query("id") String id);
-    
+
     @POST("clientMain/myCurrency")
     Observable<ResultData<String>> deal(@Query("buyuserid") String buyUserId,
-            @Query("Selluserid") String sellUserId, @Query("num") String num,
-            @Query("price") String price);
-    
+                                        @Query("Selluserid") String sellUserId, @Query("num") String num,
+                                        @Query("price") String price);
+
     @POST("clientMain/myCurrency")
     Observable<ResultData<String>> assign(@Query("toUserId") String toUserId,
-            @Query("forUserCode") String forUserCode,
-            @Query("forUserPhone") String forUserPhone,
-            @Query("forUserName") String forUserName, @Query("num") String num);
+                                          @Query("forUserCode") String forUserCode,
+                                          @Query("forUserPhone") String forUserPhone,
+                                          @Query("forUserName") String forUserName, @Query("num") String num);
+
+    @POST("clientMain/myCurrency")
+    Observable<ResultData<String>> myCurrency(@Query("id") String id);
+
+
+
 }

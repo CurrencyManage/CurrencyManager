@@ -37,7 +37,12 @@ public class QuotesEntity
     public String sellPrice;
     
     public int sellNum;
-    
+
+    public int countNum;
+
+    public int sellCount;
+
+
     @Override
     public String toString()
     {

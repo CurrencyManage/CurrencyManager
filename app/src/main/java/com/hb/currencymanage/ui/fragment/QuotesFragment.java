@@ -97,6 +97,12 @@ public class QuotesFragment extends BaseFragment
     @BindView(R.id.line_chart)
     MyLineChart lineChart;
 
+    @BindView(R.id.tv_buyTotalNum)
+    TextView tv_buyTotalNum;
+
+    @BindView(R.id.tv_sellTotalNum)
+    TextView tv_sellTotalNum;
+
     private Subscription subscriptionMinute;
     private LineDataSet d1, d2;
     MyXAxis xAxisLine;
@@ -120,6 +126,10 @@ public class QuotesFragment extends BaseFragment
     private List<QuotesEntity> buyQuotesEntityList;
 
     private CommonAdapter buyAdapter;
+
+    private int sellTotalNum;
+
+    private int buyTotalNum;
     
     public static QuotesFragment getInstance()
     {
@@ -161,11 +171,17 @@ public class QuotesFragment extends BaseFragment
             protected void convert(ViewHolder holder, QuotesEntity entity,
                     int position)
             {
+
+
                 holder.setText(R.id.sale_num,
                         saleQuotesEntityList.get(position).sellNum + "");
                 holder.setText(R.id.tv_No, "卖" + (position + 1));
                 holder.setText(R.id.tv_Price,
                         saleQuotesEntityList.get(position).sellPrice);
+
+                //progress_sale
+
+                holder.setProgress(R.id.progress_sale,100*entity.sellNum/entity.sellCount);
             }
         };
         
@@ -197,6 +213,7 @@ public class QuotesFragment extends BaseFragment
                 holder.setText(R.id.tv_No, "买" + (position + 1));
                 holder.setText(R.id.tv_Price,
                         buyQuotesEntityList.get(position).buyPrice);
+                holder.setProgress(R.id.progress_sale,100*entity.buyNum/entity.countNum);
             }
         };
 
@@ -497,11 +514,11 @@ public class QuotesFragment extends BaseFragment
 
     private SparseArray<String> setXLabels() {
         SparseArray<String> xLabels = new SparseArray<>();
-        xLabels.put(0, "09:30");
-        xLabels.put(60, "10:30");
-        xLabels.put(121, "11:30");
-        xLabels.put(182, "12:30");
-        xLabels.put(241, "13:30");
+        xLabels.put(0, "12:00");
+        xLabels.put(60, "13:00");
+        xLabels.put(121, "14:00");
+        xLabels.put(182, "15:00");
+        xLabels.put(241, "16:00");
         return xLabels;
     }
 
