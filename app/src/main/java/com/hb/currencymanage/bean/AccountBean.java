@@ -16,7 +16,7 @@ public class AccountBean
     
     private String toDaySy;
     
-    private String toMonthSy;
+    private String toMothSy;
     
     private String countMoney;
     
@@ -74,12 +74,12 @@ public class AccountBean
     
     public String getToMonthSy()
     {
-        return toMonthSy;
+        return toMothSy;
     }
     
     public void setToMonthSy(String toMonthSy)
     {
-        this.toMonthSy = toMonthSy;
+        this.toMothSy = toMonthSy;
     }
     
     public String getCountMoney()
