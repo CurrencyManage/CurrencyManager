@@ -62,11 +62,14 @@ public class DealFragment extends BaseFragment
     private void initTabLayout()
     {
         mTabSize = mLayoutTab.getChildCount();
-        mFragments.add(DealBusinessFragment.getInstance());
-        mFragments.add(DealBusinessFragment.getInstance());
+        mFragments.add(DealBusinessFragment
+                .getInstance(DealBusinessFragment.TYPE_BUY));
+        mFragments.add(DealBusinessFragment
+                .getInstance(DealBusinessFragment.TYPE_SALE));
         mFragments.add(OperationFragment.getInstance());
         mFragments.add(AuthorizeFragment.getInstance());
-        mFragments.add(DealBusinessFragment.getInstance());
+        mFragments.add(DealBusinessFragment
+                .getInstance(DealBusinessFragment.TYPE_ASSIGN));
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
         {
             @Override

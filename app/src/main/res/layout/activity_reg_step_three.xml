@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_larger"
         android:digits="1234567890xX"
-        android:inputType="number"
+        android:maxLength="18"
         android:hint="@string/enter_card" />
 
     <View

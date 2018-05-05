@@ -2,6 +2,9 @@ package com.hb.currencymanage;
 
 import android.app.Application;
 
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
+
 /**
  * Created by 汪彬 on 2018/4/16.
  */
@@ -12,7 +15,11 @@ public class CMApplication extends Application
     public void onCreate()
     {
         super.onCreate();
-        // 初始化
-        
+        initLog();
+    }
+    
+    private void initLog()
+    {
+        Logger.addLogAdapter(new AndroidLogAdapter());
     }
 }

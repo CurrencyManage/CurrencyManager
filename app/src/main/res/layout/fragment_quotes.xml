@@ -26,6 +26,7 @@
                   <TextView
                       android:layout_marginLeft="@dimen/margin_little"
                       android:text="货币1"
+                      android:textSize="@dimen/text_size_18"
                       android:textColor="@color/tv_white"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content" />

@@ -1,5 +1,6 @@
 package com.hb.currencymanage.net;
 
+import com.hb.currencymanage.bean.AccountBean;
 import com.hb.currencymanage.bean.QuotesData;
 import com.hb.currencymanage.bean.QuotesEntity;
 import com.hb.currencymanage.bean.ResultData;
@@ -11,6 +12,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 /**
  * Created by Administrator on 2018/4/21.
@@ -44,9 +46,10 @@ public interface Api
     @GET("index/transaction")
     Observable<ResultData<QuotesData>> transaction();
     
-    @FormUrlEncoded
     @POST("clientMain/login")
-    Observable<ResultData<String>> login(@Field("phone") String phone,
-            @Field("pass") String pass);
+    Observable<ResultData<String>> login(@Query("phone") String phone,
+            @Query("pass") String pass);
     
+    @POST("clientMain/getAssets")
+    Observable<ResultData<AccountBean>> getAccountInfo(@Query("id") String id);
 }

@@ -22,6 +22,7 @@
             android:layout_weight="1"
             android:digits="1234567890"
             android:hint="@string/enter_phone"
+            android:inputType="number"
             android:maxLength="11" />
 
         <TextView
@@ -50,6 +51,7 @@
         android:layout_marginTop="@dimen/margin_larger"
         android:digits="1234567890"
         android:hint="@string/enter_get_verify_code"
+        android:inputType="number"
         android:maxLength="6" />
 
     <View

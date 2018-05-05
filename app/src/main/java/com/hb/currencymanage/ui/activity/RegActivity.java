@@ -147,14 +147,15 @@ public class RegActivity extends BaseActivity
             }
             else
             {
-                RetrofitUtils.getInstance(this).api.reg("18705157954",
-                        "112",
-                        "1sda",
-                        "2332231",
-                        "2324",
-                        "efwef",
-                        "234342",
-                        "231423442")
+                RetrofitUtils.getInstance(this).api
+                        .reg(mEtPhone.getText().toString(),
+                                mEtPwd.getText().toString(),
+                                mEtName.getText().toString(),
+                                mEtCard.getText().toString(),
+                                mEtRecId.getText().toString(),
+                                mEtBankAddress.getText().toString(),
+                                mEtBank.getText().toString(),
+                                mEtBank.getText().toString())
                         .compose(RxSchedulers.<ResultData<String>> compose())
                         .subscribe(new BaseObserver<String>(this, true)
                         {
@@ -162,8 +163,7 @@ public class RegActivity extends BaseActivity
                             public void onHandlerSuccess(
                                     ResultData<String> resultData)
                             {
-                                
-                                if (resultData.code == 200)
+                                if (resultData.result.equals("200"))
                                 {
                                     changeActivity(MainActivity.class);
                                     finish();
@@ -202,9 +202,8 @@ public class RegActivity extends BaseActivity
                 Toast.makeText(this, "请输入确认密码", Toast.LENGTH_LONG).show();
                 return false;
             }
-            else if (!mEtPwd.getText()
-                    .toString()
-                    .equals(mEtPwdAgain.getText().toString()))
+            else if (!mEtPwd.getText().toString().equals(
+                    mEtPwdAgain.getText().toString()))
             {
                 Toast.makeText(this, "前后密码不一致,请重新输入", Toast.LENGTH_LONG).show();
                 return false;
@@ -222,11 +221,11 @@ public class RegActivity extends BaseActivity
                 Toast.makeText(this, "请输入您的身份证号码", Toast.LENGTH_LONG).show();
                 return false;
             }
-            else if (TextUtils.isEmpty(mEtRecId.getText().toString()))
-            {
-                Toast.makeText(this, "请输入推荐人ID", Toast.LENGTH_LONG).show();
-                return false;
-            }
+            // else if (TextUtils.isEmpty(mEtRecId.getText().toString()))
+            // {
+            // Toast.makeText(this, "请输入推荐人ID", Toast.LENGTH_LONG).show();
+            // return false;
+            // }
         }
         else if (mCurPos == 3)
         {

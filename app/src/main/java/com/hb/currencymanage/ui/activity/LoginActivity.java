@@ -9,10 +9,12 @@ import android.widget.TextView;
 
 import com.hb.currencymanage.MainActivity;
 import com.hb.currencymanage.R;
+import com.hb.currencymanage.bean.QuotesEntity;
 import com.hb.currencymanage.bean.ResultData;
 import com.hb.currencymanage.net.BaseObserver;
 import com.hb.currencymanage.net.RetrofitUtils;
 import com.hb.currencymanage.net.RxSchedulers;
+import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,18 +43,18 @@ public class LoginActivity extends BaseActivity
     @OnClick(R.id.tv_login)
     public void login()
     {
-        RetrofitUtils.getInstance(this).api.login("18705157954", "112")
+        RetrofitUtils.getInstance(this).api
+                .login(mEtPhone.getText().toString(),
+                        mEtPwd.getText().toString())
                 .compose(RxSchedulers.<ResultData<String>> compose())
                 .subscribe(new BaseObserver<String>(this, true)
                 {
                     @Override
                     public void onHandlerSuccess(ResultData<String> resultData)
                     {
-                        Log.d("----",
-                                "res = " + resultData.data + " , "
-                                        + resultData.msg + " , "
-                                        + resultData.result);
-                        if (resultData.code == 200)
+                        Logger.d("res = " + resultData.data + " , "
+                                + resultData.msg + " , " + resultData.result);
+                        if (resultData.result.equals("000"))
                         {
                             changeActivity(MainActivity.class);
                             finish();

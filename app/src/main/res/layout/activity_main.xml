@@ -13,11 +13,15 @@
         android:layout_height="match_parent"
         android:layout_weight="1" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_color" />
+
     <com.flyco.tablayout.CommonTabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        android:layout_gravity="bottom"
         android:background="#ffffff"
         tl:tl_iconHeight="23dp"
         tl:tl_iconWidth="23dp"

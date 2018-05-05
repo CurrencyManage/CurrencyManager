@@ -25,6 +25,12 @@ public abstract class BaseFragment extends Fragment
     
     private Unbinder mBinder;
     
+    protected boolean mIsVisible;
+    
+    private boolean mIsPrepared;
+    
+    private boolean mIsFirst = true;
+    
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -43,6 +49,40 @@ public abstract class BaseFragment extends Fragment
         context = getActivity();
     }
     
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState)
+    {
+        super.onActivityCreated(savedInstanceState);
+        mIsPrepared = true;
+        lazyLoad();
+    }
+    
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser)
+    {
+        super.setUserVisibleHint(isVisibleToUser);
+        mIsVisible = getUserVisibleHint();
+        if (getUserVisibleHint())
+        {
+            lazyLoad();
+        }
+    }
+    
+    protected void lazyLoad()
+    {
+        if (!mIsPrepared || !mIsVisible || !mIsFirst)
+        {
+            return;
+        }
+        requestData();
+        mIsFirst = false;
+    }
+    
+    protected void requestData()
+    {
+        
+    }
+    
     /**
      * 跳转界面
      */
@@ -51,21 +91,21 @@ public abstract class BaseFragment extends Fragment
         Intent intent = new Intent(context, clz);
         startActivity(intent);
     }
-
-
-    public void changeActivity(Class<?> clz,Bundle bundle)
+    
+    public void changeActivity(Class<?> clz, Bundle bundle)
     {
         Intent intent = new Intent(context, clz);
-        intent.putExtra("bundle",bundle);
+        intent.putExtra("bundle", bundle);
         startActivity(intent);
     }
-
+    
     @Override
-    public void onPause() {
+    public void onPause()
+    {
         super.onPause();
         RxSchedulers.clear();
     }
-
+    
     @Override
     public void onDestroyView()
     {
