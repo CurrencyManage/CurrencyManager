@@ -33,6 +33,7 @@ import com.hb.currencymanage.bean.AccountBean;
 import com.hb.currencymanage.bean.QuotesData;
 import com.hb.currencymanage.bean.QuotesEntity;
 import com.hb.currencymanage.bean.ResultData;
+import com.hb.currencymanage.db.AccountDB;
 import com.hb.currencymanage.mpchart.DataParse;
 import com.hb.currencymanage.mpchart.MinutesBean;
 import com.hb.currencymanage.mpchart.MyBottomMarkerView;
@@ -257,64 +258,132 @@ public class DealBusinessFragment extends BaseFragment
     @OnClick(R.id.layout_price_down)
     public void downPrice()
     {
-        float price = Float.parseFloat(mEtPrice.getText().toString());
-        price = price - mDownPricePer;
-        mEtPrice.setText(price > 0 ? price + "" : 0 + "");
+        if (mType == TYPE_BUY)
+        {
+            float price = Float.parseFloat(mEtPrice.getText().toString());
+            price = price - mDownPricePer;
+            mEtPrice.setText(price > 0 ? price + "" : 0 + "");
+        }
     }
     
     @OnClick(R.id.layout_price_up)
     public void upPrice()
     {
-        float price = Float.parseFloat(mEtPrice.getText().toString());
-        price = price + mUpPricePer;
-        mEtPrice.setText(price + "");
+        if (mType == TYPE_BUY)
+        {
+            float price = Float.parseFloat(mEtPrice.getText().toString());
+            price = price + mUpPricePer;
+            mEtPrice.setText(price + "");
+        }
     }
     
     @OnClick(R.id.layout_num_down)
     public void downNum()
     {
-        String priceStr = mEtPrice.getText().toString();
-        if (TextUtils.isEmpty(priceStr))
+        if (mType == TYPE_BUY)
         {
-            Toast.makeText(getContext(), "请先输入价格！", Toast.LENGTH_LONG).show();
-            return;
+            String priceStr = mEtPrice.getText().toString();
+            if (TextUtils.isEmpty(priceStr))
+            {
+                Toast.makeText(getContext(), "请先输入价格！", Toast.LENGTH_LONG)
+                        .show();
+                return;
+            }
+            int num = Integer.parseInt(mEtNum.getText().toString());
+            num = num - mDownNumPer;
+            mEtNum.setText(num > 0 ? num + "" : 0 + "");
         }
-        int num = Integer.parseInt(mEtNum.getText().toString());
-        num = num - mDownNumPer;
-        mEtNum.setText(num > 0 ? num + "" : 0 + "");
+        else
+        {
+            int num = Integer.parseInt(mEtNum.getText().toString());
+            num = num - mDownNumPer;
+            mEtNum.setText(num > 0 ? num + "" : 0 + "");
+        }
     }
     
     @OnClick(R.id.layout_num_up)
     public void upNum()
     {
-        String priceStr = mEtPrice.getText().toString();
-        if (TextUtils.isEmpty(priceStr))
+        if (mType == TYPE_BUY)
         {
-            Toast.makeText(getContext(), "请先输入价格！", Toast.LENGTH_LONG).show();
-            return;
+            String priceStr = mEtPrice.getText().toString();
+            if (TextUtils.isEmpty(priceStr))
+            {
+                Toast.makeText(getContext(), "请先输入价格！", Toast.LENGTH_LONG)
+                        .show();
+                return;
+            }
+            float price = Float.parseFloat(priceStr);
+            int max = (int) Math.floor(Float.parseFloat(mCash) / price);
+            int num = Integer.parseInt(mEtNum.getText().toString());
+            num = num + mUpNumPer;
+            mEtNum.setText(num > max ? max + "" : num + "");
         }
-        float price = Float.parseFloat(priceStr);
-        int max = (int) Math.floor(Float.parseFloat(mCash) / price);
-        int num = Integer.parseInt(mEtNum.getText().toString());
-        num = num + mUpNumPer;
-        mEtNum.setText(num > max ? max + "" : num + "");
+        else
+        {
+            String countStr = mEtNum.getText().toString();
+            if (TextUtils.isEmpty(countStr))
+            {
+                countStr = "0";
+            }
+            int count = Integer.parseInt(countStr);
+            if (count > Integer.parseInt(mOwnCurrencyCount))
+            {
+                // Toast.makeText(getContext(), "数量不可大于持有货币数量！",
+                // Toast.LENGTH_LONG)
+                // .show();
+                mEtNum.setText(mOwnCurrencyCount);
+            }
+        }
     }
     
     @OnTextChanged(R.id.et_price)
     public void priceChange()
     {
-        String priceStr = mEtPrice.getText().toString();
-        if (!TextUtils.isEmpty(priceStr))
+        if (mType == TYPE_BUY)
         {
-            float price = Float.parseFloat(priceStr);
-            int max = (int) Math.floor(Float.parseFloat(mCash) / price);
-            mTvBusinessNum.setText(max + "");
-            String curNumStr = mEtNum.getText().toString();
-            if (!TextUtils.isEmpty(curNumStr))
+            String priceStr = mEtPrice.getText().toString();
+            if (!TextUtils.isEmpty(priceStr))
             {
-                int curNum = Integer.parseInt(curNumStr);
-                mEtNum.setText(curNum > max ? max + "" : curNum + "");
+                float price = Float.parseFloat(priceStr);
+                int max = (int) Math.floor(Float.parseFloat(mCash) / price);
+                mTvBusinessNum.setText("可买：" + max);
+                String curNumStr = mEtNum.getText().toString();
+                if (!TextUtils.isEmpty(curNumStr))
+                {
+                    int curNum = Integer.parseInt(curNumStr);
+                    mEtNum.setText(curNum > max ? max + "" : curNum + "");
+                }
             }
+            else
+            {
+                mTvBusinessNum.setText("");
+            }
+        }
+    }
+    
+    @OnClick(R.id.tv_store)
+    public void store()
+    {
+        if (mType == TYPE_BUY)
+        {
+            String priceStr = mEtPrice.getText().toString();
+            if (!TextUtils.isEmpty(priceStr))
+            {
+                float price = Float.parseFloat(priceStr);
+                int max = (int) Math.floor(Float.parseFloat(mCash) / price);
+                mEtNum.setText(max + "");
+            }
+            else
+            {
+                
+                Toast.makeText(getContext(), "请先输入价格！", Toast.LENGTH_LONG)
+                        .show();
+            }
+        }
+        else
+        {
+            mEtNum.setText(mOwnCurrencyCount);
         }
     }
     
@@ -337,7 +406,11 @@ public class DealBusinessFragment extends BaseFragment
         }
         else if (mType == TYPE_ASSIGN)
         {
-            
+            assign(new AccountDB(getContext()).getUserId(),
+                    mEtAssignId.getText().toString(),
+                    mEtAssignPhone.getText().toString(),
+                    mEtAssignName.getText().toString(),
+                    mEtNum.getText().toString());
         }
     }
     
@@ -371,8 +444,7 @@ public class DealBusinessFragment extends BaseFragment
                     @Override
                     public void onHandlerSuccess(ResultData<String> resultData)
                     {
-                        Logger.d("getDisparity onHandlerSuccess"
-                                + resultData.data);
+                        Logger.d("assign onHandlerSuccess" + resultData.data);
                         if (resultData.code == 200)
                         {
                         }
@@ -383,27 +455,48 @@ public class DealBusinessFragment extends BaseFragment
     @OnTextChanged(R.id.et_num)
     public void countChange()
     {
-        String price = mEtPrice.getText().toString();
-        if (TextUtils.isEmpty(price))
+        if (mType == TYPE_BUY)
         {
-            Toast.makeText(getContext(), "请先输入价格！", Toast.LENGTH_LONG).show();
-            mEtNum.setText("");
+            String price = mEtPrice.getText().toString();
+            if (TextUtils.isEmpty(price))
+            {
+                Toast.makeText(getContext(), "请先输入价格！", Toast.LENGTH_LONG)
+                        .show();
+                mEtNum.setText("");
+                return;
+            }
+            else
+            {
+                int max = (int) Math.floor(
+                        Float.parseFloat(mCash) / Float.parseFloat(price));
+                String countStr = mEtNum.getText().toString();
+                if (TextUtils.isEmpty(countStr))
+                {
+                    countStr = "0";
+                }
+                int count = Integer.parseInt(countStr);
+                if (count > max)
+                {
+                    Toast.makeText(getContext(),
+                            "数量不可大于可买数量！",
+                            Toast.LENGTH_LONG).show();
+                    mEtNum.setText(max + "");
+                }
+            }
         }
         else
         {
-            int max = (int) Math
-                    .floor(Float.parseFloat(mCash) / Float.parseFloat(price));
             String countStr = mEtNum.getText().toString();
             if (TextUtils.isEmpty(countStr))
             {
                 countStr = "0";
             }
-            int count = Integer.parseInt(countStr);
-            if (count > max)
+            int count = (int) Math.floor(Double.valueOf(countStr));
+            if (count > (int) Math.floor(Double.valueOf(mOwnCurrencyCount)))
             {
-                Toast.makeText(getContext(), "数量不可大于可买数量！", Toast.LENGTH_LONG)
+                Toast.makeText(getContext(), "数量不可大于持有货币数量！", Toast.LENGTH_LONG)
                         .show();
-                mEtNum.setText(max + "");
+                mEtNum.setText(mOwnCurrencyCount);
                 return;
             }
         }
@@ -477,7 +570,9 @@ public class DealBusinessFragment extends BaseFragment
     
     private void getAccountInfo()
     {
-        RetrofitUtils.getInstance(getActivity()).api.getAccountInfo("1")
+        AccountDB db = new AccountDB(getContext());
+        RetrofitUtils.getInstance(getActivity()).api
+                .getAccountInfo(db.getUserId())
                 .compose(RxSchedulers.<ResultData<AccountBean>> compose())
                 .subscribe(new BaseObserver<AccountBean>(getActivity(), true)
                 {
@@ -489,14 +584,14 @@ public class DealBusinessFragment extends BaseFragment
                         {
                             mCode = resultData.data.getCode();
                             mCash = resultData.data.getCash();
+                            Logger.d("cash = " + mCash);
                             mOwnCurrencyCount = resultData.data.getCurrency();
                             mOwnCurrencyMoney = resultData.data
                                     .getCurrencyMoney();
-                            mTvBusinessNum.setText(mType == TYPE_BUY ? "可买:"
+                            mTvBusinessNum.setText(mType == TYPE_BUY ? "可买："
                                     : mType == TYPE_SALE
-                                            ? "可卖:" + mOwnCurrencyCount
-                                            : "持仓:" + mOwnCurrencyMoney);
-                            
+                                            ? "可卖：" + mOwnCurrencyCount
+                                            : "持仓：" + mOwnCurrencyMoney);
                             getTenInfo();
                         }
                     }
@@ -752,7 +847,7 @@ public class DealBusinessFragment extends BaseFragment
     private void initView()
     {
         mTvBusiness.setText(
-                mType == TYPE_BUY ? "买入" : mType == TYPE_SALE ? "卖出" : "转让");
+                mType == TYPE_BUY ? "买入：" : mType == TYPE_SALE ? "卖出：" : "转让：");
         mTvStore.setText(mType == TYPE_BUY ? "全仓" : "清仓");
         mRvBuy.setLayoutManager(new LinearLayoutManager(getContext())
         {

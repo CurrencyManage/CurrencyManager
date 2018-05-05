@@ -54,4 +54,6 @@ dependencies {
     compile 'jp.wasabeef:glide-transformations:2.0.2'
     implementation 'com.android.support:design:26.0.0'
     implementation project(':MPChartLib')
+    compile 'com.snappydb:snappydb-lib:0.5.2'
+    compile 'com.esotericsoftware.kryo:kryo:2.24.0'
 }

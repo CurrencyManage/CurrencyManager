@@ -9,8 +9,11 @@ import android.widget.TextView;
 
 import com.hb.currencymanage.MainActivity;
 import com.hb.currencymanage.R;
+import com.hb.currencymanage.bean.AccountBean;
 import com.hb.currencymanage.bean.QuotesEntity;
 import com.hb.currencymanage.bean.ResultData;
+import com.hb.currencymanage.bean.UserBean;
+import com.hb.currencymanage.db.AccountDB;
 import com.hb.currencymanage.net.BaseObserver;
 import com.hb.currencymanage.net.RetrofitUtils;
 import com.hb.currencymanage.net.RxSchedulers;
@@ -46,16 +49,18 @@ public class LoginActivity extends BaseActivity
         RetrofitUtils.getInstance(this).api
                 .login(mEtPhone.getText().toString(),
                         mEtPwd.getText().toString())
-                .compose(RxSchedulers.<ResultData<String>> compose())
-                .subscribe(new BaseObserver<String>(this, true)
+                .compose(RxSchedulers.<ResultData<UserBean>> compose())
+                .subscribe(new BaseObserver<UserBean>(this, true)
                 {
                     @Override
-                    public void onHandlerSuccess(ResultData<String> resultData)
+                    public void onHandlerSuccess(
+                            ResultData<UserBean> resultData)
                     {
                         Logger.d("res = " + resultData.data + " , "
                                 + resultData.msg + " , " + resultData.result);
                         if (resultData.result.equals("000"))
                         {
+                            new AccountDB(context).saveAccount(resultData.data);
                             changeActivity(MainActivity.class);
                             finish();
                         }

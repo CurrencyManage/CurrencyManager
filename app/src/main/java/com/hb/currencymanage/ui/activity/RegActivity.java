@@ -165,7 +165,7 @@ public class RegActivity extends BaseActivity
                             {
                                 if (resultData.result.equals("200"))
                                 {
-                                    changeActivity(MainActivity.class);
+                                    // changeActivity(MainActivity.class);
                                     finish();
                                 }
                             }
@@ -202,8 +202,9 @@ public class RegActivity extends BaseActivity
                 Toast.makeText(this, "请输入确认密码", Toast.LENGTH_LONG).show();
                 return false;
             }
-            else if (!mEtPwd.getText().toString().equals(
-                    mEtPwdAgain.getText().toString()))
+            else if (!mEtPwd.getText()
+                    .toString()
+                    .equals(mEtPwdAgain.getText().toString()))
             {
                 Toast.makeText(this, "前后密码不一致,请重新输入", Toast.LENGTH_LONG).show();
                 return false;
