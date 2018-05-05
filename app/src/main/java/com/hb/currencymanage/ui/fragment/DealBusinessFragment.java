@@ -201,6 +201,8 @@ public class DealBusinessFragment extends BaseFragment
     
     private String mCash;
     
+    private String mCode;
+    
     private String mOwnCurrencyMoney;
     
     private int mDownNumPer = 0;
@@ -316,6 +318,68 @@ public class DealBusinessFragment extends BaseFragment
         }
     }
     
+    @OnClick(R.id.tv_business)
+    public void deal()
+    {
+        if (mType == TYPE_BUY)
+        {
+            doDeal(mCode,
+                    "",
+                    mEtNum.getText().toString(),
+                    mEtPrice.getText().toString());
+        }
+        else if (mType == TYPE_SALE)
+        {
+            doDeal("",
+                    mCode,
+                    mEtNum.getText().toString(),
+                    mEtPrice.getText().toString());
+        }
+        else if (mType == TYPE_ASSIGN)
+        {
+            
+        }
+    }
+    
+    private void doDeal(String buyUserId, String sellUserId, String num,
+            String price)
+    {
+        RetrofitUtils.getInstance(getActivity()).api
+                .deal(buyUserId, sellUserId, num, price)
+                .compose(RxSchedulers.<ResultData<String>> compose())
+                .subscribe(new BaseObserver<String>(getActivity(), true)
+                {
+                    @Override
+                    public void onHandlerSuccess(ResultData<String> resultData)
+                    {
+                        Logger.d("doDeal onHandlerSuccess" + resultData.data);
+                        if (resultData.code == 200)
+                        {
+                        }
+                    }
+                });
+    }
+    
+    private void assign(String toUserId, String forUserCode,
+            String forUserPhone, String forUserName, String num)
+    {
+        RetrofitUtils.getInstance(getActivity()).api
+                .assign(toUserId, forUserCode, forUserPhone, forUserName, num)
+                .compose(RxSchedulers.<ResultData<String>> compose())
+                .subscribe(new BaseObserver<String>(getActivity(), true)
+                {
+                    @Override
+                    public void onHandlerSuccess(ResultData<String> resultData)
+                    {
+                        Logger.d("getDisparity onHandlerSuccess"
+                                + resultData.data);
+                        if (resultData.code == 200)
+                        {
+                        }
+                    }
+                });
+    }
+    
     @OnTextChanged(R.id.et_num)
     public void countChange()
     {
@@ -423,6 +487,7 @@ public class DealBusinessFragment extends BaseFragment
                     {
                         if (resultData.result.equals("200"))
                         {
+                            mCode = resultData.data.getCode();
                             mCash = resultData.data.getCash();
                             mOwnCurrencyCount = resultData.data.getCurrency();
                             mOwnCurrencyMoney = resultData.data

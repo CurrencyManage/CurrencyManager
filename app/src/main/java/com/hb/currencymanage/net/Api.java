@@ -52,4 +52,15 @@ public interface Api
     
     @POST("clientMain/getAssets")
     Observable<ResultData<AccountBean>> getAccountInfo(@Query("id") String id);
+    
+    @POST("clientMain/myCurrency")
+    Observable<ResultData<String>> deal(@Query("buyuserid") String buyUserId,
+            @Query("Selluserid") String sellUserId, @Query("num") String num,
+            @Query("price") String price);
+    
+    @POST("clientMain/myCurrency")
+    Observable<ResultData<String>> assign(@Query("toUserId") String toUserId,
+            @Query("forUserCode") String forUserCode,
+            @Query("forUserPhone") String forUserPhone,
+            @Query("forUserName") String forUserName, @Query("num") String num);
 }
