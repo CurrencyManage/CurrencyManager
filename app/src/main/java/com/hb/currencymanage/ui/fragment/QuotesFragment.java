@@ -158,7 +158,8 @@ public class QuotesFragment extends BaseFragment
         stringSparseArray = setXLabels();
         initChart();
         initData();
-        getOffLineData();
+        //getOffLineData();
+        getNetLineData();
         
         if (saleQuotesEntityList == null)
         {
@@ -548,6 +549,14 @@ public class QuotesFragment extends BaseFragment
         }
         mData.parseMinutes(object);
         setData(mData);
+    }
+
+    private void getNetLineData() {
+
+
+
+
+
     }
 
     private SparseArray<String> setXLabels() {

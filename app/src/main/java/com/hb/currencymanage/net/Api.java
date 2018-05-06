@@ -71,4 +71,7 @@ public interface Api
     
     @POST("clientMain/myCurrency")
     Observable<ResultData<CurrencyBean>> myCurrency(@Query("id") String id);
+
+    @GET("index/hqView")
+    Observable<ResultData<CurrencyBean>> hqView();
 }
