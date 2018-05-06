@@ -1,6 +1,7 @@
 package com.hb.currencymanage.net;
 
 import com.hb.currencymanage.bean.AccountBean;
+import com.hb.currencymanage.bean.CurrencyBean;
 import com.hb.currencymanage.bean.QuotesData;
 import com.hb.currencymanage.bean.QuotesEntity;
 import com.hb.currencymanage.bean.ResultData;
@@ -69,6 +70,6 @@ public interface Api
             @Query("forUserName") String forUserName, @Query("num") String num);
     
     @POST("clientMain/myCurrency")
-    Observable<ResultData<String>> myCurrency(@Query("id") String id);
+    Observable<ResultData<CurrencyBean>> myCurrency(@Query("id") String id);
     
 }
