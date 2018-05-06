@@ -16,6 +16,7 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.Utils;
+import com.hb.currencymanage.MainActivity;
 import com.hb.currencymanage.R;
 import com.hb.currencymanage.bean.QuotesData;
 import com.hb.currencymanage.bean.QuotesEntity;
@@ -301,9 +302,33 @@ public class QuotesFragment extends BaseFragment
     @OnClick(R.id.tv_buy)
     public void tvbuy()
     {
+
+        /*
         QutoesDialogFragment qutoesDialogFragment = new QutoesDialogFragment();
         qutoesDialogFragment.show(getFragmentManager(), "qutoesDialogFragment");
+        */
+
+        MainActivity activity= (MainActivity) getActivity();
+        activity.swTab();
+
         
+    }
+
+    @OnClick(R.id.tv_sell)
+    public void tv_sell()
+    {
+        MainActivity activity= (MainActivity) getActivity();
+        activity.swTab();
+
+    }
+
+
+    @OnClick(R.id.tv_undo)
+    public void tv_undo()
+    {
+        MainActivity activity= (MainActivity) getActivity();
+        activity.swTab();
+
     }
     
     /*

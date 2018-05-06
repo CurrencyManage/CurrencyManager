@@ -155,6 +155,7 @@
                             android:layout_width="0dp"
                             android:layout_height="30dp" />
                         <TextView
+                            android:id="@+id/tv_sell"
                             android:text="卖入"
                             android:gravity="center"
                             android:background="@drawable/tv_border_right"
@@ -162,6 +163,7 @@
                             android:layout_width="0dp"
                             android:layout_height="30dp" />
                         <TextView
+                            android:id="@+id/tv_undo"
                             android:text="撤单"
                             android:gravity="center"
                             android:layout_weight="1"

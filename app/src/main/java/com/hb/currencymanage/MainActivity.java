@@ -53,6 +53,10 @@ public class MainActivity extends BaseActivity
         ButterKnife.bind(this);
         initViewPager();
     }
+
+    public void swTab(){
+        mViewPager.setCurrentItem(2);
+    }
     
     private void initViewPager()
     {
@@ -118,6 +122,8 @@ public class MainActivity extends BaseActivity
         mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
         mViewPager.setCurrentItem(0);
     }
+
+
     
     private class MyPagerAdapter extends FragmentPagerAdapter
     {
@@ -144,4 +150,8 @@ public class MainActivity extends BaseActivity
             return mFragments.get(position);
         }
     }
+
+
+
+
 }
