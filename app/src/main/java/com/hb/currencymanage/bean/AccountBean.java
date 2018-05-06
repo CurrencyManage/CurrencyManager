@@ -22,6 +22,8 @@ public class AccountBean
     
     private String ljsy;
     
+    private String userid;
+    
     public String getCode()
     {
         return code;
@@ -100,5 +102,25 @@ public class AccountBean
     public void setLjsy(String ljsy)
     {
         this.ljsy = ljsy;
+    }
+    
+    public String getToMothSy()
+    {
+        return toMothSy;
+    }
+    
+    public void setToMothSy(String toMothSy)
+    {
+        this.toMothSy = toMothSy;
+    }
+    
+    public String getUserid()
+    {
+        return userid;
+    }
+    
+    public void setUserid(String userid)
+    {
+        this.userid = userid;
     }
 }
