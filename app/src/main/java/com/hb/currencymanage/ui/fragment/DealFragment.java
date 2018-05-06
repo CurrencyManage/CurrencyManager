@@ -59,6 +59,11 @@ public class DealFragment extends BaseFragment
         initTabLayout();
     }
     
+    public void setPage(int page)
+    {
+        mViewPager.setCurrentItem(page);
+    }
+    
     private void initTabLayout()
     {
         mTabSize = mLayoutTab.getChildCount();

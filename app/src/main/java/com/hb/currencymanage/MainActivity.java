@@ -45,6 +45,8 @@ public class MainActivity extends BaseActivity
             R.mipmap.icon_hq_selected, R.mipmap.icon_jy_selected,
             R.mipmap.icon_gr_selected };
     
+    private DealFragment mDealFragment;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -53,26 +55,20 @@ public class MainActivity extends BaseActivity
         ButterKnife.bind(this);
         initViewPager();
     }
-
-    public void swTab(){
+    
+    public void swTab(int page)
+    {
         mViewPager.setCurrentItem(2);
+        mDealFragment.setPage(page);
     }
     
     private void initViewPager()
     {
-        
-        /*
-         * int index = 0; for (String title : mTitles) { if (index == 0) {
-         * mFragments.add(MainFragment.getInstance()); index++; continue; }
-         * mFragments.add(SimpleCardFragment .getInstance("Switch ViewPager " +
-         * title)); }
-         */
-        
+        mDealFragment = DealFragment.getInstance();
         mFragments.add(MainFragment.getInstance());
         mFragments.add(QuotesFragment.getInstance());
-        mFragments.add(DealFragment.getInstance());
+        mFragments.add(mDealFragment);
         mFragments.add(PersonFragment.getInstance());
-        
         for (int i = 0; i < mTitles.length; i++)
         {
             mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i],
@@ -122,8 +118,6 @@ public class MainActivity extends BaseActivity
         mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
         mViewPager.setCurrentItem(0);
     }
-
-
     
     private class MyPagerAdapter extends FragmentPagerAdapter
     {
@@ -150,8 +144,5 @@ public class MainActivity extends BaseActivity
             return mFragments.get(position);
         }
     }
-
-
-
-
+    
 }

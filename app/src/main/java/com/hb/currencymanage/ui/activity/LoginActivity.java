@@ -41,6 +41,12 @@ public class LoginActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        UserBean userBean = new AccountDB(this).getAccount();
+        if (null != userBean)
+        {
+            mEtPhone.setText(userBean.getPhone());
+            mEtPwd.setText(userBean.getPss());
+        }
     }
     
     @OnClick(R.id.tv_login)

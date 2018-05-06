@@ -264,7 +264,7 @@ public class DealBusinessFragment extends BaseFragment
     @OnClick(R.id.layout_price_down)
     public void downPrice()
     {
-        if (mType == TYPE_BUY)
+        if (mType != TYPE_ASSIGN)
         {
             try
             {
@@ -282,7 +282,7 @@ public class DealBusinessFragment extends BaseFragment
     @OnClick(R.id.layout_price_up)
     public void upPrice()
     {
-        if (mType == TYPE_BUY)
+        if (mType != TYPE_ASSIGN)
         {
             try
             {
@@ -346,7 +346,17 @@ public class DealBusinessFragment extends BaseFragment
                 int max = (int) Math.floor(mCash / price);
                 int num = Integer.parseInt(mEtNum.getText().toString());
                 num = num + mUpNumPer;
-                mEtNum.setText(num > max ? max + "" : num + "");
+                if (num > max)
+                {
+                    Toast.makeText(getContext(),
+                            "数量不可大于持有可买货币数量！",
+                            Toast.LENGTH_LONG).show();
+                    mEtNum.setText(String.valueOf(max));
+                }
+                else
+                {
+                    mEtNum.setText(String.valueOf(num));
+                }
             }
             else
             {
@@ -356,12 +366,16 @@ public class DealBusinessFragment extends BaseFragment
                     countStr = "0";
                 }
                 int count = Integer.parseInt(countStr);
-                if (count > mOwnCurrencyCount)
+                if (count + mUpNumPer > mOwnCurrencyCount)
                 {
                     Toast.makeText(getContext(),
                             "数量不可大于持有货币数量！",
                             Toast.LENGTH_LONG).show();
                     mEtNum.setText(String.valueOf(mOwnCurrencyCount));
+                }
+                else
+                {
+                    mEtNum.setText(String.valueOf(count + mUpNumPer));
                 }
             }
         }
@@ -542,6 +556,12 @@ public class DealBusinessFragment extends BaseFragment
         mLayoutChart.setVisibility(View.VISIBLE);
     }
     
+    @OnClick(R.id.tv_refresh)
+    public void refresh()
+    {
+        requestData();
+    }
+    
     @Override
     protected void requestData()
     {
@@ -560,8 +580,8 @@ public class DealBusinessFragment extends BaseFragment
         if (isBuy)
         {
             RetrofitUtils.getInstance(getActivity()).api
-                    // .buy(userId, num, price)
-                    .buy("1", "1", "22")
+                     .buy(userId, num, price)
+//                    .buy("1", "1", "22")
                     .compose(RxSchedulers.<ResultData<String>> compose())
                     .subscribe(new BaseObserver<String>(getActivity(), true)
                     {
@@ -569,15 +589,17 @@ public class DealBusinessFragment extends BaseFragment
                         public void onHandlerSuccess(
                                 ResultData<String> resultData)
                         {
-                            Logger.d("doDeal onHandlerSuccess"
-                                    + resultData.data);
+                            Logger.d("buy onHandlerSuccess  "
+                                    + resultData.result + "  , "
+                                    + resultData.result.equals("000")
+                                    + "  ,  msg = " + resultData.message);
                             if (resultData.result.equals("000"))
                             {
                                 if (!TextUtils.isEmpty(resultData.message))
                                 {
                                     Toast.makeText(getContext(),
                                             resultData.message,
-                                            Toast.LENGTH_LONG);
+                                            Toast.LENGTH_LONG).show();
                                 }
                             }
                             else
@@ -586,7 +608,7 @@ public class DealBusinessFragment extends BaseFragment
                                 {
                                     Toast.makeText(getContext(),
                                             resultData.message,
-                                            Toast.LENGTH_LONG);
+                                            Toast.LENGTH_LONG).show();
                                 }
                             }
                         }
@@ -612,7 +634,7 @@ public class DealBusinessFragment extends BaseFragment
                                 {
                                     Toast.makeText(getContext(),
                                             resultData.message,
-                                            Toast.LENGTH_LONG);
+                                            Toast.LENGTH_LONG).show();
                                 }
                             }
                             else
@@ -621,7 +643,7 @@ public class DealBusinessFragment extends BaseFragment
                                 {
                                     Toast.makeText(getContext(),
                                             resultData.message,
-                                            Toast.LENGTH_LONG);
+                                            Toast.LENGTH_LONG).show();
                                 }
                             }
                         }
@@ -648,7 +670,7 @@ public class DealBusinessFragment extends BaseFragment
                             {
                                 Toast.makeText(getContext(),
                                         resultData.message,
-                                        Toast.LENGTH_LONG);
+                                        Toast.LENGTH_LONG).show();
                             }
                         }
                         else
@@ -657,7 +679,7 @@ public class DealBusinessFragment extends BaseFragment
                             {
                                 Toast.makeText(getContext(),
                                         resultData.message,
-                                        Toast.LENGTH_LONG);
+                                        Toast.LENGTH_LONG).show();
                             }
                         }
                     }

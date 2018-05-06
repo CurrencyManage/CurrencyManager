@@ -68,31 +68,37 @@ import butterknife.OnClick;
 
 public class QuotesFragment extends BaseFragment
 {
+    public static final int SWITCH_BUY = 0;
+
+    public static final int SWITCH_SALE = 1;
+
+    public static final int SWITCH_WITHDRAW = 2;
+
     @BindView(R.id.saleRecycleView)
     RecyclerView saleRecycleView;
 
     @BindView(R.id.buyRecycleView)
     RecyclerView buyRecycleView;
 
-    
+
     @BindView(R.id.tv_currentPrice)
     TextView tv_currentPrice;
-    
+
     @BindView(R.id.tv_Disparity)
     TextView tv_Disparity;
-    
+
     @BindView(R.id.tv_disparityB)
     TextView tv_disparityB;
-    
+
     @BindView(R.id.tv_currentMix)
     TextView tv_currentMix;
-    
+
     @BindView(R.id.tv_currentMin)
     TextView tv_currentMin;
-    
+
     @BindView(R.id.tv_count)
     TextView tv_count;
-    
+
     @BindView(R.id.tv_countPrice)
     TextView tv_countPrice;
 
@@ -119,10 +125,10 @@ public class QuotesFragment extends BaseFragment
     private DataParse mData;
     Integer sum = 0;
     List<Integer> listA, listB;
-    
+
 
     private List<QuotesEntity> saleQuotesEntityList;
-    
+
     private CommonAdapter saleAdapter;
 
     private List<QuotesEntity> buyQuotesEntityList;
@@ -132,25 +138,25 @@ public class QuotesFragment extends BaseFragment
     private int sellTotalNum;
 
     private int buyTotalNum;
-    
+
     public static QuotesFragment getInstance()
     {
         QuotesFragment sf = new QuotesFragment();
         return sf;
     }
-    
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
     }
-    
+
     @Override
     public int getLayoutResId()
     {
         return R.layout.fragment_quotes;
     }
-    
+
     @Override
     protected void init()
     {
@@ -161,12 +167,12 @@ public class QuotesFragment extends BaseFragment
         initData();
         //getOffLineData();
         getNetLineData();
-        
+
         if (saleQuotesEntityList == null)
         {
             saleQuotesEntityList = new ArrayList<>();
         }
-        
+
         saleAdapter = new CommonAdapter<QuotesEntity>(getActivity(),
                 R.layout.quotes_item, saleQuotesEntityList)
         {
@@ -184,10 +190,10 @@ public class QuotesFragment extends BaseFragment
 
                 //progress_sale
 
-                holder.setProgress(R.id.progress_sale,100*entity.sellNum/entity.sellCount);
+                holder.setProgress(R.id.progress_sale,entity.sellCount==0?0:100*entity.sellNum/entity.sellCount);
             }
         };
-        
+
         saleRecycleView.setLayoutManager(new LinearLayoutManager(getActivity())
         {
             @Override
@@ -216,7 +222,7 @@ public class QuotesFragment extends BaseFragment
                 holder.setText(R.id.tv_No, "买" + (position + 1));
                 holder.setText(R.id.tv_Price,
                         buyQuotesEntityList.get(position).buyPrice);
-                holder.setProgress(R.id.progress_sale,100*entity.buyNum/entity.countNum);
+                holder.setProgress(R.id.progress_sale,entity.countNum==0?0:100*entity.buyNum/entity.countNum);
             }
         };
 
@@ -229,13 +235,13 @@ public class QuotesFragment extends BaseFragment
             }
         });
         buyRecycleView.setAdapter(buyAdapter);
-        
+
         initNetWork();
     }
-    
+
     private void initNetWork()
     {
-        
+
         RetrofitUtils.getInstance(getActivity()).api.getDisparity()
                 .compose(RxSchedulers.<ResultData<QuotesEntity>> compose())
                 .subscribe(new BaseObserver<QuotesEntity>(getActivity(), true)
@@ -244,7 +250,7 @@ public class QuotesFragment extends BaseFragment
                     public void onHandlerSuccess(
                             ResultData<QuotesEntity> resultData)
                     {
-                        
+
                         if (resultData.code == 200)
                         {
                             tv_count.setText(resultData.data.count);
@@ -255,11 +261,11 @@ public class QuotesFragment extends BaseFragment
                                     .setText(resultData.data.currentPrice);
                             tv_Disparity.setText(resultData.data.Disparity);
                             tv_disparityB.setText(resultData.data.disparityB);
-                            
+
                         }
                     }
                 });
-        
+
         RetrofitUtils.getInstance(getActivity()).api.transaction()
                 .compose(RxSchedulers.<ResultData<QuotesData>> compose())
                 .subscribe(new BaseObserver<QuotesData>(getActivity(), false)
@@ -294,13 +300,13 @@ public class QuotesFragment extends BaseFragment
                                     buyAdapter.notifyDataSetChanged();
                                 }
                             });
-                            
+
                         }
                     }
                 });
-        
+
     }
-    
+
     @OnClick(R.id.tv_buy)
     public void tvbuy()
     {
@@ -311,17 +317,14 @@ public class QuotesFragment extends BaseFragment
         */
 
         MainActivity activity= (MainActivity) getActivity();
-        activity.swTab();
-
-        
+        activity.swTab(SWITCH_BUY);
     }
 
     @OnClick(R.id.tv_sell)
     public void tv_sell()
     {
         MainActivity activity= (MainActivity) getActivity();
-        activity.swTab();
-
+        activity.swTab(SWITCH_SALE);
     }
 
 
@@ -329,19 +332,18 @@ public class QuotesFragment extends BaseFragment
     public void tv_undo()
     {
         MainActivity activity= (MainActivity) getActivity();
-        activity.swTab();
-
+        activity.swTab(SWITCH_WITHDRAW);
     }
-    
+
     /*
      * @OnClick(R.id.one) public void one() {
-     * 
+     *
      * String[] x = { "11", "22", "33", "44", "55" };
      * MyXAxisRenderer.setData(x); mLineChart.invalidate();
-     * 
+     *
      * }
      */
-    
+
     // 设置chart基本属性
     private void initChart()
     {
@@ -360,9 +362,9 @@ public class QuotesFragment extends BaseFragment
             }
         });
 
-        
+
     }
-    
+
     // 设置数据
     private void initData()
     {
@@ -424,7 +426,7 @@ public class QuotesFragment extends BaseFragment
 
 
 
-        
+
     }
 
 
