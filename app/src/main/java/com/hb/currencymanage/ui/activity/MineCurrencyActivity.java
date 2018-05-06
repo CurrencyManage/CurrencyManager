@@ -62,6 +62,7 @@ public class MineCurrencyActivity extends BaseActivity
     
     private void getData()
     {
+
         RetrofitUtils.getInstance(this).api
                 .myCurrency(new AccountDB(this).getUserId())
                 .compose(RxSchedulers.<ResultData<CurrencyBean>> compose())

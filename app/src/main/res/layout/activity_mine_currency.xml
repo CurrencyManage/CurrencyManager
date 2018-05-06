@@ -128,7 +128,6 @@
 
     </LinearLayout>
 
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_marginLeft="@dimen/margin_larger"
