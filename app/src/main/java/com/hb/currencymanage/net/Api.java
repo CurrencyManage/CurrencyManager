@@ -55,9 +55,12 @@ public interface Api
     Observable<ResultData<AccountBean>> getAccountInfo(@Query("id") String id);
     
     @POST("clientMain/transaction")
-    Observable<ResultData<String>> deal(@Query("buyuserid") String buyUserId,
-            @Query("Selluserid") String sellUserId, @Query("num") String num,
-            @Query("price") String price);
+    Observable<ResultData<String>> sale(@Query("selluserid") String sellUserId,
+            @Query("num") String num, @Query("price") String price);
+    
+    @POST("clientMain/transaction")
+    Observable<ResultData<String>> buy(@Query("buyuserid") String buyUserId,
+            @Query("num") String num, @Query("price") String price);
     
     @POST("clientMain/transferThePossessionOf")
     Observable<ResultData<String>> assign(@Query("toUserId") String toUserId,

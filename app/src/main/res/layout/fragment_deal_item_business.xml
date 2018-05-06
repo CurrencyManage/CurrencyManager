@@ -88,6 +88,7 @@
             android:background="@color/divider_color" />
 
         <LinearLayout
+            android:id="@+id/layout_enter_num"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_65">
 
@@ -165,7 +166,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -184,12 +185,13 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:gravity="center"
-                    android:hint="请输入转让用户ID"
+                    android:hint="请输入转让用户信息"
                     android:textColor="@color/text_color_hint"
                     android:textColorHint="@color/text_color_hint"
                     android:textSize="@dimen/text_size_16" />
 
                 <ImageView
+                    android:id="@+id/iv_arrow"
                     android:layout_width="@dimen/dimen_70"
                     android:layout_height="match_parent"
                     android:scaleType="center"
@@ -201,74 +203,85 @@
                 android:layout_height="1px"
                 android:background="@color/divider_color" />
 
-            <EditText
-                android:id="@+id/et_assign_phone"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_65"
-                android:background="@null"
-                android:gravity="center"
-                android:hint="请输入转让用户手机号码"
-                android:textColor="@color/text_color_hint"
-                android:textColorHint="@color/text_color_hint"
-                android:textSize="@dimen/text_size_16" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/divider_color" />
-
-            <EditText
-                android:id="@+id/et_assign_name"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_65"
-                android:background="@null"
-                android:gravity="center"
-                android:hint="请输入转让用户姓名"
-                android:textColor="@color/text_color_hint"
-                android:textColorHint="@color/text_color_hint"
-                android:textSize="@dimen/text_size_16" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/divider_color" />
-
-            <RelativeLayout
+            <LinearLayout
+                android:id="@+id/layout_assign_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <EditText
-                    android:id="@+id/et_verify_code"
+                    android:id="@+id/et_assign_phone"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_65"
-                    android:layout_alignParentTop="true"
                     android:background="@null"
                     android:gravity="center"
-                    android:hint="请输入验证码"
+                    android:hint="请输入转让用户手机号码"
+                    android:inputType="number"
+                    android:maxLength="11"
                     android:textColor="@color/text_color_hint"
                     android:textColorHint="@color/text_color_hint"
                     android:textSize="@dimen/text_size_16" />
 
-                <TextView
-                    android:id="@+id/tv_verify_code"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dimen_40"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/margin_little"
-                    android:background="@drawable/tv_border_radius_blue"
-                    android:gravity="center"
-                    android:text="@string/get_verify_code"
-                    android:textColor="@color/tab_blue_bg_color"
-                    android:textSize="@dimen/text_size_16" />
-            </RelativeLayout>
-        </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/divider_color" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="@color/divider_color" />
+                <EditText
+                    android:id="@+id/et_assign_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_65"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:hint="请输入转让用户姓名"
+                    android:textColor="@color/text_color_hint"
+                    android:textColorHint="@color/text_color_hint"
+                    android:textSize="@dimen/text_size_16" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/divider_color" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/et_verify_code"
+                        android:layout_width="150dp"
+                        android:layout_height="@dimen/dimen_65"
+                        android:layout_alignParentTop="true"
+                        android:background="@null"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:hint="请输入验证码"
+                        android:inputType="number"
+                        android:maxLength="6"
+                        android:textColor="@color/text_color_hint"
+                        android:textColorHint="@color/text_color_hint"
+                        android:textSize="@dimen/text_size_16" />
+
+                    <TextView
+                        android:id="@+id/tv_verify_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dimen_40"
+                        android:layout_gravity="right|center_vertical"
+                        android:layout_marginRight="@dimen/margin_little"
+                        android:background="@drawable/tv_border_radius_blue"
+                        android:gravity="center"
+                        android:text="@string/get_verify_code"
+                        android:textColor="@color/tab_blue_bg_color"
+                        android:textSize="@dimen/text_size_16" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/divider_color" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

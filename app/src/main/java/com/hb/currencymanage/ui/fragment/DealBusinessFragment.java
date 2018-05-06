@@ -1,5 +1,6 @@
 package com.hb.currencymanage.ui.fragment;
 
+import android.animation.ObjectAnimator;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -103,6 +104,9 @@ public class DealBusinessFragment extends BaseFragment
     @BindView(R.id.et_assign_name)
     EditText mEtAssignName;
     
+    @BindView(R.id.layout_enter_num)
+    LinearLayout mLayoutEnterNum;
+    
     @BindView(R.id.layout_assign)
     LinearLayout mLayoutAssign;
     
@@ -129,9 +133,6 @@ public class DealBusinessFragment extends BaseFragment
     
     @BindView(R.id.buyRecycleView)
     RecyclerView mRvBuy;
-    
-    @BindView(R.id.et_verify_code)
-    EditText etVerifyCode;
     
     @BindView(R.id.layout_ten_info)
     LinearLayout mLayoutTenInfo;
@@ -172,6 +173,9 @@ public class DealBusinessFragment extends BaseFragment
     @BindView(R.id.tv_verify_code)
     TextView mTvVerifyCode;
     
+    @BindView(R.id.layout_assign_info)
+    LinearLayout mLayoutAssignInfo;
+    
     Unbinder unbinder;
     
     private MyXAxis xAxisLine;
@@ -198,21 +202,23 @@ public class DealBusinessFragment extends BaseFragment
     
     private int mType = 0;
     
-    private String mOwnCurrencyCount;
+    private int mOwnCurrencyCount;
     
-    private String mCash;
+    private double mCash = 0.0;
     
-    private String mCode;
+    private String mUserId;
     
-    private String mOwnCurrencyMoney;
+    private double mOwnCurrencyMoney = 0.0;
     
     private int mDownNumPer = 0;
     
     private int mUpNumPer = 0;
     
-    private float mDownPricePer = 0f;
+    private double mDownPricePer = 0f;
     
-    private float mUpPricePer = 0f;
+    private double mUpPricePer = 0f;
+    
+    private boolean mIsOpen = false;
     
     public static DealBusinessFragment getInstance(int type)
     {
@@ -238,10 +244,10 @@ public class DealBusinessFragment extends BaseFragment
     
     private void initVariable()
     {
-        mDownNumPer = Integer.parseInt(mTvNumDownPer.getText().toString());
-        mUpNumPer = Integer.parseInt(mTvNumUpPer.getText().toString());
-        mDownPricePer = Float.parseFloat(mTvPriceDownPer.getText().toString());
-        mUpPricePer = Float.parseFloat(mTvPriceUpPer.getText().toString());
+        mDownNumPer = Integer.valueOf(mTvNumDownPer.getText().toString());
+        mUpNumPer = Integer.valueOf(mTvNumUpPer.getText().toString());
+        mDownPricePer = Double.valueOf(mTvPriceDownPer.getText().toString());
+        mUpPricePer = Double.valueOf(mTvPriceUpPer.getText().toString());
     }
     
     @OnClick(R.id.tv_ten_info)
@@ -260,9 +266,16 @@ public class DealBusinessFragment extends BaseFragment
     {
         if (mType == TYPE_BUY)
         {
-            float price = Float.parseFloat(mEtPrice.getText().toString());
-            price = price - mDownPricePer;
-            mEtPrice.setText(price > 0 ? price + "" : 0 + "");
+            try
+            {
+                double price = Double.valueOf(mEtPrice.getText().toString());
+                price = price - mDownPricePer;
+                mEtPrice.setText(price > 0 ? price + "" : 0 + "");
+            }
+            catch (NumberFormatException e)
+            {
+                mEtPrice.setText("");
+            }
         }
     }
     
@@ -271,69 +284,90 @@ public class DealBusinessFragment extends BaseFragment
     {
         if (mType == TYPE_BUY)
         {
-            float price = Float.parseFloat(mEtPrice.getText().toString());
-            price = price + mUpPricePer;
-            mEtPrice.setText(price + "");
+            try
+            {
+                double price = Double.valueOf(mEtPrice.getText().toString());
+                price = price + mUpPricePer;
+                mEtPrice.setText(price + "");
+            }
+            catch (NumberFormatException e)
+            {
+                mEtPrice.setText("");
+            }
         }
     }
     
     @OnClick(R.id.layout_num_down)
     public void downNum()
     {
-        if (mType == TYPE_BUY)
+        try
         {
-            String priceStr = mEtPrice.getText().toString();
-            if (TextUtils.isEmpty(priceStr))
+            if (mType == TYPE_BUY)
             {
-                Toast.makeText(getContext(), "请先输入价格！", Toast.LENGTH_LONG)
-                        .show();
-                return;
+                String priceStr = mEtPrice.getText().toString();
+                if (TextUtils.isEmpty(priceStr))
+                {
+                    Toast.makeText(getContext(), "请输入价格！", Toast.LENGTH_LONG)
+                            .show();
+                    return;
+                }
+                int num = Integer.parseInt(mEtNum.getText().toString());
+                num = num - mDownNumPer;
+                mEtNum.setText(num > 0 ? num + "" : 0 + "");
             }
-            int num = Integer.parseInt(mEtNum.getText().toString());
-            num = num - mDownNumPer;
-            mEtNum.setText(num > 0 ? num + "" : 0 + "");
+            else
+            {
+                int num = Integer.parseInt(mEtNum.getText().toString());
+                num = num - mDownNumPer;
+                mEtNum.setText(num > 0 ? num + "" : 0 + "");
+            }
         }
-        else
+        catch (NumberFormatException e)
         {
-            int num = Integer.parseInt(mEtNum.getText().toString());
-            num = num - mDownNumPer;
-            mEtNum.setText(num > 0 ? num + "" : 0 + "");
+            mEtNum.setText("");
         }
     }
     
     @OnClick(R.id.layout_num_up)
     public void upNum()
     {
-        if (mType == TYPE_BUY)
+        try
         {
-            String priceStr = mEtPrice.getText().toString();
-            if (TextUtils.isEmpty(priceStr))
+            if (mType == TYPE_BUY)
             {
-                Toast.makeText(getContext(), "请先输入价格！", Toast.LENGTH_LONG)
-                        .show();
-                return;
+                String priceStr = mEtPrice.getText().toString();
+                if (TextUtils.isEmpty(priceStr))
+                {
+                    Toast.makeText(getContext(), "请输入价格！", Toast.LENGTH_LONG)
+                            .show();
+                    return;
+                }
+                double price = Double.valueOf(priceStr);
+                int max = (int) Math.floor(mCash / price);
+                int num = Integer.parseInt(mEtNum.getText().toString());
+                num = num + mUpNumPer;
+                mEtNum.setText(num > max ? max + "" : num + "");
             }
-            float price = Float.parseFloat(priceStr);
-            int max = (int) Math.floor(Float.parseFloat(mCash) / price);
-            int num = Integer.parseInt(mEtNum.getText().toString());
-            num = num + mUpNumPer;
-            mEtNum.setText(num > max ? max + "" : num + "");
+            else
+            {
+                String countStr = mEtNum.getText().toString();
+                if (TextUtils.isEmpty(countStr))
+                {
+                    countStr = "0";
+                }
+                int count = Integer.parseInt(countStr);
+                if (count > mOwnCurrencyCount)
+                {
+                    Toast.makeText(getContext(),
+                            "数量不可大于持有货币数量！",
+                            Toast.LENGTH_LONG).show();
+                    mEtNum.setText(String.valueOf(mOwnCurrencyCount));
+                }
+            }
         }
-        else
+        catch (NumberFormatException e)
         {
-            String countStr = mEtNum.getText().toString();
-            if (TextUtils.isEmpty(countStr))
-            {
-                countStr = "0";
-            }
-            int count = Integer.parseInt(countStr);
-            if (count > Integer.parseInt(mOwnCurrencyCount))
-            {
-                // Toast.makeText(getContext(), "数量不可大于持有货币数量！",
-                // Toast.LENGTH_LONG)
-                // .show();
-                mEtNum.setText(mOwnCurrencyCount);
-            }
+            mEtNum.setText("");
         }
     }
     
@@ -345,19 +379,27 @@ public class DealBusinessFragment extends BaseFragment
             String priceStr = mEtPrice.getText().toString();
             if (!TextUtils.isEmpty(priceStr))
             {
-                float price = Float.parseFloat(priceStr);
-                int max = (int) Math.floor(Float.parseFloat(mCash) / price);
-                mTvBusinessNum.setText("可买：" + max);
-                String curNumStr = mEtNum.getText().toString();
-                if (!TextUtils.isEmpty(curNumStr))
+                try
                 {
-                    int curNum = Integer.parseInt(curNumStr);
-                    mEtNum.setText(curNum > max ? max + "" : curNum + "");
+                    double price = Double.valueOf(priceStr);
+                    int max = (int) Math.floor(mCash / price);
+                    mTvBusinessNum.setText("可买：" + max);
+                    String curNumStr = mEtNum.getText().toString();
+                    if (!TextUtils.isEmpty(curNumStr))
+                    {
+                        int curNum = Integer.parseInt(curNumStr);
+                        mEtNum.setText(curNum > max ? max + "" : curNum + "");
+                    }
+                }
+                catch (NumberFormatException e)
+                {
+                    mEtNum.setText("");
+                    mTvBusinessNum.setText("可买：");
                 }
             }
             else
             {
-                mTvBusinessNum.setText("");
+                mTvBusinessNum.setText("可买：");
             }
         }
     }
@@ -370,21 +412,27 @@ public class DealBusinessFragment extends BaseFragment
             String priceStr = mEtPrice.getText().toString();
             if (!TextUtils.isEmpty(priceStr))
             {
-                float price = Float.parseFloat(priceStr);
-                int max = (int) Math.floor(Float.parseFloat(mCash) / price);
+                double price = Double.valueOf(priceStr);
+                int max = (int) Math.floor(mCash / price);
                 mEtNum.setText(max + "");
             }
             else
             {
                 
-                Toast.makeText(getContext(), "请先输入价格！", Toast.LENGTH_LONG)
+                Toast.makeText(getContext(), "请输入价格！", Toast.LENGTH_LONG)
                         .show();
             }
         }
         else
         {
-            mEtNum.setText(mOwnCurrencyCount);
+            mEtNum.setText(String.valueOf(mOwnCurrencyCount));
         }
+    }
+    
+    @OnClick(R.id.tv_verify_code)
+    public void getVerifyCode()
+    {
+        Logger.d("getVerifyCode");
     }
     
     @OnClick(R.id.tv_business)
@@ -392,17 +440,17 @@ public class DealBusinessFragment extends BaseFragment
     {
         if (mType == TYPE_BUY)
         {
-            doDeal(mCode,
-                    "",
+            doDeal(mUserId,
                     mEtNum.getText().toString(),
-                    mEtPrice.getText().toString());
+                    mEtPrice.getText().toString(),
+                    true);
         }
         else if (mType == TYPE_SALE)
         {
-            doDeal("",
-                    mCode,
+            doDeal(mUserId,
                     mEtNum.getText().toString(),
-                    mEtPrice.getText().toString());
+                    mEtPrice.getText().toString(),
+                    false);
         }
         else if (mType == TYPE_ASSIGN)
         {
@@ -414,92 +462,74 @@ public class DealBusinessFragment extends BaseFragment
         }
     }
     
-    private void doDeal(String buyUserId, String sellUserId, String num,
-            String price)
-    {
-        RetrofitUtils.getInstance(getActivity()).api
-                .deal(buyUserId, sellUserId, num, price)
-                .compose(RxSchedulers.<ResultData<String>> compose())
-                .subscribe(new BaseObserver<String>(getActivity(), true)
-                {
-                    @Override
-                    public void onHandlerSuccess(ResultData<String> resultData)
-                    {
-                        Logger.d("doDeal onHandlerSuccess" + resultData.data);
-                        if (resultData.code == 200)
-                        {
-                        }
-                    }
-                });
-    }
-    
-    private void assign(String toUserId, String forUserCode,
-            String forUserPhone, String forUserName, String num)
-    {
-        RetrofitUtils.getInstance(getActivity()).api
-                .assign(toUserId, forUserCode, forUserPhone, forUserName, num)
-                .compose(RxSchedulers.<ResultData<String>> compose())
-                .subscribe(new BaseObserver<String>(getActivity(), true)
-                {
-                    @Override
-                    public void onHandlerSuccess(ResultData<String> resultData)
-                    {
-                        Logger.d("assign onHandlerSuccess" + resultData.data);
-                        if (resultData.code == 200)
-                        {
-                        }
-                    }
-                });
-    }
-    
     @OnTextChanged(R.id.et_num)
     public void countChange()
     {
-        if (mType == TYPE_BUY)
+        try
         {
-            String price = mEtPrice.getText().toString();
-            if (TextUtils.isEmpty(price))
+            if (mType == TYPE_BUY)
             {
-                Toast.makeText(getContext(), "请先输入价格！", Toast.LENGTH_LONG)
-                        .show();
-                mEtNum.setText("");
-                return;
+                String price = mEtPrice.getText().toString();
+                if (TextUtils.isEmpty(price))
+                {
+                    Toast.makeText(getContext(), "请输入价格！", Toast.LENGTH_LONG)
+                            .show();
+                }
+                else
+                {
+                    int max = (int) Math.floor(mCash / Double.valueOf(price));
+                    String countStr = mEtNum.getText().toString();
+                    if (TextUtils.isEmpty(countStr))
+                    {
+                        countStr = "0";
+                    }
+                    int count = Integer.parseInt(countStr);
+                    if (count > max)
+                    {
+                        Toast.makeText(getContext(),
+                                "数量不可大于可买数量！",
+                                Toast.LENGTH_LONG).show();
+                        mEtNum.setText(String.valueOf(max));
+                    }
+                }
             }
             else
             {
-                int max = (int) Math.floor(
-                        Float.parseFloat(mCash) / Float.parseFloat(price));
                 String countStr = mEtNum.getText().toString();
                 if (TextUtils.isEmpty(countStr))
                 {
                     countStr = "0";
                 }
-                int count = Integer.parseInt(countStr);
-                if (count > max)
+                int count = (int) Math.floor(Double.valueOf(countStr));
+                if (count > (int) Math.floor(Double.valueOf(mOwnCurrencyCount)))
                 {
                     Toast.makeText(getContext(),
-                            "数量不可大于可买数量！",
+                            "数量不可大于持有货币数量！",
                             Toast.LENGTH_LONG).show();
-                    mEtNum.setText(max + "");
+                    mEtNum.setText(String.valueOf(mOwnCurrencyCount));
                 }
             }
         }
-        else
+        catch (NumberFormatException e)
         {
-            String countStr = mEtNum.getText().toString();
-            if (TextUtils.isEmpty(countStr))
-            {
-                countStr = "0";
-            }
-            int count = (int) Math.floor(Double.valueOf(countStr));
-            if (count > (int) Math.floor(Double.valueOf(mOwnCurrencyCount)))
-            {
-                Toast.makeText(getContext(), "数量不可大于持有货币数量！", Toast.LENGTH_LONG)
-                        .show();
-                mEtNum.setText(mOwnCurrencyCount);
-                return;
-            }
+            mEtNum.setText("");
         }
+    }
+    
+    @OnClick(R.id.iv_arrow)
+    public void showOrHideAssignInfo(View view)
+    {
+        ObjectAnimator animator = ObjectAnimator
+                .ofFloat(view,
+                        "rotation",
+                        mIsOpen ? 180 : 0,
+                        mIsOpen ? 360 : 180)
+                .setDuration(300);
+        animator.start();
+        mIsOpen = !mIsOpen;
+        mLayoutAssignInfo.setVisibility(mIsOpen ? View.VISIBLE : View.GONE);
+        mEtAssignId.setEnabled(mIsOpen);
+        mEtAssignId.setHint(mIsOpen ? "请输入转让用户ID" : "请输入转让用户信息");
     }
     
     @OnClick(R.id.tv_minutes_info)
@@ -522,8 +552,116 @@ public class DealBusinessFragment extends BaseFragment
             {
                 getAccountInfo();
             }
-        }, 600);
-        // getDisparity();
+        }, 500);
+    }
+    
+    private void doDeal(String userId, String num, String price, boolean isBuy)
+    {
+        if (isBuy)
+        {
+            RetrofitUtils.getInstance(getActivity()).api
+                    // .buy(userId, num, price)
+                    .buy("1", "1", "22")
+                    .compose(RxSchedulers.<ResultData<String>> compose())
+                    .subscribe(new BaseObserver<String>(getActivity(), true)
+                    {
+                        @Override
+                        public void onHandlerSuccess(
+                                ResultData<String> resultData)
+                        {
+                            Logger.d("doDeal onHandlerSuccess"
+                                    + resultData.data);
+                            if (resultData.result.equals("000"))
+                            {
+                                if (!TextUtils.isEmpty(resultData.message))
+                                {
+                                    Toast.makeText(getContext(),
+                                            resultData.message,
+                                            Toast.LENGTH_LONG);
+                                }
+                            }
+                            else
+                            {
+                                if (!TextUtils.isEmpty(resultData.message))
+                                {
+                                    Toast.makeText(getContext(),
+                                            resultData.message,
+                                            Toast.LENGTH_LONG);
+                                }
+                            }
+                        }
+                    });
+        }
+        else
+        {
+            RetrofitUtils.getInstance(getActivity()).api
+                    .sale(userId, num, price)
+                    // .sale("1", "1", "222")
+                    .compose(RxSchedulers.<ResultData<String>> compose())
+                    .subscribe(new BaseObserver<String>(getActivity(), true)
+                    {
+                        @Override
+                        public void onHandlerSuccess(
+                                ResultData<String> resultData)
+                        {
+                            Logger.d("doDeal onHandlerSuccess"
+                                    + resultData.data);
+                            if (resultData.result.equals("000"))
+                            {
+                                if (!TextUtils.isEmpty(resultData.message))
+                                {
+                                    Toast.makeText(getContext(),
+                                            resultData.message,
+                                            Toast.LENGTH_LONG);
+                                }
+                            }
+                            else
+                            {
+                                if (!TextUtils.isEmpty(resultData.message))
+                                {
+                                    Toast.makeText(getContext(),
+                                            resultData.message,
+                                            Toast.LENGTH_LONG);
+                                }
+                            }
+                        }
+                    });
+        }
+    }
+    
+    private void assign(String toUserId, String forUserCode,
+            String forUserPhone, String forUserName, String num)
+    {
+        RetrofitUtils.getInstance(getActivity()).api
+                .assign(toUserId, forUserCode, forUserPhone, forUserName, num)
+                // .assign("1", "AH111", "11", "12", "3")
+                .compose(RxSchedulers.<ResultData<String>> compose())
+                .subscribe(new BaseObserver<String>(getActivity(), true)
+                {
+                    @Override
+                    public void onHandlerSuccess(ResultData<String> resultData)
+                    {
+                        Logger.d("assign onHandlerSuccess" + resultData.data);
+                        if (resultData.result.equals("000"))
+                        {
+                            if (!TextUtils.isEmpty(resultData.message))
+                            {
+                                Toast.makeText(getContext(),
+                                        resultData.message,
+                                        Toast.LENGTH_LONG);
+                            }
+                        }
+                        else
+                        {
+                            if (!TextUtils.isEmpty(resultData.message))
+                            {
+                                Toast.makeText(getContext(),
+                                        resultData.message,
+                                        Toast.LENGTH_LONG);
+                            }
+                        }
+                    }
+                });
     }
     
     private SparseArray<String> setXLabels()
@@ -553,15 +691,20 @@ public class DealBusinessFragment extends BaseFragment
                             mDataSale.clear();
                             mDataBuy.addAll(resultData.data.buy);
                             mDataSale.addAll(resultData.data.sell);
-                            getActivity().runOnUiThread(new Runnable()
+                            int buyTotal = 0;
+                            int sellTotal = 0;
+                            for (QuotesEntity bean : resultData.data.buy)
                             {
-                                @Override
-                                public void run()
-                                {
-                                    mBuyAdapter.notifyDataSetChanged();
-                                    mSaleAdapter.notifyDataSetChanged();
-                                }
-                            });
+                                buyTotal += bean.countNum;
+                            }
+                            for (QuotesEntity bean : resultData.data.sell)
+                            {
+                                sellTotal += bean.sellCount;
+                            }
+                            mTvBuyTotal.setText(String.valueOf(buyTotal));
+                            mTvSaleTotal.setText(String.valueOf(sellTotal));
+                            mBuyAdapter.notifyDataSetChanged();
+                            mSaleAdapter.notifyDataSetChanged();
                             getDisparity();
                         }
                     }
@@ -582,17 +725,34 @@ public class DealBusinessFragment extends BaseFragment
                     {
                         if (resultData.result.equals("200"))
                         {
-                            mCode = resultData.data.getCode();
-                            mCash = resultData.data.getCash();
-                            Logger.d("cash = " + mCash);
-                            mOwnCurrencyCount = resultData.data.getCurrency();
-                            mOwnCurrencyMoney = resultData.data
-                                    .getCurrencyMoney();
-                            mTvBusinessNum.setText(mType == TYPE_BUY ? "可买："
-                                    : mType == TYPE_SALE
-                                            ? "可卖：" + mOwnCurrencyCount
-                                            : "持仓：" + mOwnCurrencyMoney);
-                            getTenInfo();
+                            try
+                            {
+                                
+                                mUserId = resultData.data.getUserid();
+                                mCash = Double
+                                        .valueOf(resultData.data.getCash());
+                                Logger.d("cash = " + mCash);
+                                mOwnCurrencyCount = (int) Math
+                                        .floor(Double.valueOf(
+                                                resultData.data.getCurrency()));
+                                mOwnCurrencyMoney = Double.valueOf(
+                                        resultData.data.getCurrencyMoney());
+                                mTvBusinessNum.setText(mType == TYPE_BUY ? "可买："
+                                        : mType == TYPE_SALE
+                                                ? "可卖：" + mOwnCurrencyCount
+                                                : "持仓：" + mOwnCurrencyMoney);
+                                getTenInfo();
+                            }
+                            catch (NumberFormatException e)
+                            {
+                                Logger.e(e, "NumberFormatException");
+                            }
+                        }
+                        else
+                        {
+                            mCash = 0.0;
+                            mOwnCurrencyCount = 0;
+                            mOwnCurrencyMoney = 0.0;
                         }
                     }
                 });
@@ -849,6 +1009,10 @@ public class DealBusinessFragment extends BaseFragment
         mTvBusiness.setText(
                 mType == TYPE_BUY ? "买入：" : mType == TYPE_SALE ? "卖出：" : "转让：");
         mTvStore.setText(mType == TYPE_BUY ? "全仓" : "清仓");
+        mLayoutEnterPrice
+                .setVisibility(mType != TYPE_ASSIGN ? View.VISIBLE : View.GONE);
+        mLayoutAssign
+                .setVisibility(mType == TYPE_ASSIGN ? View.VISIBLE : View.GONE);
         mRvBuy.setLayoutManager(new LinearLayoutManager(getContext())
         {
             @Override
@@ -876,6 +1040,9 @@ public class DealBusinessFragment extends BaseFragment
                         mDataBuy.get(position).buyNum + "");
                 holder.setText(R.id.tv_No, "买" + (position + 1));
                 holder.setText(R.id.tv_Price, mDataBuy.get(position).buyPrice);
+                holder.setProgress(R.id.progress_sale,
+                        entity.countNum == 0 ? 0
+                                : 100 * entity.buyNum / entity.countNum);
             }
         };
         mSaleAdapter = new CommonAdapter<QuotesEntity>(getContext(),
@@ -890,6 +1057,9 @@ public class DealBusinessFragment extends BaseFragment
                 holder.setText(R.id.tv_No, "卖" + (position + 1));
                 holder.setText(R.id.tv_Price,
                         mDataSale.get(position).sellPrice);
+                holder.setProgress(R.id.progress_sale,
+                        entity.sellCount == 0 ? 0
+                                : 100 * entity.sellNum / entity.sellCount);
             }
         };
         mRvBuy.setAdapter(mBuyAdapter);
