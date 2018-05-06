@@ -26,7 +26,7 @@
     <color name="bg_color_gray">#dcdcdc</color>
 
     <color name="minute_grayLine">#2D3945</color>
-    <color name="minute_blue">#FF4081</color>
+    <color name="minute_blue">#585f95</color>
     <color name="minute_yellow">#E7B448</color>
     <color name="minute_black">#101419</color>
     <color name="minute_jizhun">#7F9976</color>

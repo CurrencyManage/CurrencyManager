@@ -29,6 +29,7 @@ public abstract class BaseObserver<T> implements Observer<ResultData<T>> {
             pd=ProgressDialog.show(context,"","正在加载");
             pd.setCanceledOnTouchOutside(true);
 
+
         }
 
     }

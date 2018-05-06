@@ -2,10 +2,14 @@ package com.hb.currencymanage.mpchart;
 
 import android.util.SparseArray;
 
+import com.hb.currencymanage.bean.HqViewBean;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class DataParse {
     private ArrayList<MinutesBean> datas = new ArrayList<>();
@@ -58,6 +62,28 @@ public class DataParse {
         if (permaxmin == 0) {
             permaxmin = baseValue * 0.02f;
         }
+    }
+
+
+    public void parseNetMinutes(HqViewBean hqViewBean) {
+
+
+        baseValue= (float) 10.04;
+        permaxmin= (float) 9.85;
+
+        if(hqViewBean.data!=null &&
+                hqViewBean.data.size()>0){
+            for(int i=0;i<4*60-1;i++){
+//                MinutesBean minutesData = new MinutesBean();
+//                HqViewBean.LineBean lineBean=hqViewBean.data.get(i);
+                MinutesBean minutesData=new MinutesBean();
+                minutesData.cjprice= new Random().nextInt(20);//lineBean.price;
+                datas.add(minutesData);
+
+            }
+        }
+
+
     }
 
     public void parseKLine(JSONObject obj) {

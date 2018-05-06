@@ -66,9 +66,9 @@ public class RetrofitUtils {
         builder = new OkHttpClient().newBuilder();
         //cookieJar = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(context));
         builder
-                .readTimeout(10000, TimeUnit.SECONDS)
-                .connectTimeout(10000, TimeUnit.SECONDS)
-                .writeTimeout(10000,TimeUnit.SECONDS);
+                .readTimeout(5, TimeUnit.SECONDS)
+                .connectTimeout(5, TimeUnit.SECONDS)
+                .writeTimeout(5,TimeUnit.SECONDS);
 
         if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();

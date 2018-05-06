@@ -18,6 +18,7 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.Utils;
 import com.hb.currencymanage.MainActivity;
 import com.hb.currencymanage.R;
+import com.hb.currencymanage.bean.HqViewBean;
 import com.hb.currencymanage.bean.QuotesData;
 import com.hb.currencymanage.bean.QuotesEntity;
 import com.hb.currencymanage.bean.ResultData;
@@ -471,15 +472,17 @@ public class QuotesFragment extends BaseFragment
         ArrayList<BarEntry> barEntries = new ArrayList<>();
         ArrayList<String> xVals = new ArrayList<>();
         Log.e("##", Integer.toString(xVals.size()));
-        for(int i=0;i<38;i++){
+        /*
+        for(int i=0;i<60;i++){
             MinutesBean t=new MinutesBean();
             t.avprice= (float) 10.02;
             t.cjprice= (float) 10.29;
             t.per= (float) 0.03343;
             t.cjnum=1203;
-            t.time="10:"+(21+i);
+            //t.time="10:"+(21+i);
             mData.getDatas().add(t);
         }
+        */
         for (int i = 0, j = 0; i < mData.getDatas().size(); i++, j++) {
            /* //避免数据重复，skip也能正常显示
             if (mData.getDatas().get(i).time.equals("13:30")) {
@@ -554,7 +557,21 @@ public class QuotesFragment extends BaseFragment
     private void getNetLineData() {
 
 
+        RetrofitUtils.getInstance(getActivity()).api.hqView()
+                .compose(RxSchedulers.<ResultData<HqViewBean>>compose())
+                .subscribe(new BaseObserver<HqViewBean>(getActivity(),false) {
+                    @Override
+                    public void onHandlerSuccess(ResultData<HqViewBean> resultData) {
 
+                        if(resultData.code==200){
+                            mData = new DataParse();
+                            HqViewBean hqViewBean=resultData.data;
+                            mData.parseNetMinutes(hqViewBean);
+                            setData(mData);
+                        }
+
+                    }
+                });
 
 
     }

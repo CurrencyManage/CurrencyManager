@@ -2,6 +2,7 @@ package com.hb.currencymanage.net;
 
 import com.hb.currencymanage.bean.AccountBean;
 import com.hb.currencymanage.bean.CurrencyBean;
+import com.hb.currencymanage.bean.HqViewBean;
 import com.hb.currencymanage.bean.QuotesData;
 import com.hb.currencymanage.bean.QuotesEntity;
 import com.hb.currencymanage.bean.ResultData;
@@ -73,5 +74,5 @@ public interface Api
     Observable<ResultData<CurrencyBean>> myCurrency(@Query("id") String id);
 
     @GET("index/hqView")
-    Observable<ResultData<CurrencyBean>> hqView();
+    Observable<ResultData<HqViewBean>> hqView();
 }
