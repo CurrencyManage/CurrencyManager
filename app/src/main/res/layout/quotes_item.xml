@@ -37,10 +37,13 @@
             android:layout_height="match_parent">
 
             <ProgressBar
-                android:background="@color/colorAccent"
+                android:progressDrawable="@drawable/progress_drawable"
+                android:background="@color/white"
                 android:id="@+id/progress_sale"
                 android:layout_width="match_parent"
-                android:layout_height="6dp"
+                android:layout_height="4dp"
+                android:max="100"
+                android:progress="20"
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                 />
 
