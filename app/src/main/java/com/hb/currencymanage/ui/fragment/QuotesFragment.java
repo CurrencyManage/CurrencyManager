@@ -269,6 +269,19 @@ public class QuotesFragment extends BaseFragment
                         {
                             saleQuotesEntityList.addAll(resultData.data.sell);
                             buyQuotesEntityList.addAll(resultData.data.buy);
+                            sellTotalNum=0;
+                            buyTotalNum=0;
+                            for(QuotesEntity entity:saleQuotesEntityList){
+
+                                sellTotalNum+=entity.sellNum;
+                            }
+                            for(QuotesEntity entity:buyQuotesEntityList){
+
+                                buyTotalNum+=entity.buyNum;
+                            }
+                            tv_buyTotalNum.setText(buyTotalNum+"");
+                            tv_sellTotalNum.setText(sellTotalNum+"");
+
                             getActivity().runOnUiThread(new Runnable()
                             {
                                 @Override
