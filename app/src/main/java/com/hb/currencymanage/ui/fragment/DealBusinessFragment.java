@@ -595,8 +595,8 @@ public class DealBusinessFragment extends BaseFragment
         else
         {
             RetrofitUtils.getInstance(getActivity()).api
-                    // .sale(userId, num, price)
-                    .sale("1", "1", "222")
+                    .sale(userId, num, price)
+                    // .sale("1", "1", "222")
                     .compose(RxSchedulers.<ResultData<String>> compose())
                     .subscribe(new BaseObserver<String>(getActivity(), true)
                     {
@@ -691,8 +691,18 @@ public class DealBusinessFragment extends BaseFragment
                             mDataSale.clear();
                             mDataBuy.addAll(resultData.data.buy);
                             mDataSale.addAll(resultData.data.sell);
-                            // mTvBuyTotal.setText();
-                            // mTvSaleTotal.setText();
+                            int buyTotal = 0;
+                            int sellTotal = 0;
+                            for (QuotesEntity bean : resultData.data.buy)
+                            {
+                                buyTotal += bean.countNum;
+                            }
+                            for (QuotesEntity bean : resultData.data.sell)
+                            {
+                                sellTotal += bean.sellCount;
+                            }
+                            mTvBuyTotal.setText(String.valueOf(buyTotal));
+                            mTvSaleTotal.setText(String.valueOf(sellTotal));
                             mBuyAdapter.notifyDataSetChanged();
                             mSaleAdapter.notifyDataSetChanged();
                             getDisparity();
