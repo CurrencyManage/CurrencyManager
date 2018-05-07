@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context="com.hb.currencymanage.MainActivity">
 
-    <android.support.v4.view.ViewPager
+    <com.hb.currencymanage.customview.NoSlideViewPager
         android:id="@+id/vp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

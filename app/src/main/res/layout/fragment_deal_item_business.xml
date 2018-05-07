@@ -114,7 +114,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_num_down"
                     android:layout_centerHorizontal="true"
-                    android:text="500"
+                    android:text="1"
                     android:textColor="@color/text_color_hint"
                     android:textSize="@dimen/text_size_12" />
             </RelativeLayout>
@@ -155,7 +155,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_num_up"
                     android:layout_centerHorizontal="true"
-                    android:text="500"
+                    android:text="1"
                     android:textColor="@color/text_color_hint"
                     android:textSize="@dimen/text_size_12" />
             </RelativeLayout>

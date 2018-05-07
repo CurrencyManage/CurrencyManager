@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +12,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.hb.currencymanage.MainActivity;
 import com.hb.currencymanage.R;
-import com.hb.currencymanage.bean.QuotesEntity;
 import com.hb.currencymanage.bean.ResultData;
 import com.hb.currencymanage.customview.AutoHeightViewPager;
 import com.hb.currencymanage.net.BaseObserver;
 import com.hb.currencymanage.net.RetrofitUtils;
 import com.hb.currencymanage.net.RxSchedulers;
+import com.hb.currencymanage.util.CommonUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -178,9 +176,9 @@ public class RegActivity extends BaseActivity
     {
         if (mCurPos == 0)
         {
-            if (TextUtils.isEmpty(mEtPhone.getText().toString()))
+            if (!CommonUtils.isMobile(mEtPhone.getText().toString()))
             {
-                Toast.makeText(this, "手机号不能为空", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "请输入正确的手机号", Toast.LENGTH_LONG).show();
                 return false;
             }
             if (TextUtils.isEmpty(mEtVerifyCode.getText().toString()))
@@ -217,7 +215,7 @@ public class RegActivity extends BaseActivity
                 Toast.makeText(this, "请输入姓名", Toast.LENGTH_LONG).show();
                 return false;
             }
-            else if (TextUtils.isEmpty(mEtCard.getText().toString()))
+            else if (CommonUtils.isIdCard(mEtCard.getText().toString()))
             {
                 Toast.makeText(this, "请输入您的身份证号码", Toast.LENGTH_LONG).show();
                 return false;
@@ -235,7 +233,7 @@ public class RegActivity extends BaseActivity
                 Toast.makeText(this, "请输入银行卡开户行", Toast.LENGTH_LONG).show();
                 return false;
             }
-            else if (TextUtils.isEmpty(mEtBank.getText().toString()))
+            else if (CommonUtils.isBankCard(mEtBank.getText().toString()))
             {
                 Toast.makeText(this, "请输入您的银行卡号", Toast.LENGTH_LONG).show();
                 return false;

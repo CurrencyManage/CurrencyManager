@@ -22,6 +22,8 @@
     <dimen name="dimen_back">100dp</dimen>
 
     <!-- 字体大小 -->
+    <dimen name="text_size_26">26sp</dimen>
+    <dimen name="text_size_24">24sp</dimen>
     <dimen name="text_size_22">22sp</dimen>
     <dimen name="text_size_20">20sp</dimen>
     <dimen name="text_size_18">18sp</dimen>

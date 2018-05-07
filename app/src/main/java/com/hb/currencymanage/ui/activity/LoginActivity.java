@@ -3,9 +3,11 @@ package com.hb.currencymanage.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hb.currencymanage.MainActivity;
 import com.hb.currencymanage.R;
@@ -17,6 +19,7 @@ import com.hb.currencymanage.db.AccountDB;
 import com.hb.currencymanage.net.BaseObserver;
 import com.hb.currencymanage.net.RetrofitUtils;
 import com.hb.currencymanage.net.RxSchedulers;
+import com.hb.currencymanage.util.CommonUtils;
 import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
@@ -52,9 +55,13 @@ public class LoginActivity extends BaseActivity
     @OnClick(R.id.tv_login)
     public void login()
     {
-        RetrofitUtils.getInstance(this).api
-                .login(mEtPhone.getText().toString(),
-                        mEtPwd.getText().toString())
+        String phone = mEtPhone.getText().toString();
+        String pwd = mEtPwd.getText().toString();
+        if (!CommonUtils.isMobile(phone))
+        {
+            Toast.makeText(this, "请输入正确的手机号", Toast.LENGTH_LONG).show();
+        }
+        RetrofitUtils.getInstance(this).api.login(phone, pwd)
                 .compose(RxSchedulers.<ResultData<UserBean>> compose())
                 .subscribe(new BaseObserver<UserBean>(this, true)
                 {
@@ -69,6 +76,14 @@ public class LoginActivity extends BaseActivity
                             new AccountDB(context).saveAccount(resultData.data);
                             changeActivity(MainActivity.class);
                             finish();
+                        }
+                        else
+                        {
+                            Toast.makeText(LoginActivity.this,
+                                    !TextUtils.isEmpty(resultData.message)
+                                            ? resultData.message
+                                            : "登陆失败，用户名或密码错误",
+                                    Toast.LENGTH_LONG).show();
                         }
                     }
                 });

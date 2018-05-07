@@ -77,7 +77,7 @@ public class MineCurrencyActivity extends BaseActivity
                             CurrencyBean bean = resultData.data;
                             mTvIncome.setText(bean.mySy);
                             mTvIncomePercent.setText(
-                                    "我的&#160;&#160;&#160;" + bean.mySyB);
+                                    "我的   " + bean.mySyB);
                             mTvTotalMoney.setText(bean.countMoney);
                             mTvTotalProfitLoss.setText(bean.profitAndLoss);
                             mTvCurrencyTotalProfitLoss

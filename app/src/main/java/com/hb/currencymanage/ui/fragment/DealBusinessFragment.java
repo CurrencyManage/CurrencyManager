@@ -397,7 +397,7 @@ public class DealBusinessFragment extends BaseFragment
                 {
                     double price = Double.valueOf(priceStr);
                     int max = (int) Math.floor(mCash / price);
-                    mTvBusinessNum.setText("可买：" + max);
+                    mTvBusinessNum.setText("可买" + max);
                     String curNumStr = mEtNum.getText().toString();
                     if (!TextUtils.isEmpty(curNumStr))
                     {
@@ -408,12 +408,12 @@ public class DealBusinessFragment extends BaseFragment
                 catch (NumberFormatException e)
                 {
                     mEtNum.setText("");
-                    mTvBusinessNum.setText("可买：");
+                    mTvBusinessNum.setText("可买");
                 }
             }
             else
             {
-                mTvBusinessNum.setText("可买：");
+                mTvBusinessNum.setText("可买");
             }
         }
     }
@@ -579,9 +579,8 @@ public class DealBusinessFragment extends BaseFragment
     {
         if (isBuy)
         {
-            RetrofitUtils.getInstance(getActivity()).api
-                     .buy(userId, num, price)
-//                    .buy("1", "1", "22")
+            RetrofitUtils.getInstance(getActivity()).api.buy(userId, num, price)
+                    // .buy("1", "1", "22")
                     .compose(RxSchedulers.<ResultData<String>> compose())
                     .subscribe(new BaseObserver<String>(getActivity(), true)
                     {
@@ -595,12 +594,6 @@ public class DealBusinessFragment extends BaseFragment
                                     + "  ,  msg = " + resultData.message);
                             if (resultData.result.equals("000"))
                             {
-                                if (!TextUtils.isEmpty(resultData.message))
-                                {
-                                    Toast.makeText(getContext(),
-                                            resultData.message,
-                                            Toast.LENGTH_LONG).show();
-                                }
                             }
                             else
                             {
@@ -630,12 +623,6 @@ public class DealBusinessFragment extends BaseFragment
                                     + resultData.data);
                             if (resultData.result.equals("000"))
                             {
-                                if (!TextUtils.isEmpty(resultData.message))
-                                {
-                                    Toast.makeText(getContext(),
-                                            resultData.message,
-                                            Toast.LENGTH_LONG).show();
-                                }
                             }
                             else
                             {
@@ -666,12 +653,6 @@ public class DealBusinessFragment extends BaseFragment
                         Logger.d("assign onHandlerSuccess" + resultData.data);
                         if (resultData.result.equals("000"))
                         {
-                            if (!TextUtils.isEmpty(resultData.message))
-                            {
-                                Toast.makeText(getContext(),
-                                        resultData.message,
-                                        Toast.LENGTH_LONG).show();
-                            }
                         }
                         else
                         {
@@ -759,10 +740,10 @@ public class DealBusinessFragment extends BaseFragment
                                                 resultData.data.getCurrency()));
                                 mOwnCurrencyMoney = Double.valueOf(
                                         resultData.data.getCurrencyMoney());
-                                mTvBusinessNum.setText(mType == TYPE_BUY ? "可买："
+                                mTvBusinessNum.setText(mType == TYPE_BUY ? "可买"
                                         : mType == TYPE_SALE
-                                                ? "可卖：" + mOwnCurrencyCount
-                                                : "持仓：" + mOwnCurrencyMoney);
+                                                ? "可卖" + mOwnCurrencyCount
+                                                : "持仓" + mOwnCurrencyCount);
                                 getTenInfo();
                             }
                             catch (NumberFormatException e)
@@ -1028,6 +1009,9 @@ public class DealBusinessFragment extends BaseFragment
     
     private void initView()
     {
+        mEtPrice.setHint(mType == TYPE_BUY ? "买入价格" : "卖出价格");
+        mEtNum.setHint(mType == TYPE_BUY ? "买入数量"
+                : mType == TYPE_SALE ? "卖出数量" : "转让数量");
         mTvBusiness.setText(
                 mType == TYPE_BUY ? "买入：" : mType == TYPE_SALE ? "卖出：" : "转让：");
         mTvStore.setText(mType == TYPE_BUY ? "全仓" : "清仓");

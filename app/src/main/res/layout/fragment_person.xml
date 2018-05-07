@@ -52,7 +52,6 @@
                                         android:id="@+id/userId"
                                         android:layout_marginLeft="20dp"
                                         android:gravity="center"
-                                        android:text="ID 1122324324"
                                         android:textColor="@color/tv_white"
                                         android:layout_width="wrap_content"
                                         android:layout_height="match_parent" />
@@ -98,7 +97,6 @@
                                         android:id="@+id/countMoney"
                                         android:gravity="center"
                                         android:layout_marginTop="20dp"
-                                        android:text="12300000.00"
                                         android:textColor="@color/tv_black"
                                         android:textSize="@dimen/margin_larger"
                                         android:layout_width="match_parent"
@@ -113,7 +111,6 @@
                                           <TextView
                                               android:id="@+id/toMothSy"
                                               android:gravity="center"
-                                              android:text="本月收益：13232"
                                               android:layout_width="0dp"
                                               android:layout_weight="1"
                                               android:layout_height="match_parent" />
@@ -127,7 +124,6 @@
                                           <TextView
                                               android:id="@+id/toDaySy"
                                               android:gravity="center"
-                                              android:text="今日收益：214324"
                                               android:layout_width="0dp"
                                               android:layout_weight="1"
                                               android:layout_height="match_parent" />
@@ -163,7 +159,6 @@
 
                               <TextView
                                   android:id="@+id/cash"
-                                  android:text="4352000"
                                   android:gravity="center"
                                   style="@style/myPersonalText"
                                   android:layout_marginLeft="60dp"
@@ -192,7 +187,6 @@
 
                               <TextView
                                   android:id="@+id/currencyMoney"
-                                  android:text="4352000"
                                   android:gravity="center"
                                   android:layout_marginLeft="60dp"
                                   style="@style/myPersonalText"
@@ -221,7 +215,7 @@
                                   android:layout_height="match_parent" />
 
                               <TextView
-                                  android:text="4352000"
+                                  android:id="@+id/tv_produce_count"
                                   style="@style/myPersonalText"
                                   android:gravity="center"
                                   android:layout_marginLeft="60dp"

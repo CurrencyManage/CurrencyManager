@@ -14,6 +14,7 @@ import com.hb.currencymanage.ui.activity.PersonalActivity;
 import com.hb.currencymanage.ui.activity.SettingActivity;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,30 +31,25 @@ import butterknife.OnClick;
 
 public class PersonFragment extends BaseFragment
 {
-
-
+    
     @BindView(R.id.userId)
     TextView tv_userId;
-
+    
     @BindView(R.id.currencyMoney)
     TextView tv_currencyMoney;
-
+    
     @BindView(R.id.toDaySy)
     TextView tv_toDaySy;
-
-
+    
     @BindView(R.id.toMothSy)
     TextView tv_toMothSy;
-
-
+    
     @BindView(R.id.countMoney)
     TextView tv_ccountMoney;
-
+    
     @BindView(R.id.cash)
     TextView tv_cash;
-
-
-
+    
     public static PersonFragment getInstance()
     {
         PersonFragment sf = new PersonFragment();
@@ -66,35 +62,46 @@ public class PersonFragment extends BaseFragment
         super.onCreate(savedInstanceState);
         initWorkNet();
     }
-
+    
     private void initWorkNet()
     {
-
-        RetrofitUtils.getInstance(getActivity()).api.getAccountInfo("1")
-                .compose(RxSchedulers.<ResultData<AccountBean>> compose())
-                .subscribe(new BaseObserver<AccountBean>(getActivity(), true)
-                {
-                    @Override
-                    public void onHandlerSuccess(
-                            ResultData<AccountBean> resultData)
-                    {
-                        if (resultData.result.equals("200"))
+        new Handler().postDelayed(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                RetrofitUtils.getInstance(getActivity()).api.getAccountInfo("1")
+                        .compose(RxSchedulers
+                                .<ResultData<AccountBean>> compose())
+                        .subscribe(new BaseObserver<AccountBean>(getActivity(),
+                                true)
                         {
-
-                            AccountBean accountBean=resultData.data;
-                            tv_cash.setText(accountBean.getCash());
-                            tv_ccountMoney.setText(accountBean.getCountMoney());
-                            tv_currencyMoney.setText(accountBean.getCurrencyMoney());
-                            tv_toDaySy.setText("今日收益："+accountBean.getToDaySy());
-                            tv_toMothSy.setText("本月收益："+accountBean.getToMonthSy());
-                            tv_userId.setText(accountBean.getCode());
-
-                        }
-                    }
-                });
-
+                            @Override
+                            public void onHandlerSuccess(
+                                    ResultData<AccountBean> resultData)
+                            {
+                                if (resultData.result.equals("200"))
+                                {
+                                    
+                                    AccountBean accountBean = resultData.data;
+                                    tv_cash.setText(accountBean.getCash());
+                                    tv_ccountMoney.setText(
+                                            accountBean.getCountMoney());
+                                    tv_currencyMoney.setText(
+                                            accountBean.getCurrencyMoney());
+                                    tv_toDaySy.setText(
+                                            "今日收益：" + accountBean.getToDaySy());
+                                    tv_toMothSy.setText("本月收益："
+                                            + accountBean.getToMonthSy());
+                                    tv_userId.setText(accountBean.getCode());
+                                    
+                                }
+                            }
+                        });
+            }
+        }, 1000);
     }
-
+    
     @OnClick(R.id.device_layoout)
     void device_layoout()
     {
