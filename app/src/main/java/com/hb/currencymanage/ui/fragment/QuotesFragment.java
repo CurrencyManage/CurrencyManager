@@ -388,8 +388,8 @@ public class QuotesFragment extends BaseFragment
         //左边y
         axisLeftLine = lineChart.getAxisLeft();
         /*折线图y轴左没有basevalue，调用系统的*/
-        axisLeftLine.setLabelCount(5, true);
-        axisLeftLine.setDrawLabels(true);
+        axisLeftLine.setLabelCount(5, false);
+        axisLeftLine.setDrawLabels(false);
         axisLeftLine.setDrawGridLines(false);
         /*轴不显示 避免和border冲突*/
         axisLeftLine.setDrawAxisLine(false);
@@ -397,8 +397,8 @@ public class QuotesFragment extends BaseFragment
 
         //右边y
         axisRightLine = lineChart.getAxisRight();
-        axisRightLine.setLabelCount(2, true);
-        axisRightLine.setDrawLabels(true);
+        axisRightLine.setLabelCount(2, false);
+        axisRightLine.setDrawLabels(false);
         axisRightLine.setValueFormatter(new YAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, YAxis yAxis) {
