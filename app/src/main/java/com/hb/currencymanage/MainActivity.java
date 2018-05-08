@@ -80,7 +80,9 @@ public class MainActivity extends BaseActivity
             @Override
             public void onTabSelect(int position)
             {
+
                 mViewPager.setCurrentItem(position);
+                
             }
             
             @Override

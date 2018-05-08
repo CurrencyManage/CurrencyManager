@@ -12,8 +12,8 @@ public class QuotesEntity
     
     public String currentPrice;
     
-    public String Disparity;
-    
+    public String disparity;
+
     public String disparityB;
     
     public String currentMix;
@@ -48,7 +48,7 @@ public class QuotesEntity
     {
         return "QuotesEntity{" + "buy=" + buy + ", stopPlate='" + stopPlate
                 + '\'' + ", currentPrice='" + currentPrice + '\''
-                + ", Disparity='" + Disparity + '\'' + ", disparityB='"
+                + ", Disparity='" + disparity + '\'' + ", disparityB='"
                 + disparityB + '\'' + ", currentMix='" + currentMix + '\''
                 + ", currentMin='" + currentMin + '\'' + ", count='" + count
                 + '\'' + ", countPrice='" + countPrice + '\'' + ", buyPrice='"

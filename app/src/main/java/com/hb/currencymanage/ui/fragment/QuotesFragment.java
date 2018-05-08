@@ -259,7 +259,7 @@ public class QuotesFragment extends BaseFragment
                             tv_currentMix.setText(resultData.data.currentMix);
                             tv_currentPrice
                                     .setText(resultData.data.currentPrice);
-                            tv_Disparity.setText(resultData.data.Disparity);
+                            tv_Disparity.setText(resultData.data.disparity);
                             tv_disparityB.setText(resultData.data.disparityB);
 
                         }

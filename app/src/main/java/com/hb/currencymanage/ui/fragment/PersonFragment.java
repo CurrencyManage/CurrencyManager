@@ -155,4 +155,16 @@ public class PersonFragment extends BaseFragment
     {
         
     }
+
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser){
+
+            initWorkNet();
+
+        }
+
+    }
 }
