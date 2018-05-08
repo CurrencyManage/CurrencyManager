@@ -30,8 +30,8 @@ public class MineCurrencyActivity extends BaseActivity
     @BindView(R.id.tv_total_profit_loss)
     TextView mTvTotalProfitLoss;
     
-    @BindView(R.id.tv_currency_total_profit_loss)
-    TextView mTvCurrencyTotalProfitLoss;
+    @BindView(R.id.tv_currency_total_profit_loss1B)
+    TextView mTvCurrencyTotalProfitLoss1B;
     
     @BindView(R.id.tv_currency_market_price)
     TextView mTvCurrencyMarketPrice;
@@ -50,6 +50,9 @@ public class MineCurrencyActivity extends BaseActivity
     
     @BindView(R.id.tv_currency_market_value)
     TextView mTvCurrencyMarketValue;
+
+    @BindView(R.id.tv_profitAndLoss)
+    TextView mProfitAndLoss;
     
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -80,8 +83,8 @@ public class MineCurrencyActivity extends BaseActivity
                                     "我的   " + bean.mySyB);
                             mTvTotalMoney.setText(bean.countMoney);
                             mTvTotalProfitLoss.setText(bean.profitAndLoss);
-                            mTvCurrencyTotalProfitLoss
-                                    .setText("总盈亏      " + bean.profitAndLoss1);
+                            mTvCurrencyTotalProfitLoss1B
+                                    .setText("总盈亏      " + bean.profitAndLoss1B);
                             mTvCurrencyMarketPrice.setText(bean.marketPrice);
                             mTvCurrencyHoldCount.setText(bean.holdThePosition);
                             mTvCurrencyCost.setText(bean.cost);
@@ -89,6 +92,7 @@ public class MineCurrencyActivity extends BaseActivity
                                     .setText(bean.warehouseAvailability);
                             mTvCurrencyBuyAvg.setText(bean.priceAVG);
                             mTvCurrencyMarketValue.setText(bean.marketValue);
+                            mProfitAndLoss.setText(bean.profitAndLoss1);
                         }
                     }
                 });
