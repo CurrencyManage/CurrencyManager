@@ -8,6 +8,12 @@
     android:background="@color/tv_white"
     >
 
+    <View
+        android:id="@+id/status_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_20"
+        android:background="@color/head_red" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_50"

@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.hb.currencymanage.R;
 import com.hb.currencymanage.bean.CapacityEntity;
+import com.hb.currencymanage.util.StatusBarCompat;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
@@ -28,7 +29,6 @@ public class CapacityActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_capacity);
-
         ButterKnife.bind(this);
         initData();
         recycleView.setLayoutManager(new LinearLayoutManager(context));

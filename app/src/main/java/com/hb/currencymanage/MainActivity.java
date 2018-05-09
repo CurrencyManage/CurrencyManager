@@ -1,10 +1,16 @@
 package com.hb.currencymanage;
 
+import android.app.Activity;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
@@ -30,6 +36,9 @@ public class MainActivity extends BaseActivity
     
     @BindView(R.id.tab_layout)
     CommonTabLayout mTabLayout;
+    
+    @BindView(R.id.status_view)
+    View mStatusView;
     
     private String[] mTitles = { "首页", "行情", "交易", "个人" };
     
@@ -80,7 +89,7 @@ public class MainActivity extends BaseActivity
             @Override
             public void onTabSelect(int position)
             {
-
+                
                 mViewPager.setCurrentItem(position);
                 
             }
@@ -108,6 +117,13 @@ public class MainActivity extends BaseActivity
             public void onPageSelected(int position)
             {
                 mTabLayout.setCurrentTab(position);
+                mStatusView.setBackgroundColor(position == 0
+                        ? context.getResources().getColor(R.color.device_bar_color_50_alpha)
+                        : position == 1
+                                ? context.getResources()
+                                        .getColor(R.color.head_red)
+                                : context.getResources()
+                                        .getColor(R.color.device_bar_color));
             }
             
             @Override

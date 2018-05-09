@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <View
+        android:id="@+id/status_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_20"
+        android:background="@color/device_bar_color" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,38 +49,39 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:gravity="center"
-            android:layout_centerInParent="true"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/tt"
-                android:layout_marginTop="@dimen/margin_larger"
-                android:textColor="@color/tv_white"
-                android:text="累计产出"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_larger"
+                android:text="累计产出"
+                android:textColor="@color/tv_white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/tt"
                 android:layout_marginTop="@dimen/margin_little"
-                android:textColor="@color/tv_white"
-                android:textSize="@dimen/text_size_20"
                 android:text="235676"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:textColor="@color/tv_white"
+                android:textSize="@dimen/text_size_20" />
 
         </LinearLayout>
 
     </RelativeLayout>
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_30"
         android:background="@drawable/tv_border_bottom"
         android:gravity="center"
-        android:text="今日产能总揽"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_30" />
+        android:text="今日产能总揽" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycleView"

@@ -26,7 +26,6 @@ import butterknife.OnClick;
 
 public class MineDeviceActivity extends BaseActivity
 {
-
     @BindView(R.id.tab_layout)
     CommonTabLayout mTabLayout;
     

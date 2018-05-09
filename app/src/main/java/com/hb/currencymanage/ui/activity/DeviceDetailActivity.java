@@ -11,9 +11,6 @@ import butterknife.OnClick;
 public class DeviceDetailActivity extends BaseActivity
 {
 
-
-
-    
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

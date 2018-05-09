@@ -7,10 +7,16 @@
     android:orientation="vertical"
     tools:context="com.hb.currencymanage.ui.activity.AddDeviceActivity">
 
-    <RelativeLayout
-        android:background="@color/device_bar_color"
+    <View
+        android:id="@+id/status_view"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_50">
+        android:layout_height="@dimen/dimen_20"
+        android:background="@color/device_bar_color" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_50"
+        android:background="@color/device_bar_color">
 
         <RelativeLayout
             android:id="@+id/back"
@@ -28,67 +34,67 @@
         </RelativeLayout>
 
         <TextView
-            android:gravity="center_vertical"
-            android:layout_centerInParent="true"
-            android:textColor="@color/tv_white"
-            android:text="我的设备 "
-            android:textSize="@dimen/text_size_16"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center_vertical"
+            android:text="我的设备 "
+            android:textColor="@color/tv_white"
+            android:textSize="@dimen/text_size_16" />
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:background="@drawable/tv_border_bottom"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_50">
+        android:layout_height="@dimen/dimen_50"
+        android:background="@drawable/tv_border_bottom">
 
         <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
             android:hint="输入设备编号"
-            android:paddingLeft="@dimen/margin_normal"
-            android:background="@null"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:paddingLeft="@dimen/margin_normal" />
     </RelativeLayout>
 
     <RelativeLayout
-        android:background="@drawable/tv_border_bottom"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_50">
+        android:layout_height="@dimen/dimen_50"
+        android:background="@drawable/tv_border_bottom">
 
         <EditText
-            android:hint="输入验证码"
-            android:paddingLeft="@dimen/margin_normal"
-            android:background="@null"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="输入验证码"
+            android:paddingLeft="@dimen/margin_normal" />
 
         <TextView
-            android:background="@drawable/b_border_radius"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_30"
+            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/dimen_50"
-            android:layout_alignParentRight="true"
+            android:background="@drawable/b_border_radius"
             android:gravity="center_vertical"
-            android:textColor="@color/device_bar_color"
-            android:text="获取验证码 "
             android:paddingLeft="4dp"
             android:paddingRight="4dp"
-            android:textSize="@dimen/text_size_12"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/dimen_30" />
+            android:text="获取验证码 "
+            android:textColor="@color/device_bar_color"
+            android:textSize="@dimen/text_size_12" />
 
 
     </RelativeLayout>
 
     <TextView
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:layout_marginTop="@dimen/dimen_40"
-        android:text="绑定"
-        android:background="@color/device_bar_color"
         android:layout_width="180dp"
-        android:textColor="@color/tv_white"
-        android:layout_height="@dimen/dimen_40" />
+        android:layout_height="@dimen/dimen_40"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dimen_40"
+        android:background="@color/device_bar_color"
+        android:gravity="center"
+        android:text="绑定"
+        android:textColor="@color/tv_white" />
 
 
 </LinearLayout>

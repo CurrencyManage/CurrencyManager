@@ -7,6 +7,12 @@
     android:orientation="vertical"
     tools:context="com.hb.currencymanage.MainActivity">
 
+    <View
+        android:id="@+id/status_view"
+        android:background="@color/device_bar_color_50_alpha"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_20"/>
+
     <com.hb.currencymanage.customview.NoSlideViewPager
         android:id="@+id/vp"
         android:layout_width="match_parent"

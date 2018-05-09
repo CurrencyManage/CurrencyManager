@@ -29,7 +29,7 @@ public abstract class BaseFragment extends Fragment
     
     private boolean mIsPrepared;
     
-    private boolean mIsFirst = true;
+    // private boolean mIsFirst = true;
     
     @Nullable
     @Override
@@ -70,12 +70,13 @@ public abstract class BaseFragment extends Fragment
     
     protected void lazyLoad()
     {
-        if (!mIsPrepared || !mIsVisible || !mIsFirst)
+        // if (!mIsPrepared || !mIsVisible || !mIsFirst)
+        if (!mIsPrepared || !mIsVisible)
         {
             return;
         }
         requestData();
-        mIsFirst = false;
+        // mIsFirst = false;
     }
     
     protected void requestData()

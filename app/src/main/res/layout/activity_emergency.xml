@@ -4,14 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
+    <View
+        android:id="@+id/status_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_20"
+        android:background="@color/device_bar_color" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_50"
         android:background="@color/device_bar_color">
+
         <RelativeLayout
             android:id="@+id/back"
             android:layout_width="@dimen/dimen_back"
@@ -54,101 +59,100 @@
 
 
     <TextView
-        android:text="我的账户:"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_30"
+        android:background="@color/tv_dark"
         android:gravity="center_vertical"
         android:paddingLeft="@dimen/margin_normal"
-        android:textColor="@color/device_bar_color"
-        android:background="@color/tv_dark"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_30" />
-
+        android:text="我的账户:"
+        android:textColor="@color/device_bar_color" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="horizontal"
+        android:layout_height="@dimen/dimen_40"
         android:background="@drawable/tv_border_bottom"
-        android:layout_height="@dimen/dimen_40">
+        android:orientation="horizontal">
 
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/margin_larger"
             android:text="开户行"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/margin_larger"
-            android:textSize="@dimen/text_size_16"
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:layout_height="match_parent" />
+            android:textSize="@dimen/text_size_16" />
 
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_marginRight="60dp"
+            android:layout_weight="4"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/margin_larger"
             android:text="黑龙江sssssss"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/margin_larger"
-            android:textSize="@dimen/text_size_12"
-            android:layout_width="0dp"
-            android:layout_weight="4"
-            android:layout_height="match_parent" />
+            android:textSize="@dimen/text_size_12" />
 
     </LinearLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="horizontal"
+        android:layout_height="@dimen/dimen_40"
         android:background="@drawable/tv_border_bottom"
-        android:layout_height="@dimen/dimen_40">
+        android:orientation="horizontal">
 
         <TextView
-            android:text="卡号"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/margin_larger"
-            android:textSize="@dimen/text_size_16"
             android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="2"
-            android:layout_height="match_parent" />
-
-        <TextView
-            android:layout_marginRight="60dp"
-            android:text="1112134324324234"
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/margin_larger"
-            android:textSize="@dimen/text_size_12"
+            android:text="卡号"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
             android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="60dp"
             android:layout_weight="4"
-            android:layout_height="match_parent" />
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/margin_larger"
+            android:text="1112134324324234"
+            android:textSize="@dimen/text_size_12" />
 
     </LinearLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="horizontal"
+        android:layout_height="@dimen/dimen_40"
         android:layout_marginTop="@dimen/margin_normal"
         android:background="@drawable/tv_border_bottom"
-        android:layout_height="@dimen/dimen_40">
+        android:orientation="horizontal">
 
         <EditText
-            android:background="@null"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_marginRight="60dp"
-            android:text="紧急提现金额"
+            android:layout_weight="4"
+            android:background="@null"
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/margin_larger"
-            android:textSize="@dimen/text_size_12"
-            android:layout_width="0dp"
-            android:layout_weight="4"
-            android:layout_height="match_parent" />
+            android:text="紧急提现金额"
+            android:textSize="@dimen/text_size_12" />
 
     </LinearLayout>
 
     <TextView
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:layout_marginTop="@dimen/dimen_40"
-        android:text="提现"
-        android:background="@color/device_bar_color"
         android:layout_width="200dp"
-        android:textColor="@color/tv_white"
-        android:layout_height="@dimen/dimen_40" />
+        android:layout_height="@dimen/dimen_40"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dimen_40"
+        android:background="@color/device_bar_color"
+        android:gravity="center"
+        android:text="提现"
+        android:textColor="@color/tv_white" />
 
 
 </LinearLayout>

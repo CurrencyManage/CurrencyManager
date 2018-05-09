@@ -7,6 +7,11 @@
     android:orientation="vertical"
     tools:context="com.hb.currencymanage.ui.activity.MoneyRechargeActivity">
 
+    <View
+        android:id="@+id/status_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_20"
+        android:background="@color/device_bar_color" />
 
     <RelativeLayout
         android:layout_width="match_parent"
