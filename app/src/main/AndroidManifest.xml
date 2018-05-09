@@ -23,7 +23,6 @@
         <activity android:name=".ui.activity.RegActivity" />
         <activity android:name=".ui.activity.ForgetPwdActivity" />
         <activity android:name=".MainActivity" >
-
         </activity>
         <activity android:name=".ui.activity.MineDeviceActivity" />
         <activity android:name=".ui.activity.DeviceDetailActivity" />
