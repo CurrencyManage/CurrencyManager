@@ -397,7 +397,7 @@ public class DealBusinessFragment extends BaseFragment
                 {
                     double price = Double.valueOf(priceStr);
                     int max = (int) Math.floor(mCash / price);
-                    mTvBusinessNum.setText("可买" + max);
+                    mTvBusinessNum.setText("可买：" + max);
                     String curNumStr = mEtNum.getText().toString();
                     if (!TextUtils.isEmpty(curNumStr))
                     {
@@ -408,12 +408,12 @@ public class DealBusinessFragment extends BaseFragment
                 catch (NumberFormatException e)
                 {
                     mEtNum.setText("");
-                    mTvBusinessNum.setText("可买");
+                    mTvBusinessNum.setText("可买：");
                 }
             }
             else
             {
-                mTvBusinessNum.setText("可买");
+                mTvBusinessNum.setText("可买：");
             }
         }
     }
@@ -588,12 +588,13 @@ public class DealBusinessFragment extends BaseFragment
                         public void onHandlerSuccess(
                                 ResultData<String> resultData)
                         {
-                            Logger.d("buy onHandlerSuccess  "
+                            Logger.d("doDeal onHandlerSuccess  "
                                     + resultData.result + "  , "
                                     + resultData.result.equals("000")
                                     + "  ,  msg = " + resultData.message);
                             if (resultData.result.equals("000"))
                             {
+                                getTenInfo();
                             }
                             else
                             {
@@ -740,10 +741,10 @@ public class DealBusinessFragment extends BaseFragment
                                                 resultData.data.getCurrency()));
                                 mOwnCurrencyMoney = Double.valueOf(
                                         resultData.data.getCurrencyMoney());
-                                mTvBusinessNum.setText(mType == TYPE_BUY ? "可买"
+                                mTvBusinessNum.setText(mType == TYPE_BUY ? "可买："
                                         : mType == TYPE_SALE
-                                                ? "可卖" + mOwnCurrencyCount
-                                                : "持仓" + mOwnCurrencyCount);
+                                                ? "可卖：" + mOwnCurrencyCount
+                                                : "持仓：" + mOwnCurrencyCount);
                                 getTenInfo();
                             }
                             catch (NumberFormatException e)
@@ -1013,7 +1014,7 @@ public class DealBusinessFragment extends BaseFragment
         mEtNum.setHint(mType == TYPE_BUY ? "买入数量"
                 : mType == TYPE_SALE ? "卖出数量" : "转让数量");
         mTvBusiness.setText(
-                mType == TYPE_BUY ? "买入：" : mType == TYPE_SALE ? "卖出：" : "转让：");
+                mType == TYPE_BUY ? "买入" : mType == TYPE_SALE ? "卖出" : "转让");
         mTvStore.setText(mType == TYPE_BUY ? "全仓" : "清仓");
         mLayoutEnterPrice
                 .setVisibility(mType != TYPE_ASSIGN ? View.VISIBLE : View.GONE);
@@ -1070,6 +1071,46 @@ public class DealBusinessFragment extends BaseFragment
         };
         mRvBuy.setAdapter(mBuyAdapter);
         mRvSale.setAdapter(mSaleAdapter);
+        if (mType == TYPE_BUY)
+        {
+            mSaleAdapter.setOnItemClickListener(
+                    new CommonAdapter.OnItemClickListener()
+                    {
+                        @Override
+                        public void onItemClick(View view,
+                                RecyclerView.ViewHolder holder, int position)
+                        {
+                            mEtPrice.setText(mDataSale.get(position).sellPrice);
+                        }
+                        
+                        @Override
+                        public boolean onItemLongClick(View view,
+                                RecyclerView.ViewHolder holder, int position)
+                        {
+                            return false;
+                        }
+                    });
+        }
+        else if (mType == TYPE_SALE)
+        {
+            mBuyAdapter.setOnItemClickListener(
+                    new CommonAdapter.OnItemClickListener()
+                    {
+                        @Override
+                        public void onItemClick(View view,
+                                RecyclerView.ViewHolder holder, int position)
+                        {
+                            mEtPrice.setText(mDataBuy.get(position).buyPrice);
+                        }
+                        
+                        @Override
+                        public boolean onItemLongClick(View view,
+                                RecyclerView.ViewHolder holder, int position)
+                        {
+                            return false;
+                        }
+                    });
+        }
     }
     
     @Override

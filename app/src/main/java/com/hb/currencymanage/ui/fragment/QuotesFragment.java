@@ -239,7 +239,7 @@ public class QuotesFragment extends BaseFragment
         initNetWork();
     }
 
-    private void initNetWork()
+    public void initNetWork()
     {
 
         RetrofitUtils.getInstance(getActivity()).api.getDisparity()

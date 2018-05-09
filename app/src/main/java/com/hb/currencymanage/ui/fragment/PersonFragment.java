@@ -63,7 +63,7 @@ public class PersonFragment extends BaseFragment
         initWorkNet();
     }
     
-    private void initWorkNet()
+    public void initWorkNet()
     {
         new Handler().postDelayed(new Runnable()
         {

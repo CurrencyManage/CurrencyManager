@@ -56,6 +56,10 @@ public class MainActivity extends BaseActivity
     
     private DealFragment mDealFragment;
     
+    private QuotesFragment mQuotesFragment;
+    
+    private PersonFragment mPersonFragment;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -74,10 +78,12 @@ public class MainActivity extends BaseActivity
     private void initViewPager()
     {
         mDealFragment = DealFragment.getInstance();
+        mQuotesFragment = QuotesFragment.getInstance();
+        mPersonFragment = PersonFragment.getInstance();
         mFragments.add(MainFragment.getInstance());
-        mFragments.add(QuotesFragment.getInstance());
+        mFragments.add(mQuotesFragment);
         mFragments.add(mDealFragment);
-        mFragments.add(PersonFragment.getInstance());
+        mFragments.add(mPersonFragment);
         for (int i = 0; i < mTitles.length; i++)
         {
             mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i],
@@ -118,12 +124,27 @@ public class MainActivity extends BaseActivity
             {
                 mTabLayout.setCurrentTab(position);
                 mStatusView.setBackgroundColor(position == 0
-                        ? context.getResources().getColor(R.color.device_bar_color_50_alpha)
+                        ? context.getResources()
+                                .getColor(R.color.device_bar_color_50_alpha)
                         : position == 1
                                 ? context.getResources()
                                         .getColor(R.color.head_red)
                                 : context.getResources()
                                         .getColor(R.color.device_bar_color));
+                if (position == 1)
+                {
+                    if (null != mQuotesFragment)
+                    {
+                        mQuotesFragment.initNetWork();
+                    }
+                }
+                if (position == mFragments.size() - 1)
+                {
+                    if (null != mPersonFragment)
+                    {
+                        mPersonFragment.initWorkNet();
+                    }
+                }
             }
             
             @Override
