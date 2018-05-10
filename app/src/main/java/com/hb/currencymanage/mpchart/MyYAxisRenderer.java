@@ -85,7 +85,12 @@ public class MyYAxisRenderer extends YAxisRenderer {
                 }
                 //c.drawText(text, fixedPosition, pos, mAxisLabelPaint);
                 if(i==0 || i==4){
-                    c.drawText(text, fixedPosition, pos, mAxisLabelPaint);
+                    if(text.equals("-200.00%")){
+                        c.drawText("0%", fixedPosition, pos, mAxisLabelPaint);
+                    }else {
+                        c.drawText(text, fixedPosition, pos, mAxisLabelPaint);
+                    }
+
                 }else {
                     c.drawText("", fixedPosition, pos, mAxisLabelPaint);
                 }
