@@ -33,4 +33,6 @@
     <color name="minute_zhoutv">#858D93</color>
     <color name="marker_bg">#1C232E</color>
     <color name="dark">#eee</color>
+    <color name="color_aaa">#AAAAAA</color>
+    <color name="color_dialog_confirm">#161D51</color>
 </resources>

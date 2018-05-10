@@ -20,4 +20,7 @@
     <string name="enter_rec_id">请输入您的推荐人ID</string>
     <string name="enter_bank_address">请输入银行卡(储蓄卡)开户行</string>
     <string name="enter_bank_code">请输入您的银行卡号码</string>
+    <string name="dialog_confirm">是否确认本次%s</string>
+    <string name="confirm">确认</string>
+    <string name="cancel">取消</string>
 </resources>

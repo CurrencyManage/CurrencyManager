@@ -166,6 +166,15 @@ public class RegActivity extends BaseActivity
                                     // changeActivity(MainActivity.class);
                                     finish();
                                 }
+                                else
+                                {
+                                    Toast.makeText(RegActivity.this,
+                                            !TextUtils
+                                                    .isEmpty(resultData.message)
+                                                            ? resultData.message
+                                                            : "注册失败",
+                                            Toast.LENGTH_LONG).show();
+                                }
                             }
                         });
             }
@@ -200,9 +209,8 @@ public class RegActivity extends BaseActivity
                 Toast.makeText(this, "请输入确认密码", Toast.LENGTH_LONG).show();
                 return false;
             }
-            else if (!mEtPwd.getText()
-                    .toString()
-                    .equals(mEtPwdAgain.getText().toString()))
+            else if (!mEtPwd.getText().toString().equals(
+                    mEtPwdAgain.getText().toString()))
             {
                 Toast.makeText(this, "前后密码不一致,请重新输入", Toast.LENGTH_LONG).show();
                 return false;
@@ -217,7 +225,7 @@ public class RegActivity extends BaseActivity
             }
             else if (CommonUtils.isIdCard(mEtCard.getText().toString()))
             {
-                Toast.makeText(this, "请输入您的身份证号码", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "请输入正确的身份证号码", Toast.LENGTH_LONG).show();
                 return false;
             }
             // else if (TextUtils.isEmpty(mEtRecId.getText().toString()))
