@@ -83,7 +83,13 @@ public class MyYAxisRenderer extends YAxisRenderer {
                 } else if ((pos + labelHeight / 2) > mViewPortHandler.contentBottom()) {
                     pos = mViewPortHandler.contentBottom() - 3;
                 }
-                c.drawText(text, fixedPosition, pos, mAxisLabelPaint);
+                //c.drawText(text, fixedPosition, pos, mAxisLabelPaint);
+                if(i==0 || i==4){
+                    c.drawText(text, fixedPosition, pos, mAxisLabelPaint);
+                }else {
+                    c.drawText("", fixedPosition, pos, mAxisLabelPaint);
+                }
+
             }
 
 

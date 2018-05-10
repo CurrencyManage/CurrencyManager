@@ -25,6 +25,11 @@ public class DataParse {
     private SparseArray<String> xValuesLabel=new SparseArray<>();
     private int firstDay = 10;
 
+    public float min;
+    public float max;
+    public float percentmin;
+    public float percentmax;
+
     public void parseMinutes(JSONObject object) {
         JSONArray jsonArray = object.optJSONObject("data").optJSONObject(code).optJSONObject("data").optJSONArray("data");
         String date = object.optJSONObject("data").optJSONObject(code).optJSONObject("data").optString("date");
@@ -62,14 +67,29 @@ public class DataParse {
         if (permaxmin == 0) {
             permaxmin = baseValue * 0.02f;
         }
+
+
     }
 
 
     public void parseNetMinutes(HqViewBean hqViewBean) {
 
 
-        baseValue= (float) 10.04;
-        permaxmin= (float) 9.85;
+//        baseValue= (float) 10.04;
+//        permaxmin= (float) 9.85;
+
+        //permaxmin=0;//hqViewBean.currentMinB;
+        percentmin=0;
+        percentmax=200;//hqViewBean.relativeCurrentMixB;
+        volmax=200;
+
+        permaxmin=18;
+        baseValue=9;
+
+        min=hqViewBean.currentMin;
+        max=hqViewBean.relativeCurrentMix;
+
+
 
         if(hqViewBean.data!=null &&
                 hqViewBean.data.size()>0){
@@ -77,7 +97,7 @@ public class DataParse {
 //                MinutesBean minutesData = new MinutesBean();
 //                HqViewBean.LineBean lineBean=hqViewBean.data.get(i);
                 MinutesBean minutesData=new MinutesBean();
-                minutesData.cjprice= new Random().nextInt(20);//lineBean.price;
+                minutesData.cjprice= new Random().nextFloat()*2;//lineBean.price;
                 datas.add(minutesData);
 
             }

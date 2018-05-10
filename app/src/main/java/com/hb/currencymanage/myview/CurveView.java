@@ -54,15 +54,20 @@ public class CurveView extends View{
     }
 
 
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
 
+       this.w=w;
+       this.h=h;
 
+    }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
-        w=getWidth();
-        h=getHeight();
+
     }
 
     @Override

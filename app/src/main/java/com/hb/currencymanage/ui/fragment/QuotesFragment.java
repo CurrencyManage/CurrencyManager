@@ -388,17 +388,17 @@ public class QuotesFragment extends BaseFragment
         //左边y
         axisLeftLine = lineChart.getAxisLeft();
         /*折线图y轴左没有basevalue，调用系统的*/
-        axisLeftLine.setLabelCount(5, false);
-        axisLeftLine.setDrawLabels(false);
+        axisLeftLine.setLabelCount(5, true);
+        axisLeftLine.setDrawLabels(true);
         axisLeftLine.setDrawGridLines(false);
         /*轴不显示 避免和border冲突*/
-        axisLeftLine.setDrawAxisLine(false);
+        axisLeftLine.setDrawAxisLine(true);
 
 
         //右边y
         axisRightLine = lineChart.getAxisRight();
-        axisRightLine.setLabelCount(2, false);
-        axisRightLine.setDrawLabels(false);
+        axisRightLine.setLabelCount(2, true);
+        axisRightLine.setDrawLabels(true);
         axisRightLine.setValueFormatter(new YAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, YAxis yAxis) {
@@ -440,8 +440,13 @@ public class QuotesFragment extends BaseFragment
             return;
         }
         //设置y左右两轴最大最小值
-        axisLeftLine.setAxisMinValue(mData.getMin());
-        axisLeftLine.setAxisMaxValue(mData.getMax());
+//        axisLeftLine.setAxisMinValue(mData.getMin());
+//        axisLeftLine.setAxisMaxValue(mData.getMax());
+//        axisRightLine.setAxisMinValue(mData.getPercentMin());
+//        axisRightLine.setAxisMaxValue(mData.getPercentMax());
+
+        axisLeftLine.setAxisMinValue(mData.min);
+        axisLeftLine.setAxisMaxValue(mData.max);
         axisRightLine.setAxisMinValue(mData.getPercentMin());
         axisRightLine.setAxisMaxValue(mData.getPercentMax());
 

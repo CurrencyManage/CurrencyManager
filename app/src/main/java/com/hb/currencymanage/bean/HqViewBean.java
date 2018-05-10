@@ -9,13 +9,13 @@ import java.util.List;
 public class HqViewBean {
 
 
-    public String relativeCurrentMix;
+    public float relativeCurrentMix;
 
     public String currentMinB;
 
     public String relativeCurrentMixB;
 
-    public String currentMin;
+    public float currentMin;
 
     public List<LineBean> data;
 
