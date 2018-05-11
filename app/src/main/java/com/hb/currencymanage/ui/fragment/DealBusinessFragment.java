@@ -34,6 +34,7 @@ import com.hb.currencymanage.bean.AccountBean;
 import com.hb.currencymanage.bean.QuotesData;
 import com.hb.currencymanage.bean.QuotesEntity;
 import com.hb.currencymanage.bean.ResultData;
+import com.hb.currencymanage.customview.CustomDialog;
 import com.hb.currencymanage.db.AccountDB;
 import com.hb.currencymanage.mpchart.DataParse;
 import com.hb.currencymanage.mpchart.MinutesBean;
@@ -452,28 +453,48 @@ public class DealBusinessFragment extends BaseFragment
     @OnClick(R.id.tv_business)
     public void deal()
     {
-        if (mType == TYPE_BUY)
+        String price = mEtPrice.getText().toString();
+        String num = mEtNum.getText().toString();
+        if (mType != TYPE_ASSIGN)
         {
-            doDeal(mUserId,
-                    mEtNum.getText().toString(),
-                    mEtPrice.getText().toString(),
-                    true);
+            if (TextUtils.isEmpty(price) || TextUtils.isEmpty(num))
+            {
+                Toast.makeText(getContext(), "请先输入价格和数量!", Toast.LENGTH_LONG)
+                        .show();
+                return;
+            }
         }
-        else if (mType == TYPE_SALE)
+        else
         {
-            doDeal(mUserId,
-                    mEtNum.getText().toString(),
-                    mEtPrice.getText().toString(),
-                    false);
+            if (TextUtils.isEmpty(num))
+            {
+                Toast.makeText(getContext(), "请先输入数量!", Toast.LENGTH_LONG)
+                        .show();
+                return;
+            }
         }
-        else if (mType == TYPE_ASSIGN)
-        {
-            assign(new AccountDB(getContext()).getUserId(),
-                    mEtAssignId.getText().toString(),
-                    mEtAssignPhone.getText().toString(),
-                    mEtAssignName.getText().toString(),
-                    mEtNum.getText().toString());
-        }
+        String type = mType == TYPE_BUY ? "买入"
+                : mType == TYPE_SALE ? "卖出" : "转让";
+        String title = String.format(getContext().getResources()
+                .getString(R.string.dialog_deal_title), type);
+        String firstContent = type + "价格：" + price;
+        String secondContent = type + "数量：" + num;
+        new CustomDialog.Builder(getContext()).setTitle(title)
+                .setContentFirstVisibility(mType != TYPE_ASSIGN)
+                .setContentSecondVisibility(true)
+                .setContentFirst(firstContent)
+                .setContentSecond(secondContent)
+                .setConfirmListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        dialogConfirm();
+                    }
+                })
+                .build()
+                .show();
+        
     }
     
     @OnTextChanged(R.id.et_num)
@@ -575,6 +596,32 @@ public class DealBusinessFragment extends BaseFragment
         }, 500);
     }
     
+    private void dialogConfirm()
+    {
+        if (mType == TYPE_BUY)
+        {
+            doDeal(mUserId,
+                    mEtNum.getText().toString(),
+                    mEtPrice.getText().toString(),
+                    true);
+        }
+        else if (mType == TYPE_SALE)
+        {
+            doDeal(mUserId,
+                    mEtNum.getText().toString(),
+                    mEtPrice.getText().toString(),
+                    false);
+        }
+        else if (mType == TYPE_ASSIGN)
+        {
+            assign(new AccountDB(getContext()).getUserId(),
+                    mEtAssignId.getText().toString(),
+                    mEtAssignPhone.getText().toString(),
+                    mEtAssignName.getText().toString(),
+                    mEtNum.getText().toString());
+        }
+    }
+    
     private void doDeal(String userId, String num, String price, boolean isBuy)
     {
         if (isBuy)
@@ -624,6 +671,7 @@ public class DealBusinessFragment extends BaseFragment
                                     + resultData.data);
                             if (resultData.result.equals("000"))
                             {
+                                getTenInfo();
                             }
                             else
                             {
@@ -654,6 +702,7 @@ public class DealBusinessFragment extends BaseFragment
                         Logger.d("assign onHandlerSuccess" + resultData.data);
                         if (resultData.result.equals("000"))
                         {
+                            getTenInfo();
                         }
                         else
                         {

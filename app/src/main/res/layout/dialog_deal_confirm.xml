@@ -11,12 +11,12 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/fab_margin"
         android:layout_marginTop="@dimen/fab_margin"
-        android:text="@string/dialog_confirm"
+        android:text="@string/dialog_deal_title"
         android:textColor="@color/color_aaa"
         android:textSize="@dimen/text_size_14" />
 
     <TextView
-        android:id="@+id/tv_price"
+        android:id="@+id/tv_first"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_normal"
@@ -25,7 +25,7 @@
         android:visibility="gone" />
 
     <TextView
-        android:id="@+id/tv_num"
+        android:id="@+id/tv_second"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_little"
