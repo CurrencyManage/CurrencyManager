@@ -48,6 +48,10 @@ public class CommonUtils
      */
     public static boolean isBankCard(String cardId)
     {
+        if (TextUtils.isEmpty(cardId))
+        {
+            return false;
+        }
         char bit = getBankCardCheckCode(
                 cardId.substring(0, cardId.length() - 1));
         if (bit == 'N')

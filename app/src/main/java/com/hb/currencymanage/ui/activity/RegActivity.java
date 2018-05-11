@@ -149,7 +149,7 @@ public class RegActivity extends BaseActivity
                         .reg(mEtPhone.getText().toString(),
                                 mEtPwd.getText().toString(),
                                 mEtName.getText().toString(),
-                                mEtCard.getText().toString(),
+                                mEtCard.getText().toString().toUpperCase(),
                                 mEtRecId.getText().toString(),
                                 mEtBankAddress.getText().toString(),
                                 mEtBank.getText().toString(),
@@ -223,7 +223,7 @@ public class RegActivity extends BaseActivity
                 Toast.makeText(this, "请输入姓名", Toast.LENGTH_LONG).show();
                 return false;
             }
-            else if (CommonUtils.isIdCard(mEtCard.getText().toString()))
+            else if (!CommonUtils.isIdCard(mEtCard.getText().toString().toUpperCase()))
             {
                 Toast.makeText(this, "请输入正确的身份证号码", Toast.LENGTH_LONG).show();
                 return false;
@@ -241,9 +241,9 @@ public class RegActivity extends BaseActivity
                 Toast.makeText(this, "请输入银行卡开户行", Toast.LENGTH_LONG).show();
                 return false;
             }
-            else if (CommonUtils.isBankCard(mEtBank.getText().toString()))
+            else if (!CommonUtils.isBankCard(mEtBank.getText().toString()))
             {
-                Toast.makeText(this, "请输入您的银行卡号", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "请输入正确的银行卡号", Toast.LENGTH_LONG).show();
                 return false;
             }
         }
