@@ -82,7 +82,7 @@ public class LoginActivity extends BaseActivity
                             Toast.makeText(LoginActivity.this,
                                     !TextUtils.isEmpty(resultData.message)
                                             ? resultData.message
-                                            : "登陆失败，用户名或密码错误",
+                                            : "登陆失败，手机号或密码错误",
                                     Toast.LENGTH_LONG).show();
                         }
                     }

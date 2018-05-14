@@ -89,19 +89,27 @@ public class DataParse {
         min=hqViewBean.currentMin;
         max=hqViewBean.relativeCurrentMix;
 
-
-
-        if(hqViewBean.data!=null &&
-                hqViewBean.data.size()>0){
-            for(int i=0;i<4*60-1;i++){
+        for(int i=0;i<4*60-1;i++){
 //                MinutesBean minutesData = new MinutesBean();
 //                HqViewBean.LineBean lineBean=hqViewBean.data.get(i);
-                MinutesBean minutesData=new MinutesBean();
-                minutesData.cjprice= new Random().nextFloat()*2;//lineBean.price;
-                datas.add(minutesData);
+            MinutesBean minutesData=new MinutesBean();
+            minutesData.cjprice= new Random().nextFloat()*2;//lineBean.price;
+            datas.add(minutesData);
 
-            }
         }
+
+//
+//        if(hqViewBean.data!=null &&
+//                hqViewBean.data.size()>0){
+//            for(int i=0;i<4*60-1;i++){
+////                MinutesBean minutesData = new MinutesBean();
+////                HqViewBean.LineBean lineBean=hqViewBean.data.get(i);
+//                MinutesBean minutesData=new MinutesBean();
+//                minutesData.cjprice= new Random().nextFloat()*2;//lineBean.price;
+//                datas.add(minutesData);
+//
+//            }
+//        }
 
 
     }

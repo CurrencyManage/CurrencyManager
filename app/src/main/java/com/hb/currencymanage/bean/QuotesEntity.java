@@ -35,12 +35,16 @@ public class QuotesEntity
     public String sellUserId;
     
     public String sellPrice;
-    
+
     public int sellNum;
 
-    public int countNum;
+    public int showSellNum;
 
-    public int sellCount;
+    public int showBuyNum;
+
+
+
+
 
 
     @Override

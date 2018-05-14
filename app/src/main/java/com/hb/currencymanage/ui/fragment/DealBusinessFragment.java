@@ -748,11 +748,11 @@ public class DealBusinessFragment extends BaseFragment
                             int sellTotal = 0;
                             for (QuotesEntity bean : resultData.data.buy)
                             {
-                                buyTotal += bean.countNum;
+                                buyTotal += bean.showBuyNum;
                             }
                             for (QuotesEntity bean : resultData.data.sell)
                             {
-                                sellTotal += bean.sellCount;
+                                sellTotal += bean.showSellNum;
                             }
                             mTvBuyTotal.setText(String.valueOf(buyTotal));
                             mTvSaleTotal.setText(String.valueOf(sellTotal));
@@ -1097,8 +1097,8 @@ public class DealBusinessFragment extends BaseFragment
                 holder.setText(R.id.tv_No, "买" + (position + 1));
                 holder.setText(R.id.tv_Price, mDataBuy.get(position).buyPrice);
                 holder.setProgress(R.id.progress_sale,
-                        entity.countNum == 0 ? 0
-                                : 100 * entity.buyNum / entity.countNum);
+                        entity.showBuyNum == 0 ? 0
+                                : 100 * entity.buyNum / entity.showBuyNum);
             }
         };
         mSaleAdapter = new CommonAdapter<QuotesEntity>(getContext(),
@@ -1114,8 +1114,8 @@ public class DealBusinessFragment extends BaseFragment
                 holder.setText(R.id.tv_Price,
                         mDataSale.get(position).sellPrice);
                 holder.setProgress(R.id.progress_sale,
-                        entity.sellCount == 0 ? 0
-                                : 100 * entity.sellNum / entity.sellCount);
+                        entity.showSellNum == 0 ? 0
+                                : 100 * entity.sellNum / entity.showSellNum);
             }
         };
         mRvBuy.setAdapter(mBuyAdapter);

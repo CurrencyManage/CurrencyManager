@@ -190,7 +190,7 @@ public class QuotesFragment extends BaseFragment
 
                 //progress_sale
 
-                holder.setProgress(R.id.progress_sale,entity.sellCount==0?0:100*entity.sellNum/entity.sellCount);
+                holder.setProgress(R.id.progress_sale,entity.showSellNum==0?0:100*entity.sellNum/entity.showSellNum);
             }
         };
 
@@ -222,7 +222,7 @@ public class QuotesFragment extends BaseFragment
                 holder.setText(R.id.tv_No, "买" + (position + 1));
                 holder.setText(R.id.tv_Price,
                         buyQuotesEntityList.get(position).buyPrice);
-                holder.setProgress(R.id.progress_sale,entity.countNum==0?0:100*entity.buyNum/entity.countNum);
+                holder.setProgress(R.id.progress_sale,entity.showBuyNum==0?0:100*entity.buyNum/entity.showBuyNum);
             }
         };
 
@@ -276,6 +276,10 @@ public class QuotesFragment extends BaseFragment
                     {
                         if (resultData.code == 200)
                         {
+
+                            saleQuotesEntityList.clear();
+                            buyQuotesEntityList.clear();
+
                             saleQuotesEntityList.addAll(resultData.data.sell);
                             buyQuotesEntityList.addAll(resultData.data.buy);
                             sellTotalNum=0;

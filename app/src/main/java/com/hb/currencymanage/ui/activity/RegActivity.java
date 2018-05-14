@@ -19,6 +19,7 @@ import com.hb.currencymanage.net.BaseObserver;
 import com.hb.currencymanage.net.RetrofitUtils;
 import com.hb.currencymanage.net.RxSchedulers;
 import com.hb.currencymanage.util.CommonUtils;
+import com.hb.currencymanage.util.IdcardValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -223,7 +224,7 @@ public class RegActivity extends BaseActivity
                 Toast.makeText(this, "请输入姓名", Toast.LENGTH_LONG).show();
                 return false;
             }
-            else if (!CommonUtils.isIdCard(mEtCard.getText().toString().toUpperCase()))
+            else if (!IdcardValidator.validator.isValidatedAllIdcard(mEtCard.getText().toString().toUpperCase()))//!CommonUtils.isIdCard(mEtCard.getText().toString().toUpperCase()))
             {
                 Toast.makeText(this, "请输入正确的身份证号码", Toast.LENGTH_LONG).show();
                 return false;

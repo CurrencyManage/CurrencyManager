@@ -154,7 +154,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/tv_border_right"
                     android:gravity="center"
-                    android:text="卖入" />
+                    android:text="卖出" />
 
                 <TextView
                     android:id="@+id/tv_undo"
