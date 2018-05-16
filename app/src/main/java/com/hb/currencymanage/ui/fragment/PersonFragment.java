@@ -3,6 +3,7 @@ package com.hb.currencymanage.ui.fragment;
 import com.hb.currencymanage.R;
 import com.hb.currencymanage.bean.AccountBean;
 import com.hb.currencymanage.bean.ResultData;
+import com.hb.currencymanage.db.AccountDB;
 import com.hb.currencymanage.net.BaseObserver;
 import com.hb.currencymanage.net.RetrofitUtils;
 import com.hb.currencymanage.net.RxSchedulers;
@@ -65,41 +66,31 @@ public class PersonFragment extends BaseFragment
     
     public void initWorkNet()
     {
-        new Handler().postDelayed(new Runnable()
-        {
-            @Override
-            public void run()
-            {
-                RetrofitUtils.getInstance(getActivity()).api.getAccountInfo("1")
-                        .compose(RxSchedulers
-                                .<ResultData<AccountBean>> compose())
-                        .subscribe(new BaseObserver<AccountBean>(getActivity(),
-                                true)
+        RetrofitUtils.getInstance(getActivity()).api.getAccountInfo(new AccountDB(getContext()).getUserId())
+                .compose(RxSchedulers.<ResultData<AccountBean>> compose())
+                .subscribe(new BaseObserver<AccountBean>(getActivity(), true)
+                {
+                    @Override
+                    public void onHandlerSuccess(
+                            ResultData<AccountBean> resultData)
+                    {
+                        if (resultData.result.equals("200"))
                         {
-                            @Override
-                            public void onHandlerSuccess(
-                                    ResultData<AccountBean> resultData)
-                            {
-                                if (resultData.result.equals("200"))
-                                {
-                                    
-                                    AccountBean accountBean = resultData.data;
-                                    tv_cash.setText(accountBean.getCash());
-                                    tv_ccountMoney.setText(
-                                            accountBean.getCountMoney());
-                                    tv_currencyMoney.setText(
-                                            accountBean.getCurrencyMoney());
-                                    tv_toDaySy.setText(
-                                            "今日收益：" + accountBean.getToDaySy());
-                                    tv_toMothSy.setText("本月收益："
-                                            + accountBean.getToMonthSy());
-                                    tv_userId.setText(accountBean.getCode());
-                                    
-                                }
-                            }
-                        });
-            }
-        }, 1000);
+                            
+                            AccountBean accountBean = resultData.data;
+                            tv_cash.setText(accountBean.getCash());
+                            tv_ccountMoney.setText(accountBean.getCountMoney());
+                            tv_currencyMoney
+                                    .setText(accountBean.getCurrencyMoney());
+                            tv_toDaySy.setText(
+                                    "今日收益：" + accountBean.getToDaySy());
+                            tv_toMothSy.setText(
+                                    "本月收益：" + accountBean.getToMonthSy());
+                            tv_userId.setText(accountBean.getCode());
+                            
+                        }
+                    }
+                });
     }
     
     @OnClick(R.id.device_layoout)
@@ -155,16 +146,17 @@ public class PersonFragment extends BaseFragment
     {
         
     }
-
-
+    
     @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
+    public void setUserVisibleHint(boolean isVisibleToUser)
+    {
         super.setUserVisibleHint(isVisibleToUser);
-        if(isVisibleToUser){
-
+        if (isVisibleToUser)
+        {
+            
             initWorkNet();
-
+            
         }
-
+        
     }
 }
