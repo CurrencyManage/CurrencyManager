@@ -15,7 +15,10 @@ public class RecommendActivity extends BaseActivity {
         setContentView(R.layout.activity_recommend);
         ButterKnife.bind(this);
 
+
+
     }
+
 
 
 

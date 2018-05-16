@@ -22,8 +22,7 @@
         </activity>
         <activity android:name=".ui.activity.RegActivity" />
         <activity android:name=".ui.activity.ForgetPwdActivity" />
-        <activity android:name=".MainActivity" >
-        </activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".ui.activity.MineDeviceActivity" />
         <activity android:name=".ui.activity.DeviceDetailActivity" />
         <activity android:name=".ui.activity.AddDeviceActivity" />
@@ -39,7 +38,9 @@
         <activity android:name=".ui.activity.SettingActivity" />
         <activity android:name=".ui.activity.AboutActivity" />
         <activity android:name=".ui.activity.TellUsActivity" />
-        <activity android:name=".ui.activity.DeviceDetailLeaseActivity"></activity>
+        <activity android:name=".ui.activity.DeviceDetailLeaseActivity" />
+        <activity android:name=".ui.activity.MyOrderActivity" />
+        <activity android:name=".ui.activity.OrderDetailActivity"></activity>
     </application>
 
 </manifest>

@@ -45,6 +45,14 @@ public class MoneyManagementActivity extends BaseActivity {
 
     }
 
+    @OnClick(R.id.order)
+    void order()
+    {
+
+        changeActivity(MyOrderActivity.class);
+
+    }
+
 
     @OnClick(R.id.back)
     void back()
