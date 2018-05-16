@@ -3,18 +3,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="40dp"
-    android:background="@color/tv_white"
     android:orientation="horizontal">
 
 
     <LinearLayout
-        android:background="@drawable/tv_border_right"
+        android:background="@drawable/tv_border2_right"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent">
         <TextView
+            android:textColor="@color/color_sale_tv"
             android:id="@+id/tv_No"
             android:text="卖1"
             android:layout_marginLeft="@dimen/margin_little"
@@ -23,6 +23,7 @@
             android:layout_height="wrap_content" />
 
         <TextView
+            android:textColor="@color/color_sale_tv"
             android:id="@+id/tv_Price"
             android:text="45.22"
             android:layout_marginLeft="@dimen/margin_normal"
@@ -51,6 +52,7 @@
         </RelativeLayout>
 
         <TextView
+            android:textColor="@color/color_sale_tv"
             android:id="@+id/sale_num"
             android:gravity="right"
             android:text="14"

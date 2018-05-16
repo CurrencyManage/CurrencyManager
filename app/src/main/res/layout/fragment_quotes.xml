@@ -49,6 +49,7 @@
             <include layout="@layout/quotes_head"></include>
 
             <LinearLayout
+                android:background="@color/color_sale_bg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">

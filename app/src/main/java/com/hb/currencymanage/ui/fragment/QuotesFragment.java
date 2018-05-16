@@ -54,6 +54,7 @@ import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.reactivestreams.Subscription;
+import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -250,17 +251,24 @@ public class QuotesFragment extends BaseFragment
                     public void onHandlerSuccess(
                             ResultData<QuotesEntity> resultData)
                     {
+                        QuotesEntity quotesEntity=resultData.data;
 
                         if (resultData.code == 200)
                         {
-                            tv_count.setText(resultData.data.count);
-                            tv_countPrice.setText(resultData.data.countPrice);
-                            tv_currentMin.setText(resultData.data.currentMin);
-                            tv_currentMix.setText(resultData.data.currentMix);
+                            tv_count.setText(quotesEntity.count);
+                            tv_countPrice.setText(quotesEntity.countPrice);
+                            tv_currentMin.setText(quotesEntity.currentMin);
+                            tv_currentMix.setText(quotesEntity.currentMix);
                             tv_currentPrice
-                                    .setText(resultData.data.currentPrice);
-                            tv_Disparity.setText(resultData.data.disparity);
-                            tv_disparityB.setText(resultData.data.disparityB);
+                                    .setText(quotesEntity.currentPrice);
+                            tv_Disparity.setText(quotesEntity.disparity);
+                            tv_disparityB.setText(quotesEntity.disparityB);
+                            setTextColor(tv_currentMix,quotesEntity.currentMixColour);
+                            setTextColor(tv_currentPrice,quotesEntity.currentPriceColour);
+                            setTextColor(tv_currentMin,quotesEntity.currentMinColour);
+                            setTextColor(tv_countPrice,quotesEntity.countPriceColour);
+                            setTextColor(tv_count,quotesEntity.countColour);
+
 
                         }
                     }
@@ -308,6 +316,22 @@ public class QuotesFragment extends BaseFragment
                         }
                     }
                 });
+
+    }
+
+
+
+    private void setTextColor(TextView tv,String color)
+    {
+
+        try {
+            if(!TextUtils.isEmpty(color)){
+                tv.setTextColor(Color.parseColor(color));
+            }
+        }catch (Exception e){
+
+        }
+
 
     }
 

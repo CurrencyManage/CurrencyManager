@@ -43,8 +43,32 @@ public class QuotesEntity
     public int showBuyNum;
 
 
+    /*
+     "currentMixColour": "#00E300",
+        "countPrice": "4709",
+        "stopPlate": "1",
+        "disparityB": "-100.0%",
+        "count": "11",
+        "currentPrice": 0,
+        "disparityColour": "-100.0%",
+        "currentMin": "0",
+        "currentPriceColour": "#00E300",
+        "currentMix": "0",
+        "currentMinColour": "#00E300",
+        "disparity": "-1",
+        "countPriceColour": "#C5CED5",
+        "countColour": "#C5CED5"
+     */
 
+    public String currentMixColour;
 
+    public String currentPriceColour;
+
+    public String currentMinColour;
+
+    public String countPriceColour;
+
+    public String countColour;
 
 
     @Override

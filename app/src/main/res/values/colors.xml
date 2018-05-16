@@ -26,7 +26,7 @@
     <color name="bg_color_gray">#dcdcdc</color>
 
     <color name="minute_grayLine">#2D3945</color>
-    <color name="minute_blue">#585f95</color>
+    <color name="minute_blue">#DFDCDC</color>
     <color name="minute_yellow">#E7B448</color>
     <color name="minute_black">#101419</color>
     <color name="minute_jizhun">#7F9976</color>
@@ -35,4 +35,14 @@
     <color name="dark">#eee</color>
     <color name="color_aaa">#AAAAAA</color>
     <color name="color_dialog_confirm">#161D51</color>
+
+    <color name="color_tab_bottom">#7A848F</color>
+    <color name="color_tab_bottom_selected">#E90101</color>
+
+    <color name="color_kline_bg">#181B25</color>
+    <color name="color_kline">#DFDCDC</color>
+    <color name="color_sale_bg">#1C202A</color>
+    <color name="color_sale_tv">#C5CED5</color>
+
+
 </resources>
