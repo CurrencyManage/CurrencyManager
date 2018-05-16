@@ -830,13 +830,18 @@ public class DealBusinessFragment extends BaseFragment
                             {
                                 mTvCurRate
                                         .setText(resultData.data.currentPrice);
+                                setTextColor(mTvCurRate,resultData.data.currentPriceColour);
                                 mTvIncreaseRate
                                         .setText(resultData.data.disparityB);
+                                setTextColor(mTvIncreaseRate,resultData.data.currentPriceColour);
                             }
                         }
                     }
                 });
     }
+
+
+
     
     private void initChart()
     {

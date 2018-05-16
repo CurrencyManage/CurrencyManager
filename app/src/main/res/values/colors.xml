@@ -44,5 +44,8 @@
     <color name="color_sale_bg">#1C202A</color>
     <color name="color_sale_tv">#C5CED5</color>
 
+    <color name="color_btn_bg">#1D212B</color>
+    <color name="color_btn_text">#1D212B</color>
+
 
 </resources>

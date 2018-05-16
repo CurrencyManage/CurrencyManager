@@ -21,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -96,8 +97,9 @@ public class PersonFragment extends BaseFragment
     @OnClick(R.id.device_layoout)
     void device_layoout()
     {
-        
-        changeActivity(MineDeviceActivity.class);
+
+        Toast.makeText(getActivity(),"功能暂未开放",Toast.LENGTH_SHORT).show();
+        //changeActivity(MineDeviceActivity.class);
     }
     
     @OnClick(R.id.moneymanagement_layout)
@@ -110,15 +112,17 @@ public class PersonFragment extends BaseFragment
     @OnClick(R.id.capacity_layout)
     void capacity_layout()
     {
-        
-        changeActivity(CapacityActivity.class);
+
+        Toast.makeText(getActivity(),"功能暂未开放",Toast.LENGTH_SHORT).show();
+        //changeActivity(CapacityActivity.class);
     }
     
     @OnClick(R.id.mineCurrency_layout)
     void mineCurrency_layout()
     {
-        
-        changeActivity(MineCurrencyActivity.class);
+
+        Toast.makeText(getActivity(),"功能暂未开放",Toast.LENGTH_SHORT).show();
+       // changeActivity(MineCurrencyActivity.class);
     }
     
     @OnClick(R.id.person_layout)

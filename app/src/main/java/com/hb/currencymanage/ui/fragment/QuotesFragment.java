@@ -321,19 +321,7 @@ public class QuotesFragment extends BaseFragment
 
 
 
-    private void setTextColor(TextView tv,String color)
-    {
 
-        try {
-            if(!TextUtils.isEmpty(color)){
-                tv.setTextColor(Color.parseColor(color));
-            }
-        }catch (Exception e){
-
-        }
-
-
-    }
 
     @OnClick(R.id.tv_buy)
     public void tvbuy()

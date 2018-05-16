@@ -15,7 +15,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="买卖方向"
-            android:textColor="@color/text_color_light_black"
+            android:textColor="@color/color_sale_tv"
             android:textSize="@dimen/text_size_14" />
 
         <TextView
@@ -24,7 +24,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="货币名称"
-            android:textColor="@color/text_color_light_black"
+            android:textColor="@color/color_sale_tv"
             android:textSize="@dimen/text_size_14" />
 
         <TextView
@@ -42,11 +42,11 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="撤单数"
-            android:textColor="@color/text_color_light_black"
+            android:textColor="@color/color_sale_tv"
             android:textSize="@dimen/text_size_14" />
     </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="5dp"
-        android:background="@color/divider_color"/>
+        android:background="@color/color_sale_bg"/>
 </LinearLayout>
