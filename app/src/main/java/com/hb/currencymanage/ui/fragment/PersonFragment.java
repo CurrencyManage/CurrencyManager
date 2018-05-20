@@ -75,7 +75,7 @@ public class PersonFragment extends BaseFragment
                     public void onHandlerSuccess(
                             ResultData<AccountBean> resultData)
                     {
-                        if (resultData.result.equals("200"))
+                        if (resultData.result == 200)
                         {
                             
                             AccountBean accountBean = resultData.data;
@@ -105,8 +105,11 @@ public class PersonFragment extends BaseFragment
     @OnClick(R.id.moneymanagement_layout)
     void moneymanagement_layout()
     {
-        
-        changeActivity(MoneyManagementActivity.class);
+
+        Bundle bundle=new Bundle();
+        bundle.putString("cash",tv_cash.getText().toString());
+        changeActivity(MoneyManagementActivity.class,bundle);
+
     }
     
     @OnClick(R.id.capacity_layout)
@@ -120,9 +123,8 @@ public class PersonFragment extends BaseFragment
     @OnClick(R.id.mineCurrency_layout)
     void mineCurrency_layout()
     {
-
-        Toast.makeText(getActivity(),"功能暂未开放",Toast.LENGTH_SHORT).show();
-       // changeActivity(MineCurrencyActivity.class);
+        //Toast.makeText(getActivity(),"功能暂未开放",Toast.LENGTH_SHORT).show();
+       changeActivity(MineCurrencyActivity.class);
     }
     
     @OnClick(R.id.person_layout)

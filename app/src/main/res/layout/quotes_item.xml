@@ -23,12 +23,14 @@
             android:layout_height="wrap_content" />
 
         <TextView
+            android:singleLine="true"
+            android:gravity="center"
+            android:maxLength="8"
             android:textColor="@color/color_sale_tv"
             android:id="@+id/tv_Price"
             android:text="45.22"
-            android:layout_marginLeft="@dimen/margin_normal"
-             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_weight="2"
             android:layout_height="wrap_content" />
 
         <RelativeLayout
@@ -52,15 +54,16 @@
         </RelativeLayout>
 
         <TextView
-            android:textColor="@color/color_sale_tv"
+            android:singleLine="true"
             android:id="@+id/sale_num"
-            android:gravity="right"
-            android:text="14"
-            android:paddingRight="10dp"
-            android:layout_marginLeft="@dimen/margin_little"
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:maxLength="8"
+            android:paddingRight="10dp"
+            android:text="14"
+            android:textColor="@color/color_sale_tv" />
 
     </LinearLayout>
 

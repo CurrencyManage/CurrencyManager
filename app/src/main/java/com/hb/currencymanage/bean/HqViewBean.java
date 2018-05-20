@@ -26,7 +26,7 @@ public class HqViewBean {
 
         public int rowno;
 
-        public int price;
+        public float price;
 
         public String time;
 

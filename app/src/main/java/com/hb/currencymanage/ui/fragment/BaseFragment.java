@@ -99,7 +99,7 @@ public abstract class BaseFragment extends Fragment
     public void changeActivity(Class<?> clz, Bundle bundle)
     {
         Intent intent = new Intent(context, clz);
-        intent.putExtra("bundle", bundle);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
     

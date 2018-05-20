@@ -15,9 +15,9 @@ public class ResultData<T> implements Serializable {
 
     public String msg;
 
-    public String result;
+    public int result;
 
-    public int code;
+    //public int code;
 
     public String message;
 }

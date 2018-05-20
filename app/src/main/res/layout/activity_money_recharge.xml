@@ -73,6 +73,7 @@
             android:layout_height="match_parent" />
 
         <TextView
+            android:id="@+id/tv_whereitis"
             android:layout_marginRight="60dp"
             android:text="黑龙江sssssss"
             android:gravity="center_vertical"
@@ -101,6 +102,7 @@
             android:layout_height="match_parent" />
 
         <TextView
+            android:id="@+id/tv_bankcard"
             android:layout_marginRight="60dp"
             android:text="1112134324324234"
             android:gravity="center_vertical"
@@ -130,9 +132,10 @@
             android:layout_height="match_parent" />
 
         <EditText
+            android:id="@+id/et_money"
             android:background="@null"
             android:layout_marginRight="60dp"
-            android:text="输入充值金额"
+            android:hint="输入充值金额"
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/margin_larger"
             android:textSize="@dimen/text_size_12"
@@ -143,6 +146,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/tv_recharge"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:layout_marginTop="@dimen/dimen_40"

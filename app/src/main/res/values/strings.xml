@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">货币</string>
+    <string name="app_name">HK</string>
     <string name="login">登陆</string>
     <string name="enter_phone">请输入手机号码</string>
     <string name="enter_verify_code">请输入验证码</string>

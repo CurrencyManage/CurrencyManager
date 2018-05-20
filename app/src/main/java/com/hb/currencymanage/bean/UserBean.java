@@ -6,6 +6,24 @@ package com.hb.currencymanage.bean;
 
 public class UserBean
 {
+
+
+    /*
+    phone 用户手机号
+    pass 密码
+    clientMain/register
+    用户注册
+    phone 手机号
+    pass 密码
+    name 姓名
+    idcode 身份证号
+    recommendedcode 推荐人code
+    whereitis 开户行
+    bankcard 银行卡号
+    bank 银行
+    开户行和银行可以一样
+     */
+
     private String code;
     
     private String phone;

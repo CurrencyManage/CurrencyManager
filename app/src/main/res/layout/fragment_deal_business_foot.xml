@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="40dp"
-    android:background="@color/tv_white"
+    android:background="@color/color_sale_bg"
     android:orientation="horizontal">
 
 
@@ -14,18 +14,20 @@
         android:orientation="horizontal">
 
         <TextView
+            android:textColor="@color/color_sale_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_little"
             android:text="总卖" />
 
         <TextView
+            android:textColor="@color/color_sale_tv"
             android:id="@+id/tv_sale_total"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
             android:paddingRight="@dimen/margin_little"
-            android:text="1114" />
+            android:text="0" />
     </LinearLayout>
 
     <LinearLayout
@@ -36,17 +38,19 @@
         android:orientation="horizontal">
 
         <TextView
+            android:textColor="@color/color_sale_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_little"
             android:text="总买" />
 
         <TextView
+            android:textColor="@color/color_sale_tv"
             android:id="@+id/tv_buy_total"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
             android:paddingRight="@dimen/margin_little"
-            android:text="1434" />
+            android:text="0" />
     </LinearLayout>
 </LinearLayout>

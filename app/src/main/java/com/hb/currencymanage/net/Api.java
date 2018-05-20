@@ -2,7 +2,9 @@ package com.hb.currencymanage.net;
 
 import com.hb.currencymanage.bean.AccountBean;
 import com.hb.currencymanage.bean.CurrencyBean;
+import com.hb.currencymanage.bean.HostBean;
 import com.hb.currencymanage.bean.HqViewBean;
+import com.hb.currencymanage.bean.OrderBean;
 import com.hb.currencymanage.bean.QuotesData;
 import com.hb.currencymanage.bean.QuotesEntity;
 import com.hb.currencymanage.bean.ResultData;
@@ -66,13 +68,53 @@ public interface Api
     
     @POST("clientMain/transferThePossessionOf")
     Observable<ResultData<String>> assign(@Query("toUserId") String toUserId,
-            @Query("forUserCode") String forUserCode,
-            @Query("forUserPhone") String forUserPhone,
-            @Query("forUserName") String forUserName, @Query("num") String num);
+                                          @Query("forUserCode") String forUserCode,
+                                          @Query("forUserPhone") String forUserPhone,
+                                          @Query("forUserName") String forUserName,
+                                          @Query("num") String num);
     
     @POST("clientMain/myCurrency")
     Observable<ResultData<CurrencyBean>> myCurrency(@Query("id") String id);
 
     @GET("index/hqView")
     Observable<ResultData<HqViewBean>> hqView();
+
+
+    @POST("clientMain/getHosting")
+    Observable<ResultData<List<HostBean>>> getHosting(@Query("userId") String userId );
+
+    @POST("clientMain/getHostingOK")
+    Observable<ResultData<List<HostBean>>> getHostingOK(@Query("userId") String userId );
+
+    @POST("clientMain/getHostingCancel")
+    Observable<ResultData<List<HostBean>>> getHostingCancel(@Query("userId") String userId );
+
+
+    @POST("clientMain/cancelHosting")
+    Observable<ResultData<List<HostBean>>> cancelHosting(@Query("hostingId") String hostingId);
+
+    @POST("clientMain/getHostingAll")
+    Observable<ResultData<List<HostBean>>> getHostingAll(@Query("userId") String userId);
+
+    @POST("clientMain/recharge")
+    Observable<ResultData<UserBean>> recharge(@Query("userId") String userId,
+                                                    @Query("amount") String amount);
+
+    @POST("clientMain/withdraw")
+    Observable<ResultData<UserBean>> withdraw(@Query("userId") String userId,
+                                              @Query("amount") String amount,
+                                              @Query("withdrawType") String withdrawType);
+
+    @POST("clientMain/orderList")
+    Observable<ResultData<List<OrderBean>>> orderList(@Query("userId") String userId);
+
+    @POST("clientMain/zzVerificationSMS")
+    Observable<ResultData<UserBean>> zzVerificationSMS(@Query("userId") String userId);
+
+
+    @POST("clientMain/registerVerificationSMS")
+    Observable<ResultData<UserBean>> registerVerificationSMS(@Query("phone") String phone);
+
+
+
 }

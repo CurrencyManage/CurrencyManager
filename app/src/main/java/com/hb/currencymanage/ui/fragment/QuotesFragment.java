@@ -184,14 +184,14 @@ public class QuotesFragment extends BaseFragment
 
 
                 holder.setText(R.id.sale_num,
-                        saleQuotesEntityList.get(position).sellNum + "");
+                        saleQuotesEntityList.get(position).showSellNum);
                 holder.setText(R.id.tv_No, "卖" + (position + 1));
                 holder.setText(R.id.tv_Price,
-                        saleQuotesEntityList.get(position).sellPrice);
+                        saleQuotesEntityList.get(position).showSellPrice);
 
                 //progress_sale
 
-                holder.setProgress(R.id.progress_sale,entity.showSellNum==0?0:100*entity.sellNum/entity.showSellNum);
+                holder.setProgress(R.id.progress_sale,entity.sellNum==0?0:100*entity.sellNum/entity.sellCount);
             }
         };
 
@@ -223,7 +223,7 @@ public class QuotesFragment extends BaseFragment
                 holder.setText(R.id.tv_No, "买" + (position + 1));
                 holder.setText(R.id.tv_Price,
                         buyQuotesEntityList.get(position).buyPrice);
-                holder.setProgress(R.id.progress_sale,entity.showBuyNum==0?0:100*entity.buyNum/entity.showBuyNum);
+                holder.setProgress(R.id.progress_sale,entity.buyNum==0?0:100*entity.buyNum/entity.countNum);
             }
         };
 
@@ -253,7 +253,7 @@ public class QuotesFragment extends BaseFragment
                     {
                         QuotesEntity quotesEntity=resultData.data;
 
-                        if (resultData.code == 200)
+                        if (resultData.result == 200)
                         {
                             tv_count.setText(quotesEntity.count);
                             tv_countPrice.setText(quotesEntity.countPrice);
@@ -282,7 +282,7 @@ public class QuotesFragment extends BaseFragment
                     public void onHandlerSuccess(
                             ResultData<QuotesData> resultData)
                     {
-                        if (resultData.code == 200)
+                        if (resultData.result == 200)
                         {
 
                             saleQuotesEntityList.clear();
@@ -466,7 +466,6 @@ public class QuotesFragment extends BaseFragment
         axisRightLine.setAxisMinValue(mData.getPercentMin());
         axisRightLine.setAxisMaxValue(mData.getPercentMax());
 
-
         /*单位*/
         String unit = MyUtils.getVolUnit(mData.getVolmax());
         int u = 1;
@@ -586,10 +585,11 @@ public class QuotesFragment extends BaseFragment
                     @Override
                     public void onHandlerSuccess(ResultData<HqViewBean> resultData) {
 
-                        if(resultData.code==200){
+                        if(resultData.result==200){
                             mData = new DataParse();
                             HqViewBean hqViewBean=resultData.data;
                             mData.parseNetMinutes(hqViewBean);
+
                             setData(mData);
                         }
 
@@ -606,6 +606,7 @@ public class QuotesFragment extends BaseFragment
         xLabels.put(121, "14:00");
         xLabels.put(182, "15:00");
         xLabels.put(241, "16:00");
+
         return xLabels;
     }
 
@@ -630,5 +631,13 @@ public class QuotesFragment extends BaseFragment
         lineChart.setMarker(leftMarkerView, rightMarkerView,bottomMarkerView, mData);
 
     }
-    
+
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser){
+            getNetLineData();
+        }
+    }
 }

@@ -29,6 +29,8 @@ public class QuotesEntity
     public String buyUserId;
     
     public int buyNum;
+
+    public int countNum;
     
     public String id;
     
@@ -36,11 +38,20 @@ public class QuotesEntity
     
     public String sellPrice;
 
+    public int sellCount;
+
     public int sellNum;
 
-    public int showSellNum;
+    public String showSellNum;
 
-    public int showBuyNum;
+    public String showBuyNum;
+
+    public String showBuyPrice;
+
+    public String showSellPrice;
+
+
+
 
 
     /*

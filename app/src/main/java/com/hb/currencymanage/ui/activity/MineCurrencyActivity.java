@@ -15,67 +15,61 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MineCurrencyActivity extends BaseActivity
-{
+public class MineCurrencyActivity extends BaseActivity {
     @BindView(R.id.tv_income)
     TextView mTvIncome;
-    
+
     @BindView(R.id.tv_income_percent)
     TextView mTvIncomePercent;
-    
+
     @BindView(R.id.tv_total_money)
     TextView mTvTotalMoney;
-    
+
     @BindView(R.id.tv_total_profit_loss)
     TextView mTvTotalProfitLoss;
-    
+
     @BindView(R.id.tv_currency_total_profit_loss1B)
     TextView mTvCurrencyTotalProfitLoss1B;
-    
+
     @BindView(R.id.tv_currency_market_price)
     TextView mTvCurrencyMarketPrice;
-    
+
     @BindView(R.id.tv_currency_hold_count)
     TextView mTvCurrencyHoldCount;
-    
+
     @BindView(R.id.tv_currency_cost)
     TextView mTvCurrencyCost;
-    
+
     @BindView(R.id.tv_currency_available_count)
     TextView mTvCurrencyAvailableCount;
-    
+
     @BindView(R.id.tv_currency_buy_avg)
     TextView mTvCurrencyBuyAvg;
-    
+
     @BindView(R.id.tv_currency_market_value)
     TextView mTvCurrencyMarketValue;
 
     @BindView(R.id.tv_profitAndLoss)
     TextView mProfitAndLoss;
-    
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mine_currency);
         ButterKnife.bind(this);
         getData();
     }
-    
-    private void getData()
-    {
+
+    private void getData() {
 
         RetrofitUtils.getInstance(this).api
                 .myCurrency(new AccountDB(this).getUserId())
-                .compose(RxSchedulers.<ResultData<CurrencyBean>> compose())
-                .subscribe(new BaseObserver<CurrencyBean>(this, true)
-                {
+                .compose(RxSchedulers.<ResultData<CurrencyBean>>compose())
+                .subscribe(new BaseObserver<CurrencyBean>(this, true) {
                     @Override
                     public void onHandlerSuccess(
-                            ResultData<CurrencyBean> resultData)
-                    {
-                        if (resultData.result.equals("200"))
-                        {
+                            ResultData<CurrencyBean> resultData) {
+                        if (resultData.result == 200) {
                             CurrencyBean bean = resultData.data;
                             mTvIncome.setText(bean.mySy);
                             mTvIncomePercent.setText(
@@ -96,10 +90,9 @@ public class MineCurrencyActivity extends BaseActivity
                     }
                 });
     }
-    
+
     @OnClick(R.id.back)
-    void back()
-    {
+    void back() {
         finish();
     }
 }

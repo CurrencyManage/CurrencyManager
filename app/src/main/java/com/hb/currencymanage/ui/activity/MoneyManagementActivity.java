@@ -1,13 +1,20 @@
 package com.hb.currencymanage.ui.activity;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.hb.currencymanage.R;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MoneyManagementActivity extends BaseActivity {
+
+
+
+    @BindView(R.id.tv_cash)
+    TextView tv_cash;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +22,10 @@ public class MoneyManagementActivity extends BaseActivity {
 
         setContentView(R.layout.activity_money_management);
         ButterKnife.bind(this);
+
+        Bundle bundle=getIntent().getExtras();
+        String cash=bundle.getString("cash");
+        tv_cash.setText(cash);
 
 
 

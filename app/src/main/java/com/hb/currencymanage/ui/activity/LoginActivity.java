@@ -71,7 +71,7 @@ public class LoginActivity extends BaseActivity
                     {
                         Logger.d("res = " + resultData.data + " , "
                                 + resultData.msg + " , " + resultData.result);
-                        if (resultData.result.equals("000"))
+                        if (resultData.result==200)
                         {
                             new AccountDB(context).saveAccount(resultData.data);
                             changeActivity(MainActivity.class);

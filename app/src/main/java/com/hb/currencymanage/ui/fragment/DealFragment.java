@@ -71,8 +71,8 @@ public class DealFragment extends BaseFragment
                 .getInstance(DealBusinessFragment.TYPE_BUY));
         mFragments.add(DealBusinessFragment
                 .getInstance(DealBusinessFragment.TYPE_SALE));
+        mFragments.add(MyDelegateFragment.getInstance());
         mFragments.add(OperationFragment.getInstance());
-        mFragments.add(AuthorizeFragment.getInstance());
         mFragments.add(DealBusinessFragment
                 .getInstance(DealBusinessFragment.TYPE_ASSIGN));
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener()

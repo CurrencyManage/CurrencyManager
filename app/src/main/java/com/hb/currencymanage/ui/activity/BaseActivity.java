@@ -51,6 +51,14 @@ public class BaseActivity extends AppCompatActivity
         startActivity(intent);
         
     }
+
+
+    public void changeActivity(Class<?> clz, Bundle bundle)
+    {
+        Intent intent = new Intent(context, clz);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
     
     @Override
     protected void onDestroy()

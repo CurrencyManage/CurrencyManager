@@ -315,7 +315,9 @@
                 android:textColor="@color/red_orange_color"
                 android:textSize="@dimen/text_size_12" />
 
+
             <TextView
+                android:text=""
                 android:textColor="@color/color_sale_tv"
                 android:id="@+id/tv_business_num"
                 android:layout_width="match_parent"
@@ -387,7 +389,8 @@
                 android:id="@+id/tv_ten_info"
                 android:layout_width="@dimen/dimen_70"
                 android:layout_height="match_parent"
-                android:background="@color/bg_color_gray"
+                android:background="@color/color_sale_bg"
+                android:textColor="@color/color_sale_tv"
                 android:gravity="center"
                 android:text="＋档" />
 
@@ -395,7 +398,8 @@
                 android:id="@+id/tv_minutes_info"
                 android:layout_width="@dimen/dimen_70"
                 android:layout_height="match_parent"
-                android:background="@color/white"
+                android:background="@color/color_sale_bg"
+                android:textColor="@color/color_sale_tv"
                 android:gravity="center"
                 android:text="分时" />
 
@@ -417,6 +421,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:background="@color/color_sale_bg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -449,6 +454,7 @@
         </LinearLayout>
 
         <RelativeLayout
+            android:background="@color/color_sale_bg"
             android:id="@+id/layout_chart"
             android:layout_width="match_parent"
             android:layout_height="200dp"

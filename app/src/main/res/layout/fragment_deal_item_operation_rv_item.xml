@@ -12,6 +12,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="卖出"
@@ -19,6 +20,7 @@
             android:textSize="@dimen/text_size_16" />
 
         <TextView
+            android:id="@+id/tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="12:55:45"
@@ -33,12 +35,6 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/iv_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/icon_hb" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,21 +47,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="卖出"
+                android:text="HK"
                 android:textColor="@color/color_sale_tv"
                 android:textSize="@dimen/text_size_16" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="12:55:45"
-                android:textColor="@color/color_sale_tv"
-                android:textSize="@dimen/text_size_14" />
+
         </LinearLayout>
     </LinearLayout>
 
     <TextView
+        android:id="@+id/tv_price"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -82,6 +73,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2000"
@@ -89,6 +81,7 @@
             android:textSize="@dimen/text_size_16" />
 
         <TextView
+            android:id="@+id/tv_down"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="部成"
