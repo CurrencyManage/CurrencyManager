@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#191B25"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,12 +46,12 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:background="@null"
+                android:background="#363D48"
                 android:gravity="center"
                 android:hint="买入价格"
                 android:inputType="numberDecimal"
-                android:textColor="@color/text_color_hint"
-                android:textColorHint="@color/text_color_hint"
+                android:textColor="#E1E1E1"
+                android:textColorHint="#E1E1E1"
                 android:textSize="@dimen/text_size_16" />
 
             <RelativeLayout
@@ -123,12 +124,12 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:background="@null"
+                android:background="#363D48"
                 android:gravity="center"
                 android:hint="买入数量"
                 android:inputType="number"
-                android:textColor="@color/text_color_hint"
-                android:textColorHint="@color/text_color_hint"
+                android:textColor="#E1E1E1"
+                android:textColorHint="#E1E1E1"
                 android:textSize="@dimen/text_size_16" />
 
             <RelativeLayout
@@ -167,31 +168,34 @@
             android:visibility="visible">
 
             <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_65">
 
                 <View
-                    android:layout_width="@dimen/dimen_70"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:scaleType="center"
                     android:visibility="invisible" />
 
                 <EditText
                     android:id="@+id/et_assign_id"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@null"
+                    android:layout_weight="3"
+                    android:background="#191B25"
                     android:enabled="false"
                     android:gravity="center"
                     android:hint="请输入转让用户信息"
-                    android:textColor="@color/text_color_hint"
-                    android:textColorHint="@color/text_color_hint"
+                    android:textColor="#E1E1E1"
+                    android:textColorHint="#E1E1E1"
                     android:textSize="@dimen/text_size_16" />
 
                 <ImageView
                     android:id="@+id/iv_arrow"
-                    android:layout_width="@dimen/dimen_70"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:scaleType="center"
                     android:src="@mipmap/icon_srxx" />
@@ -207,36 +211,82 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="gone"
+                >
 
-                <EditText
-                    android:id="@+id/et_assign_phone"
+                <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_65"
-                    android:background="@null"
-                    android:gravity="center"
-                    android:hint="请输入转让用户手机号码"
-                    android:inputType="number"
-                    android:maxLength="11"
-                    android:textColor="@color/text_color_hint"
-                    android:textColorHint="@color/text_color_hint"
-                    android:textSize="@dimen/text_size_16" />
+                    android:layout_height="@dimen/dimen_65">
+                    <View
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:scaleType="center"
+                        android:visibility="invisible" />
+                    <EditText
+                        android:id="@+id/et_assign_phone"
+                        android:layout_width="0dp"
+                        android:layout_weight="3"
+                        android:layout_height="@dimen/dimen_65"
+                        android:background="#363D48"
+                        android:gravity="center"
+                        android:hint="请输入转让用户手机号码"
+                        android:inputType="number"
+                        android:maxLength="11"
+                        android:textColor="#E1E1E1"
+                        android:textColorHint="#E1E1E1"
+                        android:textSize="@dimen/text_size_16" />
+
+                    <View
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:scaleType="center"
+                        android:visibility="invisible" />
+
+                </LinearLayout>
+
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1px"
                     android:background="@color/divider_color" />
 
-                <EditText
-                    android:id="@+id/et_assign_name"
+                <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_65"
-                    android:background="@null"
-                    android:gravity="center"
-                    android:hint="请输入转让用户姓名"
-                    android:textColor="@color/text_color_hint"
-                    android:textColorHint="@color/text_color_hint"
-                    android:textSize="@dimen/text_size_16" />
+                    android:layout_height="@dimen/dimen_65">
+                    <View
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:scaleType="center"
+                        android:visibility="invisible" />
+                    <EditText
+                        android:id="@+id/et_assign_name"
+                        android:layout_weight="3"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dimen_65"
+                        android:background="#363D48"
+                        android:gravity="center"
+                        android:hint="请输入转让用户姓名"
+                        android:textColor="#E1E1E1"
+                        android:textColorHint="#E1E1E1"
+                        android:textSize="@dimen/text_size_16" />
+
+                    <View
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:scaleType="center"
+                        android:visibility="invisible" />
+
+
+
+                </LinearLayout>
+
+
 
                 <View
                     android:layout_width="match_parent"
@@ -253,13 +303,13 @@
                         android:layout_height="@dimen/dimen_65"
                         android:layout_alignParentTop="true"
                         android:layout_gravity="center"
-                        android:background="@null"
+                        android:background="#363D48"
                         android:gravity="center"
                         android:hint="请输入验证码"
                         android:inputType="number"
                         android:maxLength="6"
-                        android:textColor="@color/text_color_hint"
-                        android:textColorHint="@color/text_color_hint"
+                        android:textColor="#E1E1E1"
+                        android:textColorHint="#E1E1E1"
                         android:textSize="@dimen/text_size_16" />
 
                     <TextView
@@ -268,10 +318,10 @@
                         android:layout_height="@dimen/dimen_40"
                         android:layout_gravity="right|center_vertical"
                         android:layout_marginRight="@dimen/margin_little"
-                        android:background="@drawable/tv_border_radius_blue"
+                        android:background="#282D3B"
                         android:gravity="center"
                         android:text="@string/get_verify_code"
-                        android:textColor="@color/tab_blue_bg_color"
+                        android:textColor="#DD3237"
                         android:textSize="@dimen/text_size_16" />
                 </FrameLayout>
             </LinearLayout>
@@ -372,7 +422,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/margin_tiny"
-            android:background="@color/bg_gray" />
+            android:background="#191B25" />
 
         <View
             android:layout_width="match_parent"
@@ -382,7 +432,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_30"
-            android:background="@color/white"
+            android:background="#191B25"
             android:orientation="horizontal">
 
             <TextView

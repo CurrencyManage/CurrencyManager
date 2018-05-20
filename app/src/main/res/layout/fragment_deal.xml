@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_50"
-        android:background="@color/device_bar_color">
+        android:background="#272C39">
 
         <TextView
             android:layout_width="wrap_content"

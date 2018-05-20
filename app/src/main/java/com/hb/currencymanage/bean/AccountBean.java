@@ -11,6 +11,10 @@ public class AccountBean
     private String cash;
     
     private String currency;
+
+    private String kyCurrency;
+
+    private String kyCash;
     
     private String currencyMoney;
     
@@ -122,5 +126,21 @@ public class AccountBean
     public void setUserid(String userid)
     {
         this.userid = userid;
+    }
+
+    public String getKyCurrency() {
+        return kyCurrency;
+    }
+
+    public void setKyCurrency(String kyCurrency) {
+        this.kyCurrency = kyCurrency;
+    }
+
+    public String getKyCash() {
+        return kyCash;
+    }
+
+    public void setKyCash(String kyCash) {
+        this.kyCash = kyCash;
     }
 }

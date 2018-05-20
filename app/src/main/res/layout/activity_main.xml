@@ -28,7 +28,7 @@
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        android:background="#ffffff"
+        android:background="#191B25"
         tl:tl_iconHeight="23dp"
         tl:tl_iconWidth="23dp"
         tl:tl_indicator_color="#2C97DE"
@@ -36,6 +36,6 @@
         tl:tl_textSelectColor="@color/color_tab_bottom_selected"
         tl:tl_textUnselectColor="@color/color_tab_bottom"
         tl:tl_textsize="12sp"
-        tl:tl_underline_color="#DDDDDD"
+        tl:tl_underline_color="#191B25"
         tl:tl_underline_height="1dp" />
 </LinearLayout>

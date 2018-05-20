@@ -128,7 +128,7 @@ public class MainActivity extends BaseActivity
                                 .getColor(R.color.device_bar_color_50_alpha)
                         : position == 1
                                 ? context.getResources()
-                                        .getColor(R.color.head_red)
+                                        .getColor(R.color.color_status_s)
                                 : context.getResources()
                                         .getColor(R.color.device_bar_color));
                 if (position == 1)

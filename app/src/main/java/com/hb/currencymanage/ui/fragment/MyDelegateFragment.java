@@ -154,8 +154,8 @@ public class MyDelegateFragment extends BaseFragment
                 holder.tv_type.setText("买入");
             }
 
-            holder.tv_price.setText(bean.price);
-            holder.tv_num.setText(bean.countnum+"/"+(bean.countnum-bean.num));
+            holder.tv_price.setText(bean.showPrice);
+            holder.tv_num.setText(bean.showCountnum+"/"+bean.showCjNum);
             holder.tv_down.setText(bean.stateName);
 
 

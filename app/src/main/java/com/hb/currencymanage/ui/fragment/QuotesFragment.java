@@ -42,6 +42,7 @@ import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -112,21 +113,16 @@ public class QuotesFragment extends BaseFragment
     @BindView(R.id.tv_sellTotalNum)
     TextView tv_sellTotalNum;
 
-    private Subscription subscriptionMinute;
+
     private LineDataSet d1, d2;
     MyXAxis xAxisLine;
     MyYAxis axisRightLine;
     MyYAxis axisLeftLine;
     BarDataSet barDataSet;
 
-    MyXAxis xAxisBar;
-    MyYAxis axisLeftBar;
-    MyYAxis axisRightBar;
+
     SparseArray<String> stringSparseArray;
     private DataParse mData;
-    Integer sum = 0;
-    List<Integer> listA, listB;
-
 
     private List<QuotesEntity> saleQuotesEntityList;
 
@@ -161,7 +157,6 @@ public class QuotesFragment extends BaseFragment
     @Override
     protected void init()
     {
-
 
         stringSparseArray = setXLabels();
         initChart();
@@ -238,6 +233,7 @@ public class QuotesFragment extends BaseFragment
         buyRecycleView.setAdapter(buyAdapter);
 
         initNetWork();
+
     }
 
     public void initNetWork()
@@ -265,6 +261,8 @@ public class QuotesFragment extends BaseFragment
                             tv_disparityB.setText(quotesEntity.disparityB);
                             setTextColor(tv_currentMix,quotesEntity.currentMixColour);
                             setTextColor(tv_currentPrice,quotesEntity.currentPriceColour);
+                            setTextColor(tv_Disparity,quotesEntity.currentPriceColour);
+                            setTextColor(tv_disparityB,quotesEntity.currentPriceColour);
                             setTextColor(tv_currentMin,quotesEntity.currentMinColour);
                             setTextColor(tv_countPrice,quotesEntity.countPriceColour);
                             setTextColor(tv_count,quotesEntity.countColour);

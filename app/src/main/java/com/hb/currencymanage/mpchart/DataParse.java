@@ -7,6 +7,9 @@ import com.hb.currencymanage.bean.HqViewBean;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -78,16 +81,20 @@ public class DataParse {
 //        baseValue= (float) 10.04;
 //        permaxmin= (float) 9.85;
 
-        //permaxmin=0;//hqViewBean.currentMinB;
-        percentmin=0;
-        percentmax=200;//hqViewBean.relativeCurrentMixB;
-        volmax=200;
 
-        permaxmin=hqViewBean.relativeCurrentMix;
-        baseValue=hqViewBean.currentMin;
+        permaxmin=hqViewBean.currentMin;
 
         min=hqViewBean.currentMin;
         max=hqViewBean.relativeCurrentMix;
+
+        volmax=200;
+        double cPercentmin=Double.parseDouble(hqViewBean.currentMinB.substring(0, hqViewBean.currentMinB.length()-1))*0.01;
+       double cPercentMax=Double.parseDouble(hqViewBean.relativeCurrentMixB.substring(0, hqViewBean.relativeCurrentMixB.length()-1))*0.01;
+//
+        baseValue= (float) (permaxmin/cPercentMax);
+//        baseValue=hqViewBean.relativeCurrentMix;
+
+
 
         if (hqViewBean.data!=null && hqViewBean.data.size()>0){
             for(int i=0;i<hqViewBean.data.size();i++){
@@ -105,19 +112,6 @@ public class DataParse {
             }
         }
 
-
-//
-//        if(hqViewBean.data!=null &&
-//                hqViewBean.data.size()>0){
-//            for(int i=0;i<4*60-1;i++){
-////                MinutesBean minutesData = new MinutesBean();
-////                HqViewBean.LineBean lineBean=hqViewBean.data.get(i);
-//                MinutesBean minutesData=new MinutesBean();
-//                minutesData.cjprice= new Random().nextFloat()*2;//lineBean.price;
-//                datas.add(minutesData);
-//
-//            }
-//        }
 
 
     }

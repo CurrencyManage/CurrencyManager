@@ -51,7 +51,7 @@
             android:layout_weight="2"
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/margin_larger"
-            android:text="体现金额"
+            android:text="提现金额"
             android:textSize="@dimen/text_size_16" />
 
 

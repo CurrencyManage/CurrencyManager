@@ -9,7 +9,7 @@
 
       <LinearLayout
           android:orientation="horizontal"
-          android:background="@color/head_red"
+          android:background="#272C39"
           android:layout_width="match_parent"
           android:layout_height="130dp">
             <LinearLayout
@@ -187,12 +187,14 @@
       </LinearLayout>
 
       <LinearLayout
+          android:background="#191B25"
           android:layout_width="match_parent"
           android:layout_height="40dp">
 
             <TextView
                 android:id="@+id/one"
-                android:background="@color/tv_dark"
+                android:background="#373E4D"
+                android:textColor="#FAFAFA"
                 android:gravity="center"
                 android:text="分时"
                 android:layout_weight="1"
@@ -232,6 +234,10 @@
                 android:layout_height="match_parent" />
 
       </LinearLayout>
+      <View
+          android:background="#191B25"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/margin_normal"></View>
 
       <RelativeLayout
           android:background="@color/color_kline_bg"

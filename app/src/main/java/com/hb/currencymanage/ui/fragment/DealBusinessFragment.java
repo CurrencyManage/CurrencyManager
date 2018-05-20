@@ -612,7 +612,7 @@ public class DealBusinessFragment extends BaseFragment {
                                 Toast.makeText(getContext(),
                                         resultData.message,
                                         Toast.LENGTH_LONG).show();
-                                getTenInfo();
+                                getAccountInfo();
                             } else {
                                 if (!TextUtils.isEmpty(resultData.message)) {
                                     Toast.makeText(getContext(),
@@ -634,7 +634,8 @@ public class DealBusinessFragment extends BaseFragment {
                             Logger.d("doDeal onHandlerSuccess"
                                     + resultData.data);
                             if (resultData.result == 200) {
-                                getTenInfo();
+                                getAccountInfo();
+
                             } else {
                                 if (!TextUtils.isEmpty(resultData.message)) {
                                     Toast.makeText(getContext(),
@@ -725,11 +726,11 @@ public class DealBusinessFragment extends BaseFragment {
 
                                 mUserId = resultData.data.getUserid();
                                 mCash = Double
-                                        .valueOf(resultData.data.getCash());
+                                        .valueOf(resultData.data.getKyCash());
                                 Logger.d("cash = " + mCash);
                                 mOwnCurrencyCount = (int) Math
                                         .floor(Double.valueOf(
-                                                resultData.data.getCurrency()));
+                                                resultData.data.getKyCurrency()));
                                 mOwnCurrencyMoney = Double.valueOf(
                                         resultData.data.getCurrencyMoney());
                                 mTvBusinessNum.setText(mType == TYPE_BUY ? "可买："+mOwnCurrencyCount

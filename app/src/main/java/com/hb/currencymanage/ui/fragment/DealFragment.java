@@ -126,7 +126,7 @@ public class DealFragment extends BaseFragment
         {
             tvTab = (TextView) mLayoutTab.getChildAt(i);
             tvTab.setTextColor(ContextCompat.getColor(getContext(),
-                    i == position ? R.color.tab_blue_bg_color : R.color.white));
+                    i == position ? R.color.tab_dunselect_color : R.color.white));
             tvTab.setBackgroundColor(ContextCompat.getColor(getContext(),
                     i == position ? R.color.white : R.color.tab_blue_bg_color));
         }

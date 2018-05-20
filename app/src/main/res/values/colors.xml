@@ -16,7 +16,8 @@
     <color name="tab_unselect_color">#7C94B6</color>
     <color name="tv_bg_yellow">#FEA700</color>
 
-    <color name="tab_blue_bg_color">#585f95</color>
+    <color name="tab_blue_bg_color">#191B25</color>
+    <color name="tab_dunselect_color">#97A8B5</color>
     <color name="white">#ffffffff</color>
     <color name="bg_gray">#eeeeee</color>
     <color name="text_color_light_black">#494949</color>
@@ -46,6 +47,8 @@
 
     <color name="color_btn_bg">#1D212B</color>
     <color name="color_btn_text">#1D212B</color>
+
+    <color name="color_status_s">#272C39</color>
 
 
 </resources>

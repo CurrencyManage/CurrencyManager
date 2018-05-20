@@ -23,4 +23,13 @@ public class HostBean {
 
     public String stateName;
 
+    public String showNum;
+
+    public String showCjNum;
+
+    public String showPrice;
+
+    public String showCountnum;
+
+
 }
