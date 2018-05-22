@@ -89,18 +89,18 @@ public class DataParse {
 
         volmax=200;
         double cPercentmin=Double.parseDouble(hqViewBean.currentMinB.substring(0, hqViewBean.currentMinB.length()-1))*0.01;
-       double cPercentMax=Double.parseDouble(hqViewBean.relativeCurrentMixB.substring(0, hqViewBean.relativeCurrentMixB.length()-1))*0.01;
+        double cPercentMax=Double.parseDouble(hqViewBean.relativeCurrentMixB.substring(0, hqViewBean.relativeCurrentMixB.length()-1))*0.01;
 //
         baseValue= (float) (permaxmin/cPercentMax);
 //        baseValue=hqViewBean.relativeCurrentMix;
-
-
-
         if (hqViewBean.data!=null && hqViewBean.data.size()>0){
-            for(int i=0;i<hqViewBean.data.size();i++){
+            for(int i=0;i<=hqViewBean.data.size();i++){
                 MinutesBean minutesData=new MinutesBean();
                 minutesData.cjprice= hqViewBean.data.get(i).price<=max?hqViewBean.data.get(i).price:max;
                 datas.add(minutesData);
+                if(i==4*60){
+                    break;
+                }
 
             }
         }else {
@@ -108,6 +108,7 @@ public class DataParse {
                 MinutesBean minutesData=new MinutesBean();
                 minutesData.cjprice= 0;
                 datas.add(minutesData);
+
 
             }
         }

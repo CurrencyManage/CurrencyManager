@@ -19,6 +19,7 @@ import com.hb.currencymanage.bean.TabEntity;
 import com.hb.currencymanage.ui.activity.BaseActivity;
 import com.hb.currencymanage.ui.fragment.DealFragment;
 import com.hb.currencymanage.ui.fragment.MainFragment;
+import com.hb.currencymanage.ui.fragment.MainNewFragment;
 import com.hb.currencymanage.ui.fragment.PersonFragment;
 import com.hb.currencymanage.ui.fragment.QuotesFragment;
 import com.hb.currencymanage.ui.fragment.SimpleCardFragment;
@@ -80,7 +81,7 @@ public class MainActivity extends BaseActivity
         mDealFragment = DealFragment.getInstance();
         mQuotesFragment = QuotesFragment.getInstance();
         mPersonFragment = PersonFragment.getInstance();
-        mFragments.add(MainFragment.getInstance());
+        mFragments.add(MainNewFragment.getInstance());
         mFragments.add(mQuotesFragment);
         mFragments.add(mDealFragment);
         mFragments.add(mPersonFragment);
@@ -123,6 +124,11 @@ public class MainActivity extends BaseActivity
             public void onPageSelected(int position)
             {
                 mTabLayout.setCurrentTab(position);
+                if(position==0){
+                    mStatusView.setVisibility(View.GONE);
+                }else {
+                    mStatusView.setVisibility(View.VISIBLE);
+                }
                 mStatusView.setBackgroundColor(position == 0
                         ? context.getResources()
                                 .getColor(R.color.device_bar_color_50_alpha)
@@ -131,6 +137,9 @@ public class MainActivity extends BaseActivity
                                         .getColor(R.color.color_status_s)
                                 : context.getResources()
                                         .getColor(R.color.device_bar_color));
+                if(position==0){
+                    mStatusView.setVisibility(View.GONE);
+                }
                 if (position == 1)
                 {
                     if (null != mQuotesFragment)
@@ -155,6 +164,7 @@ public class MainActivity extends BaseActivity
         });
         mViewPager.setOffscreenPageLimit(3);
         mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
+        mStatusView.setVisibility(View.GONE);
         mViewPager.setCurrentItem(0);
     }
     

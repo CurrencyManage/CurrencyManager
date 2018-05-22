@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
+    android:layout_height="match_parent">
 
     <RelativeLayout
+        android:id="@+id/top_layout"
+        android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_50"
         android:background="#272C39">
@@ -27,8 +27,8 @@
         </LinearLayout>
 
     </RelativeLayout>
-
     <ScrollView
+        android:layout_below="@+id/top_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -130,49 +130,49 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:background="@color/color_sale_bg"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:gravity="center_vertical">
-
-                <TextView
-                    android:textColor="@color/color_sale_tv"
-                    android:id="@+id/tv_buy"
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/tv_border2_right"
-                    android:gravity="center"
-                    android:text="买入" />
-
-                <TextView
-                    android:textColor="@color/color_sale_tv"
-                    android:id="@+id/tv_sell"
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/tv_border2_right"
-                    android:gravity="center"
-                    android:text="卖出" />
-
-                <TextView
-                    android:textColor="@color/color_sale_tv"
-                    android:id="@+id/tv_undo"
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="撤单" />
-
-
-            </LinearLayout>
-
 
         </LinearLayout>
 
 
     </ScrollView>
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_sale_bg"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:textColor="@color/color_sale_tv"
+            android:background="@drawable/tv_border2_right"
+            android:id="@+id/tv_undo"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="撤单" />
 
 
-</LinearLayout>
+
+        <TextView
+            android:textColor="@color/color_sale_tv"
+            android:id="@+id/tv_sell"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="卖出" />
+
+        <TextView
+            android:textColor="@color/white"
+            android:id="@+id/tv_buy"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:background="@color/head_red"
+            android:gravity="center"
+            android:text="买入" />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -406,7 +406,7 @@ public class QuotesFragment extends BaseFragment
         axisLeftLine.setDrawLabels(true);
         axisLeftLine.setDrawGridLines(false);
         /*轴不显示 避免和border冲突*/
-        axisLeftLine.setDrawAxisLine(true);
+        axisLeftLine.setDrawAxisLine(false);
 
 
         //右边y
@@ -433,11 +433,6 @@ public class QuotesFragment extends BaseFragment
         axisLeftLine.setTextColor(getResources().getColor(R.color.minute_zhoutv));
         axisRightLine.setAxisLineColor(getResources().getColor(R.color.minute_grayLine));
         axisRightLine.setTextColor(getResources().getColor(R.color.minute_zhoutv));
-
-
-        // xAxisBar.setPosition(XAxis.XAxisPosition.BOTTOM);
-
-
 
 
 
