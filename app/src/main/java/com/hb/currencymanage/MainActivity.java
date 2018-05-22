@@ -134,9 +134,9 @@ public class MainActivity extends BaseActivity
                                 .getColor(R.color.device_bar_color_50_alpha)
                         : position == 1
                                 ? context.getResources()
-                                        .getColor(R.color.color_status_s)
+                                        .getColor(R.color.color_head)
                                 : context.getResources()
-                                        .getColor(R.color.device_bar_color));
+                                        .getColor(R.color.color_head));
                 if(position==0){
                     mStatusView.setVisibility(View.GONE);
                 }

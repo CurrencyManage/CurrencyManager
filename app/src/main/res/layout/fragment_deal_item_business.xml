@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#191B25"
+    android:background="#1E2027"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -12,7 +12,7 @@
         <LinearLayout
             android:id="@+id/layout_enter_price"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_65">
+            android:layout_height="@dimen/dimen_50">
 
             <RelativeLayout
                 android:id="@+id/layout_price_down"
@@ -87,7 +87,7 @@
             android:layout_marginTop="@dimen/margin_little"
             android:id="@+id/layout_enter_num"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_65">
+            android:layout_height="@dimen/dimen_50">
 
             <RelativeLayout
                 android:id="@+id/layout_num_down"
@@ -167,7 +167,7 @@
             <RelativeLayout
                 android:layout_marginTop="@dimen/margin_normal"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_65">
+                android:layout_height="@dimen/dimen_50">
 
                 <EditText
                     android:layout_marginRight="@dimen/dimen_40"
@@ -205,7 +205,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_65">
+                    android:layout_height="@dimen/dimen_50">
 
                     <EditText
                         android:layout_marginRight="@dimen/dimen_40"
@@ -229,7 +229,7 @@
                 <RelativeLayout
                     android:layout_marginTop="@dimen/margin_normal"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_65">
+                    android:layout_height="@dimen/dimen_50">
 
                     <EditText
                         android:layout_marginRight="@dimen/dimen_40"
@@ -250,7 +250,7 @@
                 <RelativeLayout
                     android:layout_marginTop="@dimen/margin_normal"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_65">
+                    android:layout_height="@dimen/dimen_50">
 
                     <EditText
                         android:id="@+id/et_verify_code"
@@ -341,7 +341,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/color_sale_bg"
+                android:background="@color/bg_bottom_color"
                 android:gravity="center"
                 android:text="刷新"
                 android:textColor="@color/color_sale_tv"
@@ -357,7 +357,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/color_sale_bg"
+                android:background="@color/bg_bottom_color"
                 android:gravity="center"
                 android:text="清仓"
                 android:textColor="@color/color_sale_tv"
@@ -472,5 +472,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </RelativeLayout>
+        <View
+            android:background="#111318"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></View>
     </LinearLayout>
+
 </ScrollView>
