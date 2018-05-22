@@ -5,30 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:id="@+id/top_layout"
         android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_50"
         android:background="#272C39">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+        <TextView
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="HK"
+            android:textColor="@color/tv_white"
+            android:textSize="@dimen/text_size_18" />
+        <View
+            android:background="@color/color_sale_bg"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"></View>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="HK"
-                android:textColor="@color/tv_white"
-                android:textSize="@dimen/text_size_18" />
-
-        </LinearLayout>
-
-    </RelativeLayout>
+    </LinearLayout>
     <ScrollView
         android:layout_below="@+id/top_layout"
         android:layout_width="match_parent"
@@ -40,6 +38,20 @@
             android:orientation="vertical">
 
             <include layout="@layout/quotes_head"></include>
+            <LinearLayout
+                android:background="@color/bg_bottom_color"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <TextView
+                    android:id="@+id/one"
+                    android:textColor="#FAFAFA"
+                    android:gravity="center"
+                    android:text="十档"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
 
             <LinearLayout
                 android:background="@color/color_sale_bg"

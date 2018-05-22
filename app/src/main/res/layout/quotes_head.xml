@@ -187,13 +187,12 @@
       </LinearLayout>
 
       <LinearLayout
-          android:background="#191B25"
+          android:background="@color/bg_bottom_color"
           android:layout_width="match_parent"
           android:layout_height="40dp">
 
             <TextView
                 android:id="@+id/one"
-                android:background="#373E4D"
                 android:textColor="#FAFAFA"
                 android:gravity="center"
                 android:text="分时"

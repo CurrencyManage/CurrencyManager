@@ -161,7 +161,6 @@ public class QuotesFragment extends BaseFragment
         stringSparseArray = setXLabels();
         initChart();
         initData();
-        //getOffLineData();
         getNetLineData();
 
         if (saleQuotesEntityList == null)
@@ -582,8 +581,13 @@ public class QuotesFragment extends BaseFragment
                             mData = new DataParse();
                             HqViewBean hqViewBean=resultData.data;
                             mData.parseNetMinutes(hqViewBean);
-
                             setData(mData);
+                            try {
+
+                            }catch (Exception e){
+
+                            }
+
                         }
 
                     }
