@@ -2,6 +2,7 @@
 <com.hb.currencymanage.myview.SwipeItemLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/dimen_70"
+    android:background="#1C2328"
     >
 
 

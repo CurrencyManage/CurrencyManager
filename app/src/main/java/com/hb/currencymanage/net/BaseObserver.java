@@ -46,7 +46,12 @@ public abstract class BaseObserver<T> implements Observer<ResultData<T>> {
     public void onNext(ResultData<T> resultData) {
 
        // pd.dismiss();
-        onHandlerSuccess(resultData);
+        try{
+            onHandlerSuccess(resultData);
+        }catch (Exception e){
+
+        }
+
 
 
     }

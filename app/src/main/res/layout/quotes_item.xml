@@ -40,6 +40,7 @@
             android:layout_height="match_parent">
 
             <ProgressBar
+                android:visibility="gone"
                 android:progressDrawable="@drawable/progress_drawable"
                 android:background="@color/white"
                 android:id="@+id/progress_sale"
@@ -49,6 +50,10 @@
                 android:progress="20"
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                 />
+            <com.hb.currencymanage.myview.ProgressView
+                android:id="@+id/progress"
+                android:layout_width="match_parent"
+                android:layout_height="4dp" />
 
 
         </RelativeLayout>
