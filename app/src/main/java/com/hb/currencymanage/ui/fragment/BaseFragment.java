@@ -131,6 +131,21 @@ public abstract class BaseFragment extends Fragment
 
 
     }
+
+
+    public void setBgColor(TextView tv, String color)
+    {
+
+        try {
+            if(!TextUtils.isEmpty(color)){
+                tv.setBackgroundColor(Color.parseColor(color));
+            }
+        }catch (Exception e){
+
+        }
+
+
+    }
     
     public abstract int getLayoutResId();
     

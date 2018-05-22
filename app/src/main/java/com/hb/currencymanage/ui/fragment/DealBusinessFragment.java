@@ -1036,6 +1036,15 @@ public class DealBusinessFragment extends BaseFragment {
                 : mType == TYPE_SALE ? "卖出数量" : "转让数量");
         mTvBusiness.setText(
                 mType == TYPE_BUY ? "买入" : mType == TYPE_SALE ? "卖出" : "转让");
+
+        if(mType==TYPE_BUY){
+            setBgColor(mTvBusiness,"#CC2E34");
+        }else if(mType==TYPE_SALE){
+            setBgColor(mTvBusiness,"#2C5FA0");
+        }else {
+            setBgColor(mTvBusiness,"#CFA32B");
+        }
+
         mTvStore.setText(mType == TYPE_BUY ? "全仓" : "清仓");
         mLayoutEnterPrice
                 .setVisibility(mType != TYPE_ASSIGN ? View.VISIBLE : View.GONE);
