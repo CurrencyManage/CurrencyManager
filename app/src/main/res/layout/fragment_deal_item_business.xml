@@ -46,7 +46,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:background="#363D48"
+                android:background="@drawable/b_border_et"
                 android:gravity="center"
                 android:hint="买入价格"
                 android:inputType="numberDecimal"
@@ -82,12 +82,9 @@
             </RelativeLayout>
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="@color/divider_color" />
 
         <LinearLayout
+            android:layout_marginTop="@dimen/margin_little"
             android:id="@+id/layout_enter_num"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_65">
@@ -124,7 +121,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:background="#363D48"
+                android:background="@drawable/b_border_et"
                 android:gravity="center"
                 android:hint="买入数量"
                 android:inputType="number"
@@ -168,6 +165,7 @@
             android:visibility="visible">
 
             <LinearLayout
+                android:layout_marginTop="@dimen/margin_little"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_65">
@@ -184,7 +182,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:background="#191B25"
+                    android:background="@drawable/b_border_et"
                     android:enabled="false"
                     android:gravity="center"
                     android:hint="请输入转让用户信息"
@@ -211,7 +209,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="gone"
                 >
 
                 <LinearLayout

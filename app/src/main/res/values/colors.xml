@@ -50,5 +50,10 @@
 
     <color name="color_status_s">#272C39</color>
 
+    <color name="color_et_border">#666E79</color>
+    <color name="bg_color">#191B25</color>
+
+
+
 
 </resources>
