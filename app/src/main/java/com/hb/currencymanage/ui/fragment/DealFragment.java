@@ -37,6 +37,9 @@ public class DealFragment extends BaseFragment
     @BindView(R.id.layout_tab)
     LinearLayout mLayoutTab;
     
+    @BindView(R.id.layout_index)
+    LinearLayout mLayoutIndex;
+    
     private int mTabSize;
     
     private ArrayList<Fragment> mFragments = new ArrayList<>();
@@ -126,9 +129,13 @@ public class DealFragment extends BaseFragment
         {
             tvTab = (TextView) mLayoutTab.getChildAt(i);
             tvTab.setTextColor(ContextCompat.getColor(getContext(),
-                    i == position ? R.color.tab_dunselect_color : R.color.white));
-            tvTab.setBackgroundColor(ContextCompat.getColor(getContext(),
-                    i == position ? R.color.white : R.color.tab_blue_bg_color));
+                    i == position ? R.color.white
+                            : R.color.tab_dunselect_color));
+            // tvTab.setBackgroundColor(ContextCompat.getColor(getContext(),
+            // i == position ? R.color.tab_blue_bg_color
+            // : R.color.tab_blue_bg_color));
+            mLayoutIndex.getChildAt(i)
+                    .setVisibility(i == position ? View.VISIBLE : View.INVISIBLE);
         }
     }
     

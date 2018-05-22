@@ -40,6 +40,7 @@ import com.hb.currencymanage.bean.QuotesEntity;
 import com.hb.currencymanage.bean.ResultData;
 import com.hb.currencymanage.bean.UserBean;
 import com.hb.currencymanage.customview.CustomDialog;
+import com.hb.currencymanage.customview.TriangleView;
 import com.hb.currencymanage.db.AccountDB;
 import com.hb.currencymanage.mpchart.DataParse;
 import com.hb.currencymanage.mpchart.MinutesBean;
@@ -183,7 +184,11 @@ public class DealBusinessFragment extends BaseFragment {
     @BindView(R.id.layout_assign_info)
     LinearLayout mLayoutAssignInfo;
 
-    Unbinder unbinder;
+    @BindView(R.id.triangle_ten)
+    TriangleView mTriangleTen;
+
+    @BindView(R.id.triangle_hour)
+    TriangleView mTriangleHour;
 
     private MyXAxis xAxisLine;
 
@@ -263,6 +268,9 @@ public class DealBusinessFragment extends BaseFragment {
 //                .setBackgroundColor(getResources().getColor(R.color.white));
         mLayoutChart.setVisibility(View.GONE);
         mLayoutTenInfo.setVisibility(View.VISIBLE);
+
+        mTriangleTen.setVisibility(View.VISIBLE);
+        mTriangleHour.setVisibility(View.INVISIBLE);
     }
 
     @OnClick(R.id.tv_verify_code)
@@ -558,6 +566,8 @@ public class DealBusinessFragment extends BaseFragment {
 //                getResources().getColor(R.color.bg_color_gray));
         mLayoutTenInfo.setVisibility(View.GONE);
         mLayoutChart.setVisibility(View.VISIBLE);
+        mTriangleTen.setVisibility(View.INVISIBLE);
+        mTriangleHour.setVisibility(View.VISIBLE);
     }
 
     @OnClick(R.id.tv_refresh)
@@ -1161,25 +1171,4 @@ public class DealBusinessFragment extends BaseFragment {
                     }
                 });
     }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater,
-                container,
-                savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
-
-
-
-
 }

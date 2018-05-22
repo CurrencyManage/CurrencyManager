@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#1E2027"
+    xmlns:TriangleView="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#1E2027">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -84,10 +85,10 @@
 
 
         <LinearLayout
-            android:layout_marginTop="@dimen/margin_little"
             android:id="@+id/layout_enter_num"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_50">
+            android:layout_height="@dimen/dimen_50"
+            android:layout_marginTop="@dimen/margin_little">
 
             <RelativeLayout
                 android:id="@+id/layout_num_down"
@@ -165,17 +166,17 @@
             android:visibility="visible">
 
             <RelativeLayout
-                android:layout_marginTop="@dimen/margin_normal"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_50">
+                android:layout_height="@dimen/dimen_50"
+                android:layout_marginTop="@dimen/margin_normal">
 
                 <EditText
-                    android:layout_marginRight="@dimen/dimen_40"
-                    android:layout_marginLeft="@dimen/dimen_40"
-                    android:background="@drawable/b_border_et"
                     android:id="@+id/et_assign_id"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dimen_40"
+                    android:layout_marginRight="@dimen/dimen_40"
+                    android:background="@drawable/b_border_et"
                     android:enabled="false"
                     android:gravity="center"
                     android:hint="请输入转让用户信息"
@@ -184,36 +185,35 @@
                     android:textSize="@dimen/text_size_16" />
 
                 <ImageView
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="60dp"
                     android:id="@+id/iv_arrow"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="60dp"
                     android:scaleType="center"
                     android:src="@mipmap/icon_srxx" />
             </RelativeLayout>
 
 
             <LinearLayout
-                android:layout_marginTop="@dimen/margin_normal"
                 android:id="@+id/layout_assign_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_normal"
                 android:orientation="vertical"
-                android:visibility="gone"
-                >
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_50">
 
                     <EditText
-                        android:layout_marginRight="@dimen/dimen_40"
-                        android:layout_marginLeft="@dimen/dimen_40"
-                        android:background="@drawable/b_border_et"
+                        android:id="@+id/et_assign_phone"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dimen_65"
-                        android:id="@+id/et_assign_phone"
+                        android:layout_marginLeft="@dimen/dimen_40"
+                        android:layout_marginRight="@dimen/dimen_40"
+                        android:background="@drawable/b_border_et"
                         android:gravity="center"
                         android:hint="请输入转让用户手机号码"
                         android:inputType="number"
@@ -225,19 +225,18 @@
                 </RelativeLayout>
 
 
-
                 <RelativeLayout
-                    android:layout_marginTop="@dimen/margin_normal"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_50">
+                    android:layout_height="@dimen/dimen_50"
+                    android:layout_marginTop="@dimen/margin_normal">
 
                     <EditText
-                        android:layout_marginRight="@dimen/dimen_40"
-                        android:layout_marginLeft="@dimen/dimen_40"
-                        android:background="@drawable/b_border_et"
-                        android:layout_width="match_parent"
                         android:id="@+id/et_assign_name"
+                        android:layout_width="match_parent"
                         android:layout_height="@dimen/dimen_65"
+                        android:layout_marginLeft="@dimen/dimen_40"
+                        android:layout_marginRight="@dimen/dimen_40"
+                        android:background="@drawable/b_border_et"
                         android:gravity="center"
                         android:hint="请输入转让用户姓名"
                         android:textColor="#E1E1E1"
@@ -248,17 +247,17 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:layout_marginTop="@dimen/margin_normal"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_50">
+                    android:layout_height="@dimen/dimen_50"
+                    android:layout_marginTop="@dimen/margin_normal">
 
                     <EditText
                         android:id="@+id/et_verify_code"
-                        android:layout_marginRight="@dimen/dimen_40"
-                        android:layout_marginLeft="@dimen/dimen_40"
-                        android:background="@drawable/b_border_et"
                         android:layout_width="180dp"
                         android:layout_height="@dimen/dimen_65"
+                        android:layout_marginLeft="@dimen/dimen_40"
+                        android:layout_marginRight="@dimen/dimen_40"
+                        android:background="@drawable/b_border_et"
                         android:gravity="center"
                         android:hint="请输入转让用户姓名"
                         android:textColor="#E1E1E1"
@@ -266,13 +265,13 @@
                         android:textSize="@dimen/text_size_16" />
 
                     <TextView
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@+id/et_verify_code"
                         android:id="@+id/tv_verify_code"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/dimen_40"
+                        android:layout_centerVertical="true"
                         android:layout_gravity="center_vertical"
                         android:layout_marginRight="@dimen/margin_little"
+                        android:layout_toRightOf="@+id/et_verify_code"
                         android:background="#282D3B"
                         android:gravity="center"
                         android:text="@string/get_verify_code"
@@ -288,9 +287,9 @@
         </LinearLayout>
 
         <LinearLayout
-            android:background="@color/color_sale_bg"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_50"
+            android:background="@color/color_sale_bg"
             android:orientation="horizontal"
             android:paddingLeft="@dimen/dimen_40"
             android:paddingRight="@dimen/dimen_40">
@@ -322,13 +321,13 @@
 
 
             <TextView
-                android:text=""
-                android:textColor="@color/color_sale_tv"
                 android:id="@+id/tv_business_num"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:ellipsize="end"
-                android:gravity="center_vertical|right" />
+                android:gravity="center_vertical|right"
+                android:text=""
+                android:textColor="@color/color_sale_tv" />
         </LinearLayout>
 
         <LinearLayout
@@ -397,29 +396,49 @@
                 android:layout_width="@dimen/dimen_70"
                 android:layout_height="match_parent"
                 android:background="@color/color_sale_bg"
-                android:textColor="@color/color_sale_tv"
                 android:gravity="center"
-                android:text="＋档" />
+                android:text="＋档"
+                android:textColor="@color/color_sale_tv" />
 
             <TextView
                 android:id="@+id/tv_minutes_info"
                 android:layout_width="@dimen/dimen_70"
                 android:layout_height="match_parent"
                 android:background="@color/color_sale_bg"
-                android:textColor="@color/color_sale_tv"
                 android:gravity="center"
-                android:text="分时" />
+                android:text="分时"
+                android:textColor="@color/color_sale_tv" />
+        </LinearLayout>
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="@color/divider_color" />
+        <LinearLayout
+            android:id="@+id/layout_index"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#191B25"
+            android:orientation="horizontal">
+
+            <com.hb.currencymanage.customview.TriangleView
+                android:id="@+id/triangle_ten"
+                android:layout_width="@dimen/dimen_70"
+                android:layout_height="4dp"
+                android:layout_weight="1"
+                TriangleView:triangle_color="#676D79"
+                TriangleView:triangle_width="8dp" />
+
+            <com.hb.currencymanage.customview.TriangleView
+                android:id="@+id/triangle_hour"
+                android:layout_width="@dimen/dimen_70"
+                android:layout_height="4dp"
+                android:layout_weight="1"
+                android:visibility="invisible"
+                TriangleView:triangle_color="#676D79"
+                TriangleView:triangle_width="8dp" />
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/divider_color" />
+            android:background="#676D79" />
 
         <LinearLayout
             android:id="@+id/layout_ten_info"
@@ -428,9 +447,9 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:background="@color/color_sale_bg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/color_sale_bg"
                 android:orientation="horizontal">
 
                 <RelativeLayout
@@ -461,10 +480,10 @@
         </LinearLayout>
 
         <RelativeLayout
-            android:background="@color/color_sale_bg"
             android:id="@+id/layout_chart"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:background="@color/color_sale_bg"
             android:visibility="gone">
 
             <com.hb.currencymanage.mpchart.MyLineChart
@@ -472,10 +491,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </RelativeLayout>
+
         <View
-            android:background="#111318"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></View>
+            android:layout_height="match_parent"
+            android:background="#111318"></View>
     </LinearLayout>
 
 </ScrollView>
