@@ -49,7 +49,7 @@ public abstract class BaseObserver<T> implements Observer<ResultData<T>> {
         try{
             onHandlerSuccess(resultData);
         }catch (Exception e){
-
+            e.printStackTrace();
         }
 
 

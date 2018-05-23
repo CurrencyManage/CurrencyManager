@@ -94,7 +94,7 @@ public class DataParse {
         baseValue= (float) (permaxmin/cPercentMax);
 //        baseValue=hqViewBean.relativeCurrentMix;
         if (hqViewBean.data!=null && hqViewBean.data.size()>0){
-            for(int i=0;i<=hqViewBean.data.size();i++){
+            for(int i=0;i<hqViewBean.data.size();i++){
                 MinutesBean minutesData=new MinutesBean();
                 minutesData.cjprice= hqViewBean.data.get(i).price<=max?hqViewBean.data.get(i).price:max;
                 datas.add(minutesData);

@@ -586,11 +586,7 @@ public class QuotesFragment extends BaseFragment
                             HqViewBean hqViewBean=resultData.data;
                             mData.parseNetMinutes(hqViewBean);
                             setData(mData);
-                            try {
 
-                            }catch (Exception e){
-
-                            }
 
                         }
 
