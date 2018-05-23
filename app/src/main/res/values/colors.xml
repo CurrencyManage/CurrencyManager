@@ -53,8 +53,10 @@
     <color name="color_et_border">#666E79</color>
     <color name="bg_color">#191B25</color>
 
-    <color name="color_head">#1C2328</color>
+    <color name="color_head">#1D2228</color>
     <color name="bg_bottom_color">#111318</color>
+
+    <color name="color_darkwhite">#666A73</color>
 
 
 

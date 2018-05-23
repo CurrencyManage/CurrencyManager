@@ -77,7 +77,7 @@
                               <TextView
                                   android:text="最高"
                                   android:gravity="center"
-                                  android:textColor="@color/tv_white"
+                                  android:textColor="@color/color_darkwhite"
                                   android:layout_width="match_parent"
                                   android:layout_height="wrap_content" />
 
@@ -102,7 +102,7 @@
                               <TextView
                                   android:text="最低"
                                   android:gravity="center"
-                                  android:textColor="@color/tv_white"
+                                  android:textColor="@color/color_darkwhite"
                                   android:layout_width="match_parent"
                                   android:layout_height="wrap_content" />
 
@@ -137,7 +137,7 @@
                               <TextView
                                   android:text="成交量"
                                   android:gravity="center"
-                                  android:textColor="@color/tv_white"
+                                  android:textColor="@color/color_darkwhite"
                                   android:layout_width="match_parent"
                                   android:layout_height="wrap_content" />
 
@@ -162,7 +162,7 @@
                               <TextView
                                   android:text="成交额"
                                   android:gravity="center"
-                                  android:textColor="@color/tv_white"
+                                  android:textColor="@color/color_darkwhite"
                                   android:layout_width="match_parent"
                                   android:layout_height="wrap_content" />
 

@@ -39,7 +39,7 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center_vertical"
-            android:text="我的货币 "
+            android:text="我的资产"
             android:textColor="@color/tv_white"
             android:textSize="@dimen/text_size_18" />
 

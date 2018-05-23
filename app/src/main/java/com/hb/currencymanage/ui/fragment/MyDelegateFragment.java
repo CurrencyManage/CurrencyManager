@@ -155,7 +155,7 @@ public class MyDelegateFragment extends BaseFragment
             }
 
             holder.tv_price.setText(bean.showPrice);
-            holder.tv_num.setText(bean.showCountnum+"/"+bean.showCjNum);
+            holder.tv_num.setText(bean.showCjNum+"/"+bean.showCountnum);
             holder.tv_down.setText(bean.stateName);
 
 

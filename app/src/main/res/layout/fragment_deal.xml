@@ -30,7 +30,7 @@
         android:id="@+id/layout_tab"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_40"
-        android:background="#191B25"
+        android:background="@color/color_head"
         android:orientation="horizontal">
 
         <TextView

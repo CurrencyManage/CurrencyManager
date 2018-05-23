@@ -11,7 +11,7 @@
         android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_50"
-        android:background="#272C39">
+        android:background="#1D2228">
 
         <TextView
             android:gravity="center"

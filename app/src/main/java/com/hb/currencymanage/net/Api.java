@@ -116,5 +116,14 @@ public interface Api
     Observable<ResultData<UserBean>> registerVerificationSMS(@Query("phone") String phone);
 
 
+    @POST("clientMain/rechargeCZ")
+    Observable<ResultData<UserBean>> rechargeCZ(@Query("orderId") String orderId);
+
+
+
+
+
+
+
 
 }

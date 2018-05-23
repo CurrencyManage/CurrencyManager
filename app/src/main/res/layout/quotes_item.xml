@@ -68,7 +68,7 @@
             android:maxLength="8"
             android:paddingRight="10dp"
             android:text="14"
-            android:textColor="@color/color_sale_tv" />
+            android:textColor="#666C7C" />
 
     </LinearLayout>
 

@@ -81,6 +81,7 @@ public class QuotesEntity
 
     public String countColour;
 
+    public String showColor;
 
     @Override
     public String toString()

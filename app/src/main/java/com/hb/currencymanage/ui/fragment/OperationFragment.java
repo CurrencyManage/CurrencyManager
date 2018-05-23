@@ -92,7 +92,7 @@ public class OperationFragment extends BaseFragment
 
                 holder.setText(R.id.tv_price,bean.showPrice);
                 //holder.setText(R.id.tv_num,bean.countnum+"/"+(bean.countnum-bean.num));
-                holder.setText(R.id.tv_num,bean.showCountnum+"/"+bean.showCjNum);
+                holder.setText(R.id.tv_num,bean.showCjNum+"/"+bean.showCountnum);
                 holder.setText(R.id.tv_down,bean.stateName);
 
 

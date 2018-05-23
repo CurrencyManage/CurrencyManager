@@ -4,11 +4,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.hb.currencymanage.MainActivity;
 import com.hb.currencymanage.R;
 import com.hb.currencymanage.bean.OrderBean;
+import com.hb.currencymanage.bean.ResultData;
 import com.hb.currencymanage.bean.UserBean;
 import com.hb.currencymanage.db.AccountDB;
+import com.hb.currencymanage.net.BaseObserver;
+import com.hb.currencymanage.net.RetrofitUtils;
+import com.hb.currencymanage.net.RxSchedulers;
+import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,7 +46,7 @@ public class OrderDetailActivity extends BaseActivity {
     TextView tv_type;
 
 
-
+    OrderBean orderBean;
 
 
 
@@ -50,7 +57,7 @@ public class OrderDetailActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         Bundle bundle=getIntent().getExtras();
-        OrderBean orderBean= (OrderBean) bundle.getSerializable("bean");
+        orderBean = (OrderBean) bundle.getSerializable("bean");
         UserBean userBean=new AccountDB(context).getAccount();
         tv_code.setText(TextUtils.isEmpty(orderBean.code)?" ":orderBean.code);
         tv_skCard.setText(TextUtils.isEmpty(orderBean.skCard)?" ":orderBean.skCard);
@@ -98,6 +105,28 @@ public class OrderDetailActivity extends BaseActivity {
     void back()
     {
         finish();
+    }
+
+    @OnClick(R.id.btn)
+    void btn()
+    {
+
+        RetrofitUtils.getInstance(this).api.rechargeCZ(orderBean.id)
+                .compose(RxSchedulers.<ResultData<UserBean>> compose())
+                .subscribe(new BaseObserver<UserBean>(this, true)
+                {
+                    @Override
+                    public void onHandlerSuccess(
+                            ResultData<UserBean> resultData)
+                    {
+                        Toast.makeText(context,
+                                !TextUtils.isEmpty(resultData.message)
+                                        ? resultData.message
+                                        : "失败",
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
+
     }
 
 

@@ -31,6 +31,7 @@ import com.hb.currencymanage.mpchart.MyLineChart;
 import com.hb.currencymanage.mpchart.MyRightMarkerView;
 import com.hb.currencymanage.mpchart.MyXAxis;
 import com.hb.currencymanage.mpchart.MyYAxis;
+import com.hb.currencymanage.myview.ProgressView;
 import com.hb.currencymanage.net.BaseObserver;
 import com.hb.currencymanage.net.RetrofitUtils;
 import com.hb.currencymanage.net.RxSchedulers;
@@ -176,16 +177,16 @@ public class QuotesFragment extends BaseFragment
                     int position)
             {
 
-
                 holder.setText(R.id.sale_num,
                         saleQuotesEntityList.get(position).showSellNum);
                 holder.setText(R.id.tv_No, "卖" + (position + 1));
                 holder.setText(R.id.tv_Price,
                         saleQuotesEntityList.get(position).showSellPrice);
-
                 //progress_sale
-
-                holder.setProgress(R.id.progress_sale,entity.sellNum==0?0:100*entity.sellNum/entity.sellCount);
+                //holder.setProgress(R.id.progress_sale,entity.sellNum==0?0:100*entity.sellNum/entity.sellCount);
+                ProgressView pg=holder.getView(R.id.progress);
+                pg.setColorAndProgress(entity.showColor,entity.sellNum==0?0:100*entity.sellNum/entity.sellCount);
+                holder.setTextColor(R.id.tv_Price,Color.parseColor(entity.showColor));
             }
         };
 
@@ -217,7 +218,10 @@ public class QuotesFragment extends BaseFragment
                 holder.setText(R.id.tv_No, "买" + (position + 1));
                 holder.setText(R.id.tv_Price,
                         buyQuotesEntityList.get(position).buyPrice);
-                holder.setProgress(R.id.progress_sale,entity.buyNum==0?0:100*entity.buyNum/entity.countNum);
+                //holder.setProgress(R.id.progress_sale,entity.buyNum==0?0:100*entity.buyNum/entity.countNum);
+                ProgressView pg=holder.getView(R.id.progress);
+                pg.setColorAndProgress(entity.showColor,entity.buyNum==0?0:100*entity.buyNum/entity.countNum);
+                holder.setTextColor(R.id.tv_Price,Color.parseColor(entity.showColor));
             }
         };
 

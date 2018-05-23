@@ -41,7 +41,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="委托数/成交数"
+            android:text="成交数/委托数"
             android:textColor="@color/color_sale_tv"
             android:textSize="@dimen/text_size_14" />
     </LinearLayout>

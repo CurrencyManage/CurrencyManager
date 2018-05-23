@@ -19,6 +19,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitUtils {
 
 
+    //public static final String BASE="http://39.104.50.236:8088/currency/";
+
     public static final String BASE="http://39.104.50.236/currency/";
 
     //public static final String BASE_URL = BASE+"sys/";
