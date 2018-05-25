@@ -11,25 +11,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
+            android:id="@+id/tv_mname"
             android:textStyle="bold"
             android:gravity="center_vertical"
             android:textColor="@color/tv_black"
             android:textSize="@dimen/text_size_18"
-            android:text="卯日站介货ssdsddsds"
+            android:text="...."
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_30" />
 
         <TextView
+            android:id="@+id/tv_addtime"
             android:gravity="center_vertical"
             android:textSize="@dimen/text_size_14"
-            android:text="2018-10-10 09:20"
+            android:text="..."
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <TextView
+            android:id="@+id/tv_writername"
             android:gravity="center_vertical"
             android:textColor="@color/text_color_light_black"
             android:textSize="@dimen/text_size_16"
-            android:text="卯日站介货ssdsddsds"
+            android:text="...."
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_30" />
         <ImageView

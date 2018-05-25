@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -49,8 +50,14 @@ public class MainNewFragment extends BaseFragment
 
     private List<HomeBean> homeBeanList;
 
+    private HomeBean homeBean;
+
     private CommonAdapter adapter;
-    
+
+    @BindView(R.id.tv_name)
+    TextView tv_name;
+
+
     public static MainNewFragment getInstance()
     {
         MainNewFragment sf = new MainNewFragment();
@@ -81,10 +88,7 @@ public class MainNewFragment extends BaseFragment
             homeBeanList=new ArrayList<>();
         }
 
-
         initNetwork();
-
-
         adapter = new CommonAdapter<HomeBean>(getActivity(),
                 R.layout.home_item, homeBeanList)
         {
@@ -92,6 +96,17 @@ public class MainNewFragment extends BaseFragment
             protected void convert(ViewHolder holder, HomeBean bean,
                                    int position)
             {
+
+                holder.setText(R.id.tv_mname,bean.name);
+                holder.setText(R.id.tv_writername,bean.writername);
+                holder.setText(R.id.tv_addtime,bean.addtime);
+                ImageView img=holder.getView(R.id.img);
+                Glide
+                        .with(getContext())
+                        .load(bean.headportrait)
+                        .fitCenter()
+                        .into(img);
+
 
 
             }
@@ -101,28 +116,38 @@ public class MainNewFragment extends BaseFragment
         recycleView.setAdapter(adapter);
 
 
-
-
-
     }
 
     private void initNetwork()
     {
 
-//        RetrofitUtils
-//                .getInstance(getActivity())
-//                .api
-//                .getConsulting()
-//                .compose(RxSchedulers.<ResultData<UserBean>>compose())
-//                .subscribe(new BaseObserver<UserBean>(context,false) {
-//                    @Override
-//                    public void onHandlerSuccess(ResultData<UserBean> resultData) {
-//
-//                        if(resultData.result==200){
-//
-//                        }
-//                    }
-//                });
+        RetrofitUtils
+                .getInstance(getActivity())
+                .api
+                .getConsulting()
+                .compose(RxSchedulers.<ResultData<String>>compose())
+                .subscribe(new BaseObserver<String>(getContext(),true) {
+                    @Override
+                    public void onHandlerSuccess(ResultData<String> resultData) {
+                        if(resultData.result==200){
+
+                            homeBeanList.clear();
+                            homeBean=resultData.consultingTop;
+                            homeBeanList.addAll(resultData.consultingArray);
+                            adapter.notifyDataSetChanged();
+
+                            if(homeBean!=null){
+                                tv_name.setText(homeBean.name);
+                                Glide
+                                        .with(getContext())
+                                        .load(homeBean.headportrait)
+                                        .fitCenter()
+                                        .into(img_head);
+                            }
+
+                        }
+                    }
+                });
 
     }
 

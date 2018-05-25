@@ -121,7 +121,7 @@ public interface Api
 
 
     @POST("clientMain/getConsulting")
-    Observable<ResultData<UserBean>> getConsulting();
+    Observable<ResultData<String>> getConsulting();
 
 
 
