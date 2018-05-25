@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,10 +23,12 @@ import com.hb.currencymanage.imgloader.GlideImageLoader;
 import com.hb.currencymanage.net.BaseObserver;
 import com.hb.currencymanage.net.RetrofitUtils;
 import com.hb.currencymanage.net.RxSchedulers;
+import com.hb.currencymanage.ui.activity.WebViewActivity;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.listener.OnBannerListener;
 import com.zhy.adapter.recyclerview.CommonAdapter;
+import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.ArrayList;
@@ -33,6 +36,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by 汪彬 on 2018/4/16.
@@ -108,12 +112,25 @@ public class MainNewFragment extends BaseFragment
                         .into(img);
 
 
-
             }
         };
 
         recycleView.setLayoutManager(new LinearLayoutManager(getContext()));
         recycleView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+                Bundle bundle=new Bundle();
+                bundle.putString("id",homeBeanList.get(position).id);
+                changeActivity(WebViewActivity.class,bundle);
+            }
+
+            @Override
+            public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
+                return false;
+            }
+        });
 
 
     }
@@ -148,6 +165,17 @@ public class MainNewFragment extends BaseFragment
                         }
                     }
                 });
+
+    }
+
+    @OnClick(R.id.img_head)
+    void img_head(){
+        if(homeBean!=null && !TextUtils.isEmpty(homeBean.id))
+        {
+            Bundle bundle=new Bundle();
+            bundle.putString("id",homeBean.id);
+            changeActivity(WebViewActivity.class,bundle);
+        }
 
     }
 

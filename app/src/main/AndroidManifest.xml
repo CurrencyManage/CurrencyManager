@@ -40,7 +40,8 @@
         <activity android:name=".ui.activity.TellUsActivity" />
         <activity android:name=".ui.activity.DeviceDetailLeaseActivity" />
         <activity android:name=".ui.activity.MyOrderActivity" />
-        <activity android:name=".ui.activity.OrderDetailActivity"></activity>
+        <activity android:name=".ui.activity.OrderDetailActivity" />
+        <activity android:name=".ui.activity.WebViewActivity"></activity>
     </application>
 
 </manifest>
