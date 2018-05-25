@@ -69,34 +69,56 @@ public class MyOrderActivity extends BaseActivity {
             protected void convert(ViewHolder holder, OrderBean bean, int position)
             {
 
-                switch (bean.state){
-                    case 1:
-                        holder.setText(R.id.tv_state,"已支付");
-                        break;
 
-                    case 0:
-                        holder.setText(R.id.tv_state,"未支付");
-                        break;
-                    case 2:
-                        holder.setText(R.id.tv_state,"已完成");
-                        break;
-
-                    case 3:
-                        holder.setText(R.id.tv_state,"充值成功");
-                        break;
-
-
-                }
                 holder.setText(R.id.tv_skCard,bean.skCard);
                 if(bean.orderType.equals("recharge")){
                     holder.setText(R.id.tv_money,bean.amount);
                     holder.setText(R.id.tv_khh,bean.skKHH);
                     holder.setText(R.id.tv_type,"充值");
+                    switch (bean.state){
+                        case 1:
+                            holder.setText(R.id.tv_state,"已支付");
+                            break;
+
+                        case 0:
+                            holder.setText(R.id.tv_state,"未支付");
+                            break;
+                        case 2:
+                            holder.setText(R.id.tv_state,"已完成");
+                            break;
+
+                        case 3:
+                            holder.setText(R.id.tv_state,"充值成功");
+                            break;
+
+
+                    }
+
                 }else if (bean.orderType.equals("withdraw")){
                     holder.setText(R.id.tv_money,bean.withdrawalamount);
                     holder.setText(R.id.tv_skCard,userBean.getBankcard());
                     holder.setText(R.id.tv_khh,userBean.getWhereitis());
-                    holder.setText(R.id.tv_type,"提现");
+                   // holder.setText(R.id.tv_type,"提现");
+                    switch (bean.state){
+                        case 1:
+                            holder.setText(R.id.tv_state,"进行中");
+                            break;
+
+                        case 2:
+                            holder.setText(R.id.tv_state,"已完成");
+                            break;
+
+                    }
+                    switch (Integer.parseInt(bean.type)){
+                        case 1:
+                            holder.setText(R.id.tv_type,"普通提现");
+                            break;
+
+                        case 2:
+                            holder.setText(R.id.tv_type,"紧急提现");
+                            break;
+
+                    }
                 }
 
                 holder.setText(R.id.tv_time,bean.orderTime);

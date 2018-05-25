@@ -252,19 +252,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_little"
-            android:text="2:汇款时一定要填写备注信息" />
+            android:text="2.汇款时一定要填写备注信息(请于今日完成转账充值(凌晨失效))。" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_little"
-            android:text="3:卖家确认收款后，自动充值相应货币,如超24小时未收到货币，请联系客户反馈解决" />
+            android:text="3.卖家确认收款后,自动转让相应金额。" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_little"
-            android:text="4:请务必使用本人绑定的银行卡通过手机银行或网银进行汇款" />
+            android:text="4.请务必使用本人绑定的银行卡号通过手机银行或网银进行汇款。" />
 
     </LinearLayout>
 
