@@ -120,7 +120,8 @@ public interface Api
     Observable<ResultData<UserBean>> rechargeCZ(@Query("orderId") String orderId);
 
 
-
+    @POST("clientMain/getConsulting")
+    Observable<ResultData<UserBean>> getConsulting();
 
 
 

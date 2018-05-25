@@ -53,23 +53,32 @@ public class MoneyRechargeActivity extends BaseActivity {
 
     @OnClick(R.id.tv_recharge)
     void tv_recharge(){
-        RetrofitUtils
-                .getInstance(context)
-                .api
-                .recharge(new AccountDB(context).getUserId(),et_money.getText().toString())
-                .compose(RxSchedulers.<ResultData<UserBean>>compose())
-                .subscribe(new BaseObserver<UserBean>(context,false) {
-                    @Override
-                    public void onHandlerSuccess(ResultData<UserBean> resultData) {
 
-                        if(resultData.result==200){
-                            Toast.makeText(context, "充值成功",Toast.LENGTH_SHORT).show();
-                            finish();
-                        }else {
-                            Toast.makeText(context,resultData.message+"",Toast.LENGTH_SHORT).show();
+
+        String str_money=et_money.getText().toString();
+        if(!TextUtils.isEmpty(str_money) && Integer.parseInt(str_money)>=100){
+            RetrofitUtils
+                    .getInstance(context)
+                    .api
+                    .recharge(new AccountDB(context).getUserId(),et_money.getText().toString())
+                    .compose(RxSchedulers.<ResultData<UserBean>>compose())
+                    .subscribe(new BaseObserver<UserBean>(context,false) {
+                        @Override
+                        public void onHandlerSuccess(ResultData<UserBean> resultData) {
+
+                            if(resultData.result==200){
+                                Toast.makeText(context, "充值成功",Toast.LENGTH_SHORT).show();
+                                finish();
+                            }else {
+                                Toast.makeText(context,resultData.message+"",Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
+                    });
+        }else {
+            Toast.makeText(context, "充值最小为100",Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 
 

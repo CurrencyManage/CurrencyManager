@@ -38,6 +38,7 @@ import com.hb.currencymanage.net.RxSchedulers;
 import com.hb.currencymanage.util.ConstantTest;
 import com.hb.currencymanage.util.MyUtils;
 import com.hb.currencymanage.util.VolFormatter;
+import com.orhanobut.logger.Logger;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
@@ -635,6 +636,9 @@ public class QuotesFragment extends BaseFragment
         super.setUserVisibleHint(isVisibleToUser);
         if(isVisibleToUser){
             getNetLineData();
+            Logger.e("setUserVisibleHint","");
+        }else {
+
         }
     }
 }

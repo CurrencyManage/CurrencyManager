@@ -215,7 +215,7 @@ public class RegActivity extends BaseActivity {
             if (TextUtils.isEmpty(mEtName.getText().toString())) {
                 Toast.makeText(this, "请输入姓名", Toast.LENGTH_LONG).show();
                 return false;
-            } else if (!IdcardValidator.validator.isValidatedAllIdcard(mEtCard.getText().toString().toUpperCase()))//!CommonUtils.isIdCard(mEtCard.getText().toString().toUpperCase()))
+            } else if (IdcardValidator.validator.isValidatedAllIdcard(mEtCard.getText().toString().toUpperCase()))//!CommonUtils.isIdCard(mEtCard.getText().toString().toUpperCase()))
             {
                 Toast.makeText(this, "请输入正确的身份证号码", Toast.LENGTH_LONG).show();
                 return false;

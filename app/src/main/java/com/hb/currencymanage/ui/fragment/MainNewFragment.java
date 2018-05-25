@@ -13,8 +13,14 @@ import com.hb.currencymanage.R;
 import com.hb.currencymanage.bean.HomeBean;
 import com.hb.currencymanage.bean.NewsBean;
 import com.hb.currencymanage.bean.QuotesEntity;
+import com.hb.currencymanage.bean.ResultData;
+import com.hb.currencymanage.bean.UserBean;
 import com.hb.currencymanage.customview.DividerItemDecoration;
+import com.hb.currencymanage.db.AccountDB;
 import com.hb.currencymanage.imgloader.GlideImageLoader;
+import com.hb.currencymanage.net.BaseObserver;
+import com.hb.currencymanage.net.RetrofitUtils;
+import com.hb.currencymanage.net.RxSchedulers;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.listener.OnBannerListener;
@@ -62,20 +68,22 @@ public class MainNewFragment extends BaseFragment
     @Override
     protected void init() {
 
+        /*
         Glide
                 .with(getContext())
                 .load("http://ww4.sinaimg.cn/large/006uZZy8jw1faic1xjab4j30ci08cjrv.jpg")
                 .fitCenter()
                 .into(img_head);
+                */
 
 
         if(homeBeanList==null){
             homeBeanList=new ArrayList<>();
         }
 
-        for(int i=0;i<10;i++){
-            homeBeanList.add(new HomeBean());
-        }
+
+        initNetwork();
+
 
         adapter = new CommonAdapter<HomeBean>(getActivity(),
                 R.layout.home_item, homeBeanList)
@@ -92,6 +100,29 @@ public class MainNewFragment extends BaseFragment
         recycleView.setLayoutManager(new LinearLayoutManager(getContext()));
         recycleView.setAdapter(adapter);
 
+
+
+
+
+    }
+
+    private void initNetwork()
+    {
+
+//        RetrofitUtils
+//                .getInstance(getActivity())
+//                .api
+//                .getConsulting()
+//                .compose(RxSchedulers.<ResultData<UserBean>>compose())
+//                .subscribe(new BaseObserver<UserBean>(context,false) {
+//                    @Override
+//                    public void onHandlerSuccess(ResultData<UserBean> resultData) {
+//
+//                        if(resultData.result==200){
+//
+//                        }
+//                    }
+//                });
 
     }
 

@@ -3,6 +3,8 @@ package com.hb.currencymanage.ui.activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +47,14 @@ public class OrderDetailActivity extends BaseActivity {
     @BindView(R.id.tv_type)
     TextView tv_type;
 
+    @BindView(R.id.type)
+    TextView type;
+
+    @BindView(R.id.btn)
+    Button btn;
+
+
+
 
     OrderBean orderBean;
 
@@ -66,12 +76,14 @@ public class OrderDetailActivity extends BaseActivity {
             tv_price.setText(TextUtils.isEmpty(orderBean.amount)?" ":orderBean.amount);
             tv_skKHH.setText(TextUtils.isEmpty(orderBean.skKHH)?" ":orderBean.skKHH);
             tv_type.setText("充值");
+            type.setText("订单类型:充值订单");
         }else if (orderBean.orderType.equals("withdraw")){
             tv_price.setText(TextUtils.isEmpty(orderBean.withdrawalamount)?" ":orderBean.withdrawalamount);
             tv_skKHH.setText(userBean.getWhereitis());
             tv_skCard.setText(userBean.getBankcard());
             tv_skName.setText(TextUtils.isEmpty(userBean.getName())?" ":userBean.getName());
             tv_type.setText("提现");
+            type.setText("订单类型:提现订单");
         }
 
 
@@ -79,6 +91,7 @@ public class OrderDetailActivity extends BaseActivity {
         switch (orderBean.state){
             case 1:
                 tv_state.setText("已支付");
+                btn.setVisibility(View.GONE);
                 break;
 
             case 0:

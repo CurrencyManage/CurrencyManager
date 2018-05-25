@@ -55,6 +55,7 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/type"
             android:textColor="@color/tv_black"
             android:textSize="@dimen/text_size_18"
             android:background="@drawable/tv_border_bottom"
@@ -82,6 +83,7 @@
                 android:layout_weight="2"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:visibility="gone"
                     android:background="@drawable/tv_border_bottom_and_right"
                     android:paddingRight="@dimen/margin_larger"
                     android:gravity="center_vertical|right"
@@ -147,6 +149,7 @@
                 android:layout_weight="3"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:visibility="gone"
                     android:id="@+id/tv_type"
                     android:background="@drawable/tv_border_bottom_and_right_whit"
                     android:paddingLeft="@dimen/margin_larger"

@@ -51,6 +51,12 @@ public class PersonFragment extends BaseFragment
     
     @BindView(R.id.cash)
     TextView tv_cash;
+
+    @BindView(R.id.tv_ljsyB)
+    TextView tv_ljsyB;
+
+
+
     
     public static PersonFragment getInstance()
     {
@@ -88,6 +94,7 @@ public class PersonFragment extends BaseFragment
                             tv_toMothSy.setText(
                                     "本月收益：" + accountBean.getToMonthSy());
                             tv_userId.setText(accountBean.getCode());
+                            tv_ljsyB.setText(accountBean.getLjsyB());
                             
                         }
                     }

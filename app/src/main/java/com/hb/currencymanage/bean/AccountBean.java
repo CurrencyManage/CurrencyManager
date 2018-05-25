@@ -27,6 +27,8 @@ public class AccountBean
     private String ljsy;
     
     private String userid;
+
+    private String ljsyB;
     
     public String getCode()
     {
@@ -142,5 +144,13 @@ public class AccountBean
 
     public void setKyCash(String kyCash) {
         this.kyCash = kyCash;
+    }
+
+    public String getLjsyB() {
+        return ljsyB;
+    }
+
+    public void setLjsyB(String ljsyB) {
+        this.ljsyB = ljsyB;
     }
 }
