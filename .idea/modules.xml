@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CurrencyManager.iml" filepath="$PROJECT_DIR$/CurrencyManager.iml" />
+      <module fileurl="file://D:\Android\otherSapce\NewCurrencyManager\CurrencyManager.iml" filepath="D:\Android\otherSapce\NewCurrencyManager\CurrencyManager.iml" />
       <module fileurl="file://$PROJECT_DIR$/FlycoTabLayout_Lib/FlycoTabLayout_Lib.iml" filepath="$PROJECT_DIR$/FlycoTabLayout_Lib/FlycoTabLayout_Lib.iml" />
       <module fileurl="file://$PROJECT_DIR$/MPChartLib/MPChartLib.iml" filepath="$PROJECT_DIR$/MPChartLib/MPChartLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/NewCurrencyManager.iml" filepath="$PROJECT_DIR$/NewCurrencyManager.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
