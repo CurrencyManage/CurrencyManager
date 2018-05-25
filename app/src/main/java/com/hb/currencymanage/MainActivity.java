@@ -69,6 +69,8 @@ public class MainActivity extends BaseActivity
         ButterKnife.bind(this);
         initViewPager();
     }
+
+
     
     public void swTab(int page)
     {
