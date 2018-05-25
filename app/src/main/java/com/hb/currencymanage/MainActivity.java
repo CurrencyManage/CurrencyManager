@@ -40,7 +40,7 @@ public class MainActivity extends BaseActivity
     
     @BindView(R.id.status_view)
     View mStatusView;
-    
+    //测试提交
     private String[] mTitles = { "首页", "行情", "交易", "个人" };
     
     private ArrayList<Fragment> mFragments = new ArrayList<>();
