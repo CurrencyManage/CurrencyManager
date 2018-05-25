@@ -636,6 +636,7 @@ public class QuotesFragment extends BaseFragment
         super.setUserVisibleHint(isVisibleToUser);
         if(isVisibleToUser){
             getNetLineData();
+            initNetWork();
             Logger.e("setUserVisibleHint","");
         }else {
 

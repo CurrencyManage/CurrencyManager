@@ -1192,4 +1192,12 @@ public class DealBusinessFragment extends BaseFragment {
                     }
                 });
     }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser){
+           requestData();
+        }
+    }
 }
