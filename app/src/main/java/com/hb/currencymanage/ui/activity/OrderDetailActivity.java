@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,14 +51,25 @@ public class OrderDetailActivity extends BaseActivity {
     @BindView(R.id.type)
     TextView type;
 
+    @BindView(R.id.tv_bank)
+    TextView tvBink;
+
     @BindView(R.id.btn)
     Button btn;
 
+    @BindView(R.id.ll_recharge)
+    LinearLayout llRecharge;
 
+    @BindView(R.id.tv_withdraw_hint)
+    TextView tvWithDrawHint;
 
+    @BindView(R.id.tv_urgent_withdraw_hint)
+    TextView tvUrgentWithDrawHintl;
+
+    @BindView(R.id.tv_withdraw_type)
+    TextView tvWithDrawType;
 
     OrderBean orderBean;
-
 
 
     @Override
@@ -66,29 +78,40 @@ public class OrderDetailActivity extends BaseActivity {
         setContentView(R.layout.activity_order_detail);
         ButterKnife.bind(this);
 
-        Bundle bundle=getIntent().getExtras();
+        Bundle bundle = getIntent().getExtras();
         orderBean = (OrderBean) bundle.getSerializable("bean");
-        UserBean userBean=new AccountDB(context).getAccount();
-        tv_code.setText(TextUtils.isEmpty(orderBean.code)?" ":orderBean.code);
-        tv_skCard.setText(TextUtils.isEmpty(orderBean.skCard)?" ":orderBean.skCard);
-        tv_skName.setText(TextUtils.isEmpty(orderBean.skName)?" ":orderBean.skName);
-        if(orderBean.orderType.equals("recharge")){
-            tv_price.setText(TextUtils.isEmpty(orderBean.amount)?" ":orderBean.amount);
-            tv_skKHH.setText(TextUtils.isEmpty(orderBean.skKHH)?" ":orderBean.skKHH);
+        UserBean userBean = new AccountDB(context).getAccount();
+        tv_code.setText(TextUtils.isEmpty(orderBean.code) ? " " : orderBean.code);
+        tvBink.setText(TextUtils.isEmpty(orderBean.bank) ? "" : orderBean.bank);
+        tv_skCard.setText(TextUtils.isEmpty(orderBean.skCard) ? " " : orderBean.skCard);
+        tv_skName.setText(TextUtils.isEmpty(orderBean.skName) ? " " : orderBean.skName);
+        if (orderBean.orderType.equals("recharge")) {
+            tv_price.setText(TextUtils.isEmpty(orderBean.amount) ? " " : orderBean.amount);
+            tv_skKHH.setText(TextUtils.isEmpty(orderBean.skKHH) ? " " : orderBean.skKHH);
             tv_type.setText("充值");
             type.setText("订单类型:充值订单");
-        }else if (orderBean.orderType.equals("withdraw")){
-            tv_price.setText(TextUtils.isEmpty(orderBean.withdrawalamount)?" ":orderBean.withdrawalamount);
+            llRecharge.setVisibility(View.VISIBLE);
+            tvWithDrawHint.setVisibility(View.GONE);
+            tvUrgentWithDrawHintl.setVisibility(View.GONE);
+        } else if (orderBean.orderType.equals("withdraw")) {
+            tv_price.setText(TextUtils.isEmpty(orderBean.withdrawalamount) ? " " : orderBean.withdrawalamount);
             tv_skKHH.setText(userBean.getWhereitis());
             tv_skCard.setText(userBean.getBankcard());
-            tv_skName.setText(TextUtils.isEmpty(userBean.getName())?" ":userBean.getName());
+            tv_skName.setText(TextUtils.isEmpty(userBean.getName()) ? " " : userBean.getName());
             tv_type.setText("提现");
             type.setText("订单类型:提现订单");
+            tvWithDrawType.setText("提现金额");
+            llRecharge.setVisibility(View.GONE);
+            tvWithDrawHint.setVisibility(View.VISIBLE);
+            tvUrgentWithDrawHintl.setVisibility(View.GONE);
+        } else if (orderBean.type.equals("2")) {
+            llRecharge.setVisibility(View.GONE);
+            tvWithDrawHint.setVisibility(View.GONE);
+            tvUrgentWithDrawHintl.setVisibility(View.VISIBLE);
         }
 
 
-
-        switch (orderBean.state){
+        switch (orderBean.state) {
             case 1:
                 tv_state.setText("已支付");
                 btn.setVisibility(View.GONE);
@@ -109,29 +132,22 @@ public class OrderDetailActivity extends BaseActivity {
         }
 
 
-
-
-
     }
 
     @OnClick(R.id.back)
-    void back()
-    {
+    void back() {
         finish();
     }
 
     @OnClick(R.id.btn)
-    void btn()
-    {
+    void btn() {
 
         RetrofitUtils.getInstance(this).api.rechargeCZ(orderBean.id)
-                .compose(RxSchedulers.<ResultData<UserBean>> compose())
-                .subscribe(new BaseObserver<UserBean>(this, true)
-                {
+                .compose(RxSchedulers.<ResultData<UserBean>>compose())
+                .subscribe(new BaseObserver<UserBean>(this, true) {
                     @Override
                     public void onHandlerSuccess(
-                            ResultData<UserBean> resultData)
-                    {
+                            ResultData<UserBean> resultData) {
                         Toast.makeText(context,
                                 !TextUtils.isEmpty(resultData.message)
                                         ? resultData.message
@@ -141,11 +157,6 @@ public class OrderDetailActivity extends BaseActivity {
                 });
 
     }
-
-
-
-
-
 
 
 }

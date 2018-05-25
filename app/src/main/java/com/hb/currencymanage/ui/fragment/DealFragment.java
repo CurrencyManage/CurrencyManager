@@ -43,7 +43,7 @@ public class DealFragment extends BaseFragment
     private int mTabSize;
     
     private ArrayList<Fragment> mFragments = new ArrayList<>();
-    
+
     public static DealFragment getInstance()
     {
         DealFragment df = new DealFragment();

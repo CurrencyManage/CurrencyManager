@@ -5,12 +5,13 @@ import android.os.Parcelable;
 
 import java.io.Serializable;
 
+import retrofit2.http.PUT;
+
 /**
  * Created by gaodesong on 18/5/16.
  */
 
-public class OrderBean implements Serializable{
-
+public class OrderBean implements Serializable {
 
 
     public String orderType;
@@ -41,8 +42,11 @@ public class OrderBean implements Serializable{
 
     public String withdrawalamount;
 
+    public String bank = "";
 
+    public String type;// 提现订单类型 1、普通提现 2、紧急提现
 
+    public String addtime;// 提现订单提交时间
 
 
 }

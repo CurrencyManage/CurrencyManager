@@ -5,7 +5,6 @@ import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
@@ -15,14 +14,12 @@ import com.github.mikephil.charting.formatter.YAxisValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
-import com.github.mikephil.charting.utils.Utils;
 import com.hb.currencymanage.MainActivity;
 import com.hb.currencymanage.R;
 import com.hb.currencymanage.bean.HqViewBean;
 import com.hb.currencymanage.bean.QuotesData;
 import com.hb.currencymanage.bean.QuotesEntity;
 import com.hb.currencymanage.bean.ResultData;
-import com.hb.currencymanage.dialog.QutoesDialogFragment;
 import com.hb.currencymanage.mpchart.DataParse;
 import com.hb.currencymanage.mpchart.MinutesBean;
 import com.hb.currencymanage.mpchart.MyBottomMarkerView;
@@ -37,14 +34,11 @@ import com.hb.currencymanage.net.RetrofitUtils;
 import com.hb.currencymanage.net.RxSchedulers;
 import com.hb.currencymanage.util.ConstantTest;
 import com.hb.currencymanage.util.MyUtils;
-import com.hb.currencymanage.util.VolFormatter;
-import com.orhanobut.logger.Logger;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -56,12 +50,12 @@ import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.reactivestreams.Subscription;
-import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -70,8 +64,7 @@ import butterknife.OnClick;
  * Created by 汪彬 on 2018/4/16.
  */
 
-public class QuotesFragment extends BaseFragment
-{
+public class QuotesFragment extends BaseFragment {
     public static final int SWITCH_BUY = 0;
 
     public static final int SWITCH_SALE = 1;
@@ -137,46 +130,42 @@ public class QuotesFragment extends BaseFragment
     private int sellTotalNum;
 
     private int buyTotalNum;
+    private boolean mIsVisibleToUser;
+    private TimerTask autoRefreshTimerTask;
+    private Timer autoRefreshTimer;
 
-    public static QuotesFragment getInstance()
-    {
+    public static QuotesFragment getInstance() {
         QuotesFragment sf = new QuotesFragment();
         return sf;
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState)
-    {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
     @Override
-    public int getLayoutResId()
-    {
+    public int getLayoutResId() {
         return R.layout.fragment_quotes;
     }
 
     @Override
-    protected void init()
-    {
+    protected void init() {
 
         stringSparseArray = setXLabels();
         initChart();
         initData();
         getNetLineData();
 
-        if (saleQuotesEntityList == null)
-        {
+        if (saleQuotesEntityList == null) {
             saleQuotesEntityList = new ArrayList<>();
         }
 
         saleAdapter = new CommonAdapter<QuotesEntity>(getActivity(),
-                R.layout.quotes_item, saleQuotesEntityList)
-        {
+                R.layout.quotes_item, saleQuotesEntityList) {
             @Override
             protected void convert(ViewHolder holder, QuotesEntity entity,
-                    int position)
-            {
+                                   int position) {
 
                 holder.setText(R.id.sale_num,
                         saleQuotesEntityList.get(position).showSellNum);
@@ -185,76 +174,68 @@ public class QuotesFragment extends BaseFragment
                         saleQuotesEntityList.get(position).showSellPrice);
                 //progress_sale
                 //holder.setProgress(R.id.progress_sale,entity.sellNum==0?0:100*entity.sellNum/entity.sellCount);
-                ProgressView pg=holder.getView(R.id.progress);
-                pg.setColorAndProgress(entity.showColor,entity.sellNum==0?0:100*entity.sellNum/entity.sellCount);
-                holder.setTextColor(R.id.tv_Price,Color.parseColor(entity.showColor));
+                ProgressView pg = holder.getView(R.id.progress);
+                pg.setColorAndProgress(entity.showColor, entity.sellNum == 0 ? 0 : 100 * entity.sellNum / entity.sellCount);
+                holder.setTextColor(R.id.tv_Price, Color.parseColor(entity.showColor));
             }
         };
 
-        saleRecycleView.setLayoutManager(new LinearLayoutManager(getActivity())
-        {
+        saleRecycleView.setLayoutManager(new LinearLayoutManager(getActivity()) {
             @Override
-            public boolean canScrollVertically()
-            {
+            public boolean canScrollVertically() {
                 return false;
             }
         });
         saleRecycleView.setAdapter(saleAdapter);
+        saleRecycleView.setFocusable(false);
+        saleRecycleView.setFocusableInTouchMode(false);
 
 
-        if (buyQuotesEntityList == null)
-        {
+        if (buyQuotesEntityList == null) {
             buyQuotesEntityList = new ArrayList<>();
         }
 
         buyAdapter = new CommonAdapter<QuotesEntity>(getActivity(),
-                R.layout.quotes_item, buyQuotesEntityList)
-        {
+                R.layout.quotes_item, buyQuotesEntityList) {
             @Override
             protected void convert(ViewHolder holder, QuotesEntity entity,
-                                   int position)
-            {
+                                   int position) {
                 holder.setText(R.id.sale_num,
                         buyQuotesEntityList.get(position).buyNum + "");
                 holder.setText(R.id.tv_No, "买" + (position + 1));
                 holder.setText(R.id.tv_Price,
                         buyQuotesEntityList.get(position).buyPrice);
                 //holder.setProgress(R.id.progress_sale,entity.buyNum==0?0:100*entity.buyNum/entity.countNum);
-                ProgressView pg=holder.getView(R.id.progress);
-                pg.setColorAndProgress(entity.showColor,entity.buyNum==0?0:100*entity.buyNum/entity.countNum);
-                holder.setTextColor(R.id.tv_Price,Color.parseColor(entity.showColor));
+                ProgressView pg = holder.getView(R.id.progress);
+                pg.setColorAndProgress(entity.showColor, entity.buyNum == 0 ? 0 : 100 * entity.buyNum / entity.countNum);
+                holder.setTextColor(R.id.tv_Price, Color.parseColor(entity.showColor));
             }
         };
 
-        buyRecycleView.setLayoutManager(new LinearLayoutManager(getActivity())
-        {
+        buyRecycleView.setLayoutManager(new LinearLayoutManager(getActivity()) {
             @Override
-            public boolean canScrollVertically()
-            {
+            public boolean canScrollVertically() {
                 return false;
             }
         });
         buyRecycleView.setAdapter(buyAdapter);
-
+        buyRecycleView.setFocusable(false);
+        buyRecycleView.setFocusableInTouchMode(false);
         initNetWork();
 
     }
 
-    public void initNetWork()
-    {
+    public void initNetWork() {
 
         RetrofitUtils.getInstance(getActivity()).api.getDisparity()
-                .compose(RxSchedulers.<ResultData<QuotesEntity>> compose())
-                .subscribe(new BaseObserver<QuotesEntity>(getActivity(), true)
-                {
+                .compose(RxSchedulers.<ResultData<QuotesEntity>>compose())
+                .subscribe(new BaseObserver<QuotesEntity>(getActivity(), true) {
                     @Override
                     public void onHandlerSuccess(
-                            ResultData<QuotesEntity> resultData)
-                    {
-                        QuotesEntity quotesEntity=resultData.data;
+                            ResultData<QuotesEntity> resultData) {
+                        QuotesEntity quotesEntity = resultData.data;
 
-                        if (resultData.result == 200)
-                        {
+                        if (resultData.result == 200) {
                             tv_count.setText(quotesEntity.count);
                             tv_countPrice.setText(quotesEntity.countPrice);
                             tv_currentMin.setText(quotesEntity.currentMin);
@@ -263,13 +244,13 @@ public class QuotesFragment extends BaseFragment
                                     .setText(quotesEntity.currentPrice);
                             tv_Disparity.setText(quotesEntity.disparity);
                             tv_disparityB.setText(quotesEntity.disparityB);
-                            setTextColor(tv_currentMix,quotesEntity.currentMixColour);
-                            setTextColor(tv_currentPrice,quotesEntity.currentPriceColour);
-                            setTextColor(tv_Disparity,quotesEntity.currentPriceColour);
-                            setTextColor(tv_disparityB,quotesEntity.currentPriceColour);
-                            setTextColor(tv_currentMin,quotesEntity.currentMinColour);
-                            setTextColor(tv_countPrice,quotesEntity.countPriceColour);
-                            setTextColor(tv_count,quotesEntity.countColour);
+                            setTextColor(tv_currentMix, quotesEntity.currentMixColour);
+                            setTextColor(tv_currentPrice, quotesEntity.currentPriceColour);
+                            setTextColor(tv_Disparity, quotesEntity.currentPriceColour);
+                            setTextColor(tv_disparityB, quotesEntity.currentPriceColour);
+                            setTextColor(tv_currentMin, quotesEntity.currentMinColour);
+                            setTextColor(tv_countPrice, quotesEntity.countPriceColour);
+                            setTextColor(tv_count, quotesEntity.countColour);
 
 
                         }
@@ -277,39 +258,34 @@ public class QuotesFragment extends BaseFragment
                 });
 
         RetrofitUtils.getInstance(getActivity()).api.transaction()
-                .compose(RxSchedulers.<ResultData<QuotesData>> compose())
-                .subscribe(new BaseObserver<QuotesData>(getActivity(), false)
-                {
+                .compose(RxSchedulers.<ResultData<QuotesData>>compose())
+                .subscribe(new BaseObserver<QuotesData>(getActivity(), false) {
                     @Override
                     public void onHandlerSuccess(
-                            ResultData<QuotesData> resultData)
-                    {
-                        if (resultData.result == 200)
-                        {
+                            ResultData<QuotesData> resultData) {
+                        if (resultData.result == 200) {
 
                             saleQuotesEntityList.clear();
                             buyQuotesEntityList.clear();
 
                             saleQuotesEntityList.addAll(resultData.data.sell);
                             buyQuotesEntityList.addAll(resultData.data.buy);
-                            sellTotalNum=0;
-                            buyTotalNum=0;
-                            for(QuotesEntity entity:saleQuotesEntityList){
+                            sellTotalNum = 0;
+                            buyTotalNum = 0;
+                            for (QuotesEntity entity : saleQuotesEntityList) {
 
-                                sellTotalNum+=entity.sellNum;
+                                sellTotalNum += entity.sellNum;
                             }
-                            for(QuotesEntity entity:buyQuotesEntityList){
+                            for (QuotesEntity entity : buyQuotesEntityList) {
 
-                                buyTotalNum+=entity.buyNum;
+                                buyTotalNum += entity.buyNum;
                             }
-                            tv_buyTotalNum.setText(buyTotalNum+"");
-                            tv_sellTotalNum.setText(sellTotalNum+"");
+                            tv_buyTotalNum.setText(buyTotalNum + "");
+                            tv_sellTotalNum.setText(sellTotalNum + "");
 
-                            getActivity().runOnUiThread(new Runnable()
-                            {
+                            getActivity().runOnUiThread(new Runnable() {
                                 @Override
-                                public void run()
-                                {
+                                public void run() {
                                     saleAdapter.notifyDataSetChanged();
                                     buyAdapter.notifyDataSetChanged();
                                 }
@@ -322,34 +298,28 @@ public class QuotesFragment extends BaseFragment
     }
 
 
-
-
-
     @OnClick(R.id.tv_buy)
-    public void tvbuy()
-    {
+    public void tvbuy() {
 
         /*
         QutoesDialogFragment qutoesDialogFragment = new QutoesDialogFragment();
         qutoesDialogFragment.show(getFragmentManager(), "qutoesDialogFragment");
         */
 
-        MainActivity activity= (MainActivity) getActivity();
+        MainActivity activity = (MainActivity) getActivity();
         activity.swTab(SWITCH_BUY);
     }
 
     @OnClick(R.id.tv_sell)
-    public void tv_sell()
-    {
-        MainActivity activity= (MainActivity) getActivity();
+    public void tv_sell() {
+        MainActivity activity = (MainActivity) getActivity();
         activity.swTab(SWITCH_SALE);
     }
 
 
     @OnClick(R.id.tv_undo)
-    public void tv_undo()
-    {
-        MainActivity activity= (MainActivity) getActivity();
+    public void tv_undo() {
+        MainActivity activity = (MainActivity) getActivity();
         activity.swTab(SWITCH_WITHDRAW);
     }
 
@@ -363,8 +333,7 @@ public class QuotesFragment extends BaseFragment
      */
 
     // 设置chart基本属性
-    private void initChart()
-    {
+    private void initChart() {
 
         lineChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override
@@ -384,8 +353,7 @@ public class QuotesFragment extends BaseFragment
     }
 
     // 设置数据
-    private void initData()
-    {
+    private void initData() {
 
         lineChart.setScaleEnabled(false);
         lineChart.setDrawBorders(true);
@@ -430,7 +398,7 @@ public class QuotesFragment extends BaseFragment
         axisRightLine.setDrawAxisLine(false);
         //背景线
         xAxisLine.setGridColor(getResources().getColor(R.color.minute_grayLine));
-        xAxisLine.enableGridDashedLine(10f,5f,0f);
+        xAxisLine.enableGridDashedLine(10f, 5f, 0f);
         xAxisLine.setAxisLineColor(getResources().getColor(R.color.minute_grayLine));
         xAxisLine.setTextColor(getResources().getColor(R.color.minute_zhoutv));
         axisLeftLine.setGridColor(getResources().getColor(R.color.minute_grayLine));
@@ -439,9 +407,7 @@ public class QuotesFragment extends BaseFragment
         axisRightLine.setTextColor(getResources().getColor(R.color.minute_zhoutv));
 
 
-
     }
-
 
 
     private void setData(DataParse mData) {
@@ -557,7 +523,6 @@ public class QuotesFragment extends BaseFragment
         lineChart.invalidate();//刷新图
 
 
-
     }
 
 
@@ -578,13 +543,13 @@ public class QuotesFragment extends BaseFragment
 
         RetrofitUtils.getInstance(getActivity()).api.hqView()
                 .compose(RxSchedulers.<ResultData<HqViewBean>>compose())
-                .subscribe(new BaseObserver<HqViewBean>(getActivity(),false) {
+                .subscribe(new BaseObserver<HqViewBean>(getActivity(), false) {
                     @Override
                     public void onHandlerSuccess(ResultData<HqViewBean> resultData) {
 
-                        if(resultData.result==200){
+                        if (resultData.result == 200) {
                             mData = new DataParse();
-                            HqViewBean hqViewBean=resultData.data;
+                            HqViewBean hqViewBean = resultData.data;
                             mData.parseNetMinutes(hqViewBean);
                             setData(mData);
 
@@ -626,20 +591,66 @@ public class QuotesFragment extends BaseFragment
         MyLeftMarkerView leftMarkerView = new MyLeftMarkerView(getActivity(), R.layout.mymarkerview);
         MyRightMarkerView rightMarkerView = new MyRightMarkerView(getActivity(), R.layout.mymarkerview);
         MyBottomMarkerView bottomMarkerView = new MyBottomMarkerView(getActivity(), R.layout.mymarkerview);
-        lineChart.setMarker(leftMarkerView, rightMarkerView,bottomMarkerView, mData);
+        lineChart.setMarker(leftMarkerView, rightMarkerView, bottomMarkerView, mData);
 
     }
 
 
     @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
+    public void setUserVisibleHint(final boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if(isVisibleToUser){
-            getNetLineData();
-            initNetWork();
-            Logger.e("setUserVisibleHint","");
-        }else {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(300);
+                    mIsVisibleToUser = isVisibleToUser;
+                    startTimer();
 
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+    private void startTimer() {
+        if (null == autoRefreshTimer) {
+            autoRefreshTimer = new Timer();
+        }
+        if (null == autoRefreshTimerTask) {
+            autoRefreshTimerTask = new TimerTask() {
+                @Override
+                public void run() {
+                    if (mIsVisibleToUser) {
+                        getNetLineData();
+                        initNetWork();
+                        Log.i("3秒刷新   ", "  行情  ");
+                    }else {
+                        stopTimer();
+                    }
+                }
+            };
+            if (null != autoRefreshTimer && null != autoRefreshTimerTask){
+                autoRefreshTimer.schedule(autoRefreshTimerTask, 1000, 3000);
+            }
         }
     }
+
+    private void stopTimer() {
+        if (null != autoRefreshTimer) {
+            autoRefreshTimer.cancel();
+            autoRefreshTimer = null;
+            autoRefreshTimerTask.cancel();
+            autoRefreshTimerTask = null;
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        stopTimer();
+    }
+
+
 }

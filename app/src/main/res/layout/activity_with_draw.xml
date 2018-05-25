@@ -148,6 +148,15 @@
     </LinearLayout>
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/margin_larger"
+        android:text="手续费2%,最低充值100元"
+        android:textSize="@dimen/text_size_12" />
+
+    <TextView
         android:id="@+id/withDraw"
         android:layout_width="200dp"
         android:layout_height="@dimen/dimen_40"

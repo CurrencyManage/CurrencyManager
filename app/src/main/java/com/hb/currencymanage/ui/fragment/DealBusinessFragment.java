@@ -32,6 +32,7 @@ import com.github.mikephil.charting.formatter.YAxisValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
+import com.hb.currencymanage.MainActivity;
 import com.hb.currencymanage.R;
 import com.hb.currencymanage.bean.AccountBean;
 import com.hb.currencymanage.bean.HqViewBean;
@@ -68,6 +69,8 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -191,6 +194,9 @@ public class DealBusinessFragment extends BaseFragment {
     @BindView(R.id.triangle_hour)
     TriangleView mTriangleHour;
 
+    @BindView(R.id.et_verify_code)
+    EditText mEtVerifyCode;
+
     private MyXAxis xAxisLine;
 
     private MyYAxis axisRightLine;
@@ -232,6 +238,10 @@ public class DealBusinessFragment extends BaseFragment {
     private double mUpPricePer = 0f;
 
     private boolean mIsOpen = false;
+    private MainActivity mainActivity;
+    private boolean mIsVisibleToUser;
+    private TimerTask autoRefreshTimerTask;
+    private Timer autoRefreshTimer;
 
     public static DealBusinessFragment getInstance(int type) {
         DealBusinessFragment f = new DealBusinessFragment();
@@ -246,6 +256,7 @@ public class DealBusinessFragment extends BaseFragment {
 
     @Override
     protected void init() {
+        mainActivity = (MainActivity) getActivity();
         initVariable();
         initView();
         initChart();
@@ -281,15 +292,15 @@ public class DealBusinessFragment extends BaseFragment {
         RetrofitUtils.getInstance(getContext()).api
                 .zzVerificationSMS(new AccountDB(getContext()).getUserId())
                 .compose(RxSchedulers.<ResultData<UserBean>>compose())
-                .subscribe(new BaseObserver<UserBean>(getContext(),true) {
+                .subscribe(new BaseObserver<UserBean>(getContext(), true) {
                     @Override
                     public void onHandlerSuccess(ResultData<UserBean> resultData) {
 
                         mTvVerifyCode.setText(R.string.get_verify_code);
-                        if (resultData.result==200){
-                            Toast.makeText(getContext(),"验证码获取成功",Toast.LENGTH_SHORT).show();
-                        }else {
-                            Toast.makeText(getContext(),"验证码获取失败",Toast.LENGTH_SHORT).show();
+                        if (resultData.result == 200) {
+                            Toast.makeText(getContext(), "验证码获取成功", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getContext(), "验证码获取失败", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -306,17 +317,17 @@ public class DealBusinessFragment extends BaseFragment {
 
     private int count = 60;
 
-    private Handler handler=new Handler(){
+    private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            mTvVerifyCode.setText(count+"s");
+            mTvVerifyCode.setText(count + "s");
             --count;
-            if(count==0){
+            if (count == 0) {
                 mTvVerifyCode.setEnabled(true);
                 mTvVerifyCode.setText(R.string.get_verify_code);
-            }else {
-                handler.sendEmptyMessageDelayed(0,1000);
+            } else {
+                handler.sendEmptyMessageDelayed(0, 1000);
             }
 
         }
@@ -327,8 +338,8 @@ public class DealBusinessFragment extends BaseFragment {
     public void downPrice() {
         if (mType != TYPE_ASSIGN) {
             try {
-                BigDecimal price=new BigDecimal(mEtPrice.getText().toString());
-                BigDecimal num=new BigDecimal("0.01");
+                BigDecimal price = new BigDecimal(mEtPrice.getText().toString());
+                BigDecimal num = new BigDecimal("0.01");
                 mEtPrice.setText(price.subtract(num) + "");
             } catch (NumberFormatException e) {
                 mEtPrice.setText("");
@@ -342,8 +353,8 @@ public class DealBusinessFragment extends BaseFragment {
             try {
 //                double price = Double.valueOf(mEtPrice.getText().toString());
 //                price = price + mUpPricePer;
-                BigDecimal price=new BigDecimal(mEtPrice.getText().toString());
-                BigDecimal num=new BigDecimal("0.01");
+                BigDecimal price = new BigDecimal(mEtPrice.getText().toString());
+                BigDecimal num = new BigDecimal("0.01");
                 mEtPrice.setText(price.add(num) + "");
             } catch (NumberFormatException e) {
                 mEtPrice.setText("");
@@ -431,9 +442,9 @@ public class DealBusinessFragment extends BaseFragment {
 //                        mEtNum.setText(curNum > max ? max + "" : curNum + "");
 //                    }
 
-                    if(mType==TYPE_BUY && !TextUtils.isEmpty(mEtPrice.getText().toString())){
-                        if(!mEtPrice.getText().toString().equals("0")){
-                            mTvBusinessNum.setText("可买："+mOwnCurrencyCount/Integer.parseInt(mEtPrice.getText().toString()));
+                    if (mType == TYPE_BUY && !TextUtils.isEmpty(mEtPrice.getText().toString())) {
+                        if (!mEtPrice.getText().toString().equals("0")) {
+                            mTvBusinessNum.setText("可买：" + mOwnCurrencyCount / Integer.parseInt(mEtPrice.getText().toString()));
                         }
                     }
 
@@ -468,7 +479,6 @@ public class DealBusinessFragment extends BaseFragment {
     @OnClick(R.id.tv_verify_code)
     public void getVerifyCode() {
         Logger.d("getVerifyCode");
-
 
 
     }
@@ -677,6 +687,11 @@ public class DealBusinessFragment extends BaseFragment {
                     public void onHandlerSuccess(ResultData<String> resultData) {
                         Logger.d("assign onHandlerSuccess" + resultData.data);
                         if (resultData.result == 200) {
+                            mEtNum.setText("");
+                            mEtAssignId.setText("");
+                            mEtAssignPhone.setText("");
+                            mEtAssignName.setText("");
+                            mEtVerifyCode.setText("");
                             getTenInfo();
                         } else {
                             if (!TextUtils.isEmpty(resultData.message)) {
@@ -751,15 +766,15 @@ public class DealBusinessFragment extends BaseFragment {
                                                 resultData.data.getKyCurrency()));
                                 mOwnCurrencyMoney = Double.valueOf(
                                         resultData.data.getCurrencyMoney());
-                                mTvBusinessNum.setText(mType == TYPE_BUY ? "可买："+mOwnCurrencyCount
+                                mTvBusinessNum.setText(mType == TYPE_BUY ? "可买：" + mOwnCurrencyCount
                                         : mType == TYPE_SALE
                                         ? "可卖：" + mOwnCurrencyCount
                                         : "持仓：" + mOwnCurrencyCount);
 
-                                if(mType==TYPE_BUY && !TextUtils.isEmpty(mEtPrice.getText().toString())){
-                                   if(!mEtPrice.getText().toString().equals("0")){
-                                       mTvBusinessNum.setText("可买："+mOwnCurrencyCount/Integer.parseInt(mEtPrice.getText().toString()));
-                                   }
+                                if (mType == TYPE_BUY && !TextUtils.isEmpty(mEtPrice.getText().toString())) {
+                                    if (!mEtPrice.getText().toString().equals("0")) {
+                                        mTvBusinessNum.setText("可买：" + mOwnCurrencyCount / Integer.parseInt(mEtPrice.getText().toString()));
+                                    }
                                 }
 
                                 getTenInfo();
@@ -801,8 +816,7 @@ public class DealBusinessFragment extends BaseFragment {
     }
 
     // 设置chart基本属性
-    private void initChart()
-    {
+    private void initChart() {
         stringSparseArray = setXLabels();
         lineChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override
@@ -822,8 +836,7 @@ public class DealBusinessFragment extends BaseFragment {
     }
 
     // 设置数据
-    private void initData()
-    {
+    private void initData() {
 
         lineChart.setScaleEnabled(false);
         lineChart.setDrawBorders(true);
@@ -868,7 +881,7 @@ public class DealBusinessFragment extends BaseFragment {
         axisRightLine.setDrawAxisLine(false);
         //背景线
         xAxisLine.setGridColor(getResources().getColor(R.color.minute_grayLine));
-        xAxisLine.enableGridDashedLine(10f,5f,0f);
+        xAxisLine.enableGridDashedLine(10f, 5f, 0f);
         xAxisLine.setAxisLineColor(getResources().getColor(R.color.minute_grayLine));
         xAxisLine.setTextColor(getResources().getColor(R.color.minute_zhoutv));
         axisLeftLine.setGridColor(getResources().getColor(R.color.minute_grayLine));
@@ -880,13 +893,7 @@ public class DealBusinessFragment extends BaseFragment {
         // xAxisBar.setPosition(XAxis.XAxisPosition.BOTTOM);
 
 
-
-
-
     }
-
-
-
 
 
     public void setShowLabels(SparseArray<String> labels) {
@@ -901,10 +908,9 @@ public class DealBusinessFragment extends BaseFragment {
         MyLeftMarkerView leftMarkerView = new MyLeftMarkerView(getActivity(), R.layout.mymarkerview);
         MyRightMarkerView rightMarkerView = new MyRightMarkerView(getActivity(), R.layout.mymarkerview);
         MyBottomMarkerView bottomMarkerView = new MyBottomMarkerView(getActivity(), R.layout.mymarkerview);
-        lineChart.setMarker(leftMarkerView, rightMarkerView,bottomMarkerView, mData);
+        lineChart.setMarker(leftMarkerView, rightMarkerView, bottomMarkerView, mData);
 
     }
-
 
 
     private void setData(DataParse mData) {
@@ -1021,7 +1027,6 @@ public class DealBusinessFragment extends BaseFragment {
         lineChart.invalidate();//刷新图
 
 
-
     }
 
 
@@ -1035,13 +1040,13 @@ public class DealBusinessFragment extends BaseFragment {
 
         RetrofitUtils.getInstance(getActivity()).api.hqView()
                 .compose(RxSchedulers.<ResultData<HqViewBean>>compose())
-                .subscribe(new BaseObserver<HqViewBean>(getActivity(),false) {
+                .subscribe(new BaseObserver<HqViewBean>(getActivity(), false) {
                     @Override
                     public void onHandlerSuccess(ResultData<HqViewBean> resultData) {
 
-                        if(resultData.result==200){
+                        if (resultData.result == 200) {
                             mData = new DataParse();
-                            HqViewBean hqViewBean=resultData.data;
+                            HqViewBean hqViewBean = resultData.data;
                             mData.parseNetMinutes(hqViewBean);
                             setData(mData);
                         }
@@ -1053,8 +1058,6 @@ public class DealBusinessFragment extends BaseFragment {
     }
 
 
-
-
     private void initView() {
         mEtPrice.setHint(mType == TYPE_BUY ? "买入价格" : "卖出价格");
         mEtNum.setHint(mType == TYPE_BUY ? "买入数量"
@@ -1062,12 +1065,12 @@ public class DealBusinessFragment extends BaseFragment {
         mTvBusiness.setText(
                 mType == TYPE_BUY ? "买入" : mType == TYPE_SALE ? "卖出" : "转让");
 
-        if(mType==TYPE_BUY){
-            setBgColor(mTvBusiness,"#CC2E34");
-        }else if(mType==TYPE_SALE){
-            setBgColor(mTvBusiness,"#2C5FA0");
-        }else {
-            setBgColor(mTvBusiness,"#CFA32B");
+        if (mType == TYPE_BUY) {
+            setBgColor(mTvBusiness, "#CC2E34");
+        } else if (mType == TYPE_SALE) {
+            setBgColor(mTvBusiness, "#2C5FA0");
+        } else {
+            setBgColor(mTvBusiness, "#CFA32B");
         }
 
         mTvStore.setText(mType == TYPE_BUY ? "全仓" : "清仓");
@@ -1099,9 +1102,9 @@ public class DealBusinessFragment extends BaseFragment {
 //                holder.setProgress(R.id.progress_sale,
 //                        entity.buyNum == 0 ? 0
 //                                : 100 * entity.buyNum / entity.countNum);
-                ProgressView pg=holder.getView(R.id.progress);
-                pg.setColorAndProgress(entity.showColor,entity.buyNum==0?0:100*entity.buyNum/entity.countNum);
-                holder.setTextColor(R.id.tv_Price,Color.parseColor(entity.showColor));
+                ProgressView pg = holder.getView(R.id.progress);
+                pg.setColorAndProgress(entity.showColor, entity.buyNum == 0 ? 0 : 100 * entity.buyNum / entity.countNum);
+                holder.setTextColor(R.id.tv_Price, Color.parseColor(entity.showColor));
             }
         };
         mSaleAdapter = new CommonAdapter<QuotesEntity>(getContext(),
@@ -1117,9 +1120,9 @@ public class DealBusinessFragment extends BaseFragment {
 //                holder.setProgress(R.id.progress_sale,
 //                        entity.sellNum == 0 ? 0
 //                                : 100 * entity.sellNum / entity.sellCount);
-                ProgressView pg=holder.getView(R.id.progress);
-                pg.setColorAndProgress(entity.showColor,entity.sellNum==0?0:100*entity.sellNum/entity.sellCount);
-                holder.setTextColor(R.id.tv_Price,Color.parseColor(entity.showColor));
+                ProgressView pg = holder.getView(R.id.progress);
+                pg.setColorAndProgress(entity.showColor, entity.sellNum == 0 ? 0 : 100 * entity.sellNum / entity.sellCount);
+                holder.setTextColor(R.id.tv_Price, Color.parseColor(entity.showColor));
             }
         };
         mRvBuy.setAdapter(mBuyAdapter);
@@ -1166,7 +1169,7 @@ public class DealBusinessFragment extends BaseFragment {
                     public void onItemClick(View view,
                                             RecyclerView.ViewHolder holder, int position) {
                         mEtPrice.setText(mDataSale.get(position).sellPrice);
-                        mEtNum.setText(mDataSale.get(position).sellNum+"");
+                        mEtNum.setText(mDataSale.get(position).sellNum + "");
                     }
 
                     @Override
@@ -1182,7 +1185,7 @@ public class DealBusinessFragment extends BaseFragment {
                     public void onItemClick(View view,
                                             RecyclerView.ViewHolder holder, int position) {
                         mEtPrice.setText(mDataBuy.get(position).buyPrice);
-                        mEtNum.setText(mDataBuy.get(position).buyNum+"");
+                        mEtNum.setText(mDataBuy.get(position).buyNum + "");
                     }
 
                     @Override
@@ -1194,10 +1197,62 @@ public class DealBusinessFragment extends BaseFragment {
     }
 
     @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
+    public void setUserVisibleHint(final boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if(isVisibleToUser){
-           requestData();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(300);
+                    mIsVisibleToUser = isVisibleToUser;
+                    Log.i("3秒刷新vis   ", "" + mIsVisibleToUser);
+                    startTimer();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+    private void startTimer() {
+        if (null == autoRefreshTimer) {
+            autoRefreshTimer = new Timer();
+        }
+        if (null == autoRefreshTimerTask) {
+            autoRefreshTimerTask = new TimerTask() {
+                @Override
+                public void run() {
+                    int currentItem = mainActivity.mViewPager.getCurrentItem();
+                    Log.i("currentItem  ",currentItem+"");
+                    if (mIsVisibleToUser && currentItem == 2) {
+                        requestData();
+                        Log.i("3秒刷新   ", "  买入卖出持仓  ");
+                    } else {
+//                        stopTimer();
+                    }
+                }
+            };
+
+            if (null != autoRefreshTimer && null != autoRefreshTimerTask) {
+                autoRefreshTimer.schedule(autoRefreshTimerTask, 1000, 3000);
+            }
         }
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        stopTimer();
+    }
+
+    private void stopTimer() {
+        if (null != autoRefreshTimer) {
+            autoRefreshTimer.cancel();
+            autoRefreshTimer.purge();
+            autoRefreshTimer = null;
+            autoRefreshTimerTask.cancel();
+            autoRefreshTimerTask = null;
+        }
+    }
+
 }

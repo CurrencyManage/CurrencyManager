@@ -43,7 +43,32 @@ public class UserBean
     private String idcode;
     
     private String id;
-    
+
+    public String orderType;
+
+    public String amount;//充值订单金额用这个
+
+    public String toaccountamount;//提现订单金额用这个
+
+    public String orderTime;
+
+    public String skCard;  //收款账号
+
+    public String toaccount;
+
+    public String orderWz;
+
+    public int state;//state 1代表 已支付 2已完成 后面要加0未支付 和3充值部分成功
+
+    public String skKHH;
+
+    public String successTime;
+
+    public String skName;
+
+    public String withdrawalamount;
+
+
     public String getCode()
     {
         return code;

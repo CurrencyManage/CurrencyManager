@@ -44,215 +44,251 @@
             android:textSize="@dimen/text_size_18" />
 
 
-
     </RelativeLayout>
 
     <LinearLayout
-        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_normal"
         android:layout_marginRight="@dimen/margin_normal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/type"
-            android:textColor="@color/tv_black"
-            android:textSize="@dimen/text_size_18"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_40"
             android:background="@drawable/tv_border_bottom"
             android:gravity="center_vertical"
             android:text="汇款订单"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_40" />
+            android:textColor="@color/tv_black"
+            android:textSize="@dimen/text_size_18" />
 
         <TextView
-            android:layout_marginTop="@dimen/margin_little"
-            android:text="1:请按以下提示信息向该卖家汇款"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_little"
+            android:text="1:请按以下提示信息向该卖家汇款" />
 
 
         <LinearLayout
-            android:layout_marginTop="@dimen/margin_little"
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_little"
+            android:orientation="horizontal">
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:layout_height="wrap_content">
+                android:orientation="vertical">
+
                 <TextView
-                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_40"
                     android:background="@drawable/tv_border_bottom_and_right"
-                    android:paddingRight="@dimen/margin_larger"
                     android:gravity="center_vertical|right"
+                    android:paddingRight="@dimen/margin_larger"
                     android:text="订单类型"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40" />
+                    android:visibility="gone" />
 
                 <TextView
-                    android:background="@drawable/tv_border_bottom_and_right"
-                    android:paddingRight="@dimen/margin_larger"
-                    android:gravity="center_vertical|right"
-                    android:text="收款方户名"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40" />
+                    android:layout_height="@dimen/dimen_40"
+                    android:background="@drawable/tv_border_bottom_and_right"
+                    android:gravity="center_vertical|right"
+                    android:paddingRight="@dimen/margin_larger"
+                    android:text="姓名" />
+
 
                 <TextView
-                    android:background="@drawable/tv_border_bottom_and_right"
-                    android:paddingRight="@dimen/margin_larger"
-                    android:gravity="center_vertical|right"
-                    android:text="收款方开户行"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40" />
+                    android:layout_height="@dimen/dimen_40"
+                    android:background="@drawable/tv_border_bottom_and_right"
+                    android:gravity="center_vertical|right"
+                    android:paddingRight="@dimen/margin_larger"
+                    android:text="银行" />
 
                 <TextView
-                    android:background="@drawable/tv_border_bottom_and_right"
-                    android:paddingRight="@dimen/margin_larger"
-                    android:gravity="center_vertical|right"
-                    android:text="收款方账号"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40" />
+                    android:layout_height="@dimen/dimen_40"
+                    android:background="@drawable/tv_border_bottom_and_right"
+                    android:gravity="center_vertical|right"
+                    android:paddingRight="@dimen/margin_larger"
+                    android:text="开户行支行" />
 
                 <TextView
-                    android:background="@drawable/tv_border_bottom_and_right"
-                    android:paddingRight="@dimen/margin_larger"
-                    android:gravity="center_vertical|right"
-                    android:text="转账金额"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40" />
+                    android:layout_height="@dimen/dimen_40"
+                    android:background="@drawable/tv_border_bottom_and_right"
+                    android:gravity="center_vertical|right"
+                    android:paddingRight="@dimen/margin_larger"
+                    android:text="卡号" />
 
                 <TextView
-                    android:background="@drawable/tv_border_bottom_and_right"
-                    android:paddingRight="@dimen/margin_larger"
-                    android:gravity="center_vertical|right"
-                    android:text="汇款时备注内容"
+                    android:id="@+id/tv_withdraw_type"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40" />
+                    android:layout_height="@dimen/dimen_40"
+                    android:background="@drawable/tv_border_bottom_and_right"
+                    android:gravity="center_vertical|right"
+                    android:paddingRight="@dimen/margin_larger"
+                    android:text="转账金额" />
 
                 <TextView
-                    android:background="@drawable/tv_border_bottom_and_right"
-                    android:paddingRight="@dimen/margin_larger"
-                    android:gravity="center_vertical|right"
-                    android:text="状态"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40" />
+                    android:layout_height="@dimen/dimen_40"
+                    android:background="@drawable/tv_border_bottom_and_right"
+                    android:gravity="center_vertical|right"
+                    android:paddingRight="@dimen/margin_larger"
+                    android:text="汇款时备注内容" />
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_40"
+                    android:background="@drawable/tv_border_bottom_and_right"
+                    android:gravity="center_vertical|right"
+                    android:paddingRight="@dimen/margin_larger"
+                    android:text="状态" />
 
 
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:layout_height="wrap_content">
+                android:orientation="vertical">
+
                 <TextView
-                    android:visibility="gone"
                     android:id="@+id/tv_type"
-                    android:background="@drawable/tv_border_bottom_and_right_whit"
-                    android:paddingLeft="@dimen/margin_larger"
-                    android:gravity="center_vertical|left"
-                    android:text="状态"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40" />
+                    android:layout_height="@dimen/dimen_40"
+                    android:background="@drawable/tv_border_bottom_and_right_whit"
+                    android:gravity="center_vertical|left"
+                    android:paddingLeft="@dimen/margin_larger"
+                    android:text="状态"
+                    android:visibility="gone" />
+
                 <TextView
                     android:id="@+id/tv_skName"
-                    android:background="@drawable/tv_border_bottom_and_right_whit"
-                    android:paddingLeft="@dimen/margin_larger"
-                    android:gravity="center_vertical|left"
-                    android:text="状态"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40" />
+                    android:layout_height="@dimen/dimen_40"
+                    android:background="@drawable/tv_border_bottom_and_right_whit"
+                    android:gravity="center_vertical|left"
+                    android:paddingLeft="@dimen/margin_larger"
+                    android:text="状态" />
+
+                <TextView
+                    android:id="@+id/tv_bank"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_40"
+                    android:background="@drawable/tv_border_bottom_and_right_whit"
+                    android:gravity="center_vertical|left"
+                    android:paddingLeft="@dimen/margin_larger"
+                    android:text="状态" />
 
                 <TextView
                     android:id="@+id/tv_skKHH"
-                    android:background="@drawable/tv_border_bottom_and_right_whit"
-                    android:paddingLeft="@dimen/margin_larger"
-                    android:gravity="center_vertical|left"
-                    android:text="状态"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40" />
+                    android:layout_height="@dimen/dimen_40"
+                    android:background="@drawable/tv_border_bottom_and_right_whit"
+                    android:gravity="center_vertical|left"
+                    android:paddingLeft="@dimen/margin_larger"
+                    android:text="状态" />
 
                 <TextView
                     android:id="@+id/tv_skCard"
-                    android:background="@drawable/tv_border_bottom_and_right_whit"
-                    android:paddingLeft="@dimen/margin_larger"
-                    android:gravity="center_vertical|left"
-                    android:text="状态"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40" />
+                    android:layout_height="@dimen/dimen_40"
+                    android:background="@drawable/tv_border_bottom_and_right_whit"
+                    android:gravity="center_vertical|left"
+                    android:paddingLeft="@dimen/margin_larger"
+                    android:text="状态" />
+
                 <TextView
                     android:id="@+id/tv_price"
-                    android:background="@drawable/tv_border_bottom_and_right_whit"
-                    android:paddingLeft="@dimen/margin_larger"
-                    android:gravity="center_vertical|left"
-                    android:text="状态"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40" />
+                    android:layout_height="@dimen/dimen_40"
+                    android:background="@drawable/tv_border_bottom_and_right_whit"
+                    android:gravity="center_vertical|left"
+                    android:paddingLeft="@dimen/margin_larger"
+                    android:text="状态" />
 
                 <TextView
                     android:id="@+id/tv_code"
-                    android:background="@drawable/tv_border_bottom_and_right_whit"
-                    android:paddingLeft="@dimen/margin_larger"
-                    android:gravity="center_vertical|left"
-                    android:text="状态"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40" />
+                    android:layout_height="@dimen/dimen_40"
+                    android:background="@drawable/tv_border_bottom_and_right_whit"
+                    android:gravity="center_vertical|left"
+                    android:paddingLeft="@dimen/margin_larger"
+                    android:text="状态" />
 
                 <TextView
                     android:id="@+id/tv_state"
-                    android:background="@drawable/tv_border_bottom_and_right_whit"
-                    android:paddingLeft="@dimen/margin_larger"
-                    android:gravity="center_vertical|left"
-                    android:text="状态"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40" />
-
+                    android:layout_height="@dimen/dimen_40"
+                    android:background="@drawable/tv_border_bottom_and_right_whit"
+                    android:gravity="center_vertical|left"
+                    android:paddingLeft="@dimen/margin_larger"
+                    android:text="状态" />
 
 
             </LinearLayout>
-
 
 
         </LinearLayout>
 
 
-
-
     </LinearLayout>
+
     <LinearLayout
-        android:orientation="vertical"
+        android:id="@+id/ll_recharge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_normal"
         android:layout_marginRight="@dimen/margin_normal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:orientation="vertical">
+
         <TextView
-            android:layout_marginTop="@dimen/margin_little"
-            android:text="2:汇款时一定要填写备注信息"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_little"
+            android:text="2:汇款时一定要填写备注信息" />
+
         <TextView
-            android:layout_marginTop="@dimen/margin_little"
-            android:text="3:卖家确认收款后，自动充值相应货币,如超24小时未收到货币，请联系客户反馈解决"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_little"
+            android:text="3:卖家确认收款后，自动充值相应货币,如超24小时未收到货币，请联系客户反馈解决" />
+
         <TextView
-            android:layout_marginTop="@dimen/margin_little"
-            android:text="4:请务必使用本人绑定的银行卡通过手机银行或网银进行汇款"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_little"
+            android:text="4:请务必使用本人绑定的银行卡通过手机银行或网银进行汇款" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_withdraw_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_little"
+        android:text="预计1~10日内完成。" />
+
+
+    <TextView
+        android:id="@+id/tv_urgent_withdraw_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_little"
+        android:text="预计2小时内完成。" />
+
 
     <Button
         android:id="@+id/btn"
-        android:text="已充值"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-
+        android:layout_height="wrap_content"
+        android:text="已充值" />
 
 
 </LinearLayout>

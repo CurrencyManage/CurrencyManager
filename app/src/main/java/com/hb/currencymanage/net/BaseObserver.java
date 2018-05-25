@@ -64,15 +64,14 @@ public abstract class BaseObserver<T> implements Observer<ResultData<T>> {
             //pd.dismiss();
             if (e instanceof SocketTimeoutException) {
 
-                Toast.makeText(mContext, "连接超时", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "网络链接失败", Toast.LENGTH_SHORT).show();
 
             } else if (e instanceof ConnectException || e instanceof ConnectTimeoutException) {
 
-                Toast.makeText(mContext, "连接超时", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "网络链接失败", Toast.LENGTH_SHORT).show();
 
             } else {
-
-                //Toast.makeText(mContext, "error:" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "网络链接失败", Toast.LENGTH_SHORT).show();
 
             }
 
