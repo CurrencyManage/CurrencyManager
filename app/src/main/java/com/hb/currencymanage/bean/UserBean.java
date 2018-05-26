@@ -60,13 +60,7 @@ public class UserBean
 
     public int state;//state 1代表 已支付 2已完成 后面要加0未支付 和3充值部分成功
 
-    public String skKHH;
 
-    public String successTime;
-
-    public String skName;
-
-    public String withdrawalamount;
 
 
     public String getCode()

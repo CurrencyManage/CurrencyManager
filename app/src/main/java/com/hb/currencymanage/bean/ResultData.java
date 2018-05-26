@@ -26,4 +26,8 @@ public class ResultData<T> implements Serializable {
 
     public HomeBean consultingTop;
 
+    public String title;
+
+    public String msgData;
+
 }

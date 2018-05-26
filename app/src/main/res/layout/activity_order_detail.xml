@@ -94,7 +94,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_40"
-                    android:background="@drawable/tv_border_bottom_and_right"
+                    android:background="@drawable/tv_border_all"
                     android:gravity="center_vertical|right"
                     android:paddingRight="@dimen/margin_larger"
                     android:text="姓名" />
@@ -103,7 +103,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_40"
-                    android:background="@drawable/tv_border_bottom_and_right"
+                    android:background="@drawable/tv_border_bottom_and_right_left"
                     android:gravity="center_vertical|right"
                     android:paddingRight="@dimen/margin_larger"
                     android:text="银行" />
@@ -111,7 +111,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_40"
-                    android:background="@drawable/tv_border_bottom_and_right"
+                    android:background="@drawable/tv_border_bottom_and_right_left"
                     android:gravity="center_vertical|right"
                     android:paddingRight="@dimen/margin_larger"
                     android:text="开户行支行" />
@@ -119,7 +119,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_40"
-                    android:background="@drawable/tv_border_bottom_and_right"
+                    android:background="@drawable/tv_border_bottom_and_right_left"
                     android:gravity="center_vertical|right"
                     android:paddingRight="@dimen/margin_larger"
                     android:text="卡号" />
@@ -128,7 +128,7 @@
                     android:id="@+id/tv_withdraw_type"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_40"
-                    android:background="@drawable/tv_border_bottom_and_right"
+                    android:background="@drawable/tv_border_bottom_and_right_left"
                     android:gravity="center_vertical|right"
                     android:paddingRight="@dimen/margin_larger"
                     android:text="转账金额" />
@@ -136,7 +136,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_40"
-                    android:background="@drawable/tv_border_bottom_and_right"
+                    android:background="@drawable/tv_border_bottom_and_right_left"
                     android:gravity="center_vertical|right"
                     android:paddingRight="@dimen/margin_larger"
                     android:text="汇款时备注内容" />
@@ -144,7 +144,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_40"
-                    android:background="@drawable/tv_border_bottom_and_right"
+                    android:background="@drawable/tv_border_bottom_and_right_left"
                     android:gravity="center_vertical|right"
                     android:paddingRight="@dimen/margin_larger"
                     android:text="状态" />
@@ -162,7 +162,7 @@
                     android:id="@+id/tv_type"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_40"
-                    android:background="@drawable/tv_border_bottom_and_right_whit"
+                    android:background="@drawable/tv_border_top_right_bottoml"
                     android:gravity="center_vertical|left"
                     android:paddingLeft="@dimen/margin_larger"
                     android:text="状态"
@@ -172,7 +172,7 @@
                     android:id="@+id/tv_skName"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_40"
-                    android:background="@drawable/tv_border_bottom_and_right_whit"
+                    android:background="@drawable/tv_border_top_right_bottoml"
                     android:gravity="center_vertical|left"
                     android:paddingLeft="@dimen/margin_larger"
                     android:text="状态" />

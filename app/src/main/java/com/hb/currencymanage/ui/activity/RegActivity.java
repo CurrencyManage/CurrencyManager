@@ -1,6 +1,8 @@
 package com.hb.currencymanage.ui.activity;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -13,14 +15,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hb.currencymanage.R;
+import com.hb.currencymanage.bean.HostBean;
 import com.hb.currencymanage.bean.ResultData;
 import com.hb.currencymanage.bean.UserBean;
 import com.hb.currencymanage.customview.AutoHeightViewPager;
+import com.hb.currencymanage.db.AccountDB;
 import com.hb.currencymanage.net.BaseObserver;
 import com.hb.currencymanage.net.RetrofitUtils;
 import com.hb.currencymanage.net.RxSchedulers;
 import com.hb.currencymanage.util.CommonUtils;
 import com.hb.currencymanage.util.IdcardValidator;
+import com.wevey.selector.dialog.DialogInterface;
+import com.wevey.selector.dialog.NormalAlertDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,9 +64,17 @@ public class RegActivity extends BaseActivity {
 
     private EditText mEtVerifyCode;
 
+    private EditText et_mname;
+
+    private EditText et_mbank;
+
     private List<View> mViews = new ArrayList<>();
 
     private int mCurPos = 0;
+
+    private String msgData;
+
+    private TextView tv_getcode;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -79,10 +93,11 @@ public class RegActivity extends BaseActivity {
         View stepFour = inflater.inflate(R.layout.activity_reg_step_four, null);
 
 
-        TextView tv_getcode=stepOne.findViewById(R.id.tv_getcode);
+        tv_getcode =stepOne.findViewById(R.id.tv_getcode);
         tv_getcode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                tv_getcode.setEnabled(false);
                 RetrofitUtils.getInstance(RegActivity.this).api
                         .registerVerificationSMS(mEtPhone.getText().toString())
                         .compose(RxSchedulers.<ResultData<UserBean>>compose())
@@ -91,10 +106,19 @@ public class RegActivity extends BaseActivity {
                             public void onHandlerSuccess(ResultData<UserBean> resultData) {
 
                                 if (resultData.result==200){
+                                    handler.sendEmptyMessage(0);
+                                    msgData=resultData.msgData;
                                     Toast.makeText(RegActivity.this,"验证码获取成功",Toast.LENGTH_SHORT).show();
                                 }else {
+                                    tv_getcode.setEnabled(true);
                                     Toast.makeText(RegActivity.this,"验证码获取失败",Toast.LENGTH_SHORT).show();
                                 }
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                                super.onError(e);
+                                tv_getcode.setEnabled(true);
                             }
                         });
             }
@@ -109,6 +133,9 @@ public class RegActivity extends BaseActivity {
         mEtCard = stepThree.findViewById(R.id.et_card);
         mEtRecId = stepThree.findViewById(R.id.et_rec_id);
         mEtBankAddress = stepFour.findViewById(R.id.et_bank_address);
+        et_mname = stepFour.findViewById(R.id.et_mname);
+        et_mbank = stepFour.findViewById(R.id.et_mbank);
+
         mEtBank = stepFour.findViewById(R.id.et_bank);
         mViews.add(stepOne);
         mViews.add(stepTwo);
@@ -155,37 +182,112 @@ public class RegActivity extends BaseActivity {
     public void reg() {
         if (check()) {
             if (mCurPos < mViews.size() - 1) {
-                mVpReg.setCurrentItem(++mCurPos);
+
+                //checkRecommdId();
+
+                if(mCurPos==0){
+
+                    if(!TextUtils.isEmpty(msgData) && msgData.equals(mEtVerifyCode.getText().toString())){
+                        mVpReg.setCurrentItem(++mCurPos);
+                    }else {
+                        Toast.makeText(RegActivity.this,"验证码输入不正确",Toast.LENGTH_LONG).show();
+                    }
+
+                }else if (mCurPos==2){
+                    checkRecommdId();
+
+                }else {
+                    mVpReg.setCurrentItem(++mCurPos);
+                }
+
+
+
             } else {
-                RetrofitUtils.getInstance(this).api
-                        .reg(mEtPhone.getText().toString(),
-                                mEtPwd.getText().toString(),
-                                mEtName.getText().toString(),
-                                mEtCard.getText().toString().toUpperCase(),
-                                mEtRecId.getText().toString(),
-                                mEtBankAddress.getText().toString(),
-                                mEtBank.getText().toString(),
-                                mEtBank.getText().toString())
-                        .compose(RxSchedulers.<ResultData<String>>compose())
-                        .subscribe(new BaseObserver<String>(this, true) {
+
+                NormalAlertDialog  dialog = new NormalAlertDialog.Builder(context)
+                        .setHeight(0.23f)  //屏幕高度*0.23
+                        .setWidth(0.65f)  //屏幕宽度*0.65
+                        .setTitleVisible(true)
+                        .setTitleText("温馨提示")
+                        .setTitleTextColor(R.color.black_light)
+                        .setContentText("注册信息一旦确认，无法更改，确认注册?")
+                        .setContentTextColor(R.color.black_light)
+                        .setLeftButtonText("取消")
+                        .setLeftButtonTextColor(R.color.gray)
+                        .setRightButtonText("确定")
+                        .setRightButtonTextColor(R.color.black_light)
+                        .setOnclickListener(new DialogInterface.OnLeftAndRightClickListener<NormalAlertDialog>() {
                             @Override
-                            public void onHandlerSuccess(
-                                    ResultData<String> resultData) {
-                                if (resultData.result == 200) {
-                                    // changeActivity(MainActivity.class);
-                                    finish();
-                                } else {
-                                    Toast.makeText(RegActivity.this,
-                                            !TextUtils
-                                                    .isEmpty(resultData.message)
-                                                    ? resultData.message
-                                                    : "注册失败",
-                                            Toast.LENGTH_LONG).show();
-                                }
+                            public void clickLeftButton(NormalAlertDialog dialog, View view) {
+                                dialog.dismiss();
                             }
-                        });
+
+                            @Override
+                            public void clickRightButton(NormalAlertDialog dialog, View view) {
+                                dialog.dismiss();
+                                RetrofitUtils.getInstance(context).api
+                                        .reg(mEtPhone.getText().toString(),
+                                                mEtPwd.getText().toString(),
+                                                et_mname.getText().toString(),
+                                                mEtCard.getText().toString().toUpperCase(),
+                                                mEtRecId.getText().toString(),
+                                                mEtBankAddress.getText().toString(),
+                                                mEtBank.getText().toString(),
+                                                et_mbank.getText().toString())
+                                        .compose(RxSchedulers.<ResultData<String>>compose())
+                                        .subscribe(new BaseObserver<String>(context, true) {
+                                            @Override
+                                            public void onHandlerSuccess(
+                                                    ResultData<String> resultData) {
+                                                if (resultData.result == 200) {
+                                                    // changeActivity(MainActivity.class);
+                                                    finish();
+                                                } else {
+                                                    Toast.makeText(RegActivity.this,
+                                                            !TextUtils
+                                                                    .isEmpty(resultData.message)
+                                                                    ? resultData.message
+                                                                    : "注册失败",
+                                                            Toast.LENGTH_LONG).show();
+                                                }
+                                            }
+                                        });
+                            }
+                        })
+                        .build();
+
+
+                dialog.show();
+
+
+
             }
         }
+    }
+
+    private int count=60;
+    private Handler handler=new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            tv_getcode.setText(count+"s");
+            --count;
+            if(count==0){
+                tv_getcode.setText("获取验证码");
+                count=60;
+                tv_getcode.setEnabled(true);
+            }else {
+                handler.sendEmptyMessageDelayed(0,1000);
+            }
+        }
+    };
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        handler.removeMessages(0);
+        handler=null;
     }
 
     private boolean check() {
@@ -235,6 +337,36 @@ public class RegActivity extends BaseActivity {
             }
         }
         return true;
+    }
+
+
+    public void checkRecommdId()
+    {
+
+        if(TextUtils.isEmpty(mEtRecId.getText().toString())){
+            Toast.makeText(context,"推荐人id不能为空",Toast.LENGTH_SHORT).show();
+        }else {
+            RetrofitUtils
+                    .getInstance(context)
+                    .api
+                    .checkUserRecommendedCode(mEtRecId.getText().toString())
+                    .compose(RxSchedulers.<ResultData<UserBean>>compose())
+                    .subscribe(new BaseObserver<UserBean>(context,true) {
+                        @Override
+                        public void onHandlerSuccess(ResultData<UserBean> resultData) {
+                            if (resultData.result == 200)
+                            {
+                                mVpReg.setCurrentItem(++mCurPos);
+
+                            }else {
+                                Toast.makeText(context,resultData.message,Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+        }
+
+
+
     }
 
     private class MyPagerAdapter extends PagerAdapter {

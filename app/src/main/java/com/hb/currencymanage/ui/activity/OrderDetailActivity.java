@@ -1,6 +1,5 @@
 package com.hb.currencymanage.ui.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -8,8 +7,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.hb.currencymanage.MainActivity;
 import com.hb.currencymanage.R;
 import com.hb.currencymanage.bean.OrderBean;
 import com.hb.currencymanage.bean.ResultData;
@@ -18,8 +15,6 @@ import com.hb.currencymanage.db.AccountDB;
 import com.hb.currencymanage.net.BaseObserver;
 import com.hb.currencymanage.net.RetrofitUtils;
 import com.hb.currencymanage.net.RxSchedulers;
-import com.orhanobut.logger.Logger;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

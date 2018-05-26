@@ -13,6 +13,8 @@ import com.hb.currencymanage.bean.UserBean;
 import java.util.List;
 
 import io.reactivex.Observable;
+import okhttp3.RequestBody;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -97,13 +99,13 @@ public interface Api
     Observable<ResultData<List<HostBean>>> getHostingAll(@Query("userId") String userId);
 
     @POST("clientMain/recharge")
-    Observable<ResultData<UserBean>> recharge(@Query("userId") String userId,
-                                                    @Query("amount") String amount);
+    Observable<ResultData<OrderBean>> recharge(@Query("userId") String userId,
+                                               @Query("amount") String amount);
 
     @POST("clientMain/withdraw")
-    Observable<ResultData<UserBean>> withdraw(@Query("userId") String userId,
-                                              @Query("amount") String amount,
-                                              @Query("withdrawType") String withdrawType);
+    Observable<ResultData<OrderBean>> withdraw(@Query("userId") String userId,
+                                                     @Query("amount") String amount,
+                                                     @Query("withdrawType") String withdrawType);
 
     @POST("clientMain/orderList")
     Observable<ResultData<List<OrderBean>>> orderList(@Query("userId") String userId);
@@ -119,9 +121,17 @@ public interface Api
     @POST("clientMain/rechargeCZ")
     Observable<ResultData<UserBean>> rechargeCZ(@Query("orderId") String orderId);
 
+    @POST("clientMain/checkUserRecommendedCode")
+    Observable<ResultData<UserBean>> checkUserRecommendedCode(@Query("recommendedcode") String recommendedcode);
+
 
     @POST("clientMain/getConsulting")
     Observable<ResultData<String>> getConsulting();
+
+
+    @POST("pub/public/uploadImage")
+    Observable<ResultData<UserBean>> uploadImage(@Query("userId ") String userId ,
+                                                   @Body RequestBody body);
 
 
 

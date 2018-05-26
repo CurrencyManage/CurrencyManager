@@ -132,9 +132,9 @@ public class MainActivity extends BaseActivity {
                     }
                 }
                 if (position == mFragments.size() - 1) {
-                    if (null != mPersonFragment) {
-                        mPersonFragment.initWorkNet();
-                    }
+//                    if (null != mPersonFragment) {
+//                        mPersonFragment.initWorkNet();
+//                    }
                 }
             }
 

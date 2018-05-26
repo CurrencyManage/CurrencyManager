@@ -45,6 +45,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/choose_layout"
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:background="@drawable/tv_border_bottom">

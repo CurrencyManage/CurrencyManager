@@ -18,7 +18,7 @@
     <string name="enter_name">请输入您的真实姓名</string>
     <string name="enter_card">请输入您的身份证号码</string>
     <string name="enter_rec_id">请输入您的推荐人ID</string>
-    <string name="enter_bank_address">请输入银行卡(储蓄卡)开户行</string>
+    <string name="enter_bank_address">请输入开户支行</string>
     <string name="enter_bank_code">请输入您的银行卡号码</string>
     <string name="dialog_deal_title">是否确认本次%s</string>
     <string name="confirm">确认</string>

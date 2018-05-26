@@ -57,4 +57,7 @@ dependencies {
     compile 'com.snappydb:snappydb-lib:0.5.2'
     compile 'com.esotericsoftware.kryo:kryo:2.24.0'
     compile 'com.tencent.bugly:crashreport:latest.release'
+    implementation project(':selectordialog')
+    //compile 'com.jph.takephoto:takephoto_library:4.1.0'
+    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
 }

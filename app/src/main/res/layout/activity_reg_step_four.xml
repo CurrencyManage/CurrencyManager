@@ -6,6 +6,26 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
+
+    <EditText
+        android:id="@+id/et_mname"
+        style="@style/style_et_login_reg_no_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_larger"
+        android:hint="请输入姓名" />
+
+
+    <EditText
+        android:id="@+id/et_mbank"
+        style="@style/style_et_login_reg_no_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_larger"
+        android:hint="请输入银行" />
+
+
+
     <EditText
         android:id="@+id/et_bank_address"
         style="@style/style_et_login_reg_no_bg"
