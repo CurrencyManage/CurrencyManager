@@ -65,6 +65,8 @@ import butterknife.OnClick;
  */
 
 public class QuotesFragment extends BaseFragment {
+
+
     public static final int SWITCH_BUY = 0;
 
     public static final int SWITCH_SALE = 1;
@@ -201,7 +203,7 @@ public class QuotesFragment extends BaseFragment {
             protected void convert(ViewHolder holder, QuotesEntity entity,
                                    int position) {
                 holder.setText(R.id.sale_num,
-                        buyQuotesEntityList.get(position).buyNum + "");
+                        buyQuotesEntityList.get(position).showBuyNum + "");
                 holder.setText(R.id.tv_No, "买" + (position + 1));
                 holder.setText(R.id.tv_Price,
                         buyQuotesEntityList.get(position).buyPrice);
@@ -388,7 +390,7 @@ public class QuotesFragment extends BaseFragment {
         axisRightLine.setValueFormatter(new YAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, YAxis yAxis) {
-                DecimalFormat mFormat = new DecimalFormat("#0.00%");
+                DecimalFormat mFormat = new DecimalFormat("#0%");
                 return mFormat.format(value);
             }
         });

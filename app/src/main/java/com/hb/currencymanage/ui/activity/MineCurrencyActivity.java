@@ -16,6 +16,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MineCurrencyActivity extends BaseActivity {
+
+
     @BindView(R.id.tv_income)
     TextView mTvIncome;
 

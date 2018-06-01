@@ -38,6 +38,7 @@
             </RelativeLayout>
 
             <TextView
+                android:id="@+id/tv_code"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
@@ -49,63 +50,91 @@
 
         </RelativeLayout>
 
+        <ImageView
+            android:layout_centerInParent="true"
+            android:src="@mipmap/circle"
+            android:scaleType="fitXY"
+            android:layout_width="180dp"
+            android:layout_height="180dp" />
 
         <ImageView
+            android:visibility="gone"
             android:layout_centerInParent="true"
             android:src="@mipmap/img_wdsb"
             android:scaleType="fitXY"
             android:layout_width="200dp"
             android:layout_height="180dp" />
 
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="总产值"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_total"
+                android:text="0"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
     </RelativeLayout>
 
 
-    <LinearLayout
-        android:layout_marginTop="@dimen/dimen_40"
-        android:layout_gravity="center_horizontal"
+    <RelativeLayout
+        android:gravity="center_vertical"
         android:background="@drawable/tv_border_radius"
-        android:layout_width="200dp"
-        android:layout_height="@dimen/dimen_40"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_50"
         >
 
-        <TextView
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/margin_larger"
-            android:text="－" />
+        <EditText
+            android:id="@+id/et_ecode"
+            android:paddingLeft="@dimen/margin_little"
+            android:hint="请输入验证码"
+            android:background="@null"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_40"
+            android:text="" />
 
 
         <TextView
-            android:layout_weight="1"
-            android:layout_width="0dp"
+            android:id="@+id/tv_getcode"
+            android:layout_width="80dp"
+            android:layout_height="@dimen/dimen_30"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dimen_50"
+            android:background="@drawable/b_border_radius"
             android:gravity="center"
-            android:layout_height="match_parent"
-            android:text="买入价格" />
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:text="获取验证码 "
+            android:textColor="@color/device_bar_color"
+            android:textSize="@dimen/text_size_12" />
 
 
-        <TextView
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:paddingRight="@dimen/margin_larger"
-            android:gravity="right|center_vertical"
-            android:text="＋" />
-
-
-
-    </LinearLayout>
+    </RelativeLayout>
 
     <TextView
+        android:id="@+id/tv_unbind"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:layout_marginTop="@dimen/dimen_40"
-        android:text="租赁"
-        android:background="@color/device_bar_color"
-        android:layout_width="180dp"
+        android:text="解绑"
+        android:background="@color/tv_bg_yellow"
+        android:layout_marginLeft="@dimen/dimen_50"
+        android:layout_marginRight="@dimen/dimen_50"
+        android:layout_width="match_parent"
         android:textColor="@color/tv_white"
-        android:layout_height="@dimen/dimen_40" />
+        android:layout_height="@dimen/dimen_30" />
 
 
 

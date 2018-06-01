@@ -97,7 +97,6 @@ public class RegActivity extends BaseActivity {
         tv_getcode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tv_getcode.setEnabled(false);
                 RetrofitUtils.getInstance(RegActivity.this).api
                         .registerVerificationSMS(mEtPhone.getText().toString())
                         .compose(RxSchedulers.<ResultData<UserBean>>compose())
@@ -109,17 +108,39 @@ public class RegActivity extends BaseActivity {
                                     handler.sendEmptyMessage(0);
                                     msgData=resultData.msgData;
                                     Toast.makeText(RegActivity.this,"验证码获取成功",Toast.LENGTH_SHORT).show();
-                                }else {
+                                }else if(resultData.result==400){
+                                    NormalAlertDialog dialog = new NormalAlertDialog.Builder(context)
+                                            .setHeight(0.23f)  //屏幕高度*0.23
+                                            .setWidth(0.65f)  //屏幕宽度*0.65
+                                            .setTitleVisible(true)
+                                            .setTitleText("温馨提示")
+                                            .setTitleTextColor(R.color.colorPrimary)
+                                            .setContentText(resultData.message)
+                                            .setContentTextColor(R.color.colorPrimaryDark)
+                                            .setSingleMode(true)
+                                            .setSingleButtonText("关闭")
+                                            .setSingleButtonTextColor(R.color.colorAccent)
+                                            .setCanceledOnTouchOutside(true)
+                                            .setSingleListener(new DialogInterface.OnSingleClickListener<NormalAlertDialog>() {
+                                                @Override
+                                                public void clickSingleButton(NormalAlertDialog dialog, View view) {
+                                                    dialog.dismiss();
+                                                }
+                                            })
+                                            .build();
+
+                                    dialog.show();
+
+
+
+                                }
+                                else {
                                     tv_getcode.setEnabled(true);
                                     Toast.makeText(RegActivity.this,"验证码获取失败",Toast.LENGTH_SHORT).show();
                                 }
                             }
 
-                            @Override
-                            public void onError(Throwable e) {
-                                super.onError(e);
-                                tv_getcode.setEnabled(true);
-                            }
+
                         });
             }
         });
@@ -275,7 +296,6 @@ public class RegActivity extends BaseActivity {
             if(count==0){
                 tv_getcode.setText("获取验证码");
                 count=60;
-                tv_getcode.setEnabled(true);
             }else {
                 handler.sendEmptyMessageDelayed(0,1000);
             }

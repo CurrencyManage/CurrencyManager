@@ -49,10 +49,13 @@
 
         </RelativeLayout>
 
+
+
+
+
     </RelativeLayout>
-
-
     <LinearLayout
+        android:visibility="gone"
         android:background="@drawable/tv_border_bottom"
         android:gravity="center_vertical"
         android:orientation="horizontal"
@@ -77,9 +80,8 @@
 
 
     </LinearLayout>
-
-
     <LinearLayout
+        android:visibility="gone"
         android:background="@drawable/tv_border_bottom"
         android:gravity="center_vertical"
         android:orientation="horizontal"
@@ -94,9 +96,8 @@
 
 
     </LinearLayout>
-
-
     <LinearLayout
+        android:visibility="gone"
         android:background="@drawable/tv_border_bottom"
         android:gravity="center_vertical"
         android:orientation="horizontal"

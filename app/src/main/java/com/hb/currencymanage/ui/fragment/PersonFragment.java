@@ -1,31 +1,39 @@
 package com.hb.currencymanage.ui.fragment;
 
+import com.bumptech.glide.Glide;
 import com.hb.currencymanage.R;
 import com.hb.currencymanage.bean.AccountBean;
 import com.hb.currencymanage.bean.ResultData;
+import com.hb.currencymanage.bean.UserBean;
 import com.hb.currencymanage.db.AccountDB;
 import com.hb.currencymanage.net.BaseObserver;
 import com.hb.currencymanage.net.RetrofitUtils;
 import com.hb.currencymanage.net.RxSchedulers;
 import com.hb.currencymanage.ui.activity.CapacityActivity;
+import com.hb.currencymanage.ui.activity.DeviceActivity;
 import com.hb.currencymanage.ui.activity.MineCurrencyActivity;
 import com.hb.currencymanage.ui.activity.MineDeviceActivity;
 import com.hb.currencymanage.ui.activity.MoneyManagementActivity;
 import com.hb.currencymanage.ui.activity.PersonalActivity;
 import com.hb.currencymanage.ui.activity.SettingActivity;
+import com.hb.currencymanage.util.CircleCrop;
+import com.hb.currencymanage.util.GlideCircleTransform;
 
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by 汪彬 on 2018/4/16.
@@ -55,9 +63,11 @@ public class PersonFragment extends BaseFragment
     @BindView(R.id.tv_ljsyB)
     TextView tv_ljsyB;
 
+    @BindView(R.id.profile_image)
+    public CircleImageView profile_image;
 
+    private UserBean userBean;
 
-    
     public static PersonFragment getInstance()
     {
         PersonFragment sf = new PersonFragment();
@@ -68,11 +78,20 @@ public class PersonFragment extends BaseFragment
     public void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        userBean=new AccountDB(getContext()).getAccount();
+//        Glide
+//                .with(getContext())
+//                .load(userBean.headPortrait)
+//                .transform(new CircleCrop(getContext()))
+//                .centerCrop()
+//                .into(img_head);
+
         initWorkNet();
     }
     
     public void initWorkNet()
     {
+
         RetrofitUtils.getInstance(getActivity()).api.getAccountInfo(new AccountDB(getContext()).getUserId())
                 .compose(RxSchedulers.<ResultData<AccountBean>> compose())
                 .subscribe(new BaseObserver<AccountBean>(getActivity(), true)
@@ -105,8 +124,8 @@ public class PersonFragment extends BaseFragment
     void device_layoout()
     {
 
-        Toast.makeText(getActivity(),"功能暂未开放",Toast.LENGTH_SHORT).show();
-        //changeActivity(MineDeviceActivity.class);
+        //Toast.makeText(getActivity(),"功能暂未开放",Toast.LENGTH_SHORT).show();
+        changeActivity(DeviceActivity.class);
     }
     
     @OnClick(R.id.moneymanagement_layout)
@@ -123,8 +142,8 @@ public class PersonFragment extends BaseFragment
     void capacity_layout()
     {
 
-        Toast.makeText(getActivity(),"功能暂未开放",Toast.LENGTH_SHORT).show();
-        //changeActivity(CapacityActivity.class);
+        //Toast.makeText(getActivity(),"功能暂未开放",Toast.LENGTH_SHORT).show();
+        changeActivity(CapacityActivity.class);
     }
     
     @OnClick(R.id.mineCurrency_layout)
@@ -137,7 +156,21 @@ public class PersonFragment extends BaseFragment
     @OnClick(R.id.person_layout)
     void person_layout()
     {
-        changeActivity(PersonalActivity.class);
+
+         if(callBack!=null){
+             callBack.uploadImage(profile_image);
+         }
+
+
+    }
+
+
+    public static MyCallBack callBack;
+
+    public interface MyCallBack{
+
+        void uploadImage(CircleImageView circleImageView);
+
     }
     
     @OnClick(R.id.setting)
@@ -157,6 +190,14 @@ public class PersonFragment extends BaseFragment
     @Override
     protected void init()
     {
+
+        Glide.with(getContext())
+                .load(userBean.headPortrait)
+                .centerCrop()
+                .error(R.mipmap.timg)
+                //.placeholder(R.mipmap.img_tx_gezx)
+                //.transform(new GlideCircleTransform(getActivity()))
+                .into(profile_image);
         
     }
     
@@ -168,8 +209,14 @@ public class PersonFragment extends BaseFragment
         {
             
             initWorkNet();
+
             
         }
         
+    }
+
+
+    public void setHeadImageBitmap(String head_url){
+        profile_image.setImageBitmap(BitmapFactory.decodeFile(head_url));
     }
 }

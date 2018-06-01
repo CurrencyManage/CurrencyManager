@@ -2,6 +2,7 @@ package com.hb.currencymanage.net;
 
 import com.hb.currencymanage.bean.AccountBean;
 import com.hb.currencymanage.bean.CurrencyBean;
+import com.hb.currencymanage.bean.DeviceEntity;
 import com.hb.currencymanage.bean.HostBean;
 import com.hb.currencymanage.bean.HqViewBean;
 import com.hb.currencymanage.bean.OrderBean;
@@ -129,11 +130,33 @@ public interface Api
     Observable<ResultData<String>> getConsulting();
 
 
-    @POST("pub/public/uploadImage")
+    @POST("clientMain/uploadUserHeadPortrait")
     Observable<ResultData<UserBean>> uploadImage(@Query("userId ") String userId ,
                                                    @Body RequestBody body);
 
 
+    @POST("equipment/equipmentList")
+    Observable<ResultData<List<DeviceEntity>>> equipmentList(@Query("userId") String userId);
+
+    //equipment/bindingSendCode
+    @POST("equipment/bindingSendCode")
+    Observable<ResultData<UserBean>> bindingSendCode(@Query("phone") String phone );
+
+    @POST("equipment/bindingEquipment")
+    Observable<ResultData<UserBean>> bindingEquipment(@Query("equipmentCode") String equipmentCode,
+                                                      @Query("code") String code,
+                                                      @Query("phone") String phone,
+                                                      @Query("userId") String userId);
+
+
+    @POST("equipment/unbindSendCode")
+    Observable<ResultData<UserBean>> unbindSendCode(@Query("phone") String phone );
+
+    @POST("equipment/unbindEquipment")
+    Observable<ResultData<UserBean>> unbindEquipment(@Query("equipmentCode") String equipmentCode,
+                                                      @Query("code") String code,
+                                                      @Query("phone") String phone,
+                                                      @Query("userId") String userId);
 
 
 

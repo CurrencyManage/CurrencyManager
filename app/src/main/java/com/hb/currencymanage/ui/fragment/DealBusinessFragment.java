@@ -1223,12 +1223,10 @@ public class DealBusinessFragment extends BaseFragment {
                 @Override
                 public void run() {
                     int currentItem = mainActivity.mViewPager.getCurrentItem();
-                    //Log.i("currentItem  ",currentItem+"");
                     if (mIsVisibleToUser && currentItem == 2) {
-                        requestData();
-                        //Log.i("3秒刷新   ", "  买入卖出持仓  ");
+                        //requestData();
+                        getAccountInfo();
                     } else {
-//                        stopTimer();
                     }
                 }
             };

@@ -30,4 +30,8 @@ public class ResultData<T> implements Serializable {
 
     public String msgData;
 
+    public UserBean user;
+
+    public String SumCurrency;
+
 }

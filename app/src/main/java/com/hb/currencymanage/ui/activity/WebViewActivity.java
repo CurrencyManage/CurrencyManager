@@ -8,6 +8,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.hb.currencymanage.R;
+import com.hb.currencymanage.net.RetrofitUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -16,7 +17,7 @@ import butterknife.OnClick;
 public class WebViewActivity extends BaseActivity {
 
 
-    String url="http://39.104.50.236/currency/clientMain/consultingView?id=";
+    String url= RetrofitUtils.BASE+"clientMain/consultingView?id=";
 
     @BindView(R.id.webView)
     WebView webView;

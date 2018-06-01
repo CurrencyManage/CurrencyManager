@@ -13,6 +13,7 @@ import android.view.View;
 import com.hb.currencymanage.R;
 import com.hb.currencymanage.bean.ResultData;
 import com.hb.currencymanage.bean.UserBean;
+import com.hb.currencymanage.db.AccountDB;
 import com.hb.currencymanage.net.BaseObserver;
 import com.hb.currencymanage.net.RetrofitUtils;
 import com.hb.currencymanage.net.RxSchedulers;
@@ -28,8 +29,10 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 import io.reactivex.functions.Consumer;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -47,6 +50,11 @@ public class PersonalActivity extends BaseActivity {
 
     private String headImgOriFileName;
 
+    @BindView(R.id.head)
+    CircleImageView head;
+
+    private UserBean userBean;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +62,7 @@ public class PersonalActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         rxPermissions=new RxPermissions(PersonalActivity.this);
+        userBean=new AccountDB(context).getAccount();
 
         rxPermissions
                 .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -248,6 +257,7 @@ public class PersonalActivity extends BaseActivity {
                     headImg = data.getExtras().getParcelable("data");
                 }
                 headImgOriFileName=savePicToSdcard(headImg, headImgOriFileName);
+                head.setImageBitmap(headImg);
                 uploadHeadImage();
 
 
@@ -262,12 +272,14 @@ public class PersonalActivity extends BaseActivity {
         RequestBody requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM)
                 //.addFormDataPart("sessiontoken", memberBean.session_token)
                 .addFormDataPart("headPortraitImageFile  ", file.getName(), RequestBody.create(MediaType.parse("image/*"), file))
+                .addFormDataPart("userId ",userBean.getId())
                 .build();
+
 
         RetrofitUtils
                 .getInstance(context)
                 .api
-                .uploadImage(14+"",requestBody)
+                .uploadImage(userBean.getId(),requestBody)
                 .compose(RxSchedulers.<ResultData<UserBean>>compose())
                 .subscribe(new BaseObserver<UserBean>(context,true) {
                     @Override

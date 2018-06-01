@@ -56,105 +56,6 @@
         android:textColor="@color/device_bar_color" />
 
     <LinearLayout
-        android:layout_marginRight="@dimen/margin_normal"
-        android:layout_marginLeft="@dimen/margin_normal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_40"
-                android:background="@drawable/tv_border_all"
-                android:gravity="center_vertical|right"
-                android:paddingRight="@dimen/margin_larger"
-                android:text="姓名" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_40"
-                android:background="@drawable/tv_border_bottom_and_right_left"
-                android:gravity="center_vertical|right"
-                android:paddingRight="@dimen/margin_larger"
-                android:text="银行" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_40"
-                android:background="@drawable/tv_border_bottom_and_right_left"
-                android:gravity="center_vertical|right"
-                android:paddingRight="@dimen/margin_larger"
-                android:text="开户行支行" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_40"
-                android:background="@drawable/tv_border_bottom_and_right_left"
-                android:gravity="center_vertical|right"
-                android:paddingRight="@dimen/margin_larger"
-                android:text="卡号" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_40"
-                android:background="@drawable/tv_border_top_right_bottoml"
-                android:gravity="center_vertical|left"
-                android:paddingLeft="@dimen/margin_larger"
-                android:text=".."
-                />
-
-            <TextView
-                android:id="@+id/tv_bank"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_40"
-                android:background="@drawable/tv_border_bottom_and_right_whit"
-                android:gravity="center_vertical|left"
-                android:paddingLeft="@dimen/margin_larger"
-                android:text=".."
-                />
-
-            <TextView
-                android:id="@+id/tv_skKHH"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_40"
-                android:background="@drawable/tv_border_bottom_and_right_whit"
-                android:gravity="center_vertical|left"
-                android:paddingLeft="@dimen/margin_larger"
-                android:text=".."
-                />
-
-            <TextView
-                android:id="@+id/tv_skCard"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_40"
-                android:background="@drawable/tv_border_bottom_and_right_whit"
-                android:gravity="center_vertical|left"
-                android:paddingLeft="@dimen/margin_larger"
-                android:text=".."
-                />
-        </LinearLayout>
-
-
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_40"
         android:background="@drawable/tv_border_bottom"
@@ -166,11 +67,11 @@
             android:layout_weight="2"
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/margin_larger"
-            android:text="开户行"
-            android:textSize="@dimen/text_size_16" />
+            android:text="姓名"
+            />
 
         <TextView
-            android:id="@+id/tv_whereitis"
+            android:id="@+id/tv_name"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginRight="60dp"
@@ -178,13 +79,67 @@
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/margin_larger"
             android:text="黑龙江sssssss"
-            android:textSize="@dimen/text_size_12" />
+            />
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_40"
+        android:background="@drawable/tv_border_bottom"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/margin_larger"
+            android:text="银行"
+             />
+
+        <TextView
+            android:id="@+id/tv_bank"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="60dp"
+            android:layout_weight="4"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/margin_larger"
+            android:text="黑龙江sssssss"
+             />
+
+    </LinearLayout>
 
     <LinearLayout
-        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_40"
+        android:background="@drawable/tv_border_bottom"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/margin_larger"
+            android:text="开户行支行"
+             />
+
+        <TextView
+            android:id="@+id/tv_skKHH"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="60dp"
+            android:layout_weight="4"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/margin_larger"
+            android:text="黑龙江sssssss"
+             />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_40"
         android:background="@drawable/tv_border_bottom"
@@ -197,18 +152,18 @@
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/margin_larger"
             android:text="卡号"
-            android:textSize="@dimen/text_size_16" />
+            />
 
         <TextView
-            android:id="@+id/tv_bankcard"
+            android:id="@+id/tv_skCard"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginRight="60dp"
             android:layout_weight="4"
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/margin_larger"
-            android:text="1112134324324234"
-            android:textSize="@dimen/text_size_12" />
+            android:text="黑龙江sssssss"
+             />
 
     </LinearLayout>
 
@@ -227,7 +182,7 @@
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/margin_larger"
             android:text="转账金额"
-            android:textSize="@dimen/text_size_16" />
+             />
 
         <EditText
             android:id="@+id/et_money"
@@ -239,7 +194,7 @@
             android:gravity="center_vertical"
             android:hint="输入转账金额"
             android:paddingLeft="@dimen/margin_larger"
-            android:textSize="@dimen/text_size_12" />
+             />
 
     </LinearLayout>
 

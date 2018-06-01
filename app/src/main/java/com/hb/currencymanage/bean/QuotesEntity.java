@@ -42,13 +42,14 @@ public class QuotesEntity
 
     public int sellNum;
 
-    public String showSellNum;
-
     public String showBuyNum;
 
     public String showBuyPrice;
 
     public String showSellPrice;
+
+    public String showSellNum;
+
 
 
 

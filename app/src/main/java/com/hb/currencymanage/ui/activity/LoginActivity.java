@@ -1,10 +1,12 @@
 package com.hb.currencymanage.ui.activity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,10 +23,16 @@ import com.hb.currencymanage.net.RetrofitUtils;
 import com.hb.currencymanage.net.RxSchedulers;
 import com.hb.currencymanage.util.CommonUtils;
 import com.orhanobut.logger.Logger;
+import com.tbruyelle.rxpermissions2.Permission;
+import com.tbruyelle.rxpermissions2.RxPermissions;
+import com.tencent.bugly.beta.Beta;
+import com.wevey.selector.dialog.DialogInterface;
+import com.wevey.selector.dialog.NormalAlertDialog;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.reactivex.functions.Consumer;
 
 /**
  * Created by 汪彬 on 2018/4/23.
@@ -44,11 +52,50 @@ public class LoginActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        RxPermissions rxPermissions=new RxPermissions(LoginActivity.this);
+//        rxPermissions
+//                .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+//                .subscribe(new Consumer<Boolean>() {
+//                    @Override
+//                    public void accept(Boolean aBoolean) throws Exception {
+//                        if (aBoolean){
+//
+//                        }else{
+//                            finish();
+//                        }
+//                    }
+//                });
+
+        rxPermissions.requestEach(Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_PHONE_STATE)
+                .subscribe(new Consumer<Permission>() {
+                    @Override
+                    public void accept(Permission permission) throws Exception {
+
+                        if (permission.name.equals(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                            //当ACCESS_FINE_LOCATION权限获取成功时，permission.granted=true
+                            Logger.i("permissions", Manifest.permission.WRITE_EXTERNAL_STORAGE + "：" + permission.granted);
+
+                            if(!permission.granted){
+                                finish();
+                            }
+
+                        }
+
+
+                    }
+                });
+
+        //Beta.checkUpgrade();
+
+        Beta.checkUpgrade(false,false);
         UserBean userBean = new AccountDB(this).getAccount();
         if (null != userBean)
         {
-            mEtPhone.setText(userBean.getPhone());
-            mEtPwd.setText(userBean.getPss());
+//            mEtPhone.setText(userBean.getPhone());
+//            mEtPwd.setText(userBean.getPss());
+            changeActivity(MainActivity.class);
+            finish();
         }
     }
     
@@ -76,8 +123,7 @@ public class LoginActivity extends BaseActivity
                             new AccountDB(context).saveAccount(resultData.data);
                             changeActivity(MainActivity.class);
                             finish();
-                        }
-                        else
+                        }else
                         {
                             Toast.makeText(LoginActivity.this,
                                     !TextUtils.isEmpty(resultData.message)

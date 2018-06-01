@@ -25,11 +25,6 @@ import butterknife.OnClick;
 public class MoneyRechargeActivity extends BaseActivity {
 
 
-    @BindView(R.id.tv_whereitis)
-    TextView tv_whereitis;
-
-    @BindView(R.id.tv_bankcard)
-    TextView tv_bankcard;
 
     @BindView(R.id.et_money)
     EditText et_money;
@@ -57,8 +52,6 @@ public class MoneyRechargeActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         userBean = new AccountDB(context).getAccount();
-        tv_whereitis.setText(userBean.getWhereitis());
-        tv_bankcard.setText(userBean.getBankcard());
 
         tv_name.setText(userBean.getName());
         tv_bank.setText(userBean.getBank());

@@ -50,6 +50,7 @@
         android:background="@drawable/tv_border_bottom">
 
         <EditText
+            android:id="@+id/et_ecode"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"
@@ -63,6 +64,7 @@
         android:background="@drawable/tv_border_bottom">
 
         <EditText
+            android:id="@+id/et_code"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"
@@ -70,16 +72,17 @@
             android:paddingLeft="@dimen/margin_normal" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="@dimen/dimen_30"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/dimen_50"
             android:background="@drawable/b_border_radius"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:paddingLeft="4dp"
             android:paddingRight="4dp"
             android:text="获取验证码 "
+            android:id="@+id/tv_getcode"
             android:textColor="@color/device_bar_color"
             android:textSize="@dimen/text_size_12" />
 
@@ -87,6 +90,7 @@
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/tv_bind"
         android:layout_width="180dp"
         android:layout_height="@dimen/dimen_40"
         android:layout_gravity="center_horizontal"
