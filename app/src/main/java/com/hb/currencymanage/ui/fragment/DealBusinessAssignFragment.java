@@ -212,11 +212,7 @@ public class DealBusinessAssignFragment extends BaseFragment
     private MainActivity mainActivity;
     
     private boolean mIsVisibleToUser;
-    
-    private TimerTask autoRefreshTimerTask;
-    
-    private Timer autoRefreshTimer;
-    
+
     public static DealBusinessAssignFragment getInstance()
     {
         DealBusinessAssignFragment f = new DealBusinessAssignFragment();
@@ -1116,80 +1112,4 @@ public class DealBusinessAssignFragment extends BaseFragment
                     }
                 });
     }
-    
-    @Override
-    public void setUserVisibleHint(final boolean isVisibleToUser)
-    {
-        super.setUserVisibleHint(isVisibleToUser);
-        new Thread(new Runnable()
-        {
-            @Override
-            public void run()
-            {
-                try
-                {
-                    Thread.sleep(300);
-                    mIsVisibleToUser = isVisibleToUser;
-                    Log.i("3秒刷新vis   ", "" + mIsVisibleToUser);
-                    startTimer();
-                }
-                catch (InterruptedException e)
-                {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-    }
-    
-    private void startTimer()
-    {
-        if (null == autoRefreshTimer)
-        {
-            autoRefreshTimer = new Timer();
-        }
-        if (null == autoRefreshTimerTask)
-        {
-            autoRefreshTimerTask = new TimerTask()
-            {
-                @Override
-                public void run()
-                {
-                    int currentItem = mainActivity.mViewPager.getCurrentItem();
-                    if (mIsVisibleToUser && currentItem == 2)
-                    {
-                        // requestData();
-                        getAccountInfo();
-                    }
-                    else
-                    {
-                    }
-                }
-            };
-            
-            if (null != autoRefreshTimer && null != autoRefreshTimerTask)
-            {
-                autoRefreshTimer.schedule(autoRefreshTimerTask, 1000, 3000);
-            }
-        }
-    }
-    
-    @Override
-    public void onDestroy()
-    {
-        super.onDestroy();
-        stopTimer();
-    }
-    
-    private void stopTimer()
-    {
-        if (null != autoRefreshTimer)
-        {
-            autoRefreshTimer.cancel();
-            autoRefreshTimer.purge();
-            autoRefreshTimer = null;
-            autoRefreshTimerTask.cancel();
-            autoRefreshTimerTask = null;
-        }
-    }
-    
 }
