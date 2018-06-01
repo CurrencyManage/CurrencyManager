@@ -194,7 +194,7 @@ public class PersonFragment extends BaseFragment
         Glide.with(getContext())
                 .load(userBean.headPortrait)
                 .centerCrop()
-                .error(R.mipmap.timg)
+                .error(R.mipmap.img_tx_gezx)
                 //.placeholder(R.mipmap.img_tx_gezx)
                 //.transform(new GlideCircleTransform(getActivity()))
                 .into(profile_image);

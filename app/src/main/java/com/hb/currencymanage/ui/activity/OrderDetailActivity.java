@@ -77,7 +77,7 @@ public class OrderDetailActivity extends BaseActivity {
         orderBean = (OrderBean) bundle.getSerializable("bean");
         UserBean userBean = new AccountDB(context).getAccount();
         tv_code.setText(TextUtils.isEmpty(orderBean.code) ? " " : orderBean.code);
-        tvBink.setText(TextUtils.isEmpty(orderBean.bank) ? "" : orderBean.bank);
+
         tv_skCard.setText(TextUtils.isEmpty(orderBean.skCard) ? " " : orderBean.skCard);
         tv_skName.setText(TextUtils.isEmpty(orderBean.skName) ? " " : orderBean.skName);
         if (orderBean.orderType.equals("recharge")) {
@@ -85,6 +85,7 @@ public class OrderDetailActivity extends BaseActivity {
             tv_skKHH.setText(TextUtils.isEmpty(orderBean.skKHH) ? " " : orderBean.skKHH);
             tv_type.setText("充值");
             type.setText("订单类型:充值订单");
+            tvBink.setText(TextUtils.isEmpty(orderBean.skBank) ? "" : orderBean.skBank);
             llRecharge.setVisibility(View.VISIBLE);
             tvWithDrawHint.setVisibility(View.GONE);
             tvUrgentWithDrawHintl.setVisibility(View.GONE);
@@ -94,6 +95,8 @@ public class OrderDetailActivity extends BaseActivity {
             tv_skCard.setText(userBean.getBankcard());
             tv_skName.setText(TextUtils.isEmpty(userBean.getName()) ? " " : userBean.getName());
             tv_type.setText("提现");
+            tvBink.setText(TextUtils.isEmpty(userBean.getBank()) ? "" : userBean.getBank());
+            //tvBink.setText(TextUtils.isEmpty(orderBean.bank) ? "" : orderBean.skBank);
             type.setText("订单类型:提现订单");
             tvWithDrawType.setText("提现金额");
             llRecharge.setVisibility(View.GONE);

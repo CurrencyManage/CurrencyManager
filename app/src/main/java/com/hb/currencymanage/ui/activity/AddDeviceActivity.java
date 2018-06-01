@@ -136,7 +136,7 @@ public class AddDeviceActivity extends BaseActivity
         RetrofitUtils
                 .getInstance(context)
                 .api
-                .bindingSendCode(userBean.getPhone())
+                .bindingSendCode(userBean.getPhone(),et_ecode.getText().toString())
                 .compose(RxSchedulers.<ResultData<UserBean>>compose())
                 .subscribe(new BaseObserver<UserBean>(context,false) {
                     @Override

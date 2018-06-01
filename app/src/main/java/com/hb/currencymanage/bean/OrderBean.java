@@ -58,6 +58,8 @@ public class OrderBean implements Serializable {
 
     public String withdrawalamount;
 
+    public String skBank;
+
 
 
     public static class Order implements Serializable{

@@ -65,8 +65,6 @@ import butterknife.OnClick;
  */
 
 public class QuotesFragment extends BaseFragment {
-
-
     public static final int SWITCH_BUY = 0;
 
     public static final int SWITCH_SALE = 1;

@@ -140,7 +140,8 @@ public interface Api
 
     //equipment/bindingSendCode
     @POST("equipment/bindingSendCode")
-    Observable<ResultData<UserBean>> bindingSendCode(@Query("phone") String phone );
+    Observable<ResultData<UserBean>> bindingSendCode(@Query("phone") String phone,
+                                                     @Query("equipmentCode") String equipmentCode);
 
     @POST("equipment/bindingEquipment")
     Observable<ResultData<UserBean>> bindingEquipment(@Query("equipmentCode") String equipmentCode,

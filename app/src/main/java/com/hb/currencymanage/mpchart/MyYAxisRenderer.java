@@ -84,13 +84,19 @@ public class MyYAxisRenderer extends YAxisRenderer {
                     pos = mViewPortHandler.contentBottom() - 3;
                 }
                 //c.drawText(text, fixedPosition, pos, mAxisLabelPaint);
+//                if(i==0 || i==4){
+//                    if(text.equals("-200.00%")){
+//                        c.drawText("0%", fixedPosition, pos, mAxisLabelPaint);
+//                    }else {
+//                        c.drawText(text, fixedPosition, pos, mAxisLabelPaint);
+//                    }
+//
+//                }else {
+//                    c.drawText("", fixedPosition, pos, mAxisLabelPaint);
+//                }
                 if(i==0 || i==4){
-                    if(text.equals("-200.00%")){
-                        c.drawText("0%", fixedPosition, pos, mAxisLabelPaint);
-                    }else {
-                        c.drawText(text, fixedPosition, pos, mAxisLabelPaint);
-                    }
 
+                    c.drawText("", fixedPosition, pos, mAxisLabelPaint);
                 }else {
                     c.drawText("", fixedPosition, pos, mAxisLabelPaint);
                 }

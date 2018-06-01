@@ -350,7 +350,7 @@ public class MainActivity extends BaseActivity {
             public void onPageSelected(int position) {
                 selectPosition = position;
                 mTabLayout.setCurrentTab(position);
-                if (position == 0) {
+                if (position == 0 || position == 3) {
                     mStatusView.setVisibility(View.GONE);
                 } else {
                     mStatusView.setVisibility(View.VISIBLE);

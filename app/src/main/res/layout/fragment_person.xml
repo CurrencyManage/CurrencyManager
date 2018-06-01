@@ -44,7 +44,7 @@
                                         android:id="@+id/profile_image"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
-                                        android:src="@mipmap/timg"
+                                        android:src="@mipmap/img_tx_gezx"
                                         app:civ_border_width="2dp"
                                        />
 

@@ -109,6 +109,7 @@ public class DeviceActivity extends BaseActivity {
                     @Override
                     public void onHandlerSuccess(ResultData<List<DeviceEntity>> resultData) {
 
+                        deviceEntityList.clear();
                         if(resultData.result==200){
                            if(resultData.data!=null){
                                deviceEntityList.addAll(resultData.data);
