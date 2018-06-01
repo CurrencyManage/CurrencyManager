@@ -209,10 +209,6 @@ public class DealBusinessAssignFragment extends BaseFragment
     
     private boolean mIsOpen = false;
     
-    private MainActivity mainActivity;
-    
-    private boolean mIsVisibleToUser;
-
     public static DealBusinessAssignFragment getInstance()
     {
         DealBusinessAssignFragment f = new DealBusinessAssignFragment();
@@ -228,7 +224,6 @@ public class DealBusinessAssignFragment extends BaseFragment
     @Override
     protected void init()
     {
-        mainActivity = (MainActivity) getActivity();
         initVariable();
         initView();
         initChart();

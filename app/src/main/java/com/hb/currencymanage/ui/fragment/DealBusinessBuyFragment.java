@@ -204,8 +204,6 @@ public class DealBusinessBuyFragment extends BaseFragment
     
     private double mUpPricePer = 0f;
     
-    private MainActivity mainActivity;
-    
     public static DealBusinessBuyFragment getInstance()
     {
         DealBusinessBuyFragment f = new DealBusinessBuyFragment();
@@ -221,7 +219,6 @@ public class DealBusinessBuyFragment extends BaseFragment
     @Override
     protected void init()
     {
-        mainActivity = (MainActivity) getActivity();
         initVariable();
         initView();
         initChart();

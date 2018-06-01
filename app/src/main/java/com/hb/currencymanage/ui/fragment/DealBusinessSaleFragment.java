@@ -213,14 +213,6 @@ public class DealBusinessSaleFragment extends BaseFragment
     
     private boolean mIsOpen = false;
     
-    private MainActivity mainActivity;
-    
-    private boolean mIsVisibleToUser;
-    
-    private TimerTask autoRefreshTimerTask;
-    
-    private Timer autoRefreshTimer;
-    
     public static DealBusinessSaleFragment getInstance()
     {
         DealBusinessSaleFragment f = new DealBusinessSaleFragment();
@@ -236,7 +228,6 @@ public class DealBusinessSaleFragment extends BaseFragment
     @Override
     protected void init()
     {
-        mainActivity = (MainActivity) getActivity();
         initVariable();
         initView();
         initChart();
