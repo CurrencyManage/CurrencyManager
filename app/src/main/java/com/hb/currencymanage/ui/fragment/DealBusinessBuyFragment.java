@@ -493,7 +493,7 @@ public class DealBusinessBuyFragment extends BaseFragment
     
     private void doDeal(String userId, String num, String price)
     {
-        RetrofitUtils.getInstance(getActivity()).api.buy(userId, num, price)
+        RetrofitUtils.api.buy(userId, num, price)
                 // .buy("1", "1", "22")
                 .compose(RxSchedulers.<ResultData<String>> compose())
                 .subscribe(new BaseObserver<String>(getActivity(), true)
@@ -930,6 +930,7 @@ public class DealBusinessBuyFragment extends BaseFragment
     
     private void initView()
     {
+        mTvBusinessNum.setText("可买：");
         mEtPrice.setHint("买入价格");
         mEtNum.setHint("买入数量");
         mTvBusiness.setText("买入");
@@ -1012,7 +1013,8 @@ public class DealBusinessBuyFragment extends BaseFragment
                                 .valueOf(mDataSale.get(position).sellPrice));
                         mEtPrice.setText(mDataSale.get(position).sellPrice);
                         mEtNum.setText((max > mDataSale.get(position).sellNum
-                                ? mDataSale.get(position).sellNum : max) + "");
+                                ? mDataSale.get(position).sellNum
+                                : max) + "");
                     }
                     
                     @Override
@@ -1034,7 +1036,8 @@ public class DealBusinessBuyFragment extends BaseFragment
                                 .valueOf(mDataBuy.get(position).buyPrice));
                         mEtPrice.setText(mDataBuy.get(position).buyPrice);
                         mEtNum.setText((max > mDataBuy.get(position).buyNum
-                                ? mDataBuy.get(position).buyNum : max) + "");
+                                ? mDataBuy.get(position).buyNum
+                                : max) + "");
                     }
                     
                     @Override
