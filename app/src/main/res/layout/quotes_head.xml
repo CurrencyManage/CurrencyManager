@@ -255,7 +255,7 @@
 
             <TextView
                 android:id="@+id/tv_ltop"
-                android:text="111"
+                android:text=""
                 android:textSize="@dimen/text_size_12"
                 android:layout_marginTop="12dp"
                 android:textColor="@color/white"
@@ -263,7 +263,7 @@
                 android:layout_height="wrap_content" />
             <TextView
                 android:id="@+id/tv_lbottom"
-                android:text="111"
+                android:text=""
                 android:layout_marginBottom="16dp"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_12"
@@ -273,7 +273,7 @@
 
             <TextView
                 android:id="@+id/tv_rtop"
-                android:text="111"
+                android:text=""
                 android:layout_marginTop="12dp"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_12"
@@ -283,7 +283,7 @@
 
             <TextView
                 android:id="@+id/tv_rbottom"
-                android:text="111"
+                android:text=""
                 android:textSize="@dimen/text_size_12"
                 android:textColor="@color/white"
                 android:layout_marginBottom="16dp"

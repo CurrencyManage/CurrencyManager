@@ -108,6 +108,18 @@ public class QuotesFragment extends BaseFragment {
     @BindView(R.id.tv_sellTotalNum)
     TextView tv_sellTotalNum;
 
+    @BindView(R.id.tv_ltop)
+    TextView tv_ltop;
+
+    @BindView(R.id.tv_lbottom)
+    TextView tv_lbottom;
+
+    @BindView(R.id.tv_rtop)
+    TextView tv_rtop;
+
+    @BindView(R.id.tv_rbottom)
+    TextView tv_rbottom;
+
 
     private LineDataSet d1, d2;
     MyXAxis xAxisLine;
@@ -550,6 +562,10 @@ public class QuotesFragment extends BaseFragment {
                         if (resultData.result == 200) {
                             mData = new DataParse();
                             HqViewBean hqViewBean = resultData.data;
+                            tv_ltop.setText(resultData.data.relativeCurrentMix+"");
+                            tv_lbottom.setText(resultData.data.relativeCurrentMix+"");
+                            tv_rtop.setText(resultData.data.currentMinB+"");
+                            tv_rbottom.setText(resultData.data.currentMin+"");
                             mData.parseNetMinutes(hqViewBean);
                             setData(mData);
 

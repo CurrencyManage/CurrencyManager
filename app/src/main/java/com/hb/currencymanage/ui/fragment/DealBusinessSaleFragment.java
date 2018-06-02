@@ -172,6 +172,18 @@ public class DealBusinessSaleFragment extends BaseFragment
     
     @BindView(R.id.et_verify_code)
     EditText mEtVerifyCode;
+
+    @BindView(R.id.tv_ltop)
+    TextView tv_ltop;
+
+    @BindView(R.id.tv_lbottom)
+    TextView tv_lbottom;
+
+    @BindView(R.id.tv_rtop)
+    TextView tv_rtop;
+
+    @BindView(R.id.tv_rbottom)
+    TextView tv_rbottom;
     
     private MyXAxis xAxisLine;
     
@@ -637,7 +649,7 @@ public class DealBusinessSaleFragment extends BaseFragment
         axisLeftLine.setDrawLabels(true);
         axisLeftLine.setDrawGridLines(false);
         /* 轴不显示 避免和border冲突 */
-        axisLeftLine.setDrawAxisLine(true);
+        axisLeftLine.setDrawAxisLine(false);
         
         // 右边y
         axisRightLine = lineChart.getAxisRight();
@@ -837,6 +849,10 @@ public class DealBusinessSaleFragment extends BaseFragment
                             mData = new DataParse();
                             HqViewBean hqViewBean = resultData.data;
                             mData.parseNetMinutes(hqViewBean);
+                            tv_ltop.setText(resultData.data.relativeCurrentMix+"");
+                            tv_lbottom.setText(resultData.data.relativeCurrentMix+"");
+                            tv_rtop.setText(resultData.data.currentMinB+"");
+                            tv_rbottom.setText(resultData.data.currentMin+"");
                             setData(mData);
                         }
                         

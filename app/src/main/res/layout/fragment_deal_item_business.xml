@@ -486,8 +486,50 @@
 
             <com.hb.currencymanage.mpchart.MyLineChart
                 android:id="@+id/line_chart"
+                android:layout_marginLeft="-21dp"
+                android:layout_marginRight="-31dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent">
+            </com.hb.currencymanage.mpchart.MyLineChart>
+
+            <TextView
+                android:id="@+id/tv_ltop"
+                android:text=""
+                android:textSize="@dimen/text_size_12"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_lbottom"
+                android:text=""
+                android:layout_marginBottom="16dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_12"
+                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_rtop"
+                android:text=""
+                android:layout_marginTop="12dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_12"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_rbottom"
+                android:text=""
+                android:textSize="@dimen/text_size_12"
+                android:textColor="@color/white"
+                android:layout_marginBottom="16dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </RelativeLayout>
 
         <View
