@@ -50,7 +50,7 @@ public class OrderDetailActivity extends BaseActivity {
     TextView tvBink;
 
     @BindView(R.id.btn)
-    Button btn;
+    TextView btn;
 
     @BindView(R.id.ll_recharge)
     LinearLayout llRecharge;

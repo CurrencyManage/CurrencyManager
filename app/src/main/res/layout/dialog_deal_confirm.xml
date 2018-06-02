@@ -9,9 +9,9 @@
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/fab_margin"
         android:layout_marginTop="@dimen/fab_margin"
         android:text="@string/dialog_deal_title"
+        android:gravity="center"
         android:textColor="@color/color_aaa"
         android:textSize="@dimen/text_size_14" />
 
@@ -29,6 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_little"
+        android:visibility="gone"
         android:gravity="center"
         android:textSize="@dimen/text_size_14" />
 

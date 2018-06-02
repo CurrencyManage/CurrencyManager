@@ -413,8 +413,8 @@ public class DealBusinessBuyFragment extends BaseFragment
         String firstContent = "买入价格：" + price;
         String secondContent = "买入数量：" + num;
         new CustomDialog.Builder(getContext()).setTitle(title)
-                .setContentFirstVisibility(true)
-                .setContentSecondVisibility(true)
+                .setContentFirstVisibility(false)
+                .setContentSecondVisibility(false)
                 .setContentFirst(firstContent)
                 .setContentSecond(secondContent)
                 .setConfirmListener(new View.OnClickListener()

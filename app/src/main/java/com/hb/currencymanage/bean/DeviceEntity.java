@@ -35,7 +35,7 @@ public class DeviceEntity {
 
     public String production;
 
-    public String dayproduction;
+    public Object dayproduction;
 
     public String isBinding;
 
@@ -57,7 +57,7 @@ public class DeviceEntity {
 
     public String todayproductionid;
 
-
+    public Object user;
 
 
 }

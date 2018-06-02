@@ -20,9 +20,9 @@ public class RetrofitUtils {
 
 
     //http://47.97.211.94:8080/currency/
-    //public static final String BASE="http://47.97.211.94:8080/currency/";
+    public static final String BASE="http://47.97.211.94:8080/currency/";
 
-    public static final String BASE="http://39.104.50.236/currency/";
+//    public static final String BASE="http://39.104.50.236/currency/";
 
     //public static final String BASE_URL = BASE+"sys/";
 

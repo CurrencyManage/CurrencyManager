@@ -3,6 +3,7 @@ package com.hb.currencymanage.ui.activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -99,7 +100,7 @@ public class DeviceActivity extends BaseActivity {
 
 
     private void initNetWork(){
-
+        Log.e("-=======","-------1-1-------------");
         RetrofitUtils
                 .getInstance(context)
                 .api
@@ -108,7 +109,7 @@ public class DeviceActivity extends BaseActivity {
                 .subscribe(new BaseObserver<List<DeviceEntity>>(context,false) {
                     @Override
                     public void onHandlerSuccess(ResultData<List<DeviceEntity>> resultData) {
-
+                        Log.e("-=======","-------2-222-------------");
                         deviceEntityList.clear();
                         if(resultData.result==200){
                            if(resultData.data!=null){

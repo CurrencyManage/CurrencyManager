@@ -3,10 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.hb.currencymanage.ui.activity.OrderDetailActivity">
-
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <View
         android:id="@+id/status_view"
@@ -46,249 +44,265 @@
 
     </RelativeLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_normal"
-        android:layout_marginRight="@dimen/margin_normal"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/type"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_40"
-            android:background="@drawable/tv_border_bottom"
-            android:gravity="center_vertical"
-            android:text="汇款订单"
-            android:textColor="@color/tv_black"
-            android:textSize="@dimen/text_size_18" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_little"
-            android:text="1:请按以下提示信息向该卖家汇款" />
-
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_little"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            tools:context="com.hb.currencymanage.ui.activity.OrderDetailActivity">
+
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_marginLeft="@dimen/margin_normal"
+                android:layout_marginRight="@dimen/margin_normal"
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/type"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_40"
-                    android:background="@drawable/tv_border_bottom_and_right"
-                    android:gravity="center_vertical|right"
-                    android:paddingRight="@dimen/margin_larger"
-                    android:text="订单类型"
-                    android:visibility="gone" />
+                    android:background="@drawable/tv_border_bottom"
+                    android:gravity="center_vertical"
+                    android:text="汇款订单"
+                    android:textColor="@color/tv_black"
+                    android:textSize="@dimen/text_size_18" />
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40"
-                    android:background="@drawable/tv_border_all"
-                    android:gravity="center_vertical|right"
-                    android:paddingRight="@dimen/margin_larger"
-                    android:text="姓名" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_little"
+                    android:text="1:请按以下提示信息向该卖家汇款" />
 
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40"
-                    android:background="@drawable/tv_border_bottom_and_right_left"
-                    android:gravity="center_vertical|right"
-                    android:paddingRight="@dimen/margin_larger"
-                    android:text="银行" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_little"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40"
-                    android:background="@drawable/tv_border_bottom_and_right_left"
-                    android:gravity="center_vertical|right"
-                    android:paddingRight="@dimen/margin_larger"
-                    android:text="开户行支行" />
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40"
-                    android:background="@drawable/tv_border_bottom_and_right_left"
-                    android:gravity="center_vertical|right"
-                    android:paddingRight="@dimen/margin_larger"
-                    android:text="卡号" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_40"
+                            android:background="@drawable/tv_border_bottom_and_right"
+                            android:gravity="center_vertical|right"
+                            android:paddingRight="@dimen/margin_larger"
+                            android:text="订单类型"
+                            android:visibility="gone" />
 
-                <TextView
-                    android:id="@+id/tv_withdraw_type"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40"
-                    android:background="@drawable/tv_border_bottom_and_right_left"
-                    android:gravity="center_vertical|right"
-                    android:paddingRight="@dimen/margin_larger"
-                    android:text="转账金额" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_40"
+                            android:background="@drawable/tv_border_all"
+                            android:gravity="center_vertical|right"
+                            android:paddingRight="@dimen/margin_larger"
+                            android:text="姓名" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40"
-                    android:background="@drawable/tv_border_bottom_and_right_left"
-                    android:gravity="center_vertical|right"
-                    android:paddingRight="@dimen/margin_larger"
-                    android:text="汇款时备注内容" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40"
-                    android:background="@drawable/tv_border_bottom_and_right_left"
-                    android:gravity="center_vertical|right"
-                    android:paddingRight="@dimen/margin_larger"
-                    android:text="状态" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_40"
+                            android:background="@drawable/tv_border_bottom_and_right_left"
+                            android:gravity="center_vertical|right"
+                            android:paddingRight="@dimen/margin_larger"
+                            android:text="银行" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_40"
+                            android:background="@drawable/tv_border_bottom_and_right_left"
+                            android:gravity="center_vertical|right"
+                            android:paddingRight="@dimen/margin_larger"
+                            android:text="开户行支行" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_40"
+                            android:background="@drawable/tv_border_bottom_and_right_left"
+                            android:gravity="center_vertical|right"
+                            android:paddingRight="@dimen/margin_larger"
+                            android:text="卡号" />
+
+                        <TextView
+                            android:id="@+id/tv_withdraw_type"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_40"
+                            android:background="@drawable/tv_border_bottom_and_right_left"
+                            android:gravity="center_vertical|right"
+                            android:paddingRight="@dimen/margin_larger"
+                            android:text="转账金额" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_40"
+                            android:background="@drawable/tv_border_bottom_and_right_left"
+                            android:gravity="center_vertical|right"
+                            android:paddingRight="@dimen/margin_larger"
+                            android:text="汇款时备注内容" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_40"
+                            android:background="@drawable/tv_border_bottom_and_right_left"
+                            android:gravity="center_vertical|right"
+                            android:paddingRight="@dimen/margin_larger"
+                            android:text="状态" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_type"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_40"
+                            android:background="@drawable/tv_border_top_right_bottoml"
+                            android:gravity="center_vertical|left"
+                            android:paddingLeft="@dimen/margin_larger"
+                            android:text="状态"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/tv_skName"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_40"
+                            android:background="@drawable/tv_border_top_right_bottoml"
+                            android:gravity="center_vertical|left"
+                            android:paddingLeft="@dimen/margin_larger"
+                            android:text="状态" />
+
+                        <TextView
+                            android:id="@+id/tv_bank"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_40"
+                            android:background="@drawable/tv_border_bottom_and_right_whit"
+                            android:gravity="center_vertical|left"
+                            android:paddingLeft="@dimen/margin_larger"
+                            android:text="状态" />
+
+                        <TextView
+                            android:id="@+id/tv_skKHH"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_40"
+                            android:background="@drawable/tv_border_bottom_and_right_whit"
+                            android:gravity="center_vertical|left"
+                            android:paddingLeft="@dimen/margin_larger"
+                            android:text="状态" />
+
+                        <TextView
+                            android:id="@+id/tv_skCard"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_40"
+                            android:background="@drawable/tv_border_bottom_and_right_whit"
+                            android:gravity="center_vertical|left"
+                            android:paddingLeft="@dimen/margin_larger"
+                            android:text="状态" />
+
+                        <TextView
+                            android:id="@+id/tv_price"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_40"
+                            android:background="@drawable/tv_border_bottom_and_right_whit"
+                            android:gravity="center_vertical|left"
+                            android:paddingLeft="@dimen/margin_larger"
+                            android:text="状态" />
+
+                        <TextView
+                            android:id="@+id/tv_code"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_40"
+                            android:background="@drawable/tv_border_bottom_and_right_whit"
+                            android:gravity="center_vertical|left"
+                            android:paddingLeft="@dimen/margin_larger"
+                            android:text="状态" />
+
+                        <TextView
+                            android:id="@+id/tv_state"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_40"
+                            android:background="@drawable/tv_border_bottom_and_right_whit"
+                            android:gravity="center_vertical|left"
+                            android:paddingLeft="@dimen/margin_larger"
+                            android:text="状态" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
 
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:id="@+id/ll_recharge"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:layout_marginLeft="@dimen/margin_normal"
+                android:layout_marginRight="@dimen/margin_normal"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_type"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40"
-                    android:background="@drawable/tv_border_top_right_bottoml"
-                    android:gravity="center_vertical|left"
-                    android:paddingLeft="@dimen/margin_larger"
-                    android:text="状态"
-                    android:visibility="gone" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_little"
+                    android:text="2.汇款时一定要填写备注信息(请于今日完成转账充值(凌晨失效))。" />
 
                 <TextView
-                    android:id="@+id/tv_skName"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40"
-                    android:background="@drawable/tv_border_top_right_bottoml"
-                    android:gravity="center_vertical|left"
-                    android:paddingLeft="@dimen/margin_larger"
-                    android:text="状态" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_little"
+                    android:text="3.卖家确认收款后,自动转让相应金额。" />
 
                 <TextView
-                    android:id="@+id/tv_bank"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40"
-                    android:background="@drawable/tv_border_bottom_and_right_whit"
-                    android:gravity="center_vertical|left"
-                    android:paddingLeft="@dimen/margin_larger"
-                    android:text="状态" />
-
-                <TextView
-                    android:id="@+id/tv_skKHH"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40"
-                    android:background="@drawable/tv_border_bottom_and_right_whit"
-                    android:gravity="center_vertical|left"
-                    android:paddingLeft="@dimen/margin_larger"
-                    android:text="状态" />
-
-                <TextView
-                    android:id="@+id/tv_skCard"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40"
-                    android:background="@drawable/tv_border_bottom_and_right_whit"
-                    android:gravity="center_vertical|left"
-                    android:paddingLeft="@dimen/margin_larger"
-                    android:text="状态" />
-
-                <TextView
-                    android:id="@+id/tv_price"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40"
-                    android:background="@drawable/tv_border_bottom_and_right_whit"
-                    android:gravity="center_vertical|left"
-                    android:paddingLeft="@dimen/margin_larger"
-                    android:text="状态" />
-
-                <TextView
-                    android:id="@+id/tv_code"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40"
-                    android:background="@drawable/tv_border_bottom_and_right_whit"
-                    android:gravity="center_vertical|left"
-                    android:paddingLeft="@dimen/margin_larger"
-                    android:text="状态" />
-
-                <TextView
-                    android:id="@+id/tv_state"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40"
-                    android:background="@drawable/tv_border_bottom_and_right_whit"
-                    android:gravity="center_vertical|left"
-                    android:paddingLeft="@dimen/margin_larger"
-                    android:text="状态" />
-
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_little"
+                    android:text="4.请务必使用本人绑定的银行卡号通过手机银行或网银进行汇款。" />
 
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/tv_withdraw_hint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_little"
+                android:text="预计1~10日内完成。" />
 
+
+            <TextView
+                android:id="@+id/tv_urgent_withdraw_hint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_little"
+                android:text="预计2小时内完成。" />
+
+            <TextView
+                android:id="@+id/btn"
+                android:layout_width="200dp"
+                android:layout_height="@dimen/dimen_40"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/dimen_20"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:background="@color/device_bar_color"
+                android:gravity="center"
+                android:text="已充值"
+                android:textColor="@color/tv_white" />
         </LinearLayout>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_recharge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_normal"
-        android:layout_marginRight="@dimen/margin_normal"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_little"
-            android:text="2.汇款时一定要填写备注信息(请于今日完成转账充值(凌晨失效))。" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_little"
-            android:text="3.卖家确认收款后,自动转让相应金额。" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_little"
-            android:text="4.请务必使用本人绑定的银行卡号通过手机银行或网银进行汇款。" />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/tv_withdraw_hint"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_little"
-        android:text="预计1~10日内完成。" />
-
-
-    <TextView
-        android:id="@+id/tv_urgent_withdraw_hint"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_little"
-        android:text="预计2小时内完成。" />
-
-
-    <Button
-        android:id="@+id/btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="已充值" />
-
-
+    </ScrollView>
 </LinearLayout>
