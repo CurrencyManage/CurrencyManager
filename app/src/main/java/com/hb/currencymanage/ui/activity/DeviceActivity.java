@@ -26,8 +26,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class DeviceActivity extends BaseActivity {
-
+public class DeviceActivity extends BaseActivity
+{
 
     @BindView(R.id.recycleView)
     RecyclerView recyclerView;
@@ -39,36 +39,45 @@ public class DeviceActivity extends BaseActivity {
     private UserBean userBean;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device);
         ButterKnife.bind(this);
-        userBean=new AccountDB(context).getAccount();
+        userBean = new AccountDB(context).getAccount();
         init();
 
     }
 
-    private void init() {
+    private void init()
+    {
 
-        if (deviceEntityList==null){
-            deviceEntityList=new ArrayList<>();
+        if (deviceEntityList == null)
+        {
+            deviceEntityList = new ArrayList<>();
         }
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        adapter = new CommonAdapter<DeviceEntity>(context, R.layout.device_list_item,
-                deviceEntityList)
+        adapter = new CommonAdapter<DeviceEntity>(context,
+                R.layout.device_list_item, deviceEntityList)
         {
 
             @Override
-            protected void convert(ViewHolder holder, DeviceEntity deviceEntity, int position) {
-                holder.setText(R.id.tv_opentime,deviceEntity.opentime);
-                if(deviceEntity.state==1){
-                    holder.setText(R.id.tv_status,"正在运行");
-                }else {
-                    holder.setText(R.id.tv_status,"停止运行");
+            protected void convert(ViewHolder holder, DeviceEntity deviceEntity,
+                    int position)
+            {
+                holder.setText(R.id.tv_opentime, deviceEntity.opentime);
+                if (deviceEntity.state == 1)
+                {
+                    holder.setText(R.id.tv_status, "正在运行");
+                }
+                else
+                {
+                    holder.setText(R.id.tv_status, "停止运行");
                 }
 
-                holder.setText(R.id.tv_production,"今日产值:"+deviceEntity.production);
-                holder.setText(R.id.tv_code,"编号:"+deviceEntity.code);
+                holder.setText(R.id.tv_production,
+                        "今日产值:" + deviceEntity.production);
+                holder.setText(R.id.tv_code, "编号:" + deviceEntity.code);
             }
         };
         recyclerView.setAdapter(adapter);
@@ -78,59 +87,64 @@ public class DeviceActivity extends BaseActivity {
                 {
                     @Override
                     public void onItemClick(View view,
-                                            RecyclerView.ViewHolder holder, int position)
+                            RecyclerView.ViewHolder holder, int position)
                     {
 
-                        Bundle bundle=new Bundle();
-                        bundle.putString("code",deviceEntityList.get(position).code);
-                        bundle.putString("cumulativeoutput",deviceEntityList.get(position).cumulativeoutput);
-                        changeActivity(DeviceDetailLeaseActivity.class,bundle);
-
+                        Bundle bundle = new Bundle();
+                        bundle.putString("code",
+                                deviceEntityList.get(position).code);
+                        bundle.putString("cumulativeoutput",
+                                deviceEntityList
+                                        .get(position).cumulativeoutput);
+                        changeActivity(DeviceDetailLeaseActivity.class, bundle);
 
                     }
 
                     @Override
                     public boolean onItemLongClick(View view,
-                                                   RecyclerView.ViewHolder holder, int position)
+                            RecyclerView.ViewHolder holder, int position)
                     {
                         return false;
                     }
                 });
     }
 
-
-    private void initNetWork(){
-        Log.e("-=======","-------1-1-------------");
-        RetrofitUtils
-                .getInstance(context)
-                .api
-                .equipmentList(userBean.getId())
-                .compose(RxSchedulers.<ResultData<List<DeviceEntity>>>compose())
-                .subscribe(new BaseObserver<List<DeviceEntity>>(context,false) {
+    private void initNetWork()
+    {
+        RetrofitUtils.getInstance(context).api.equipmentList(userBean.getId())
+                .compose(
+                        RxSchedulers.<ResultData<List<DeviceEntity>>> compose())
+                .subscribe(new BaseObserver<List<DeviceEntity>>(context, false)
+                {
                     @Override
-                    public void onHandlerSuccess(ResultData<List<DeviceEntity>> resultData) {
-                        Log.e("-=======","-------2-222-------------");
+                    public void onHandlerSuccess(
+                            ResultData<List<DeviceEntity>> resultData)
+                    {
                         deviceEntityList.clear();
-                        if(resultData.result==200){
-                           if(resultData.data!=null){
-                               deviceEntityList.addAll(resultData.data);
-                               adapter.notifyDataSetChanged();
+                        if (resultData.result == 200)
+                        {
+                            if (resultData.data != null)
+                            {
+                                deviceEntityList.addAll(resultData.data);
+                                adapter.notifyDataSetChanged();
 
-                           }
-                        }else {
-
-                            Toast.makeText(context,resultData.message+"",Toast.LENGTH_SHORT).show();
+                            }
                         }
+                        else
+                        {
 
-
+                            Toast.makeText(context,
+                                    resultData.message + "",
+                                    Toast.LENGTH_SHORT).show();
+                        }
 
                     }
                 });
     }
 
-
     @Override
-    protected void onResume() {
+    protected void onResume()
+    {
         super.onResume();
 
         initNetWork();
@@ -150,7 +164,5 @@ public class DeviceActivity extends BaseActivity {
         changeActivity(AddDeviceActivity.class);
 
     }
-
-
 
 }
